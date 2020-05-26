@@ -44,4 +44,4 @@ class Cabecera extends Component {
     }
 }
 
-export default Cabecera;
+export default Header;

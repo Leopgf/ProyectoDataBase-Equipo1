@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
-import Cabecera from './components/Header/Cabecera';
 import Cuerpo from './components/Cuerpo/Cuerpo';
+import Header from './components/Header/Header';
 
 function App() {
   return (
     <div>
-      <Cabecera></Cabecera>
+      <Header></Header>
       <Cuerpo></Cuerpo>
     </div>
   );

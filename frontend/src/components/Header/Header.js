@@ -16,13 +16,14 @@ class Header extends Component {
             <Nav className="mr-auto">
               <Nav.Link href="#home">Películas</Nav.Link>
               <Nav.Link href="#link">Próximos estrenos</Nav.Link>
+              <Nav.Link href="#link">Combos</Nav.Link>
             </Nav>
             <Form inline>
               <FormControl type="text" placeholder="Search" className="mr-sm-2" />
               <Button variant="light">Search</Button> {/* BUSCADOR */}
             </Form>
             <div class="row ">
-              <div class="col ml-3 ">
+              <div class="col ml-1 ">
                 <Button variant="light">Sign In</Button> {/* INICIO DE SESIÓN BTN*/}
               </div>
             </div>

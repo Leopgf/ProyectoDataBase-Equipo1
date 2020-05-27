@@ -1,37 +1,33 @@
 import React, { Component } from 'react';
+import {Card}  from 'react-bootstrap';
+import {ListGroup}  from 'react-bootstrap';
+import {ListGroupItem}  from 'react-bootstrap';
+import {Button}  from 'react-bootstrap';
 
 class Cuerpo extends Component {
     render() {
         return (
-            <div className="col-8 m-3">
-                <div className="table-responsive">
-                <table className="table">
-                  <thead>
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">First</th>
-                      <th scope="col">Last</th>
-                      <th scope="col">Handle</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
-                  </tbody>
-                </table>
-                </div>
-                
-            </div>
+          <div class="row">
+            <div class="col">
+              <Card style={{ width: '18rem' }}>
+              <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
+              <Card.Body>
+                <Card.Title>Titulo Película</Card.Title>
+              </Card.Body>
+              <ListGroup className="list-group-flush">
+                <ListGroupItem>genero</ListGroupItem>
+                <ListGroupItem>categoría</ListGroupItem>
+                <ListGroupItem>Duración</ListGroupItem>
+              </ListGroup>
+         
+              <Button variant="light">DETALLE</Button> {/* BTN QUE REDIRIGE A PANTALLA CON INFO DETALLADA DE LA PELI Y COMPRA*/}
+              <Button variant="light">COMPRAR ENTRADA</Button> {/* BTN QUE REDIRIGE A PANTALLA CON INFO DETALLADA DE LA PELI Y COMPRA*/}
+           
+ 
+ 
+            </Card>
+          </div>
+        </div>
         );
     }
 }

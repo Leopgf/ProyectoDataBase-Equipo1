@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import {Card}  from 'react-bootstrap';
+import {Card, Container}  from 'react-bootstrap';
 import {ListGroup}  from 'react-bootstrap';
 import {ListGroupItem}  from 'react-bootstrap';
 import {Button}  from 'react-bootstrap';
 
 class Cuerpo extends Component {
     render() {
+  
         return (
-          <div class="row">
+          <div class="row mt-2">
             <div class="col">
               <Card style={{ width: '18rem' }}>
               <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />

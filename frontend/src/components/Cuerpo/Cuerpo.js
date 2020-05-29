@@ -16,7 +16,6 @@ class Cuerpo extends Component {
       .then(res => {
         const peliculas = res.data;
         this.setState({ peliculas });
-        console.log(peliculas);
       })
   }
 
@@ -29,12 +28,12 @@ class Cuerpo extends Component {
 
                 <div className="col-4" key={pelicula.id}>
               <Card>
-              <Card.Img variant="top" src='' />
+              <Card.Img variant="top" src={pelicula.imagen} />
               <Card.Body>
                 <Card.Title> { pelicula.titulo } </Card.Title>
               </Card.Body>
               <ListGroup className="list-group-flush">
-                <ListGroupItem>genero</ListGroupItem>
+              <ListGroupItem>{ pelicula.categoria }</ListGroupItem>
                 <ListGroupItem>categoría</ListGroupItem>
                 <ListGroupItem>Duración</ListGroupItem>
               </ListGroup>

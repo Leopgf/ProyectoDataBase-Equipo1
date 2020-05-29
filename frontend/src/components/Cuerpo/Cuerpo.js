@@ -8,6 +8,7 @@ class Cuerpo extends Component {
     render() {
   
         return (
+          <Container>
           <div class="row mt-2">
             <div class="col">
               <Card style={{ width: '18rem' }}>
@@ -29,6 +30,7 @@ class Cuerpo extends Component {
             </Card>
           </div>
         </div>
+        </Container>
         );
     }
 }

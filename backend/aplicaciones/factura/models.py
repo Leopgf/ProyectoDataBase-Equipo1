@@ -1,12 +1,11 @@
 from django.db import models
-from aplicaciones.pelicula.models import Funcion, Asiento
-from aplicaciones.combos.models import Combo, Entrada
-
+from aplicaciones.pelicula.models import Funcion, Asiento, Sala, Entrada
+from aplicaciones.combos.models import Combo
 
 #Factura
 class Factura(models.Model):
     fecha_compra = models.DateField()
-    #id_funcion = models.ForeignKey('Funcion', on_delete=models.CASCADE)
+    id_funcion = models.ForeignKey(Funcion, on_delete=models.CASCADE)
 
     class Meta:
         ordering = ['fecha_compra']
@@ -16,8 +15,8 @@ class Factura(models.Model):
 #ComprasCombos
 class ComprasCombos(models.Model):
     cantidad = models.IntegerField()
-    #id_factura = models.ForeignKey('Factura', on_delete=models.CASCADE)
-    #id_combos = models.ForeignKey('Combo', on_delete=models.CASCADE)
+    id_factura = models.ForeignKey(Factura, on_delete=models.CASCADE)
+    id_combos = models.ForeignKey(Combo, on_delete=models.CASCADE)
 
     class Meta:
         ordering = ['cantidad']
@@ -25,7 +24,7 @@ class ComprasCombos(models.Model):
         verbose_name_plural = 'Compras Combos'
 
 #ComprasEntradas
-#class ComprasEntradas(models.Model):
-    #id_factura = models.ForeignKey('Factura', on_delete=models.CASCADE)
-    #id_entrada = models.ForeignKey('Entrada', on_delete=models.CASCADE)
-    #id_asiento = models.ForeignKey('Asiento', on_delete=models.CASCADE)
+class ComprasEntradas(models.Model):
+    id_factura = models.ForeignKey(Factura, on_delete=models.CASCADE)
+    id_entrada = models.ForeignKey(Entrada, on_delete=models.CASCADE)
+    id_asiento = models.ForeignKey(Asiento, on_delete=models.CASCADE)

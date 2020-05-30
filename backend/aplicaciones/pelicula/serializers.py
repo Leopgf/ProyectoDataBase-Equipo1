@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Pelicula, Funcion, Sala, Asiento, ReservarAsientos
+from .models import Pelicula, Funcion, Sala, Asiento, ReservarAsientos, Entrada
 
 class PeliculasSerializer(serializers.ModelSerializer):
     class Meta:
@@ -24,4 +24,9 @@ class AsientoSerializer(serializers.ModelSerializer):
 class ReservarAsientoSerializer(serializers.ModelSerializer):
     class Meta:
         model = ReservarAsientos
+        fields = '__all__'
+
+class EntradasSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Entrada
         fields = '__all__'

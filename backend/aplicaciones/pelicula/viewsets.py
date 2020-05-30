@@ -21,3 +21,7 @@ class AsientoViewset(viewsets.ModelViewSet):
 class ReservarAsientoViewset(viewsets.ModelViewSet):
     queryset = models.ReservarAsientos.objects.all()
     serializer_class = serializers.ReservarAsientoSerializer
+
+class EntradaViewset(viewsets.ModelViewSet):
+    queryset = models.Entrada.objects.all()
+    serializer_class = serializers.EntradasSerializer    

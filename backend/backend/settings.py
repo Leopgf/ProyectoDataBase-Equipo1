@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'rest_framework',
-    'aplicaciones.pelicula'
+    'aplicaciones.pelicula',
+    'aplicaciones.combos',
+    'aplicaciones.factura'
 ]
 
 MIDDLEWARE = [
@@ -82,7 +84,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'lengcinema',
         'USER': 'root',
-        'PASSWORD': 'giselle',
+        'PASSWORD': 'v28012000',
         'HOST': 'localhost',
         'PORT': 3306,
     }

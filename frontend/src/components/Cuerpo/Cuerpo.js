@@ -25,8 +25,7 @@ class Cuerpo extends Component {
           <div className="row mt-2">
             {
               this.state.peliculas.map(pelicula =>
-
-                <div className="col-4" key={pelicula.id}>
+                <div className="col-4 text-center" key={pelicula.id}>
               <Card>
               <Card.Img variant="top" src={pelicula.imagen} />
               <Card.Body>
@@ -34,11 +33,9 @@ class Cuerpo extends Component {
               </Card.Body>
               <ListGroup className="list-group-flush">
               <ListGroupItem>{ pelicula.categoria }</ListGroupItem>
-                <ListGroupItem>categoría</ListGroupItem>
-                <ListGroupItem>Duración</ListGroupItem>
               </ListGroup>
          
-              <Button variant="dark">DETALLES</Button> {/* BTN QUE REDIRIGE A PANTALLA CON INFO DETALLADA DE LA PELI Y COMPRA*/}
+              <link to="/detallepeli/1"> <Button variant="dark">DETALLE PELÍCULA</Button></link>{/* BTN QUE REDIRIGE A PANTALLA CON INFO DETALLADA DE LA PELI Y COMPRA*/}
               <Button variant="success">COMPRAR ENTRADA</Button> {/* BTN QUE REDIRIGE A PANTALLA CON INFO DETALLADA DE LA PELI Y COMPRA*/}
  
             </Card>

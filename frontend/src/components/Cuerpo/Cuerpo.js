@@ -3,6 +3,7 @@ import {Card}  from 'react-bootstrap';
 import {ListGroup}  from 'react-bootstrap';
 import {ListGroupItem}  from 'react-bootstrap';
 import {Button}  from 'react-bootstrap';
+import {Link}  from 'react-router-dom';
 import axios from 'axios';
 
 class Cuerpo extends Component {
@@ -33,12 +34,10 @@ class Cuerpo extends Component {
                 <Card.Title> { pelicula.titulo } </Card.Title>
               </Card.Body>
               <ListGroup className="list-group-flush">
-              <ListGroupItem>{ pelicula.categoria }</ListGroupItem>
-                <ListGroupItem>categoría</ListGroupItem>
-                <ListGroupItem>Duración</ListGroupItem>
+              <ListGroupItem>Categoría: { pelicula.categoria }</ListGroupItem>
               </ListGroup>
          
-              <Button variant="dark">DETALLES</Button> {/* BTN QUE REDIRIGE A PANTALLA CON INFO DETALLADA DE LA PELI Y COMPRA*/}
+              <Link to="/detallepeli"><Button variant="dark" style={{ width: '100%'}}>DETALLES PELÍCULA</Button></Link> {/* BTN QUE REDIRIGE A PANTALLA CON INFO DETALLADA DE LA PELI Y COMPRA*/}
               <Button variant="success">COMPRAR ENTRADA</Button> {/* BTN QUE REDIRIGE A PANTALLA CON INFO DETALLADA DE LA PELI Y COMPRA*/}
  
             </Card>

@@ -26,9 +26,9 @@ class Cuerpo extends Component {
             {
               this.state.peliculas.map(pelicula =>
 
-                <div className="col-4" key={pelicula.id}>
+                <div className="col-4 mb-3" key={pelicula.id}>
               <Card>
-              <Card.Img variant="top" src={pelicula.imagen} />
+              <Card.Img variant="top" style={{ width: '25 rem', height: '35rem'  }}  src={pelicula.imagen} />
               <Card.Body>
                 <Card.Title> { pelicula.titulo } </Card.Title>
               </Card.Body>

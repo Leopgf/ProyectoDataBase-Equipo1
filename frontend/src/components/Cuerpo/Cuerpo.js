@@ -27,7 +27,7 @@ class Cuerpo extends Component {
             {
               this.state.peliculas.map(pelicula =>
 
-                <div className="col-4 mb-3" key={pelicula.id} titulo={pelicula.titulo}>
+                <div className="col-xs-12 col-sm-6 col-md-4 col-xlg-4 text-center mb-2" style={{ display:'flex', justifyContent:'center' }}  key={pelicula.id} titulo={pelicula.titulo}> {/* RESPONSIVE PELÍCULAS*/}
               <Card>
               <Card.Img variant="top" style={{ width: '25 rem', height: '35rem'  }}  src={pelicula.imagen} />
               <Card.Body>

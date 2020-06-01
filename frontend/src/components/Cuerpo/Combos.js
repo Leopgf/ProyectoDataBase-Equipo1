@@ -22,8 +22,8 @@ class Cuerpo extends Component {
           <div className="row mt-2 ml-2">
             {
               this.state.combos.map(combo =>
-                <div className="col-4 text-center" key={combo.id}>
-                    <Card border="dark" style={{ width: '25rem', height: '15rem'  }}>
+                <div className="col-xs-12 col-sm-12 col-md-6 col-xlg-4 text-center mt-2" style={{ display:'flex', justifyContent:'center' }} key={combo.id}>  {/* RESPONSIVE COMBOS*/}
+                    <Card border="dark" style={{ width: '25rem', height: '15rem' }}>
                     <Card.Header>COMBO</Card.Header>
                     <Card.Body>
                     <Card.Title>{ combo.nombre }</Card.Title>

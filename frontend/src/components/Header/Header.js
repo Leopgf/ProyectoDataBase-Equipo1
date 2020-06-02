@@ -14,7 +14,8 @@ class Header extends Component {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link href="/">Películas</Nav.Link>
+              <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link href="/cartelera">Cartelera</Nav.Link>
               <Nav.Link href="/estrenos">Próximos estrenos</Nav.Link>
               <Nav.Link href="/combos">Combos</Nav.Link>
             </Nav>

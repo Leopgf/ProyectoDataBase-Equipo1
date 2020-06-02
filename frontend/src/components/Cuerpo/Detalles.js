@@ -73,6 +73,7 @@ class DetallesContenido extends Component {
         }
     }
 
+    {/*HEADER*/}
 class Header extends Component {
         render() {
             return (

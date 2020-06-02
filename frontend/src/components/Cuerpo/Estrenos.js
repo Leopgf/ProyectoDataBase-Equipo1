@@ -4,10 +4,9 @@ class Estrenos extends Component {
     render() {
   
         return (
-                <h1>ESTRENOS</h1>
+                <h2>ESTRENOS</h2>
 
             );
         }
     }
-    
     export default Estrenos;

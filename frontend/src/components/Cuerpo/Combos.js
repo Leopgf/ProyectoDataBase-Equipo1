@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import {Card}  from 'react-bootstrap';
-import {ListGroupItem}  from 'react-bootstrap';
 import axios from 'axios';
 
-class Cuerpo extends Component {
+
+{/* COMBOS DEL CINE*/}
+class Combos extends Component {
 
   state = {
     combos: []
@@ -41,5 +42,4 @@ class Cuerpo extends Component {
         );
     }
 }
-
-export default Cuerpo;
+export default Combos;

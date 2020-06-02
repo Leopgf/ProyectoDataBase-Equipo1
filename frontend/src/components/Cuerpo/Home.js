@@ -6,10 +6,12 @@ import {Button}  from 'react-bootstrap';
 import {Carousel, CarouselItem}  from 'react-bootstrap';
 import {Link}  from 'react-router-dom';
 import axios from 'axios';
-import cine from '../../assest/cine.jpg';
+import cine from '../../assest/cinec.jpg'; 
+import aclamado from '../../assest/aclamado.jpg';
+import cotufas from '../../assest/cotufas.jpg';
 
-class Cuerpo extends Component {
-
+{/* BASE/COMPONENTE QUE MUESTRA LOS DOS COMPONENTES "SLIDER Y CONTENIDO"*/}
+class Home extends Component {
     render() {
 
         return (
@@ -20,9 +22,9 @@ class Cuerpo extends Component {
         );
     }
 }
+export default Home;
 
-export default Cuerpo;
-
+{/* CONTENIDO DEL CINE-PELICULAS ESTRENADAS*/}
 class Contenido extends Component {
 
   state = {
@@ -67,6 +69,7 @@ class Contenido extends Component {
     }
 }
 
+{/* SLIDER DEL HOME DEL CINE*/}
 class Slider extends Component {
 
     render() {
@@ -74,43 +77,29 @@ class Slider extends Component {
         return (
 
           <Carousel>
-  <Carousel.Item>
-    <img
-      className="d-block w-100"
-      src="holder.js/800x400?text=First slide&bg=373940"
-      alt="First slide"
-    />
-    <Carousel.Caption>
-      <h3>First slide label</h3>
-      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-    </Carousel.Caption>
-  </Carousel.Item>
-  <Carousel.Item>
-    <img
-      className="d-block w-100"
-      src="holder.js/800x400?text=Second slide&bg=282c34"
-      alt="Third slide"
-    />
-
-    <Carousel.Caption>
-      <h3>Second slide label</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    </Carousel.Caption>
-  </Carousel.Item>
-  <Carousel.Item>
-    <img
-      className="d-block w-100"
-      src="holder.js/800x400?text=Third slide&bg=20232a"
-      alt="Third slide"
-    />
-
-    <Carousel.Caption>
-      <h3>Third slide label</h3>
-      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-    </Carousel.Caption>
-  </Carousel.Item>
-</Carousel>
-          
+            <Carousel.Item>
+              <img style={{ width: '100%', height: '30rem', opacity:"0.5" }} src={cine} alt="First slide"/>
+              <Carousel.Caption>
+                <h1 style={{ color:"black"}}>LENG CINEMA</h1>
+                <h5 style={{ color:"black"}}>¡Yo sí disfruto el cine!</h5>
+              </Carousel.Caption>
+            </Carousel.Item>
+            <Carousel.Item>
+              <img style={{ width: '100%', height: '30rem',opacity:"0.5" }} src={cotufas} alt="Second slide"/>
+              <Carousel.Caption>
+                <h1 style={{ color:"black"}}>NUESTROS COMBOS</h1>
+                <h5 style={{ color:"black"}}>¡Disfruta los mejores con nosotros!</h5>
+              </Carousel.Caption>
+            </Carousel.Item>
+            <Carousel.Item>
+              <img style={{ width: '100%', height: '30rem',opacity:"0.5" }} src={aclamado} alt="Third slide"/>
+              <Carousel.Caption>
+                <h1 style={{ color:"black"}}>LAS PELÍCULAS ACLAMADAS</h1>
+                <h5 style={{ color:"black"}}>¡Encuentra con nosotros las películas más aclamadas por el público!</h5>
+              </Carousel.Caption>
+            </Carousel.Item>
+          </Carousel>
+                    
         );
     }
 }

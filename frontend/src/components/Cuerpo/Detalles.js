@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {Card, Button, Container} from 'react-bootstrap';
 
-
+{/* COMPONENTE QUE MUESTRA LOS DETALLES DE LA PELÍCULA SELECCIONADA*/}
 class Detalles extends Component {
 
     state = {
@@ -27,17 +28,29 @@ class Detalles extends Component {
     render() {
   
         return (
-            <div>
-                <h1>detallessss</h1>
-                <h1>Titulo: {this.state.titulo}</h1>
-                <h1>Sinopsis: {this.state.sinopsis}</h1>
-                <h1>Caregoria: {this.state.categoria}</h1>
-                <h1>Link imagen: {this.state.imagen}</h1>
-                <h1>Fecha estreno: {this.state.fecha_estreno}</h1>
-                <h1>Duracion: {this.state.duracion}</h1>
+            <Container>
+            <div className="row">
+                <div className="col-xl-6 col-lg-6 mt-2"> {/* Imagen de la película*/}
+                    <img src={this.state.imagen} width="80%"/>
                 </div>
+                <div className="col-xl-5 col-lg-5 col-md-5 col-xs-12 col-sm-12 justify-content-center"> {/* Detalles de la película*/}
+                    <Card   style={{ left: '50%', top: '50%',transform: 'translate(-50%, -50%)'}}>
+                        <Card.Body>
+                        <Card.Title><h3>{this.state.titulo} </h3></Card.Title>
+                        <Card.Subtitle className="mb-2 text-muted">Categoría: {this.state.categoria}</Card.Subtitle>
+                        <Card.Subtitle className="mb-2 text-muted">Duración: {this.state.duracion}</Card.Subtitle>
+                        <Card.Subtitle className="mb-2 text-muted">Fecha de estreno: {this.state.fecha_estreno}</Card.Subtitle>
+                        <Card.Text>
+                            Sinopsis: {this.state.sinopsis}
+                        </Card.Text>
+                        <Button variant="success">COMPRAR ENTRADA</Button>
+                        </Card.Body>
+                    </Card>
+
+                </div>
+            </div>
+            </Container>
             );
         }
     }
-    
     export default Detalles;

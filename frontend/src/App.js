@@ -16,7 +16,7 @@ function App() {
             <Route exact path="/" component={Cuerpo}/>
             <Route path="/estrenos" component={Estrenos}/>
             <Route path="/combos" component={Combos}/>
-            <Route path="/detaller/:id/:titulo" component={Detalles}/>
+            <Route path="/detalles/:id" component={Detalles}/>
           </Switch>
         </Router>
       </React.Fragment>

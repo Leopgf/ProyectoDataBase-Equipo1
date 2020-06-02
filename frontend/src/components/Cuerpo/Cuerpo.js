@@ -37,7 +37,7 @@ class Cuerpo extends Component {
               <ListGroupItem>Categoría: { pelicula.categoria }</ListGroupItem>
               </ListGroup>
          
-              <Link to="/detalles/{id}/{titulo}"><Button variant="dark" style={{ width: '100%'}}>DETALLES PELÍCULA</Button></Link> {/* BTN QUE REDIRIGE A PANTALLA CON INFO DETALLADA DE LA PELI Y COMPRA*/}
+              <Link to={`/detalles/${pelicula.id}`}><Button variant="dark" style={{ width: '100%'}}>DETALLES PELÍCULA</Button></Link> {/* BTN QUE REDIRIGE A PANTALLA CON INFO DETALLADA DE LA PELI Y COMPRA*/}
               <Button variant="success">COMPRAR ENTRADA</Button> {/* BTN QUE REDIRIGE A PANTALLA CON INFO DETALLADA DE LA PELI Y COMPRA*/}
  
             </Card>

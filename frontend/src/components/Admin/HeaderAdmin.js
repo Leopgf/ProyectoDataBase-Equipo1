@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { Nav } from 'react-bootstrap';
 import { Navbar } from 'react-bootstrap';
+import {Nav, Form, FormControl, Navbar} from 'react-bootstrap';
+import {logo} from './../../assest/lengCinemaNewLogo.jpg' 
 import { Form } from 'react-bootstrap';
 import { FormControl } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import logo from '../../assest/lengCinemaNewLogo.jpg'; // import imagen para trabajarla
 
-class Header extends Component {
+class HeaderAdmin extends Component {
     render() {
         return (
           <Navbar bg="light" expand="lg" bg="dark" variant="dark" >
@@ -15,18 +17,14 @@ class Header extends Component {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
               <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/cartelera">Cartelera</Nav.Link>
-              <Nav.Link href="/estrenos">Próximos estrenos</Nav.Link>
-              <Nav.Link href="/combos">Combos</Nav.Link>
+              <Nav.Link href="/cartelera">Modificar Película</Nav.Link>
+              <Nav.Link href="/estrenos">Eliminar Película</Nav.Link>
+              <Nav.Link href="/combos">Agregar Película</Nav.Link>
             </Nav>
-            <Form inline>
-              <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-              <Button variant="light">Search</Button> {/* BUSCADOR */}
-            </Form>
           </Navbar.Collapse>
         </Navbar>
         );
     }
 }
 
-export default Header;
+export default HeaderAdmin;

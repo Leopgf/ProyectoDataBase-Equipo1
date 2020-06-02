@@ -1,12 +1,31 @@
 import React, { Component } from 'react';
+import {Nav, Form, FormControl, Navbar} from 'react-bootstrap';
+import {logo} from './../../assest/lengCinemaNewLogo.jpg' 
 import {Card}  from 'react-bootstrap';
 import {ListGroup}  from 'react-bootstrap';
 import {ListGroupItem}  from 'react-bootstrap';
 import {Button}  from 'react-bootstrap';
 import {Link}  from 'react-router-dom';
 import axios from 'axios';
+import Header from '../Header/Header';
 
 class Cartelera extends Component {
+
+    render() {
+  
+        return (
+          <div>
+            <Header/>
+            <CarteleraContenido/>
+          </div>
+        );
+    }
+}
+
+export default Cartelera;
+
+
+class CarteleraContenido extends Component {
 
   state = {
     peliculas: []
@@ -49,5 +68,28 @@ class Cartelera extends Component {
         );
     }
 }
-
-export default Cartelera;
+class Header extends Component {
+  render() {
+      return (
+        <Navbar bg="light" expand="lg" bg="dark" variant="dark" >
+        <Navbar.Brand href="#home"><img src={logo} width="200px" height="50px"  /></Navbar.Brand> {/* Imagen de Logo con tamaño */}
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="mr-auto">
+            <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="/cartelera">Cartelera</Nav.Link>
+            <Nav.Link href="/estrenos">Próximos estrenos</Nav.Link>
+            <Nav.Link href="/combos">Combos</Nav.Link>
+          </Nav>
+          <Form inline>
+          <Link to={`/detalles`}><Button variant="light">Search</Button></Link>{/* BUSCADOR */}
+          </Form>
+          <Form inline>
+            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+            <Button variant="light">Search</Button> {/* BUSCADOR */}
+          </Form>
+        </Navbar.Collapse>
+      </Navbar>
+      );
+  }
+}

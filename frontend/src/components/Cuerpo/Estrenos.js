@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import {Nav, Form, FormControl, Navbar, Button} from 'react-bootstrap';
-import {Link} from 'react-router-dom';
+import {Nav, Form, FormControl, Navbar} from 'react-bootstrap';
 import {logo} from './../../assest/lengCinemaNewLogo.jpg' 
 
 class Estrenos extends Component {
@@ -13,11 +12,9 @@ class Estrenos extends Component {
             );
         }
     }
-export default Estrenos;
+    export default Estrenos;
 
-
-{/*HEADER*/}
-class Header extends Component {
+    class Header extends Component {
         render() {
             return (
               <Navbar bg="light" expand="lg" bg="dark" variant="dark" >

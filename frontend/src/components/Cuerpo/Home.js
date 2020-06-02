@@ -107,7 +107,6 @@ class Slider extends Component {
     }
 }
 
-{/*HEADER*/}
 class Header extends Component {
   render() {
       return (

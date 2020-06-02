@@ -15,7 +15,7 @@ class Cartelera extends Component {
   
         return (
           <div>
-            <Header3/>
+            <Header/>
             <CarteleraContenido/>
           </div>
         );
@@ -68,9 +68,7 @@ class CarteleraContenido extends Component {
         );
     }
 }
-
-
-class Header3 extends Component {
+class Header extends Component {
   render() {
       return (
         <Navbar bg="light" expand="lg" bg="dark" variant="dark" >

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Nav, Form, FormControl, Navbar} from 'react-bootstrap';
+import {Nav, Form, FormControl, Navbar, Button} from 'react-bootstrap';
 import {logo} from './../../assest/lengCinemaNewLogo.jpg' 
 import {Card}  from 'react-bootstrap';
 import axios from 'axios';
@@ -12,7 +12,7 @@ class Combos extends Component {
     render() {
         return (
           <div>
-          <Header/>
+          <Header2/>
           <CombosContenido/>
           </div>
         );
@@ -59,7 +59,9 @@ class CombosContenido extends Component {
     }
 }
 
-class Header extends Component {
+{/*HEADER*/}
+class Header2 extends Component {
+
   render() {
       return (
         <Navbar bg="light" expand="lg" bg="dark" variant="dark" >

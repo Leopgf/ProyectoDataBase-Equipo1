@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Card}  from 'react-bootstrap';
 import axios from 'axios';
+import HeaderCliente from '../Headers/HeaderCliente';
 
 
 {/* COMBOS DEL CINE*/}
@@ -20,7 +21,10 @@ class Combos extends Component {
 
     render() {
         return (
-          <div className="row mt-2 ml-2">
+          <div className="row">
+            <div className="col-12">
+            <HeaderCliente />
+            </div>
             {
               this.state.combos.map(combo =>
                 <div className="col-xs-12 col-sm-12 col-md-6 col-xlg-4 text-center mt-2" style={{ display:'flex', justifyContent:'center' }} key={combo.id}>  {/* RESPONSIVE COMBOS*/}

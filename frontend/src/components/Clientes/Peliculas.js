@@ -23,7 +23,7 @@ class Cartelera extends Component {
     render() {
   
         return (
-          <div className="row mt-2">
+          <div className="row">
             {
               this.state.peliculas.map(pelicula =>
 

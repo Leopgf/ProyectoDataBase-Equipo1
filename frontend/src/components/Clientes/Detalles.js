@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import {Card, Button, Container} from 'react-bootstrap';
+import HeaderCliente from '../Headers/HeaderCliente';
 
 {/* COMPONENTE QUE MUESTRA LOS DETALLES DE LA PELÍCULA SELECCIONADA*/}
 class Detalles extends Component {
@@ -28,12 +29,15 @@ class Detalles extends Component {
     render() {
   
         return (
-            <Container>
             <div className="row">
-                <div className="col-xl-6 col-lg-6 mt-2"> {/* Imagen de la película*/}
+                <div className="col-12">
+                    <HeaderCliente/>
+                </div>
+                <Container className="d-flex">
+                <div className="col-xl-6 mt-2"> {/* Imagen de la película*/}
                     <img src={this.state.imagen} width="80%"/>
                 </div>
-                <div className="col-xl-5 col-lg-5 col-md-5 col-xs-12 col-sm-12 justify-content-center"> {/* Detalles de la película*/}
+                <div className="col-xl-5 col-sm-12 justify-content-center"> {/* Detalles de la película*/}
                     <Card   style={{ left: '50%', top: '50%',transform: 'translate(-50%, -50%)'}}>
                         <Card.Body>
                         <Card.Title><h3>{this.state.titulo} </h3></Card.Title>
@@ -48,8 +52,8 @@ class Detalles extends Component {
                     </Card>
 
                 </div>
+                </Container>
             </div>
-            </Container>
             );
         }
     }

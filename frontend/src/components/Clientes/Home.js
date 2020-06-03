@@ -9,6 +9,7 @@ import axios from 'axios';
 import cine from '../../assest/cinec.jpg'; 
 import aclamado from '../../assest/aclamado.jpg';
 import cotufas from '../../assest/cotufas.jpg';
+import HeaderCliente from '../Headers/HeaderCliente';
 
 {/* BASE/COMPONENTE QUE MUESTRA LOS DOS COMPONENTES "SLIDER Y CONTENIDO"*/}
 class Home extends Component {
@@ -16,6 +17,7 @@ class Home extends Component {
 
         return (
          <div>
+           <HeaderCliente/>
          <Slider />
           <Contenido />
          </div>
@@ -42,7 +44,7 @@ class Contenido extends Component {
     render() {
 
         return (
-          <div className="row mt-2">
+          <div className="row mt-3">
             {
               this.state.peliculas.map(pelicula =>
               

@@ -34,7 +34,7 @@ class Registro extends Component {
                                 <Form.Label>Ingrese una Contraseña:</Form.Label>
                                 <Form.Control type="password" placeholder="Contraseña" />
                             </Form.Group>
-                            <Button variant="outline-primary" style={{ width: '100%'}}type="submit">Siguiente</Button>
+                            <Link to={`/iniciar-sesion`}><Button variant="outline-primary" style={{ width: '100%'}}type="submit">Registrarme</Button></Link>
                         </Form>
                 </div>
             </div>

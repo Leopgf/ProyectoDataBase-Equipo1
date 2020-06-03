@@ -1,6 +1,6 @@
--- MySQL dump 10.13  Distrib 8.0.20, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.20, for macos10.15 (x86_64)
 --
--- Host: localhost    Database: lengcinema
+-- Host: localhost    Database: Lengcinema2
 -- ------------------------------------------------------
 -- Server version	8.0.20
 
@@ -582,10 +582,6 @@ LOCK TABLES `pelicula_sala` WRITE;
 INSERT INTO `pelicula_sala` VALUES (1,'Sala 2D',3,8,'https://i.imgur.com/duLgFBH.png'),(2,'Sala 3D',7,4,'https://i.imgur.com/Sm9qmv9.png'),(3,'Sala VIP',3,6,'https://i.imgur.com/qKWPSBl.png'),(4,'Sala 4DX',3,6,'https://i.imgur.com/qKWPSBl.png');
 /*!40000 ALTER TABLE `pelicula_sala` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Dumping events for database 'lengcinema'
---
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -596,4 +592,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-06-02 10:36:31
+-- Dump completed on 2020-06-02 20:34:43

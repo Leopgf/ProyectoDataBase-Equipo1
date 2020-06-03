@@ -1,6 +1,4 @@
-from aplicaciones.pelicula.viewsets import PeliculaViewset, FuncionViewset, SalaViewset, AsientoViewset, ReservarAsientoViewset, EntradaViewset
-from aplicaciones.combos.viewsets import ComboViewset
-from aplicaciones.factura.viewsets import FacturaViewset, ComprasCombosViewset
+from aplicaciones.pelicula.viewsets import PeliculaViewset, FuncionViewset, SalaViewset, AsientoViewset, ReservarAsientoViewset, EntradaViewset, ComboViewset, FacturaViewset, ComprasCombosViewset, ComprasEntradasViewset
 
 from rest_framework import routers
 
@@ -14,9 +12,10 @@ router.register('asientos',AsientoViewset)
 router.register('reservarAsientos',ReservarAsientoViewset)
 router.register('entradas',EntradaViewset)
 
-#App Combos
+router.register('facturas',FacturaViewset)
+router.register('comprasCombos',ComprasCombosViewset)
+router.register('comprasEntradas',ComprasEntradasViewset)
+
 router.register('combos',ComboViewset)
 
-#App Factura
-router.register('facturas',FacturaViewset)
-router.register('facturas',ComprasCombosViewset)
+# router.register('usuario',UsuarioViewset)

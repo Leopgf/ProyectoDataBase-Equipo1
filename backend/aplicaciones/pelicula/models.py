@@ -2,6 +2,24 @@ from django.db import models
 
 # Create your models here.
 
+
+
+#Combo
+class Combo(models.Model):
+    nombre = models.CharField(max_length=200)
+    descripcion = models.TextField()
+    precio = models.FloatField()
+    estado = models.BooleanField()
+
+    def __str__(self):
+        return self.nombre
+
+    class Meta:
+        ordering = ['nombre']
+        verbose_name = 'Combo'
+        verbose_name_plural = 'Combos'
+
+
 #Pelicula
 class Pelicula(models.Model):
     titulo = models.CharField(max_length=200)
@@ -84,3 +102,53 @@ class Entrada(models.Model):
         ordering = ['tipo']
         verbose_name = 'Entrada'
         verbose_name_plural = 'Entradas'
+
+
+
+
+#Factura
+class Factura(models.Model):
+    fecha_compra = models.DateField()
+    id_funcion = models.ForeignKey(Funcion, on_delete=models.CASCADE)
+
+    class Meta:
+        ordering = ['fecha_compra']
+        verbose_name = 'Factura'
+        verbose_name_plural = 'Facturas'
+
+#ComprasCombos
+class ComprasCombos(models.Model):
+    cantidad = models.IntegerField()
+    id_factura = models.ForeignKey(Factura, on_delete=models.CASCADE)
+    id_combos = models.ForeignKey(Combo, on_delete=models.CASCADE)
+
+    class Meta:
+        ordering = ['cantidad']
+        verbose_name = 'Compras Combos'
+        verbose_name_plural = 'Compras Combos'
+
+
+#ComprasEntradas
+class ComprasEntradas(models.Model):
+    id_factura = models.ForeignKey(Factura, on_delete=models.CASCADE)
+    id_entrada = models.ForeignKey(Entrada, on_delete=models.CASCADE)
+    id_asiento = models.ForeignKey(Asiento, on_delete=models.CASCADE)
+
+
+#Usuario
+# class Usuario(models.Model):
+#     nombre = models.CharField(max_length=200)
+#     apellido = models.CharField(max_length=200)
+#     contrasena = models.CharField(max_length=20)
+#     cedula = models.IntegerField()
+#     puntos = models.IntegerField()
+#     estado = models.BooleanField()
+
+#     def __str__(self):
+#         return self.nombre
+
+#     class Meta:
+#         ordering = ['nombre']
+#         verbose_name = 'Usuario'
+#         verbose_name_plural = 'Usuarios'
+

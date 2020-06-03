@@ -25,3 +25,32 @@ class ReservarAsientoViewset(viewsets.ModelViewSet):
 class EntradaViewset(viewsets.ModelViewSet):
     queryset = models.Entrada.objects.all()
     serializer_class = serializers.EntradasSerializer    
+
+
+
+
+class FacturaViewset(viewsets.ModelViewSet):
+    queryset = models.Factura.objects.all()
+    serializer_class = serializers.FacturaSerializer
+
+class ComprasCombosViewset(viewsets.ModelViewSet):
+    queryset = models.ComprasCombos.objects.all()
+    serializer_class = serializers.ComprasCompbosSerializer
+
+
+class ComprasEntradasViewset(viewsets.ModelViewSet):
+    queryset = models.ComprasEntradas.objects.all()
+    serializer_class = serializers.ComprasEntradasSerializer
+
+
+
+
+class ComboViewset(viewsets.ModelViewSet):
+    queryset = models.Combo.objects.all()
+    serializer_class = serializers.CombosSerializer
+
+    
+
+# class UsuarioViewset(viewsets.ModelViewSet):
+#     queryset = models.Usuario.objects.all()
+#     serializer_class = serializers.UsuariosSerializer

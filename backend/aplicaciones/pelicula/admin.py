@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Pelicula, Funcion, Sala, Asiento, ReservarAsientos, Entrada, Factura, ComprasCombos, ComprasEntradas, Combo
+from .models import Pelicula, Funcion, Sala, Asiento, ReservarAsientos, Entrada, Factura, ComprasCombos, ComprasEntradas, Combo, Usuario
 
 admin.site.register(Pelicula)
 admin.site.register(Funcion)
@@ -16,4 +16,4 @@ admin.site.register(ComprasEntradas)
 
 admin.site.register(Combo)
 
-# admin.site.register(Usuario)
+admin.site.register(Usuario)

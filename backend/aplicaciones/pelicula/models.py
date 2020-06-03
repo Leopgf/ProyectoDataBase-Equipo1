@@ -106,7 +106,7 @@ class Entrada(models.Model):
 
 
 
-#Factura
+# Factura
 class Factura(models.Model):
     fecha_compra = models.DateField()
     id_funcion = models.ForeignKey(Funcion, on_delete=models.CASCADE)
@@ -116,7 +116,7 @@ class Factura(models.Model):
         verbose_name = 'Factura'
         verbose_name_plural = 'Facturas'
 
-#ComprasCombos
+# ComprasCombos
 class ComprasCombos(models.Model):
     cantidad = models.IntegerField()
     id_factura = models.ForeignKey(Factura, on_delete=models.CASCADE)
@@ -128,27 +128,27 @@ class ComprasCombos(models.Model):
         verbose_name_plural = 'Compras Combos'
 
 
-#ComprasEntradas
+# ComprasEntradas
 class ComprasEntradas(models.Model):
     id_factura = models.ForeignKey(Factura, on_delete=models.CASCADE)
     id_entrada = models.ForeignKey(Entrada, on_delete=models.CASCADE)
     id_asiento = models.ForeignKey(Asiento, on_delete=models.CASCADE)
 
 
-#Usuario
-# class Usuario(models.Model):
-#     nombre = models.CharField(max_length=200)
-#     apellido = models.CharField(max_length=200)
-#     contrasena = models.CharField(max_length=20)
-#     cedula = models.IntegerField()
-#     puntos = models.IntegerField()
-#     estado = models.BooleanField()
+# Usuario
+class Usuario(models.Model):
+    nombre = models.CharField(max_length=200)
+    apellido = models.CharField(max_length=200)
+    contrasena = models.CharField(max_length=20)
+    cedula = models.IntegerField()
+    puntos = models.IntegerField()
+    estado = models.BooleanField()
 
-#     def __str__(self):
-#         return self.nombre
+    def __str__(self):
+        return self.nombre
 
-#     class Meta:
-#         ordering = ['nombre']
-#         verbose_name = 'Usuario'
-#         verbose_name_plural = 'Usuarios'
+    class Meta:
+        ordering = ['nombre']
+        verbose_name = 'Usuario'
+        verbose_name_plural = 'Usuarios'
 

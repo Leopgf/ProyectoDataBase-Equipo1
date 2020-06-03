@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from .models import Pelicula, Funcion, Sala, Asiento, ReservarAsientos, Entrada, Factura, ComprasCombos, ComprasEntradas, Combo
+from .models import Pelicula, Funcion, Sala, Asiento, ReservarAsientos, Entrada
+# , Factura, ComprasCombos, ComprasEntradas, Combo
 
 class PeliculasSerializer(serializers.ModelSerializer):
     class Meta:
@@ -34,30 +35,30 @@ class EntradasSerializer(serializers.ModelSerializer):
 
 
 
-class FacturaSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Factura
-        fields = '__all__'
+# class FacturaSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Factura
+#         fields = '__all__'
 
 
-class ComprasCompbosSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = ComprasCombos
-        fields = '__all__'
+# class ComprasCompbosSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = ComprasCombos
+#         fields = '__all__'
 
 
-class ComprasEntradasSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = ComprasEntradas
-        fields = '__all__'
+# class ComprasEntradasSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = ComprasEntradas
+#         fields = '__all__'
 
 
 
 
-class CombosSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Combo
-        fields = '__all__'
+# class CombosSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Combo
+#         fields = '__all__'
 
 
 # class UsuariosSerializer(serializers.ModelSerializer):

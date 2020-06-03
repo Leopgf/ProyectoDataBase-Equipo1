@@ -10,6 +10,7 @@ import cine from '../../assest/cinec.jpg';
 import aclamado from '../../assest/aclamado.jpg';
 import cotufas from '../../assest/cotufas.jpg';
 import HeaderCliente from '../Headers/HeaderCliente';
+import Peliculas from '../Clientes/Peliculas';
 
 {/* BASE/COMPONENTE QUE MUESTRA LOS DOS COMPONENTES "SLIDER Y CONTENIDO"*/}
 class Home extends Component {

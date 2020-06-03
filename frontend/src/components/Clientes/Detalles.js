@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import {Card, Button, Container} from 'react-bootstrap';
 import HeaderCliente from '../Headers/HeaderCliente';
+import {Link}  from 'react-router-dom';
 
 {/* COMPONENTE QUE MUESTRA LOS DETALLES DE LA PELÍCULA SELECCIONADA*/}
 class Detalles extends Component {
@@ -47,7 +48,7 @@ class Detalles extends Component {
                         <Card.Text>
                             Sinopsis: {this.state.sinopsis}
                         </Card.Text>
-                        <Button variant="success">COMPRAR ENTRADA</Button>
+                        <Link to={`/iniciar-sesion`}><Button variant="success">COMPRAR ENTRADA</Button></Link>
                         </Card.Body>
                     </Card>
 

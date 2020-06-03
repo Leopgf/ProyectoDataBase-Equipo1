@@ -38,7 +38,7 @@ class Cartelera extends Component {
               </ListGroup>
          
               <Link to={`/detalles/${pelicula.id}`}><Button variant="dark" style={{ width: '100%'}}>DETALLES PELÍCULA</Button></Link> {/* BTN QUE REDIRIGE A PANTALLA CON INFO DETALLADA DE LA PELI Y COMPRA*/}
-              <Button variant="success">COMPRAR ENTRADA</Button> {/* BTN QUE REDIRIGE A PANTALLA CON INFO DETALLADA DE LA PELI Y COMPRA*/}
+              <Link to={`/iniciar-sesion`}><Button variant="success" style={{ width: '100%'}}>COMPRAR ENTRADA</Button></Link>{/* BTN QUE REDIRIGE A PANTALLA CON INFO DETALLADA DE LA PELI Y COMPRA*/}
  
             </Card>
           </div>

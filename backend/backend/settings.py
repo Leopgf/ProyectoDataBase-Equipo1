@@ -40,8 +40,6 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'aplicaciones.pelicula',
-    'aplicaciones.combos',
-    'aplicaciones.factura'
 ]
 
 MIDDLEWARE = [

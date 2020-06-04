@@ -4,14 +4,24 @@ from django.db import models
 
 #Pelicula
 class Pelicula(models.Model):
+    CATEGORIAS = [
+        ('Acción', 'Acción'),
+        ('Animación', 'Animación'),
+        ('Aventura', 'Aventura'),
+        ('Ciencia Ficción', 'Ciencia Ficción'),
+        ('Comedia', 'Comedia'),
+        ('Drama', 'Drama'),
+        ('Romance', 'Romance'),
+        ('Terror', 'Terror'),
+    ]
     titulo = models.CharField(max_length=200)
     sinopsis = models.TextField()
-    categoria = models.CharField(max_length=100)
+    categoria = models.CharField(max_length=100, choices=CATEGORIAS)
     imagen = models.CharField(max_length=200)
     fecha_estreno = models.DateField()
     fecha_salida = models.DateField()
     duracion = models.TimeField()
-    estado = models.BooleanField()
+    estado = models.BooleanField(default=True)
 
     def __str__(self):
         return self.titulo
@@ -41,7 +51,7 @@ class Funcion(models.Model):
     fecha = models.DateField()
     hora = models.TimeField()
     butacas_disponibles = models.IntegerField()
-    estado = models.BooleanField()
+    estado = models.BooleanField(default=True)
     id_pelicula = models.ForeignKey(Pelicula, on_delete=models.CASCADE)
     id_sala = models.ForeignKey(Sala, on_delete=models.CASCADE)
 
@@ -63,7 +73,7 @@ class Asiento(models.Model):
 
 #ReservaAsientos
 class ReservarAsientos(models.Model):
-    estado = models.BooleanField()
+    estado = models.BooleanField(default=True)
     id_asiento = models.ForeignKey(Asiento, on_delete=models.CASCADE)
     id_funcion = models.ForeignKey(Funcion, on_delete=models.CASCADE)
 
@@ -84,3 +94,64 @@ class Entrada(models.Model):
         ordering = ['tipo']
         verbose_name = 'Entrada'
         verbose_name_plural = 'Entradas'
+
+#Combo
+class Combo(models.Model):
+    nombre = models.CharField(max_length=200)
+    descripcion = models.TextField()
+    precio = models.FloatField()
+    estado = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.nombre
+
+    class Meta:
+        ordering = ['nombre']
+        verbose_name = 'Combo'
+        verbose_name_plural = 'Combos'
+
+#Usuarios
+class Usuarios(models.Model):
+    cedula = models.CharField(max_length=15)
+    contrasena = models.CharField(max_length=200)
+    nombre = models.CharField(max_length=100)
+    apellido = models.CharField(max_length=100)
+    puntos = models.IntegerField(default=0)
+
+    class Meta:
+        ordering = ['nombre']
+        verbose_name = 'Usuario'
+        verbose_name_plural = 'Usuarios'        
+
+#Factura
+class Factura(models.Model):
+    fecha_compra = models.DateField(auto_now_add=True, auto_now=False)
+    id_funcion = models.ForeignKey(Funcion, on_delete=models.CASCADE)
+    id_usuario = models.ForeignKey(Usuarios, on_delete=models.CASCADE)
+
+    class Meta:
+        ordering = ['fecha_compra']
+        verbose_name = 'Factura'
+        verbose_name_plural = 'Facturas'
+
+#ComprasCombos
+class ComprasCombos(models.Model):
+    cantidad = models.IntegerField()
+    id_factura = models.ForeignKey(Factura, on_delete=models.CASCADE)
+    id_combos = models.ForeignKey(Combo, on_delete=models.CASCADE)
+
+    class Meta:
+        ordering = ['id_factura']
+        verbose_name = 'Compra Combo'
+        verbose_name_plural = 'Compras Combos'
+
+#ComprasEntradas
+class ComprasEntradas(models.Model):
+    id_factura = models.ForeignKey(Factura, on_delete=models.CASCADE)
+    id_entrada = models.ForeignKey(Entrada, on_delete=models.CASCADE)
+    id_asiento = models.ForeignKey(Asiento, on_delete=models.CASCADE)
+
+    class Meta:
+        ordering = ['id_factura']
+        verbose_name = 'Compra Entrada'
+        verbose_name_plural = 'Compras Entradas'

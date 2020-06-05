@@ -12,8 +12,6 @@ import IniciarSesion from './components/Clientes/Sesion/IniciarSesion';
 import PeliculaAdmin from './components/Admin/PeliculaAdmin';
 import AgregarPeli from './components/Admin/AgregarPeli';
 
-
-{/* RUTAS PROYECTO*/}
 function App() {
   return (
     <React.Fragment>
@@ -30,7 +28,6 @@ function App() {
             {/* RUTAS INICIAR SESIÓN*/}
             <Route path="/registro" component={Registro}/>
             <Route path="/iniciar-sesion" component={IniciarSesion}/>
-
 
             {/* RUTAS ADMIN*/}
             <Route path="/admin" component={HomeAdmin}/>

@@ -4,7 +4,6 @@ import {Card, Button, Container} from 'react-bootstrap';
 import HeaderCliente from '../Headers/HeaderCliente';
 import {Link}  from 'react-router-dom';
 
-{/* COMPONENTE QUE MUESTRA LOS DETALLES DE LA PELÍCULA SELECCIONADA*/}
 class Detalles extends Component {
 
     state = {
@@ -30,13 +29,13 @@ class Detalles extends Component {
     render() {
   
         return (
-            <div className="row">
+            <div className="row  mb-3">
                 <div className="col-12">
                     <HeaderCliente/>
                 </div>
                 <Container className="d-flex">
                 <div className="col-xl-6 mt-2"> {/* Imagen de la película*/}
-                    <img src={this.state.imagen} width="80%"/>
+                    <img src={this.state.imagen} width="80%" alt={this.state.titulo}/>
                 </div>
                 <div className="col-xl-5 col-sm-12 justify-content-center"> {/* Detalles de la película*/}
                     <Card   style={{ left: '50%', top: '50%',transform: 'translate(-50%, -50%)'}}>

@@ -82,7 +82,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'lengcinema',
         'USER': 'root',
-        'PASSWORD': 'Nicolemetro',
+        'PASSWORD': 'giselle',
         'HOST': 'localhost',
         'PORT': 3306,
     }
@@ -125,6 +125,13 @@ USE_TZ = True
 CORS_ORIGIN_WHITELIST = [
     "http://localhost:3000",
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PARSER_CLASSES': [
+        'rest_framework.parsers.JSONParser',
+    ]
+}
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/

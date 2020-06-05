@@ -7,8 +7,8 @@ class HeaderAdmin extends Component {
     render() {
         return (
 
-        <Navbar bg="light" expand="lg" bg="dark" variant="dark" >
-          <Navbar.Brand href="/"><img src={logo} width="200px" height="50px"  /></Navbar.Brand> {/* Imagen de Logo con tamaño */}
+        <Navbar expand="lg" bg="dark" variant="dark" >
+          <Navbar.Brand href="/"><img src={logo} width="200px" height="50px" alt="LengCinema"/></Navbar.Brand> {/* Imagen de Logo con tamaño */}
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import HeaderAdmin from '../Headers/HeaderAdmin';
 import Table from 'react-bootstrap/Table'
-import {Button} from 'react-bootstrap';
 import axios from 'axios';
-import {Link}  from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEdit, faTrash, faPlus } from '@fortawesome/free-solid-svg-icons'
 
 class PeliculaAdmin extends Component {
     state = {
@@ -25,53 +25,35 @@ class PeliculaAdmin extends Component {
                     <HeaderAdmin/>
                 </div>
                 <div className="col-12 text-center mt-3">
-                    <h5>LISTA DE PELÍCULAS DE LENG CINEMA</h5>
+                    <h4>LISTA DE PELÍCULAS DE LENG CINEMA</h4>
                 </div>
-                <div className="col-6 text-center mt-3">
+                <div className="col-12 col-md-6 text-center mt-3 ">
                   
                 </div>
-                <div className="col-3 text-center mt-3">
-                            <Table striped bordered hover style={{ justifyContent:'center' }}>
-                            <thead>
-                                <tr>
-                                    <th>Agregar Película:</th>
-                                    <Link to={`/agregar-peli`}><th><Button variant="success">Agregar</Button></th></Link>
-                                </tr>
-                            </thead>
-                            <thead>
-                            <tr>
-                                <th>Buscar Película:</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        </Table>
+                <div className="col-11 col-md-4 col-lg-4 d-flex justify-content-end">
+                    <button className="btn btn-success">
+                        <a href="/agregar-peli" className="text-light text-decoration-none d-flex align-content-center">
+                        AGREGAR
+                        <FontAwesomeIcon className="text-light ml-2" style={{ width:'25px', height: '25px' }}  icon={faPlus}/>
+                        </a>
+                    </button>
                 </div>
 
-
-           {/* ERROR QUE TE DIJE DE PELÍCULAS OJOOOOOOOOOOOO!!!!!!!*/}
-
-                <div className="col-12 mt-2 text-center" style={{ display:'flex', justifyContent:'center' }} >{
-                    this.state.peliculas.map(pelicula =>
-                        <Table striped bordered hover style={{ width: '60rem' }}>
-                        <thead>
-                            <tr>
-                                <th>TÍTULO</th>
-                                <th>EDITAR</th>
-                                <th>ELIMINAR</th>
-                            </tr>
-                        </thead>
+                <div className="col-12 mt-2 text-center" style={{ display:'flex', justifyContent:'center' }} >
+                        <Table striped bordered hover style={{ minWidth: '300px', maxWidth: '80%' }}>
                         <tbody>
+                    { this.state.peliculas.map(pelicula =>
                             <tr>
                             
                                 <td>{pelicula.titulo}</td>
-                                <td><Button variant="secondary" style={{ width: '30%'}}>Editar</Button></td>
-                                <td><Button variant="danger" style={{ width: '30%'}}>Eliminar</Button></td>
+                                <td><FontAwesomeIcon className="text-info" style={{ width:'25px', height: '25px' }} icon={faEdit} /></td>
+                                <td><FontAwesomeIcon className="text-danger" style={{ width:'25px', height: '25px' }} icon={faTrash} /></td>
                             </tr>
+                        ) 
+                      }
                         </tbody>
                     </Table>
                     
-                    ) 
-                  }
                     
                 
                 </div>

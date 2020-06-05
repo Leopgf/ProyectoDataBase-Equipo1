@@ -3,7 +3,6 @@ import HeaderCliente from '../../Headers/HeaderCliente';
 import {Form, Button} from 'react-bootstrap';
 import {Link}  from 'react-router-dom';
 
-{/* BASE/COMPONENTE QUE MUESTRA LOS DOS COMPONENTES "SLIDER Y CONTENIDO"*/}
 class Registro extends Component {
     render() {
 

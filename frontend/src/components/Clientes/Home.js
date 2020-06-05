@@ -1,18 +1,11 @@
 import React, { Component } from 'react';
-import {Card}  from 'react-bootstrap';
-import {ListGroup}  from 'react-bootstrap';
-import {ListGroupItem}  from 'react-bootstrap';
-import {Button}  from 'react-bootstrap';
-import {Carousel, CarouselItem}  from 'react-bootstrap';
-import {Link}  from 'react-router-dom';
-import axios from 'axios';
+import {Carousel}  from 'react-bootstrap';
 import cine from '../../assest/cinec.jpg'; 
 import aclamado from '../../assest/aclamado.jpg';
 import cotufas from '../../assest/cotufas.jpg';
 import HeaderCliente from '../Headers/HeaderCliente';
 import Peliculas from '../Clientes/Peliculas';
 
-{/* BASE/COMPONENTE QUE MUESTRA LOS DOS COMPONENTES "SLIDER Y CONTENIDO"*/}
 class Home extends Component {
     render() {
 
@@ -27,15 +20,13 @@ class Home extends Component {
 }
 export default Home;
 
-
-{/* SLIDER DEL HOME DEL CINE*/}
 class Slider extends Component {
 
     render() {
 
         return (
 
-          <Carousel>
+          <Carousel style={{ overflowY: 'hidden' }}>
             <Carousel.Item>
               <img style={{ width: '100%', height: '30rem', opacity:"0.5" }} src={cine} alt="First slide"/>
               <Carousel.Caption>

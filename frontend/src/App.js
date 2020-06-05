@@ -11,6 +11,8 @@ import Registro from './components/Clientes/Sesion/Registro';
 import IniciarSesion from './components/Clientes/Sesion/IniciarSesion';
 import PeliculaAdmin from './components/Admin/PeliculaAdmin';
 import AgregarPeli from './components/Admin/AgregarPeli';
+import Funciones from './components/Admin/FuncionesAdmin';
+import AgregarFuncion from './components/Admin/AgregarFuncion';
 
 function App() {
   return (
@@ -33,6 +35,8 @@ function App() {
             <Route path="/admin" component={HomeAdmin}/>
             <Route path="/pelicula-admin" component={PeliculaAdmin}/>
             <Route path="/agregar-peli" component={AgregarPeli}/>
+            <Route path="/funciones" component={Funciones}/>
+            <Route path="/agregar-funcion" component={AgregarFuncion}/>
 
           </Switch>
         </Router>

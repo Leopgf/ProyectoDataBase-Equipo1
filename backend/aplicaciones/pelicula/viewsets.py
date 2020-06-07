@@ -1,9 +1,10 @@
 from rest_framework import viewsets
 from . import models
 from . import serializers
+import datetime
 
 class PeliculaViewset(viewsets.ModelViewSet):
-    queryset = models.Pelicula.objects.all()
+    queryset = models.Pelicula.objects.all().filter(fecha_estreno__lte = datetime.date.today()).filter(fecha_salida__gte = datetime.date.today()).filter(estado = True)
     serializer_class = serializers.PeliculasSerializer
 
 class FuncionViewset(viewsets.ModelViewSet):
@@ -41,3 +42,7 @@ class ComprasCombosViewset(viewsets.ModelViewSet):
 class ComprasEntradasViewset(viewsets.ModelViewSet):
     queryset = models.ComprasEntradas.objects.all()
     serializer_class = serializers.ComprasEntradasSerializer
+
+class EstrenosViewset(viewsets.ModelViewSet):
+    queryset = models.Pelicula.objects.all().filter(fecha_estreno__gte = datetime.date.today()).filter(estado = True)
+    serializer_class = serializers.PeliculasSerializer

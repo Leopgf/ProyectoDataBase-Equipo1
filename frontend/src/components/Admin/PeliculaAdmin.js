@@ -4,20 +4,43 @@ import Table from 'react-bootstrap/Table'
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faTrash, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { Button } from 'react-bootstrap';
 
 class PeliculaAdmin extends Component {
     state = {
         peliculas: []
-      }
+    }
     
-      componentDidMount() {
+    componentDidMount() {
         axios.get(`http://localhost:8000/api/peliculas/`)
-          .then(res => {
+        .then(res => {
             const peliculas = res.data;
             this.setState({ peliculas });
-          })
-      }
+        })
+    }
     
+    handleEliminar(id){
+        axios.get(`http://localhost:8000/api/peliculas/${id}/`).then(response => {
+            
+            const {titulo, sinopsis, categoria, imagen, fecha_estreno, fecha_salida, duracion} = response.data;
+            const estado = false;
+
+            axios.put(`http://localhost:8000/api/peliculas/${id}/`, {
+                titulo, sinopsis, categoria, imagen, fecha_estreno, fecha_salida, duracion, estado
+            }).then(response => {
+                console.log(response);
+                alert('Película eliminada con éxito');
+                this.componentDidMount();
+            }).catch(err => {
+                console.log(err);
+            });
+        }).catch(err => {
+            console.log(err);
+        });
+
+        
+    }
+
     render() {
          return (
             <div className="row">
@@ -43,11 +66,11 @@ class PeliculaAdmin extends Component {
                         <Table striped bordered hover style={{ minWidth: '300px', maxWidth: '80%' }}>
                         <tbody>
                     { this.state.peliculas.map(pelicula =>
-                            <tr>
+                            <tr key={pelicula.id}>
                             
                                 <td>{pelicula.titulo}</td>
                                 <td><FontAwesomeIcon className="text-info" style={{ width:'25px', height: '25px' }} icon={faEdit} /></td>
-                                <td><FontAwesomeIcon className="text-danger" style={{ width:'25px', height: '25px' }} icon={faTrash} /></td>
+                                <td><Button className="btn btn-danger" onClick={() => this.handleEliminar(pelicula.id)}><FontAwesomeIcon className="text-light" style={{ width:'25px', height: '25px' }} icon={faTrash}/></Button></td>
                             </tr>
                         ) 
                       }
@@ -60,6 +83,7 @@ class PeliculaAdmin extends Component {
             </div>
         );
     }
+
 }
 
 export default PeliculaAdmin;

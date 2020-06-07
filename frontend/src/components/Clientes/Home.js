@@ -25,7 +25,7 @@ class Slider extends Component {
 
         return (
 
-          <Carousel style={{ overflowY: 'hidden' }}>
+          <Carousel style={{ overflowY: 'hidden'}}>
             <Carousel.Item>
               <img style={{ width: '100%', height: '30rem', opacity:"0.5" }} src={cine} alt="First slide"/>
               <Carousel.Caption>

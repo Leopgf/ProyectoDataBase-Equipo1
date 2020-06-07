@@ -29,9 +29,6 @@ class Estrenos extends Component {
                 <div className="col-12">
                     <HeaderCliente/>
                 </div>
-                <div className="col-12">
-                    <h2>ESTRENOS</h2>
-                </div>
                 <div className="row m-3">
             {
               this.state.estrenos.map(estrenos =>
@@ -43,15 +40,12 @@ class Estrenos extends Component {
               <Card.Body>
               <ListGroup className="list-group-flush">
               <ListGroupItem>Categoría: { estrenos.categoria }</ListGroupItem>
-              </ListGroup>
-         
-              <Link to={`/detalles/${estrenos.id}`}><Button variant="dark" style={{ width: '100%'}}>DETALLES PELÍCULA</Button></Link> {/* BTN QUE REDIRIGE A PANTALLA CON INFO DETALLADA DE LA PELI Y COMPRA*/}
-              <Link to={`/iniciar-sesion`}><Button className="mt-1" variant="success" style={{ width: '100%'}}>COMPRAR ENTRADA</Button></Link>{/* BTN QUE REDIRIGE A PANTALLA CON INFO DETALLADA DE LA PELI Y COMPRA*/}
+              <ListGroupItem>Estreno: { estrenos.fecha_estreno }</ListGroupItem>
+              </ListGroup>         
               </Card.Body>
  
             </Card>
           </div>
-
               ) 
             }
         </div>

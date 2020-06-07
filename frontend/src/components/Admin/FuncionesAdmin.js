@@ -7,7 +7,9 @@ import { faEdit, faTrash, faPlus } from '@fortawesome/free-solid-svg-icons'
 
 class Funciones extends Component {
     state = {
-        funciones: []
+        funciones: [],
+        peliculas: [],
+        salas: [],
       }
     
       componentDidMount() {
@@ -15,7 +17,25 @@ class Funciones extends Component {
           .then(res => {
             const funciones = res.data;
             this.setState({ funciones });
+            this.state.funciones.map(funcion => {
+                axios.get(`http://localhost:8000/api/peliculas/${funcion.id_pelicula}`)
+                .then(res => {
+                    var peliculas = this.state.peliculas;
+                    peliculas.push(res.data.titulo);
+                    this.setState({peliculas});
+                })
+                axios.get(`http://localhost:8000/api/salas/${funcion.id_sala}`)
+                .then(res => {
+                    var salas = this.state.salas;
+                    salas.push(res.data.tipo_sala);
+                    this.setState({salas});
+                })
+            });
           })
+      }
+
+      getPelicula(id){
+        
       }
     
     render() {
@@ -53,14 +73,13 @@ class Funciones extends Component {
                                 </tr>
                             </thead>
                         <tbody>
-                    { this.state.funciones.map(funcion =>
-                            <tr>
-                            
-                                <td>{funcion.pelicula}</td>
+                    { this.state.funciones.map( (funcion, index) =>
+                            <tr key={funcion.id}>
+                                <td>{this.state.peliculas[index]}</td>
                                 <td>{funcion.fecha}</td>
                                 <td>{funcion.hora}</td>
-                                <td>{funcion.sala}</td>
-                                <td>{funcion.butacasDispo}</td>
+                                <td>{this.state.salas[index]}</td>
+                                <td>{funcion.butacas_disponibles}</td>
                                 <td><FontAwesomeIcon className="text-info" style={{ width:'25px', height: '25px' }} icon={faEdit} /></td>
                                 <td><FontAwesomeIcon className="text-danger" style={{ width:'25px', height: '25px' }} icon={faTrash} /></td>
                             </tr>

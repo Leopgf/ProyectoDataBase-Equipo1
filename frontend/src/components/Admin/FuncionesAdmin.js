@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import HeaderAdmin from '../Headers/HeaderAdmin';
 import Table from 'react-bootstrap/Table'
+import Button from 'react-bootstrap/Button'
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faTrash, faPlus } from '@fortawesome/free-solid-svg-icons'
@@ -53,7 +54,7 @@ class Funciones extends Component {
                 <div className="col-11 col-md-4 col-lg-4 d-flex justify-content-end">
                     <button className="btn btn-success">
                         <a href="/agregar-funcion" className="text-light text-decoration-none d-flex align-content-center">
-                        AGREGAR FUNCIÓN
+                        AGREGAR
                         <FontAwesomeIcon className="text-light ml-2" style={{ width:'25px', height: '25px' }}  icon={faPlus}/>
                         </a>
                     </button>
@@ -80,8 +81,8 @@ class Funciones extends Component {
                                 <td>{funcion.hora}</td>
                                 <td>{this.state.salas[index]}</td>
                                 <td>{funcion.butacas_disponibles}</td>
-                                <td><FontAwesomeIcon className="text-info" style={{ width:'25px', height: '25px' }} icon={faEdit} /></td>
-                                <td><FontAwesomeIcon className="text-danger" style={{ width:'25px', height: '25px' }} icon={faTrash} /></td>
+                                <td><Button className="btn btn-info"><FontAwesomeIcon className="text-light" style={{ width:'25px', height: '25px' }} icon={faEdit} /></Button></td>
+                                <td><Button className="btn btn-danger"><FontAwesomeIcon className="text-light" style={{ width:'25px', height: '25px' }} icon={faTrash}/></Button></td>
                             </tr>
                         ) 
                       }

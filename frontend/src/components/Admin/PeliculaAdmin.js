@@ -64,12 +64,17 @@ class PeliculaAdmin extends Component {
 
                 <div className="col-12 mt-2 text-center" style={{ display:'flex', justifyContent:'center' }} >
                         <Table striped bordered hover style={{ minWidth: '300px', maxWidth: '80%' }}>
+                        <thead>
+                                <th>Película</th>
+                                <th>Modificar</th>
+                                <th>Eliminar</th>
+                            </thead>
                         <tbody>
                     { this.state.peliculas.map(pelicula =>
                             <tr key={pelicula.id}>
                             
                                 <td>{pelicula.titulo}</td>
-                                <td><FontAwesomeIcon className="text-info" style={{ width:'25px', height: '25px' }} icon={faEdit} /></td>
+                                <td><Button className="btn btn-info"><FontAwesomeIcon className="text-light" style={{ width:'25px', height: '25px' }} icon={faEdit} /></Button></td>
                                 <td><Button className="btn btn-danger" onClick={() => this.handleEliminar(pelicula.id)}><FontAwesomeIcon className="text-light" style={{ width:'25px', height: '25px' }} icon={faTrash}/></Button></td>
                             </tr>
                         ) 

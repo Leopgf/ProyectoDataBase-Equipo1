@@ -4,6 +4,10 @@ from . import serializers
 import datetime
 
 class PeliculaViewset(viewsets.ModelViewSet):
+    queryset = models.Pelicula.objects.all().filter(estado = True)
+    serializer_class = serializers.PeliculasSerializer
+
+class EstrenadaViewset(viewsets.ModelViewSet):
     queryset = models.Pelicula.objects.all().filter(fecha_estreno__lte = datetime.date.today()).filter(fecha_salida__gte = datetime.date.today()).filter(estado = True)
     serializer_class = serializers.PeliculasSerializer
 

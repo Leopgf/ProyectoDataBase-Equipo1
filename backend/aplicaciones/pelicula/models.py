@@ -9,7 +9,7 @@ class Usuario(models.Model):
     apellido = models.CharField(max_length=100)
     puntos = models.IntegerField(default=0)
     estado = models.BooleanField(default=True)
-    tipo_usuario = models.IntegerField(default=0)
+    tipo_usuario = models.BooleanField(default=False)
 
     def __str__(self):
         return self.nombre
@@ -77,7 +77,7 @@ class Sala(models.Model):
     nombre = models.CharField(max_length=200)
     numero_filas = models.IntegerField()
     numero_columnas = models.IntegerField()
-    id_sucursal = models.ForeignKey(Sucursal, on_delete=models.CASCADE, default=0)
+    id_sucursal = models.ForeignKey(Sucursal, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.nombre
@@ -147,8 +147,8 @@ class Producto(models.Model):
 
 #RegistroCombos
 class registroCombos(models.Model):
-    id_producto_combo = models.ForeignKey(Producto, on_delete=models.CASCADE)
-    # id_producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    id_producto_combo = models.ForeignKey(Producto, on_delete=models.CASCADE, related_name='combo')
+    id_producto = models.ForeignKey(Producto, on_delete=models.CASCADE, related_name='producto')
     cantidad = models.IntegerField()
 
      
@@ -197,7 +197,6 @@ class registroCompras(models.Model):
     id_producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
     cantidad = models.IntegerField()
     precio = models.FloatField()
-
 
 
 #RegistroAsientosReservados

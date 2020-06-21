@@ -58,6 +58,10 @@ class ProductoViewset(viewsets.ModelViewSet):
     queryset = models.Producto.objects.all()
     serializer_class = serializers.ProductosSerializer
 
+class CombosViewset(viewsets.ModelViewSet):
+    queryset = models.Producto.objects.all().filter(estado = True).filter(id_tipos_productos_id = 3)
+    serializer_class = serializers.ProductosSerializer
+
 
 class registroCombosViewset(viewsets.ModelViewSet):
     queryset = models.registroCombos.objects.all()

@@ -3,17 +3,21 @@ from . import models
 from . import serializers
 import datetime
 
+class PeliculaViewset(viewsets.ModelViewSet):
+    queryset = models.Pelicula.objects.all().filter(fecha_estreno__lte = datetime.date.today()).filter(fecha_salida__gte = datetime.date.today()).filter(estado = True)
+    serializer_class = serializers.PeliculasSerializer
 
+class PeliculaAdminViewset(viewsets.ModelViewSet):
+    queryset = models.Pelicula.objects.all().filter(estado = True)
+    serializer_class = serializers.PeliculasSerializer
+
+class EstrenosViewset(viewsets.ModelViewSet):
+    queryset = models.Pelicula.objects.all().filter(fecha_estreno__gte = datetime.date.today()).filter(estado = True)
+    serializer_class = serializers.PeliculasSerializer
 
 class UsuarioViewset(viewsets.ModelViewSet):
     queryset = models.Usuario.objects.all()
     serializer_class = serializers.UsuariosSerializer
-
-
-class PeliculaViewset(viewsets.ModelViewSet):
-    queryset = models.Pelicula.objects.all().filter(estado = True)
-    serializer_class = serializers.PeliculasSerializer
-
 
 class CategoriaViewset(viewsets.ModelViewSet):
     queryset = models.Categoria.objects.all()

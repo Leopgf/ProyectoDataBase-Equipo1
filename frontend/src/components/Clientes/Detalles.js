@@ -10,7 +10,7 @@ class Detalles extends Component {
         id: '',
         titulo: '',
         sinopsis: '',
-        categoria: '',
+        categorias: [],
         imagen: '',
         fecha_estreno: '',
         duracion: '',
@@ -20,8 +20,9 @@ class Detalles extends Component {
         const id = this.props.match.params.id;
         console.log(id);
         axios.get(`http://localhost:8000/api/peliculas/${id}`).then(res => {
-            const { titulo, sinopsis, categoria, imagen, fecha_estreno, duracion } = res.data;
-            this.setState( { titulo, sinopsis, categoria, imagen, fecha_estreno, duracion } )
+            const { titulo, sinopsis, imagen, fecha_estreno, duracion } = res.data;
+            this.setState( { titulo, sinopsis, imagen, fecha_estreno, duracion } )
+            axios.get(`http://localhost:8000/api/regis/${id}`)
         }).catch(err => alert(err));
         
     }
@@ -41,7 +42,7 @@ class Detalles extends Component {
                     <Card   style={{ left: '50%', top: '50%',transform: 'translate(-50%, -50%)'}}>
                         <Card.Body>
                         <Card.Title><h3>{this.state.titulo} </h3></Card.Title>
-                        <Card.Subtitle className="mb-2 text-muted">Categoría: {this.state.categoria}</Card.Subtitle>
+                        <Card.Subtitle className="mb-2 text-muted">Categorías: {this.state.categoria}</Card.Subtitle>
                         <Card.Subtitle className="mb-2 text-muted">Duración: {this.state.duracion}</Card.Subtitle>
                         <Card.Subtitle className="mb-2 text-muted">Fecha de estreno: {this.state.fecha_estreno}</Card.Subtitle>
                         <Card.Text>

@@ -3,50 +3,83 @@ from . import models
 from . import serializers
 import datetime
 
+
+
+class UsuarioViewset(viewsets.ModelViewSet):
+    queryset = models.Usuario.objects.all()
+    serializer_class = serializers.UsuariosSerializer
+
+
 class PeliculaViewset(viewsets.ModelViewSet):
     queryset = models.Pelicula.objects.all().filter(estado = True)
     serializer_class = serializers.PeliculasSerializer
 
-class EstrenadaViewset(viewsets.ModelViewSet):
-    queryset = models.Pelicula.objects.all().filter(fecha_estreno__lte = datetime.date.today()).filter(fecha_salida__gte = datetime.date.today()).filter(estado = True)
-    serializer_class = serializers.PeliculasSerializer
 
-class FuncionViewset(viewsets.ModelViewSet):
-    queryset = models.Funcion.objects.all()
-    serializer_class = serializers.FuncionSerializer
+class CategoriaViewset(viewsets.ModelViewSet):
+    queryset = models.Categoria.objects.all()
+    serializer_class = serializers.CategoriasSerializer
+
+
+class registroCategoriaViewset(viewsets.ModelViewSet):
+    queryset = models.registroCategorias.objects.all()
+    serializer_class = serializers.registroCategoriasSerializer
+
+
+class SucursalViewset(viewsets.ModelViewSet):
+    queryset = models.Sucursal.objects.all()
+    serializer_class = serializers.SucursalesSerializer
+
 
 class SalaViewset(viewsets.ModelViewSet):
     queryset = models.Sala.objects.all()
     serializer_class = serializers.SalaSerializer
 
+
+class FuncionViewset(viewsets.ModelViewSet):
+    queryset = models.Funcion.objects.all()
+    serializer_class = serializers.FuncionSerializer
+
+
 class AsientoViewset(viewsets.ModelViewSet):
     queryset = models.Asiento.objects.all()
     serializer_class = serializers.AsientoSerializer
 
-class ReservarAsientoViewset(viewsets.ModelViewSet):
-    queryset = models.ReservarAsientos.objects.all()
-    serializer_class = serializers.ReservarAsientoSerializer
 
-class EntradaViewset(viewsets.ModelViewSet):
-    queryset = models.Entrada.objects.all()
-    serializer_class = serializers.EntradasSerializer    
+class tipoProductoViewset(viewsets.ModelViewSet):
+    queryset = models.tipoProductos.objects.all()
+    serializer_class = serializers.tipoProductosSerializer
 
-class ComboViewset(viewsets.ModelViewSet):
-    queryset = models.Combo.objects.all()
-    serializer_class = serializers.CombosSerializer
+
+class ProductoViewset(viewsets.ModelViewSet):
+    queryset = models.Producto.objects.all()
+    serializer_class = serializers.ProductosSerializer
+
+
+class registroCombosViewset(viewsets.ModelViewSet):
+    queryset = models.registroCombos.objects.all()
+    serializer_class = serializers.registroCombosSerializer
+
 
 class FacturaViewset(viewsets.ModelViewSet):
     queryset = models.Factura.objects.all()
     serializer_class = serializers.FacturaSerializer
 
-class ComprasCombosViewset(viewsets.ModelViewSet):
-    queryset = models.ComprasCombos.objects.all()
-    serializer_class = serializers.ComprasCombosSerializer
 
-class ComprasEntradasViewset(viewsets.ModelViewSet):
-    queryset = models.ComprasEntradas.objects.all()
-    serializer_class = serializers.ComprasEntradasSerializer
+class PromocionesViewset(viewsets.ModelViewSet):
+    queryset = models.Promociones.objects.all()
+    serializer_class = serializers.PromocionesSerializer
 
-class EstrenosViewset(viewsets.ModelViewSet):
-    queryset = models.Pelicula.objects.all().filter(fecha_estreno__gte = datetime.date.today()).filter(estado = True)
-    serializer_class = serializers.PeliculasSerializer
+
+class registroPromocionesViewset(viewsets.ModelViewSet):
+    queryset = models.registroPromociones.objects.all()
+    serializer_class = serializers.registroPromocionesSerializer
+
+
+class registroComprasViewset(viewsets.ModelViewSet):
+    queryset = models.registroCompras.objects.all()
+    serializer_class = serializers.registroComprasSerializer
+
+
+class registroAsientosReservadosViewset(viewsets.ModelViewSet):
+    queryset = models.registroAsientosReservados.objects.all()
+    serializer_class = serializers.registroAsientosReservadosSerializer

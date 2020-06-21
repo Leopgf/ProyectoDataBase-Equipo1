@@ -1,19 +1,21 @@
 from django.contrib import admin
 
-# Register your models here.
-from .models import Pelicula, Funcion, Sala, Asiento, ReservarAsientos, Entrada, Combo, Factura, ComprasCombos, ComprasEntradas, Usuarios
 
+from .models import Usuario, Pelicula, Categoria, registroCategorias, Sucursal, Sala, Funcion, Asiento, tipoProductos, Producto, registroCombos, Factura, Promociones, registroPromociones, registroCompras, registroAsientosReservados
+
+admin.site.register(Usuario)
 admin.site.register(Pelicula)
-admin.site.register(Funcion)
+admin.site.register(Categoria)
+admin.site.register(registroCategorias)
+admin.site.register(Sucursal)
 admin.site.register(Sala)
+admin.site.register(Funcion)
 admin.site.register(Asiento)
-admin.site.register(ReservarAsientos)
-admin.site.register(Entrada)
-
-admin.site.register(Combo)
-
+admin.site.register(tipoProductos)
+admin.site.register(Producto)
+admin.site.register(registroCombos)
 admin.site.register(Factura)
-admin.site.register(ComprasCombos)
-admin.site.register(ComprasEntradas)
-
-admin.site.register(Usuarios)
+admin.site.register(Promociones)
+admin.site.register(registroPromociones)
+admin.site.register(registroCompras)
+admin.site.register(registroAsientosReservados)

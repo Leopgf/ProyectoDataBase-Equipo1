@@ -1,23 +1,23 @@
-from aplicaciones.pelicula.viewsets import PeliculaViewset, EstrenadaViewset, FuncionViewset, SalaViewset, AsientoViewset, ReservarAsientoViewset, EntradaViewset, ComboViewset, ComprasCombosViewset, ComprasEntradasViewset, FacturaViewset, EstrenosViewset
+from aplicaciones.pelicula.viewsets import UsuarioViewset, PeliculaViewset,CategoriaViewset, registroCategoriaViewset, SucursalViewset, SalaViewset, FuncionViewset, AsientoViewset, tipoProductoViewset, ProductoViewset, registroCombosViewset, FacturaViewset, PromocionesViewset, registroPromocionesViewset, registroComprasViewset, registroAsientosReservadosViewset
 
 from rest_framework import routers
 
 router = routers.DefaultRouter()
 
-#App Película
-router.register('funciones',FuncionViewset)
+
+router.register('usuarios',UsuarioViewset)
 router.register('peliculas',PeliculaViewset)
-router.register('estrenadas',EstrenadaViewset)
+router.register('cateogiras',CategoriaViewset)
+router.register('registroCategorias',registroCategoriaViewset)
+router.register('sucursales',SucursalViewset)
 router.register('salas',SalaViewset)
-# router.register('asientos',AsientoViewset)
-# router.register('reservarAsientos',ReservarAsientoViewset)
-# router.register('entradas',EntradaViewset)
-router.register('estrenos',EstrenosViewset)
-
-#App Combos
-router.register('combos',ComboViewset)
-
-#App Factura
-# router.register('facturas',FacturaViewset)
-# router.register('compras-combos',ComprasCombosViewset)
-# router.register('compras-entradas',ComprasEntradasViewset)
+router.register('funciones',FuncionViewset)
+router.register('asientos',AsientoViewset)
+router.register('tipoProductos',tipoProductoViewset)
+router.register('productos',ProductoViewset)
+router.register('registroCombos',registroCombosViewset)
+router.register('facturas',FacturaViewset)
+router.register('promociones',PromocionesViewset)
+router.register('registroPromociones',registroPromocionesViewset)
+router.register('registroCompras',registroComprasViewset)
+router.register('registroAsientosReservados',registroAsientosReservadosViewset)

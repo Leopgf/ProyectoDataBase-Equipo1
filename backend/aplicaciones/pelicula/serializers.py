@@ -1,52 +1,103 @@
 from rest_framework import serializers
-from .models import Pelicula, Funcion, Sala, Asiento, ReservarAsientos, Entrada, ComprasEntradas, ComprasCombos, Combo, Factura
+
+from .models import Usuario, Pelicula, Categoria, registroCategorias, Sucursal, Sala, Funcion, Asiento, tipoProductos, Producto, registroCombos, Factura, Promociones, registroPromociones, registroCompras, registroAsientosReservados
+
+
+class UsuariosSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Usuario
+        fields = '__all__'
+
 
 class PeliculasSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pelicula
         fields = '__all__'
 
-class FuncionSerializer(serializers.ModelSerializer):
+
+class CategoriasSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Funcion
+        model = Categoria
         fields = '__all__'
+
+
+class registroCategoriasSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = registroCategorias
+        fields = '__all__'
+
+
+class SucursalesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Sucursal
+        fields = '__all__'
+
 
 class SalaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Sala
         fields = '__all__'
 
+
+class FuncionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Funcion
+        fields = '__all__'
+
+
 class AsientoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Asiento
         fields = '__all__'
 
-class ReservarAsientoSerializer(serializers.ModelSerializer):
+
+class tipoProductosSerializer(serializers.ModelSerializer):
     class Meta:
-        model = ReservarAsientos
+        model = tipoProductos
         fields = '__all__'
 
-class EntradasSerializer(serializers.ModelSerializer):
+
+class ProductosSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Entrada
+        model = Producto
         fields = '__all__'
 
-class CombosSerializer(serializers.ModelSerializer):
+
+class registroCombosSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Combo
+        model = registroCombos
         fields = '__all__'
+
 
 class FacturaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Factura
         fields = '__all__'
 
-class ComprasCombosSerializer(serializers.ModelSerializer):
+
+class PromocionesSerializer(serializers.ModelSerializer):
     class Meta:
-        model = ComprasCombos
+        model = Promociones
         fields = '__all__'
 
-class ComprasEntradasSerializer(serializers.ModelSerializer):
+
+class registroPromocionesSerializer(serializers.ModelSerializer):
     class Meta:
-        model = ComprasEntradas
+        model = registroPromociones
         fields = '__all__'
+
+
+class registroComprasSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = registroCompras
+        fields = '__all__'
+
+
+class registroAsientosReservadosSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = registroAsientosReservados
+        fields = '__all__'
+
+
+
+

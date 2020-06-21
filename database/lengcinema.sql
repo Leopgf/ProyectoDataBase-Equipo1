@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.20, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.20, for macos10.15 (x86_64)
 --
 -- Host: localhost    Database: lengcinema
 -- ------------------------------------------------------
@@ -82,7 +82,7 @@ CREATE TABLE `auth_permission` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `auth_permission_content_type_id_codename_01ab375a_uniq` (`content_type_id`,`codename`),
   CONSTRAINT `auth_permission_content_type_id_2f476e4b_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=89 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=133 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -91,7 +91,7 @@ CREATE TABLE `auth_permission` (
 
 LOCK TABLES `auth_permission` WRITE;
 /*!40000 ALTER TABLE `auth_permission` DISABLE KEYS */;
-INSERT INTO `auth_permission` VALUES (1,'Can add log entry',1,'add_logentry'),(2,'Can change log entry',1,'change_logentry'),(3,'Can delete log entry',1,'delete_logentry'),(4,'Can view log entry',1,'view_logentry'),(5,'Can add permission',2,'add_permission'),(6,'Can change permission',2,'change_permission'),(7,'Can delete permission',2,'delete_permission'),(8,'Can view permission',2,'view_permission'),(9,'Can add group',3,'add_group'),(10,'Can change group',3,'change_group'),(11,'Can delete group',3,'delete_group'),(12,'Can view group',3,'view_group'),(13,'Can add user',4,'add_user'),(14,'Can change user',4,'change_user'),(15,'Can delete user',4,'delete_user'),(16,'Can view user',4,'view_user'),(17,'Can add content type',5,'add_contenttype'),(18,'Can change content type',5,'change_contenttype'),(19,'Can delete content type',5,'delete_contenttype'),(20,'Can view content type',5,'view_contenttype'),(21,'Can add session',6,'add_session'),(22,'Can change session',6,'change_session'),(23,'Can delete session',6,'delete_session'),(24,'Can view session',6,'view_session'),(25,'Can add Pelicula',7,'add_pelicula'),(26,'Can change Pelicula',7,'change_pelicula'),(27,'Can delete Pelicula',7,'delete_pelicula'),(28,'Can view Pelicula',7,'view_pelicula'),(29,'Can add Asiento',8,'add_asiento'),(30,'Can change Asiento',8,'change_asiento'),(31,'Can delete Asiento',8,'delete_asiento'),(32,'Can view Asiento',8,'view_asiento'),(33,'Can add Funcion',9,'add_funcion'),(34,'Can change Funcion',9,'change_funcion'),(35,'Can delete Funcion',9,'delete_funcion'),(36,'Can view Funcion',9,'view_funcion'),(37,'Can add Sala',10,'add_sala'),(38,'Can change Sala',10,'change_sala'),(39,'Can delete Sala',10,'delete_sala'),(40,'Can view Sala',10,'view_sala'),(41,'Can add Reservar Asiento',11,'add_reservarasientos'),(42,'Can change Reservar Asiento',11,'change_reservarasientos'),(43,'Can delete Reservar Asiento',11,'delete_reservarasientos'),(44,'Can view Reservar Asiento',11,'view_reservarasientos'),(45,'Can add Combo',12,'add_combo'),(46,'Can change Combo',12,'change_combo'),(47,'Can delete Combo',12,'delete_combo'),(48,'Can view Combo',12,'view_combo'),(49,'Can add Entrada',13,'add_entrada'),(50,'Can change Entrada',13,'change_entrada'),(51,'Can delete Entrada',13,'delete_entrada'),(52,'Can view Entrada',13,'view_entrada'),(53,'Can add Compras Combos',14,'add_comprascombos'),(54,'Can change Compras Combos',14,'change_comprascombos'),(55,'Can delete Compras Combos',14,'delete_comprascombos'),(56,'Can view Compras Combos',14,'view_comprascombos'),(57,'Can add Factura',15,'add_factura'),(58,'Can change Factura',15,'change_factura'),(59,'Can delete Factura',15,'delete_factura'),(60,'Can view Factura',15,'view_factura'),(61,'Can add Entrada',16,'add_entrada'),(62,'Can change Entrada',16,'change_entrada'),(63,'Can delete Entrada',16,'delete_entrada'),(64,'Can view Entrada',16,'view_entrada'),(65,'Can add compras entradas',17,'add_comprasentradas'),(66,'Can change compras entradas',17,'change_comprasentradas'),(67,'Can delete compras entradas',17,'delete_comprasentradas'),(68,'Can view compras entradas',17,'view_comprasentradas'),(69,'Can add Combo',18,'add_combo'),(70,'Can change Combo',18,'change_combo'),(71,'Can delete Combo',18,'delete_combo'),(72,'Can view Combo',18,'view_combo'),(73,'Can add Factura',19,'add_factura'),(74,'Can change Factura',19,'change_factura'),(75,'Can delete Factura',19,'delete_factura'),(76,'Can view Factura',19,'view_factura'),(77,'Can add Compra Entrada',20,'add_comprasentradas'),(78,'Can change Compra Entrada',20,'change_comprasentradas'),(79,'Can delete Compra Entrada',20,'delete_comprasentradas'),(80,'Can view Compra Entrada',20,'view_comprasentradas'),(81,'Can add Compra Combo',21,'add_comprascombos'),(82,'Can change Compra Combo',21,'change_comprascombos'),(83,'Can delete Compra Combo',21,'delete_comprascombos'),(84,'Can view Compra Combo',21,'view_comprascombos'),(85,'Can add Usuario',22,'add_usuarios'),(86,'Can change Usuario',22,'change_usuarios'),(87,'Can delete Usuario',22,'delete_usuarios'),(88,'Can view Usuario',22,'view_usuarios');
+INSERT INTO `auth_permission` VALUES (1,'Can add log entry',1,'add_logentry'),(2,'Can change log entry',1,'change_logentry'),(3,'Can delete log entry',1,'delete_logentry'),(4,'Can view log entry',1,'view_logentry'),(5,'Can add permission',2,'add_permission'),(6,'Can change permission',2,'change_permission'),(7,'Can delete permission',2,'delete_permission'),(8,'Can view permission',2,'view_permission'),(9,'Can add group',3,'add_group'),(10,'Can change group',3,'change_group'),(11,'Can delete group',3,'delete_group'),(12,'Can view group',3,'view_group'),(13,'Can add user',4,'add_user'),(14,'Can change user',4,'change_user'),(15,'Can delete user',4,'delete_user'),(16,'Can view user',4,'view_user'),(17,'Can add content type',5,'add_contenttype'),(18,'Can change content type',5,'change_contenttype'),(19,'Can delete content type',5,'delete_contenttype'),(20,'Can view content type',5,'view_contenttype'),(21,'Can add session',6,'add_session'),(22,'Can change session',6,'change_session'),(23,'Can delete session',6,'delete_session'),(24,'Can view session',6,'view_session'),(25,'Can add Pelicula',7,'add_pelicula'),(26,'Can change Pelicula',7,'change_pelicula'),(27,'Can delete Pelicula',7,'delete_pelicula'),(28,'Can view Pelicula',7,'view_pelicula'),(29,'Can add Asiento',8,'add_asiento'),(30,'Can change Asiento',8,'change_asiento'),(31,'Can delete Asiento',8,'delete_asiento'),(32,'Can view Asiento',8,'view_asiento'),(33,'Can add Funcion',9,'add_funcion'),(34,'Can change Funcion',9,'change_funcion'),(35,'Can delete Funcion',9,'delete_funcion'),(36,'Can view Funcion',9,'view_funcion'),(37,'Can add Sala',10,'add_sala'),(38,'Can change Sala',10,'change_sala'),(39,'Can delete Sala',10,'delete_sala'),(40,'Can view Sala',10,'view_sala'),(41,'Can add Reservar Asiento',11,'add_reservarasientos'),(42,'Can change Reservar Asiento',11,'change_reservarasientos'),(43,'Can delete Reservar Asiento',11,'delete_reservarasientos'),(44,'Can view Reservar Asiento',11,'view_reservarasientos'),(45,'Can add Combo',12,'add_combo'),(46,'Can change Combo',12,'change_combo'),(47,'Can delete Combo',12,'delete_combo'),(48,'Can view Combo',12,'view_combo'),(49,'Can add Entrada',13,'add_entrada'),(50,'Can change Entrada',13,'change_entrada'),(51,'Can delete Entrada',13,'delete_entrada'),(52,'Can view Entrada',13,'view_entrada'),(53,'Can add Compras Combos',14,'add_comprascombos'),(54,'Can change Compras Combos',14,'change_comprascombos'),(55,'Can delete Compras Combos',14,'delete_comprascombos'),(56,'Can view Compras Combos',14,'view_comprascombos'),(57,'Can add Factura',15,'add_factura'),(58,'Can change Factura',15,'change_factura'),(59,'Can delete Factura',15,'delete_factura'),(60,'Can view Factura',15,'view_factura'),(61,'Can add Entrada',16,'add_entrada'),(62,'Can change Entrada',16,'change_entrada'),(63,'Can delete Entrada',16,'delete_entrada'),(64,'Can view Entrada',16,'view_entrada'),(65,'Can add compras entradas',17,'add_comprasentradas'),(66,'Can change compras entradas',17,'change_comprasentradas'),(67,'Can delete compras entradas',17,'delete_comprasentradas'),(68,'Can view compras entradas',17,'view_comprasentradas'),(69,'Can add Combo',18,'add_combo'),(70,'Can change Combo',18,'change_combo'),(71,'Can delete Combo',18,'delete_combo'),(72,'Can view Combo',18,'view_combo'),(73,'Can add Factura',19,'add_factura'),(74,'Can change Factura',19,'change_factura'),(75,'Can delete Factura',19,'delete_factura'),(76,'Can view Factura',19,'view_factura'),(77,'Can add Compra Entrada',20,'add_comprasentradas'),(78,'Can change Compra Entrada',20,'change_comprasentradas'),(79,'Can delete Compra Entrada',20,'delete_comprasentradas'),(80,'Can view Compra Entrada',20,'view_comprasentradas'),(81,'Can add Compra Combo',21,'add_comprascombos'),(82,'Can change Compra Combo',21,'change_comprascombos'),(83,'Can delete Compra Combo',21,'delete_comprascombos'),(84,'Can view Compra Combo',21,'view_comprascombos'),(85,'Can add Usuario',22,'add_usuarios'),(86,'Can change Usuario',22,'change_usuarios'),(87,'Can delete Usuario',22,'delete_usuarios'),(88,'Can view Usuario',22,'view_usuarios'),(89,'Can add Usuario',23,'add_usuario'),(90,'Can change Usuario',23,'change_usuario'),(91,'Can delete Usuario',23,'delete_usuario'),(92,'Can view Usuario',23,'view_usuario'),(93,'Can add categoria',24,'add_categoria'),(94,'Can change categoria',24,'change_categoria'),(95,'Can delete categoria',24,'delete_categoria'),(96,'Can view categoria',24,'view_categoria'),(97,'Can add registro categorias',25,'add_registrocategorias'),(98,'Can change registro categorias',25,'change_registrocategorias'),(99,'Can delete registro categorias',25,'delete_registrocategorias'),(100,'Can view registro categorias',25,'view_registrocategorias'),(101,'Can add sucursal',26,'add_sucursal'),(102,'Can change sucursal',26,'change_sucursal'),(103,'Can delete sucursal',26,'delete_sucursal'),(104,'Can view sucursal',26,'view_sucursal'),(105,'Can add producto',27,'add_producto'),(106,'Can change producto',27,'change_producto'),(107,'Can delete producto',27,'delete_producto'),(108,'Can view producto',27,'view_producto'),(109,'Can add tipo productos',28,'add_tipoproductos'),(110,'Can change tipo productos',28,'change_tipoproductos'),(111,'Can delete tipo productos',28,'delete_tipoproductos'),(112,'Can view tipo productos',28,'view_tipoproductos'),(113,'Can add registro combos',29,'add_registrocombos'),(114,'Can change registro combos',29,'change_registrocombos'),(115,'Can delete registro combos',29,'delete_registrocombos'),(116,'Can view registro combos',29,'view_registrocombos'),(117,'Can add promociones',30,'add_promociones'),(118,'Can change promociones',30,'change_promociones'),(119,'Can delete promociones',30,'delete_promociones'),(120,'Can view promociones',30,'view_promociones'),(121,'Can add registro promociones',31,'add_registropromociones'),(122,'Can change registro promociones',31,'change_registropromociones'),(123,'Can delete registro promociones',31,'delete_registropromociones'),(124,'Can view registro promociones',31,'view_registropromociones'),(125,'Can add registro compras',32,'add_registrocompras'),(126,'Can change registro compras',32,'change_registrocompras'),(127,'Can delete registro compras',32,'delete_registrocompras'),(128,'Can view registro compras',32,'view_registrocompras'),(129,'Can add registro asientos reservados',33,'add_registroasientosreservados'),(130,'Can change registro asientos reservados',33,'change_registroasientosreservados'),(131,'Can delete registro asientos reservados',33,'delete_registroasientosreservados'),(132,'Can view registro asientos reservados',33,'view_registroasientosreservados');
 /*!40000 ALTER TABLE `auth_permission` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -116,7 +116,7 @@ CREATE TABLE `auth_user` (
   `date_joined` datetime(6) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -125,7 +125,7 @@ CREATE TABLE `auth_user` (
 
 LOCK TABLES `auth_user` WRITE;
 /*!40000 ALTER TABLE `auth_user` DISABLE KEYS */;
-INSERT INTO `auth_user` VALUES (1,'pbkdf2_sha256$180000$7n1Xi5IVoWU4$v8GK+cyam5p6gtxX5geNDSvdZruj5nCwGXTVijYqmDE=','2020-06-06 16:56:25.275838',1,'lengcinema','','','cine@gmail.com',1,1,'2020-05-28 21:39:26.073013');
+INSERT INTO `auth_user` VALUES (1,'pbkdf2_sha256$180000$7n1Xi5IVoWU4$v8GK+cyam5p6gtxX5geNDSvdZruj5nCwGXTVijYqmDE=','2020-06-06 16:56:25.275838',1,'lengcinema','','','cine@gmail.com',1,1,'2020-05-28 21:39:26.073013'),(2,'pbkdf2_sha256$180000$AQyONRKpKDnx$xXIaquq8o/itpIGRNDbqeSP/uICLMI1yP28mA8ccDSo=','2020-06-21 06:06:37.971246',1,'edwjon','','','',1,1,'2020-06-21 06:06:30.577837');
 /*!40000 ALTER TABLE `auth_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -260,7 +260,7 @@ CREATE TABLE `django_content_type` (
   `model` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `django_content_type_app_label_model_76bd3d3b_uniq` (`app_label`,`model`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -269,7 +269,7 @@ CREATE TABLE `django_content_type` (
 
 LOCK TABLES `django_content_type` WRITE;
 /*!40000 ALTER TABLE `django_content_type` DISABLE KEYS */;
-INSERT INTO `django_content_type` VALUES (1,'admin','logentry'),(3,'auth','group'),(2,'auth','permission'),(4,'auth','user'),(12,'combos','combo'),(13,'combos','entrada'),(5,'contenttypes','contenttype'),(14,'factura','comprascombos'),(17,'factura','comprasentradas'),(15,'factura','factura'),(8,'pelicula','asiento'),(18,'pelicula','combo'),(21,'pelicula','comprascombos'),(20,'pelicula','comprasentradas'),(16,'pelicula','entrada'),(19,'pelicula','factura'),(9,'pelicula','funcion'),(7,'pelicula','pelicula'),(11,'pelicula','reservarasientos'),(10,'pelicula','sala'),(22,'pelicula','usuarios'),(6,'sessions','session');
+INSERT INTO `django_content_type` VALUES (1,'admin','logentry'),(3,'auth','group'),(2,'auth','permission'),(4,'auth','user'),(12,'combos','combo'),(13,'combos','entrada'),(5,'contenttypes','contenttype'),(14,'factura','comprascombos'),(17,'factura','comprasentradas'),(15,'factura','factura'),(8,'pelicula','asiento'),(24,'pelicula','categoria'),(18,'pelicula','combo'),(21,'pelicula','comprascombos'),(20,'pelicula','comprasentradas'),(16,'pelicula','entrada'),(19,'pelicula','factura'),(9,'pelicula','funcion'),(7,'pelicula','pelicula'),(27,'pelicula','producto'),(30,'pelicula','promociones'),(33,'pelicula','registroasientosreservados'),(25,'pelicula','registrocategorias'),(29,'pelicula','registrocombos'),(32,'pelicula','registrocompras'),(31,'pelicula','registropromociones'),(11,'pelicula','reservarasientos'),(10,'pelicula','sala'),(26,'pelicula','sucursal'),(28,'pelicula','tipoproductos'),(23,'pelicula','usuario'),(22,'pelicula','usuarios'),(6,'sessions','session');
 /*!40000 ALTER TABLE `django_content_type` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -286,7 +286,7 @@ CREATE TABLE `django_migrations` (
   `name` varchar(255) NOT NULL,
   `applied` datetime(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -295,7 +295,7 @@ CREATE TABLE `django_migrations` (
 
 LOCK TABLES `django_migrations` WRITE;
 /*!40000 ALTER TABLE `django_migrations` DISABLE KEYS */;
-INSERT INTO `django_migrations` VALUES (1,'contenttypes','0001_initial','2020-05-28 21:35:53.471853'),(2,'auth','0001_initial','2020-05-28 21:36:02.899499'),(3,'admin','0001_initial','2020-05-28 21:36:39.305712'),(4,'admin','0002_logentry_remove_auto_add','2020-05-28 21:36:44.762021'),(5,'admin','0003_logentry_add_action_flag_choices','2020-05-28 21:36:44.850601'),(6,'contenttypes','0002_remove_content_type_name','2020-05-28 21:36:54.950830'),(7,'auth','0002_alter_permission_name_max_length','2020-05-28 21:37:01.522834'),(8,'auth','0003_alter_user_email_max_length','2020-05-28 21:37:02.381173'),(9,'auth','0004_alter_user_username_opts','2020-05-28 21:37:02.528775'),(10,'auth','0005_alter_user_last_login_null','2020-05-28 21:37:06.053961'),(11,'auth','0006_require_contenttypes_0002','2020-05-28 21:37:06.232483'),(12,'auth','0007_alter_validators_add_error_messages','2020-05-28 21:37:06.414997'),(13,'auth','0008_alter_user_username_max_length','2020-05-28 21:37:11.242226'),(14,'auth','0009_alter_user_last_name_max_length','2020-05-28 21:37:14.813687'),(15,'auth','0010_alter_group_name_max_length','2020-05-28 21:37:15.953480'),(16,'auth','0011_update_proxy_permissions','2020-05-28 21:37:16.207798'),(17,'pelicula','0001_initial','2020-05-28 21:37:18.493228'),(18,'pelicula','0002_auto_20200528_1732','2020-05-28 21:37:20.052576'),(19,'sessions','0001_initial','2020-05-28 21:37:22.429808'),(20,'combos','0001_initial','2020-05-30 16:42:15.419638'),(21,'combos','0002_delete_pelicula','2020-05-30 16:42:16.738188'),(22,'combos','0003_auto_20200530_0424','2020-05-30 16:42:17.043582'),(23,'factura','0001_initial','2020-05-30 16:42:19.557824'),(24,'factura','0002_auto_20200530_0425','2020-05-30 16:42:19.734952'),(25,'pelicula','0003_auto_20200530_0229','2020-05-30 16:42:39.048634'),(26,'pelicula','0004_auto_20200530_0237','2020-05-30 16:42:56.228571'),(27,'pelicula','0005_auto_20200530_0419','2020-05-30 16:42:57.179392'),(28,'pelicula','0006_auto_20200530_0420','2020-05-30 16:42:57.531496'),(29,'pelicula','0007_auto_20200530_0422','2020-05-30 16:42:57.927733'),(30,'combos','0004_auto_20200530_1632','2020-05-30 20:33:20.802994'),(31,'pelicula','0008_auto_20200530_1632','2020-05-30 20:33:22.300267'),(32,'factura','0003_auto_20200530_1632','2020-05-30 20:33:34.437335'),(33,'factura','0004_auto_20200602_2246','2020-06-03 02:46:54.463995'),(34,'combos','0005_delete_combo','2020-06-03 02:46:55.448359'),(35,'pelicula','0009_combo_comprascombos_comprasentradas_factura','2020-06-03 02:53:32.136578'),(36,'pelicula','0010_auto_20200602_2252','2020-06-03 02:53:54.505564'),(37,'pelicula','0011_auto_20200602_2253','2020-06-03 02:53:54.683034'),(38,'pelicula','0012_usuarios','2020-06-03 03:03:54.515766'),(39,'pelicula','0013_auto_20200602_2306','2020-06-03 03:06:40.926149'),(40,'pelicula','0014_delete_usuarios','2020-06-03 03:07:39.866825'),(41,'pelicula','0015_usuarios','2020-06-03 03:08:12.273843'),(42,'pelicula','0016_auto_20200602_2309','2020-06-03 03:09:16.770091'),(43,'pelicula','0017_factura_id_usuario','2020-06-03 03:21:57.291201'),(44,'pelicula','0018_auto_20200602_2335','2020-06-03 03:35:39.242307');
+INSERT INTO `django_migrations` VALUES (1,'contenttypes','0001_initial','2020-05-28 21:35:53.471853'),(2,'auth','0001_initial','2020-05-28 21:36:02.899499'),(3,'admin','0001_initial','2020-05-28 21:36:39.305712'),(4,'admin','0002_logentry_remove_auto_add','2020-05-28 21:36:44.762021'),(5,'admin','0003_logentry_add_action_flag_choices','2020-05-28 21:36:44.850601'),(6,'contenttypes','0002_remove_content_type_name','2020-05-28 21:36:54.950830'),(7,'auth','0002_alter_permission_name_max_length','2020-05-28 21:37:01.522834'),(8,'auth','0003_alter_user_email_max_length','2020-05-28 21:37:02.381173'),(9,'auth','0004_alter_user_username_opts','2020-05-28 21:37:02.528775'),(10,'auth','0005_alter_user_last_login_null','2020-05-28 21:37:06.053961'),(11,'auth','0006_require_contenttypes_0002','2020-05-28 21:37:06.232483'),(12,'auth','0007_alter_validators_add_error_messages','2020-05-28 21:37:06.414997'),(13,'auth','0008_alter_user_username_max_length','2020-05-28 21:37:11.242226'),(14,'auth','0009_alter_user_last_name_max_length','2020-05-28 21:37:14.813687'),(15,'auth','0010_alter_group_name_max_length','2020-05-28 21:37:15.953480'),(16,'auth','0011_update_proxy_permissions','2020-05-28 21:37:16.207798'),(17,'pelicula','0001_initial','2020-05-28 21:37:18.493228'),(18,'pelicula','0002_auto_20200528_1732','2020-05-28 21:37:20.052576'),(19,'sessions','0001_initial','2020-05-28 21:37:22.429808'),(20,'combos','0001_initial','2020-05-30 16:42:15.419638'),(21,'combos','0002_delete_pelicula','2020-05-30 16:42:16.738188'),(22,'combos','0003_auto_20200530_0424','2020-05-30 16:42:17.043582'),(23,'factura','0001_initial','2020-05-30 16:42:19.557824'),(24,'factura','0002_auto_20200530_0425','2020-05-30 16:42:19.734952'),(25,'pelicula','0003_auto_20200530_0229','2020-05-30 16:42:39.048634'),(26,'pelicula','0004_auto_20200530_0237','2020-05-30 16:42:56.228571'),(27,'pelicula','0005_auto_20200530_0419','2020-05-30 16:42:57.179392'),(28,'pelicula','0006_auto_20200530_0420','2020-05-30 16:42:57.531496'),(29,'pelicula','0007_auto_20200530_0422','2020-05-30 16:42:57.927733'),(30,'combos','0004_auto_20200530_1632','2020-05-30 20:33:20.802994'),(31,'pelicula','0008_auto_20200530_1632','2020-05-30 20:33:22.300267'),(32,'factura','0003_auto_20200530_1632','2020-05-30 20:33:34.437335'),(33,'factura','0004_auto_20200602_2246','2020-06-03 02:46:54.463995'),(34,'combos','0005_delete_combo','2020-06-03 02:46:55.448359'),(35,'pelicula','0009_combo_comprascombos_comprasentradas_factura','2020-06-03 02:53:32.136578'),(36,'pelicula','0010_auto_20200602_2252','2020-06-03 02:53:54.505564'),(37,'pelicula','0011_auto_20200602_2253','2020-06-03 02:53:54.683034'),(38,'pelicula','0012_usuarios','2020-06-03 03:03:54.515766'),(39,'pelicula','0013_auto_20200602_2306','2020-06-03 03:06:40.926149'),(40,'pelicula','0014_delete_usuarios','2020-06-03 03:07:39.866825'),(41,'pelicula','0015_usuarios','2020-06-03 03:08:12.273843'),(42,'pelicula','0016_auto_20200602_2309','2020-06-03 03:09:16.770091'),(43,'pelicula','0017_factura_id_usuario','2020-06-03 03:21:57.291201'),(44,'pelicula','0018_auto_20200602_2335','2020-06-03 03:35:39.242307'),(45,'pelicula','0019_auto_20200621_0606','2020-06-21 06:06:08.159060'),(46,'pelicula','0020_usuario','2020-06-21 06:08:40.864941'),(47,'pelicula','0021_pelicula','2020-06-21 06:12:30.307796'),(48,'pelicula','0022_categoria_registrocategorias','2020-06-21 06:13:42.563267'),(49,'pelicula','0023_sala_sucursal','2020-06-21 06:14:41.991546'),(50,'pelicula','0024_asiento_funcion','2020-06-21 06:15:51.352074'),(51,'pelicula','0025_auto_20200621_0617','2020-06-21 06:17:30.178685'),(52,'pelicula','0026_factura_promociones','2020-06-21 06:18:41.373115'),(53,'pelicula','0027_registropromociones','2020-06-21 06:23:22.778641'),(54,'pelicula','0028_registroasientosreservados_registrocompras','2020-06-21 06:28:10.658985'),(55,'pelicula','0029_auto_20200621_0653','2020-06-21 06:53:12.646831');
 /*!40000 ALTER TABLE `django_migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -321,94 +321,8 @@ CREATE TABLE `django_session` (
 
 LOCK TABLES `django_session` WRITE;
 /*!40000 ALTER TABLE `django_session` DISABLE KEYS */;
-INSERT INTO `django_session` VALUES ('9s7nvf22xa7s9uli07n8cesxhvyfcoji','N2FiMWNkYzhlMzliOTliOTE1NTMzOTdmNmYzYTdhMmY3N2I2MGM4Mjp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI3ZjkzZWE1MzJlZWY5NDQwYjczNzA3Yjg5NmVkMWU4NTJlZjNmZmU4In0=','2020-06-11 21:39:34.568544'),('pgple7zysw1i1c5v6052yxnzpncn0fg9','N2FiMWNkYzhlMzliOTliOTE1NTMzOTdmNmYzYTdhMmY3N2I2MGM4Mjp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI3ZjkzZWE1MzJlZWY5NDQwYjczNzA3Yjg5NmVkMWU4NTJlZjNmZmU4In0=','2020-06-12 17:24:44.251055'),('vcyqwr7464oczfrlbl0q4os13t27fssu','N2FiMWNkYzhlMzliOTliOTE1NTMzOTdmNmYzYTdhMmY3N2I2MGM4Mjp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI3ZjkzZWE1MzJlZWY5NDQwYjczNzA3Yjg5NmVkMWU4NTJlZjNmZmU4In0=','2020-06-20 16:56:25.284740'),('zrd28rx3slefi7n858lu9gh1e697z3fe','N2FiMWNkYzhlMzliOTliOTE1NTMzOTdmNmYzYTdhMmY3N2I2MGM4Mjp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI3ZjkzZWE1MzJlZWY5NDQwYjczNzA3Yjg5NmVkMWU4NTJlZjNmZmU4In0=','2020-06-14 03:30:35.531493');
+INSERT INTO `django_session` VALUES ('9s7nvf22xa7s9uli07n8cesxhvyfcoji','N2FiMWNkYzhlMzliOTliOTE1NTMzOTdmNmYzYTdhMmY3N2I2MGM4Mjp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI3ZjkzZWE1MzJlZWY5NDQwYjczNzA3Yjg5NmVkMWU4NTJlZjNmZmU4In0=','2020-06-11 21:39:34.568544'),('lkimip6vp1vprov38h0felgt575n1cmq','MGYzZDY2MThiODIzZWI4Mzg4Y2QxMGE0ZDM4ODRlNWNiNjM0OWViYjp7Il9hdXRoX3VzZXJfaWQiOiIyIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI4MDdkYzJhZDQxMzA1OWEyNzQ5ZjVlYzA2ODI1MGEwNDIzMGVhNmQwIn0=','2020-07-05 06:06:37.974205'),('pgple7zysw1i1c5v6052yxnzpncn0fg9','N2FiMWNkYzhlMzliOTliOTE1NTMzOTdmNmYzYTdhMmY3N2I2MGM4Mjp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI3ZjkzZWE1MzJlZWY5NDQwYjczNzA3Yjg5NmVkMWU4NTJlZjNmZmU4In0=','2020-06-12 17:24:44.251055'),('vcyqwr7464oczfrlbl0q4os13t27fssu','N2FiMWNkYzhlMzliOTliOTE1NTMzOTdmNmYzYTdhMmY3N2I2MGM4Mjp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI3ZjkzZWE1MzJlZWY5NDQwYjczNzA3Yjg5NmVkMWU4NTJlZjNmZmU4In0=','2020-06-20 16:56:25.284740'),('zrd28rx3slefi7n858lu9gh1e697z3fe','N2FiMWNkYzhlMzliOTliOTE1NTMzOTdmNmYzYTdhMmY3N2I2MGM4Mjp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI3ZjkzZWE1MzJlZWY5NDQwYjczNzA3Yjg5NmVkMWU4NTJlZjNmZmU4In0=','2020-06-14 03:30:35.531493');
 /*!40000 ALTER TABLE `django_session` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `factura_comprascombos`
---
-
-DROP TABLE IF EXISTS `factura_comprascombos`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `factura_comprascombos` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `cantidad` int NOT NULL,
-  `id_combos_id` int NOT NULL,
-  `id_factura_id` int NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `factura_comprascombos_id_combos_id_4d0e9547_fk_combos_combo_id` (`id_combos_id`),
-  KEY `factura_comprascombo_id_factura_id_f955b6db_fk_factura_f` (`id_factura_id`),
-  CONSTRAINT `factura_comprascombo_id_factura_id_f955b6db_fk_factura_f` FOREIGN KEY (`id_factura_id`) REFERENCES `factura_factura` (`id`),
-  CONSTRAINT `factura_comprascombos_id_combos_id_4d0e9547_fk_combos_combo_id` FOREIGN KEY (`id_combos_id`) REFERENCES `combos_combo` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `factura_comprascombos`
---
-
-LOCK TABLES `factura_comprascombos` WRITE;
-/*!40000 ALTER TABLE `factura_comprascombos` DISABLE KEYS */;
-/*!40000 ALTER TABLE `factura_comprascombos` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `factura_comprasentradas`
---
-
-DROP TABLE IF EXISTS `factura_comprasentradas`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `factura_comprasentradas` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `id_asiento_id` int NOT NULL,
-  `id_entrada_id` int NOT NULL,
-  `id_factura_id` int NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `factura_comprasentra_id_asiento_id_ab0f053c_fk_pelicula_` (`id_asiento_id`),
-  KEY `factura_comprasentra_id_entrada_id_9639526c_fk_pelicula_` (`id_entrada_id`),
-  KEY `factura_comprasentra_id_factura_id_a30f0691_fk_factura_f` (`id_factura_id`),
-  CONSTRAINT `factura_comprasentra_id_asiento_id_ab0f053c_fk_pelicula_` FOREIGN KEY (`id_asiento_id`) REFERENCES `pelicula_asiento` (`id`),
-  CONSTRAINT `factura_comprasentra_id_entrada_id_9639526c_fk_pelicula_` FOREIGN KEY (`id_entrada_id`) REFERENCES `pelicula_entrada` (`id`),
-  CONSTRAINT `factura_comprasentra_id_factura_id_a30f0691_fk_factura_f` FOREIGN KEY (`id_factura_id`) REFERENCES `factura_factura` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `factura_comprasentradas`
---
-
-LOCK TABLES `factura_comprasentradas` WRITE;
-/*!40000 ALTER TABLE `factura_comprasentradas` DISABLE KEYS */;
-/*!40000 ALTER TABLE `factura_comprasentradas` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `factura_factura`
---
-
-DROP TABLE IF EXISTS `factura_factura`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `factura_factura` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `fecha_compra` date NOT NULL,
-  `id_funcion_id` int NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `factura_factura_id_funcion_id_b6a76d08_fk_pelicula_funcion_id` (`id_funcion_id`),
-  CONSTRAINT `factura_factura_id_funcion_id_b6a76d08_fk_pelicula_funcion_id` FOREIGN KEY (`id_funcion_id`) REFERENCES `pelicula_funcion` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `factura_factura`
---
-
-LOCK TABLES `factura_factura` WRITE;
-/*!40000 ALTER TABLE `factura_factura` DISABLE KEYS */;
-/*!40000 ALTER TABLE `factura_factura` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -426,7 +340,7 @@ CREATE TABLE `pelicula_asiento` (
   PRIMARY KEY (`id`),
   KEY `pelicula_asiento_id_sala_id_4862913f_fk_pelicula_sala_id` (`id_sala_id`),
   CONSTRAINT `pelicula_asiento_id_sala_id_4862913f_fk_pelicula_sala_id` FOREIGN KEY (`id_sala_id`) REFERENCES `pelicula_sala` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=89 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -435,120 +349,30 @@ CREATE TABLE `pelicula_asiento` (
 
 LOCK TABLES `pelicula_asiento` WRITE;
 /*!40000 ALTER TABLE `pelicula_asiento` DISABLE KEYS */;
-INSERT INTO `pelicula_asiento` VALUES (1,1,1,1),(2,1,2,1),(3,1,3,1),(4,1,4,1),(5,1,5,1),(6,1,6,1),(7,1,7,1),(8,1,8,1),(9,2,1,1),(10,2,2,1),(11,2,3,1),(12,2,4,1),(13,2,5,1),(14,2,6,1),(15,2,7,1),(16,2,8,1),(17,3,1,1),(18,3,2,1),(19,3,3,1),(20,3,4,1),(21,3,5,1),(22,3,6,1),(23,3,7,1),(24,3,8,1),(25,1,1,2),(26,1,2,2),(27,1,3,2),(28,1,4,2),(29,2,1,2),(30,2,2,2),(31,2,3,2),(32,2,4,2),(33,3,1,2),(34,3,2,2),(35,3,3,2),(36,3,4,2),(37,4,1,2),(38,4,2,2),(39,4,3,2),(40,4,4,2),(41,5,1,2),(42,5,2,2),(43,5,3,2),(44,5,4,2),(45,6,1,2),(46,6,2,2),(47,6,3,2),(48,6,4,2),(49,7,1,2),(50,7,2,2),(51,7,3,2),(52,7,4,2),(53,1,1,3),(54,1,2,3),(55,1,3,3),(56,1,4,3),(57,1,5,3),(58,1,6,3),(59,2,1,3),(60,2,2,3),(61,2,3,3),(62,2,4,3),(63,2,5,3),(64,2,6,3),(65,3,1,3),(66,3,2,3),(67,3,3,3),(68,3,4,3),(69,3,5,3),(70,3,6,3),(71,1,1,4),(72,1,2,4),(73,1,3,4),(74,1,4,4),(75,1,5,4),(76,1,6,4),(77,2,1,4),(78,2,2,4),(79,2,3,4),(80,2,4,4),(81,2,5,4),(82,2,6,4),(83,3,1,4),(84,3,2,4),(85,3,3,4),(86,3,4,4),(87,3,5,4),(88,3,6,4);
 /*!40000 ALTER TABLE `pelicula_asiento` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `pelicula_combo`
+-- Table structure for table `pelicula_categoria`
 --
 
-DROP TABLE IF EXISTS `pelicula_combo`;
+DROP TABLE IF EXISTS `pelicula_categoria`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `pelicula_combo` (
+CREATE TABLE `pelicula_categoria` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(200) NOT NULL,
-  `descripcion` longtext NOT NULL,
-  `precio` double NOT NULL,
-  `estado` tinyint(1) NOT NULL,
+  `categoria` varchar(200) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `pelicula_combo`
---
-
-LOCK TABLES `pelicula_combo` WRITE;
-/*!40000 ALTER TABLE `pelicula_combo` DISABLE KEYS */;
-INSERT INTO `pelicula_combo` VALUES (1,'Combo Informático','1 Cotufa\r\n1 Refresco\r\n1 Golosina\r\n1 Cuchería Salada',9,1),(2,'Combo Leng en Familia','2 Cotufas\r\n4 Refrescos',15,1),(3,'Combo Caliente','1 Perro Caliente\r\n1 Refresco',6,1),(4,'Combo Caliente Caliente','2 Perros Calientes\r\n2 Refrescos',12,1),(5,'Combo Acompañado','2 Cotufas\r\n2 Refrescos\r\n2 Chucherías Saladas',14.5,1),(6,'Combo Enamorado','1 Cotufa\r\n2 Refrescos\r\n1 Golosina',9.25,1);
-/*!40000 ALTER TABLE `pelicula_combo` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `pelicula_comprascombos`
---
-
-DROP TABLE IF EXISTS `pelicula_comprascombos`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `pelicula_comprascombos` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `cantidad` int NOT NULL,
-  `id_combos_id` int NOT NULL,
-  `id_factura_id` int NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `pelicula_comprascomb_id_combos_id_97f2df8f_fk_pelicula_` (`id_combos_id`),
-  KEY `pelicula_comprascomb_id_factura_id_cb0c535d_fk_pelicula_` (`id_factura_id`),
-  CONSTRAINT `pelicula_comprascomb_id_combos_id_97f2df8f_fk_pelicula_` FOREIGN KEY (`id_combos_id`) REFERENCES `pelicula_combo` (`id`),
-  CONSTRAINT `pelicula_comprascomb_id_factura_id_cb0c535d_fk_pelicula_` FOREIGN KEY (`id_factura_id`) REFERENCES `pelicula_factura` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `pelicula_comprascombos`
+-- Dumping data for table `pelicula_categoria`
 --
 
-LOCK TABLES `pelicula_comprascombos` WRITE;
-/*!40000 ALTER TABLE `pelicula_comprascombos` DISABLE KEYS */;
-/*!40000 ALTER TABLE `pelicula_comprascombos` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `pelicula_comprasentradas`
---
-
-DROP TABLE IF EXISTS `pelicula_comprasentradas`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `pelicula_comprasentradas` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `id_asiento_id` int NOT NULL,
-  `id_entrada_id` int NOT NULL,
-  `id_factura_id` int NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `pelicula_comprasentr_id_asiento_id_1ccf8305_fk_pelicula_` (`id_asiento_id`),
-  KEY `pelicula_comprasentr_id_entrada_id_6657f3c5_fk_pelicula_` (`id_entrada_id`),
-  KEY `pelicula_comprasentr_id_factura_id_00fe0613_fk_pelicula_` (`id_factura_id`),
-  CONSTRAINT `pelicula_comprasentr_id_asiento_id_1ccf8305_fk_pelicula_` FOREIGN KEY (`id_asiento_id`) REFERENCES `pelicula_asiento` (`id`),
-  CONSTRAINT `pelicula_comprasentr_id_entrada_id_6657f3c5_fk_pelicula_` FOREIGN KEY (`id_entrada_id`) REFERENCES `pelicula_entrada` (`id`),
-  CONSTRAINT `pelicula_comprasentr_id_factura_id_00fe0613_fk_pelicula_` FOREIGN KEY (`id_factura_id`) REFERENCES `pelicula_factura` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `pelicula_comprasentradas`
---
-
-LOCK TABLES `pelicula_comprasentradas` WRITE;
-/*!40000 ALTER TABLE `pelicula_comprasentradas` DISABLE KEYS */;
-/*!40000 ALTER TABLE `pelicula_comprasentradas` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `pelicula_entrada`
---
-
-DROP TABLE IF EXISTS `pelicula_entrada`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `pelicula_entrada` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `tipo` varchar(20) NOT NULL,
-  `precio` double NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `pelicula_entrada`
---
-
-LOCK TABLES `pelicula_entrada` WRITE;
-/*!40000 ALTER TABLE `pelicula_entrada` DISABLE KEYS */;
-INSERT INTO `pelicula_entrada` VALUES (1,'Menor de Edad',5),(2,'General',10),(3,'Tercera Edad',4);
-/*!40000 ALTER TABLE `pelicula_entrada` ENABLE KEYS */;
+LOCK TABLES `pelicula_categoria` WRITE;
+/*!40000 ALTER TABLE `pelicula_categoria` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pelicula_categoria` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -561,13 +385,11 @@ DROP TABLE IF EXISTS `pelicula_factura`;
 CREATE TABLE `pelicula_factura` (
   `id` int NOT NULL AUTO_INCREMENT,
   `fecha_compra` date NOT NULL,
-  `id_funcion_id` int NOT NULL,
+  `total_factura` double NOT NULL,
   `id_usuario_id` int NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `pelicula_factura_id_funcion_id_064daec7_fk_pelicula_funcion_id` (`id_funcion_id`),
-  KEY `pelicula_factura_id_usuario_id_ac787fdc_fk_pelicula_usuarios_id` (`id_usuario_id`),
-  CONSTRAINT `pelicula_factura_id_funcion_id_064daec7_fk_pelicula_funcion_id` FOREIGN KEY (`id_funcion_id`) REFERENCES `pelicula_funcion` (`id`),
-  CONSTRAINT `pelicula_factura_id_usuario_id_ac787fdc_fk_pelicula_usuarios_id` FOREIGN KEY (`id_usuario_id`) REFERENCES `pelicula_usuarios` (`id`)
+  KEY `pelicula_factura_id_usuario_id_ac787fdc_fk_pelicula_usuario_id` (`id_usuario_id`),
+  CONSTRAINT `pelicula_factura_id_usuario_id_ac787fdc_fk_pelicula_usuario_id` FOREIGN KEY (`id_usuario_id`) REFERENCES `pelicula_usuario` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -596,11 +418,11 @@ CREATE TABLE `pelicula_funcion` (
   `id_pelicula_id` int NOT NULL,
   `id_sala_id` int NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `pelicula_funcion_id_sala_id_c8b9d374_fk_pelicula_sala_id` (`id_sala_id`),
   KEY `pelicula_funcion_id_pelicula_id_0c65fc65_fk_pelicula_pelicula_id` (`id_pelicula_id`),
+  KEY `pelicula_funcion_id_sala_id_c8b9d374_fk_pelicula_sala_id` (`id_sala_id`),
   CONSTRAINT `pelicula_funcion_id_pelicula_id_0c65fc65_fk_pelicula_pelicula_id` FOREIGN KEY (`id_pelicula_id`) REFERENCES `pelicula_pelicula` (`id`),
   CONSTRAINT `pelicula_funcion_id_sala_id_c8b9d374_fk_pelicula_sala_id` FOREIGN KEY (`id_sala_id`) REFERENCES `pelicula_sala` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -609,7 +431,6 @@ CREATE TABLE `pelicula_funcion` (
 
 LOCK TABLES `pelicula_funcion` WRITE;
 /*!40000 ALTER TABLE `pelicula_funcion` DISABLE KEYS */;
-INSERT INTO `pelicula_funcion` VALUES (1,'2020-06-08','12:00:00.000000',24,1,15,1),(2,'2020-06-10','16:00:00.000000',18,1,10,3),(3,'2020-06-12','18:00:00.000000',18,1,47,4);
 /*!40000 ALTER TABLE `pelicula_funcion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -624,14 +445,13 @@ CREATE TABLE `pelicula_pelicula` (
   `id` int NOT NULL AUTO_INCREMENT,
   `titulo` varchar(200) NOT NULL,
   `sinopsis` longtext NOT NULL,
-  `categoria` varchar(100) NOT NULL,
   `imagen` varchar(200) NOT NULL,
   `fecha_estreno` date NOT NULL,
   `fecha_salida` date NOT NULL,
   `duracion` time(6) NOT NULL,
   `estado` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -640,37 +460,207 @@ CREATE TABLE `pelicula_pelicula` (
 
 LOCK TABLES `pelicula_pelicula` WRITE;
 /*!40000 ALTER TABLE `pelicula_pelicula` DISABLE KEYS */;
-INSERT INTO `pelicula_pelicula` VALUES (1,'Avengers: Endgame','Los Vengadores restantes deben encontrar una manera de recuperar a sus aliados para un enfrentamiento épico con Thanos, el malvado que diezmó el planeta y el universo.','Acción','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiC3mSrAdG2_Tkuz5CbCm2TA-wYikac3dOPVlzb5jCk1gqsHOD','2020-04-22','2020-08-31','03:02:00.000000',1),(5,'Minions: The Rise of Gru','En los años 70, Gru crece siendo un gran admirador de \"Los salvajes seis\", un supergrupo de villanos. Para demostrarles que puede ser malvado, Gru idea un plan con la esperanza de formar parte de la banda. Por suerte, cuenta con la ayuda de sus fieles seguidores, los Minions, siempre dispuestos a sembrar el caos.','Animación','https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSstyN1_KkleU06pFzCU1eX2DnLVdYSkeXmEJbqhYOGHB5nUUQ1','2021-07-01','2021-09-01','01:30:00.000000',1),(6,'Wonder Woman 2','Diana Prince, conocida como Wonder Woman se enfrenta a Cheetah, una villana que posee fuerza y agilidad sobrehumanas.','Aventura','https://es.web.img3.acsta.net/pictures/20/03/25/15/45/1789056.jpg','2020-08-12','2020-10-12','02:00:00.000000',1),(10,'Mulán','El emperador chino emite un decreto que exige que cada hogar debe reclutar a un varón para luchar con el ejército imperial en la guerra contra los Hunos. Para salvar a su anciano padre de este deber, su única hija Fa Mulán se hace pasar por soldado y toma su lugar. La joven se someterá a un duro entrenamiento hasta hacerse merecedora de la estima y de la confianza del resto de su escuadrón.','Aventura','https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSPO5lOKd7RPvg5wdNS6ZYMfC392opn2pGBxlX0My_nmXHf1RSI','2020-03-20','2020-06-20','02:00:00.000000',1),(12,'Sonic la película','Sonic intenta navegar por las complejidades de la vida en la Tierra con su nuevo mejor amigo, un humano llamado Tom Wachowski. Pronto deben unir fuerzas para evitar que el malvado Dr. Robotnik capture a Sonic y use sus poderes para dominar el mundo.','Comedia','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0ijOSqW5zTSrLn_TTyoBBR6Fi8WkMkndqmj6KpihRgPA2isJQ','2020-02-09','2020-07-09','01:40:00.000000',1),(13,'¡Scooby!','Con cientos de casos resueltos y aventuras compartidas, Scooby y la pandilla se enfrentan al misterio más grande y desafiante de todos los tiempos: un complot para liberar al perro fantasma Cerberus en el mundo. Mientras compiten para detener esta escasez de perros global, la pandilla descubre que Scooby tiene un legado secreto y un destino épico más grande de lo que cualquiera podría haber imaginado.','Animación','https://e00-marca.uecdn.es/assets/multimedia/imagenes/2020/03/04/15833407274962.jpg','2020-05-13','2020-02-13','01:34:00.000000',1),(15,'Black Widow','Al nacer, la Viuda Negra, también conocida como Natasha Romanova, se entrega a la KGB para convertirse en su agente definitivo. Cuando la URSS se separa, el gobierno intenta matarla mientras la acción se traslada a la actual Nueva York.','Acción','https://es.web.img3.acsta.net/pictures/20/03/09/18/28/5915477.jpg','2020-04-29','2020-06-29','02:00:00.000000',1),(17,'Godzilla vs. Kong','Godzilla y Kong, dos de las fuerzas más poderosas de un planeta habitado por aterradoras criaturas, se enfrentan en un espectacular combate que sacude los cimientos de la humanidad. Monarch se embarca en una misión de alto riesgo y pone rumbo hacia territorios inexplorados para descubrir los orígenes de estos dos titanes, en un último esfuerzo por tratar de salvar a dos bestias que parecen tener las horas contadas sobre la faz de la Tierra.','Ciencia Ficción','https://i.pinimg.com/originals/ee/9a/bd/ee9abd1e77f11149e2eb336c664df783.jpg','2020-11-18','2021-01-18','02:00:00.000000',1),(18,'Gretel y Hansel','A principios del siglo XIV en Baviera, Gretel y Hansel viven en la miseria desde que su padre falleció. Por la falta de recursos su padrastro se embarca con ellos en una huída por el bosque donde un cazador les indica el camino seguro. Así, los hermanos encontrarán la cabaña de Holda, una simpática mujer. Todo va bien y la comida abunda, pero algo les huele mal. Gretel y Hansel se vana enfrentar a sus peores miedos.','Terror','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkWKtZSg_u563SNEaRjLt6dU-SCsT3QR3ekApe_a6vLPJ9ejiC','2020-03-30','2020-06-30','01:27:00.000000',1),(19,'El conjuro 3','La nueva historia se enmarcará en un caso real al que los Warren se enfrentaron en 1981, donde un hombre fue acusado de asesinato y su defensa fue manifestar que cometió el crimen bajo la influencia de varias decenas de demonios.','Terror','https://i.pinimg.com/564x/95/f6/a4/95f6a4945b35e1739ff82634da6865b5.jpg','2020-09-10','2020-11-10','02:00:00.000000',1),(20,'Violet y Finch','Dos adolescentes luchan con las heridas emocionales y físicas de su pasado. Juntos, descubren que hasta los momentos más pequeños pueden ser relevantes.','Drama','https://www.lavanguardia.com/r/GODO/LV/p7/WebSite/2020/03/03/Recortada/img_jdelriov_20200303-112904_imagenes_lv_terceros_91s-vjhht2l-283-kMU--656x1012@LaVanguardia-Web.jpg','2020-02-28','2020-07-20','01:48:00.000000',1),(21,'Free Guy','Un cajero de un banco descubre que en realidad es un personaje sin papel dentro de un brutal videojuego de mundo interactivo.','Comedia','https://www.cinemascomics.com/wp-content/uploads/2019/12/free-guy-min.jpg','2020-07-01','2020-09-01','02:00:00.000000',1),(26,'El jardín secreto','Una amistad surge entre una huérfana y el hijo de su tío, cuando ella descubre y cuida de un jardín abandonado.','Drama','https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR8UTDt_fSaZ-Dyq4bPNwgsZSKFSZISMOgoL14suoWSnbNIf0Jh','2020-04-08','2020-06-08','01:46:00.000000',1),(28,'El hoyo','En el futuro, los prisioneros se alojan en celdas verticales, observando cómo los presos de las celdas superiores son alimentados mientras los de abajo mueren de hambre. Una jungla de supervivencia donde solo hay tres tipos de personas: los que están arriba, los que están abajo y los que deciden saltar, incapaces de soportar esa agonía por más tiempo.','Ciencia Ficción','https://kultura.errenteria.eus/app/uploads/sites/3/2020/01/0218_El-hoyo.jpg','2020-02-21','2020-06-21','01:34:00.000000',1),(30,'Si supieras','Una joven y tímida muchacha de la escuela secundaria ayuda a un amigo a escribir una carta de amor para una persona que ambos desean.','Romance','https://pmcdeadline2.files.wordpress.com/2020/04/thoi_vertical_main_rgb_en-us.jpg?w=691&h=1024','2020-05-01','2020-07-01','01:44:00.000000',1),(33,'West Side Story','Nueva versión del legendario musical \'West Side Story\' sobre el enfrentamiento entre dos bandas callejeras de Nueva York, adaptación de una famosa obra de teatro de Broadway que modernizaba el relato de \"Romeo y Julieta\" de Shakespeare','Romance','https://es.web.img2.acsta.net/pictures/19/06/17/16/53/3841963.jpg','2020-12-16','2021-02-16','02:00:00.000000',1),(46,'Aves de presa','Después de separarse de Joker, Harley Quinn y otras tres heroínas, Canario Negro, Cazadora y Renée Montoya, unen sus fuerzas para salvar a una niña del malvado rey del crimen Máscara Negra.','Acción','https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSJ4T1f7QuKgqfcxTMWbCerK83f5FAeAeFsY2sT_wMzZAr76FTn','2020-01-29','2020-07-01','01:49:00.000000',1),(47,'Unidos','Ambientado en un mundo de fantasía suburbana, dos hermanos elfos adolescentes, Ian y Barley Lightfood, se embarcan en una aventura en la que se proponen descubrir si existe aún algo de magia en el mundo que les permita pasar un último día con su padre, que falleció cuando ellos eran aún muy pequeños como para poder recordarlo.','Animación','https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQYUG1bSWlMqpoJhnfQBVzYsYX0xzTzPuTaKREpkb-M0QjRy9PB','2020-02-29','2020-07-29','01:42:00.000000',1);
 /*!40000 ALTER TABLE `pelicula_pelicula` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `pelicula_reservarasientos`
+-- Table structure for table `pelicula_producto`
 --
 
-DROP TABLE IF EXISTS `pelicula_reservarasientos`;
+DROP TABLE IF EXISTS `pelicula_producto`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `pelicula_reservarasientos` (
+CREATE TABLE `pelicula_producto` (
   `id` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(200) NOT NULL,
+  `descripcion` longtext NOT NULL,
+  `precio` double NOT NULL,
   `estado` tinyint(1) NOT NULL,
-  `id_asiento_id` int NOT NULL,
-  `id_funcion_id` int NOT NULL,
+  `id_tipos_productos_id` int NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `pelicula_reservaasie_id_asiento_id_b784471f_fk_pelicula_` (`id_asiento_id`),
-  KEY `pelicula_reservaasie_id_funcion_id_00f3ce6f_fk_pelicula_` (`id_funcion_id`),
-  CONSTRAINT `pelicula_reservaasie_id_asiento_id_b784471f_fk_pelicula_` FOREIGN KEY (`id_asiento_id`) REFERENCES `pelicula_asiento` (`id`),
-  CONSTRAINT `pelicula_reservaasie_id_funcion_id_00f3ce6f_fk_pelicula_` FOREIGN KEY (`id_funcion_id`) REFERENCES `pelicula_funcion` (`id`)
+  KEY `pelicula_producto_id_tipos_productos_i_387bfe3b_fk_pelicula_` (`id_tipos_productos_id`),
+  CONSTRAINT `pelicula_producto_id_tipos_productos_i_387bfe3b_fk_pelicula_` FOREIGN KEY (`id_tipos_productos_id`) REFERENCES `pelicula_tipoproductos` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `pelicula_reservarasientos`
+-- Dumping data for table `pelicula_producto`
 --
 
-LOCK TABLES `pelicula_reservarasientos` WRITE;
-/*!40000 ALTER TABLE `pelicula_reservarasientos` DISABLE KEYS */;
-/*!40000 ALTER TABLE `pelicula_reservarasientos` ENABLE KEYS */;
+LOCK TABLES `pelicula_producto` WRITE;
+/*!40000 ALTER TABLE `pelicula_producto` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pelicula_producto` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pelicula_promociones`
+--
+
+DROP TABLE IF EXISTS `pelicula_promociones`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `pelicula_promociones` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(200) NOT NULL,
+  `descripcion` longtext NOT NULL,
+  `condicion` varchar(200) NOT NULL,
+  `descuento` double NOT NULL,
+  `estado` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pelicula_promociones`
+--
+
+LOCK TABLES `pelicula_promociones` WRITE;
+/*!40000 ALTER TABLE `pelicula_promociones` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pelicula_promociones` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pelicula_registroasientosreservados`
+--
+
+DROP TABLE IF EXISTS `pelicula_registroasientosreservados`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `pelicula_registroasientosreservados` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `id_asientos_id` int NOT NULL,
+  `id_factura_id` int NOT NULL,
+  `id_funciones_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `pelicula_registroasi_id_asientos_id_7ebbee3b_fk_pelicula_` (`id_asientos_id`),
+  KEY `pelicula_registroasi_id_factura_id_408eb119_fk_pelicula_` (`id_factura_id`),
+  KEY `pelicula_registroasi_id_funciones_id_65f20637_fk_pelicula_` (`id_funciones_id`),
+  CONSTRAINT `pelicula_registroasi_id_asientos_id_7ebbee3b_fk_pelicula_` FOREIGN KEY (`id_asientos_id`) REFERENCES `pelicula_asiento` (`id`),
+  CONSTRAINT `pelicula_registroasi_id_factura_id_408eb119_fk_pelicula_` FOREIGN KEY (`id_factura_id`) REFERENCES `pelicula_factura` (`id`),
+  CONSTRAINT `pelicula_registroasi_id_funciones_id_65f20637_fk_pelicula_` FOREIGN KEY (`id_funciones_id`) REFERENCES `pelicula_funcion` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pelicula_registroasientosreservados`
+--
+
+LOCK TABLES `pelicula_registroasientosreservados` WRITE;
+/*!40000 ALTER TABLE `pelicula_registroasientosreservados` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pelicula_registroasientosreservados` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pelicula_registrocategorias`
+--
+
+DROP TABLE IF EXISTS `pelicula_registrocategorias`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `pelicula_registrocategorias` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `id_categoria_id` int NOT NULL,
+  `id_pelicula_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `pelicula_registrocat_id_categoria_id_c6389c89_fk_pelicula_` (`id_categoria_id`),
+  KEY `pelicula_registrocat_id_pelicula_id_75fe678a_fk_pelicula_` (`id_pelicula_id`),
+  CONSTRAINT `pelicula_registrocat_id_categoria_id_c6389c89_fk_pelicula_` FOREIGN KEY (`id_categoria_id`) REFERENCES `pelicula_categoria` (`id`),
+  CONSTRAINT `pelicula_registrocat_id_pelicula_id_75fe678a_fk_pelicula_` FOREIGN KEY (`id_pelicula_id`) REFERENCES `pelicula_pelicula` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pelicula_registrocategorias`
+--
+
+LOCK TABLES `pelicula_registrocategorias` WRITE;
+/*!40000 ALTER TABLE `pelicula_registrocategorias` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pelicula_registrocategorias` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pelicula_registrocombos`
+--
+
+DROP TABLE IF EXISTS `pelicula_registrocombos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `pelicula_registrocombos` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `cantidad` int NOT NULL,
+  `id_producto_combo_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `pelicula_registrocom_id_producto_combo_id_b2db4991_fk_pelicula_` (`id_producto_combo_id`),
+  CONSTRAINT `pelicula_registrocom_id_producto_combo_id_b2db4991_fk_pelicula_` FOREIGN KEY (`id_producto_combo_id`) REFERENCES `pelicula_producto` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pelicula_registrocombos`
+--
+
+LOCK TABLES `pelicula_registrocombos` WRITE;
+/*!40000 ALTER TABLE `pelicula_registrocombos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pelicula_registrocombos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pelicula_registrocompras`
+--
+
+DROP TABLE IF EXISTS `pelicula_registrocompras`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `pelicula_registrocompras` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `cantidad` int NOT NULL,
+  `precio` double NOT NULL,
+  `id_factura_id` int NOT NULL,
+  `id_producto_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `pelicula_registrocom_id_factura_id_ac6a84da_fk_pelicula_` (`id_factura_id`),
+  KEY `pelicula_registrocom_id_producto_id_c394a4bd_fk_pelicula_` (`id_producto_id`),
+  CONSTRAINT `pelicula_registrocom_id_factura_id_ac6a84da_fk_pelicula_` FOREIGN KEY (`id_factura_id`) REFERENCES `pelicula_factura` (`id`),
+  CONSTRAINT `pelicula_registrocom_id_producto_id_c394a4bd_fk_pelicula_` FOREIGN KEY (`id_producto_id`) REFERENCES `pelicula_producto` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pelicula_registrocompras`
+--
+
+LOCK TABLES `pelicula_registrocompras` WRITE;
+/*!40000 ALTER TABLE `pelicula_registrocompras` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pelicula_registrocompras` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pelicula_registropromociones`
+--
+
+DROP TABLE IF EXISTS `pelicula_registropromociones`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `pelicula_registropromociones` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `descuento_aplicado` double NOT NULL,
+  `id_factura_id` int NOT NULL,
+  `id_promociones_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `pelicula_registropro_id_factura_id_1bbe0472_fk_pelicula_` (`id_factura_id`),
+  KEY `pelicula_registropro_id_promociones_id_f1228753_fk_pelicula_` (`id_promociones_id`),
+  CONSTRAINT `pelicula_registropro_id_factura_id_1bbe0472_fk_pelicula_` FOREIGN KEY (`id_factura_id`) REFERENCES `pelicula_factura` (`id`),
+  CONSTRAINT `pelicula_registropro_id_promociones_id_f1228753_fk_pelicula_` FOREIGN KEY (`id_promociones_id`) REFERENCES `pelicula_promociones` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pelicula_registropromociones`
+--
+
+LOCK TABLES `pelicula_registropromociones` WRITE;
+/*!40000 ALTER TABLE `pelicula_registropromociones` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pelicula_registropromociones` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -682,12 +672,14 @@ DROP TABLE IF EXISTS `pelicula_sala`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `pelicula_sala` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `tipo_sala` varchar(200) NOT NULL,
+  `nombre` varchar(200) NOT NULL,
   `numero_filas` int NOT NULL,
   `numero_columnas` int NOT NULL,
-  `imagen` varchar(200) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `id_sucursal_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `pelicula_sala_id_sucursal_id_9d4a5f99_fk_pelicula_sucursal_id` (`id_sucursal_id`),
+  CONSTRAINT `pelicula_sala_id_sucursal_id_9d4a5f99_fk_pelicula_sucursal_id` FOREIGN KEY (`id_sucursal_id`) REFERENCES `pelicula_sucursal` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -696,35 +688,83 @@ CREATE TABLE `pelicula_sala` (
 
 LOCK TABLES `pelicula_sala` WRITE;
 /*!40000 ALTER TABLE `pelicula_sala` DISABLE KEYS */;
-INSERT INTO `pelicula_sala` VALUES (1,'Sala 2D',3,8,'https://i.imgur.com/duLgFBH.png'),(2,'Sala 3D',7,4,'https://i.imgur.com/Sm9qmv9.png'),(3,'Sala VIP',3,6,'https://i.imgur.com/qKWPSBl.png'),(4,'Sala 4DX',3,6,'https://i.imgur.com/qKWPSBl.png');
 /*!40000 ALTER TABLE `pelicula_sala` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `pelicula_usuarios`
+-- Table structure for table `pelicula_sucursal`
 --
 
-DROP TABLE IF EXISTS `pelicula_usuarios`;
+DROP TABLE IF EXISTS `pelicula_sucursal`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `pelicula_usuarios` (
+CREATE TABLE `pelicula_sucursal` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(200) NOT NULL,
+  `ubicacion` varchar(200) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pelicula_sucursal`
+--
+
+LOCK TABLES `pelicula_sucursal` WRITE;
+/*!40000 ALTER TABLE `pelicula_sucursal` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pelicula_sucursal` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pelicula_tipoproductos`
+--
+
+DROP TABLE IF EXISTS `pelicula_tipoproductos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `pelicula_tipoproductos` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `tipo` varchar(200) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pelicula_tipoproductos`
+--
+
+LOCK TABLES `pelicula_tipoproductos` WRITE;
+/*!40000 ALTER TABLE `pelicula_tipoproductos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pelicula_tipoproductos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pelicula_usuario`
+--
+
+DROP TABLE IF EXISTS `pelicula_usuario`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `pelicula_usuario` (
   `id` int NOT NULL AUTO_INCREMENT,
   `cedula` varchar(15) NOT NULL,
   `contrasena` varchar(200) NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `apellido` varchar(100) NOT NULL,
   `puntos` int NOT NULL,
+  `estado` tinyint(1) NOT NULL,
+  `tipo_usuario` int NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `pelicula_usuarios`
+-- Dumping data for table `pelicula_usuario`
 --
 
-LOCK TABLES `pelicula_usuarios` WRITE;
-/*!40000 ALTER TABLE `pelicula_usuarios` DISABLE KEYS */;
-/*!40000 ALTER TABLE `pelicula_usuarios` ENABLE KEYS */;
+LOCK TABLES `pelicula_usuario` WRITE;
+/*!40000 ALTER TABLE `pelicula_usuario` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pelicula_usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -736,4 +776,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-06-07 15:57:10
+-- Dump completed on 2020-06-21  3:03:43

@@ -21,7 +21,6 @@ class AgregarFuncion extends Component {
     funcion[event.target.name] = event.target.value;
     this.setState({ funcion });
     console.log(this.state.funcion);
-    
   }
 
   componentDidMount() {
@@ -32,21 +31,20 @@ class AgregarFuncion extends Component {
         const salas = res.data;
         this.setState({ salas });
         console.log(this.state);
-        
+
         this.state.salas.map((sala) => {
-            axios.get(`http://localhost:8000/api/sucursales/${sala.id_sucursal}`)
-                .then(res => {
-                    var sucursales = this.state.sucursales;
-                    sucursales.push(res.data.nombre);
-                    this.setState({sucursales});
-                    console.log(this.state);
-                    
-                })
-        })
+          axios
+            .get(`http://localhost:8000/api/sucursales/${sala.id_sucursal}`)
+            .then((res) => {
+              var sucursales = this.state.sucursales;
+              sucursales.push(res.data.nombre);
+              this.setState({ sucursales });
+              console.log(this.state);
+            });
+        });
       });
     });
   }
-
 
   render() {
     return (

@@ -194,27 +194,26 @@ class AgregarPeli extends Component {
           { headers: { "Content-Type": "application/json" } }
         )
         .then((res) => {
-          this.state.pelicula.categoria
-            .map((categoria) => {
-              if (categoria.checked === true) {
-                const id_pelicula = res.data.id;
-                const id_categoria = categoria.id;
-                axios
-                  .post(
-                    `http://localhost:8000/api/registroCategorias/`,
-                    {
-                      id_pelicula,
-                      id_categoria,
-                    },
-                    { headers: { "Content-Type": "application/json" } }
-                  )
-                  .then((res) => {
-                    console.log(res.data);
-                  });
-              }
-            });
-            console.log(res.data);
-            alert('¡Película agregada con éxito!');
+          this.state.pelicula.categoria.map((categoria) => {
+            if (categoria.checked === true) {
+              const id_pelicula = res.data.id;
+              const id_categoria = categoria.id;
+              axios
+                .post(
+                  `http://localhost:8000/api/registroCategorias/`,
+                  {
+                    id_pelicula,
+                    id_categoria,
+                  },
+                  { headers: { "Content-Type": "application/json" } }
+                )
+                .then((res) => {
+                  console.log(res.data);
+                });
+            }
+          });
+          console.log(res.data);
+          alert("¡Película agregada con éxito!");
         })
         .catch((err) => console.log(err));
     }

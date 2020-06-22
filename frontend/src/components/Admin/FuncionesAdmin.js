@@ -11,6 +11,7 @@ class Funciones extends Component {
         funciones: [],
         peliculas: [],
         salas: [],
+        sucursales: [],
       }
     
       componentDidMount() {
@@ -24,12 +25,19 @@ class Funciones extends Component {
                     var peliculas = this.state.peliculas;
                     peliculas.push(res.data.titulo);
                     this.setState({peliculas});
-                })
+                });
                 axios.get(`http://localhost:8000/api/salas/${funcion.id_sala}`)
                 .then(res => {
                     var salas = this.state.salas;
-                    salas.push(res.data.tipo_sala);
+                    salas.push(res.data.nombre);
                     this.setState({salas});
+                    axios.get(`http://localhost:8000/api/sucursales/${res.data.id}`).then((sucursal) => {
+                        const sucursales = this.state.sucursales;
+                        sucursales.push(sucursal.data.nombre);
+                        this.setState({sucursales});
+                        console.log(this.state);
+                        
+                    });
                 })
             });
           })
@@ -67,6 +75,7 @@ class Funciones extends Component {
                                 <th>Película</th>
                                 <th>Fecha</th>
                                 <th>Hora</th>
+                                <th>Sucursal</th>
                                 <th>Sala</th>
                                 <th>Butacas Disponibles</th>
                                 <th>Modificar</th>
@@ -79,6 +88,7 @@ class Funciones extends Component {
                                 <td>{this.state.peliculas[index]}</td>
                                 <td>{funcion.fecha}</td>
                                 <td>{funcion.hora}</td>
+                                <td>{this.state.sucursales[index]}</td>
                                 <td>{this.state.salas[index]}</td>
                                 <td>{funcion.butacas_disponibles}</td>
                                 <td><Button className="btn btn-info"><FontAwesomeIcon className="text-light" style={{ width:'25px', height: '25px' }} icon={faEdit} /></Button></td>

@@ -95,9 +95,11 @@ class PeliculaAdmin extends Component {
             style={{ minWidth: "300px", maxWidth: "80%" }}
           >
             <thead>
-              <th>Película</th>
-              <th>Modificar</th>
-              <th>Eliminar</th>
+              <tr>
+                <th>Película</th>
+                <th>Modificar</th>
+                <th>Eliminar</th>
+              </tr>
             </thead>
             <tbody>
               {this.state.peliculas.map((pelicula) => (

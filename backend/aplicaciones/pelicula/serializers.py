@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from django.contrib.auth.hashers import make_password
 
 from .models import Usuario, Pelicula, Categoria, registroCategorias, Sucursal, Sala, Funcion, Asiento, tipoProductos, Producto, registroCombos, Factura, Promociones, registroPromociones, registroCompras, registroAsientosReservados
 
@@ -7,7 +8,6 @@ class UsuariosSerializer(serializers.ModelSerializer):
     class Meta:
         model = Usuario
         fields = '__all__'
-
 
 class PeliculasSerializer(serializers.ModelSerializer):
     class Meta:

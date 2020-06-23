@@ -31,7 +31,6 @@ class AgregarPeli extends Component {
       var pelicula = this.state.pelicula;
       pelicula.categoria = categoria;
       this.setState({ pelicula });
-      console.log(this.state);
     });
   }
 
@@ -39,7 +38,6 @@ class AgregarPeli extends Component {
     const pelicula = this.state.pelicula;
     pelicula[event.target.name] = event.target.value;
     this.setState({ pelicula });
-    console.log(this.state);
   }
 
   handleCategorias(event) {
@@ -48,7 +46,6 @@ class AgregarPeli extends Component {
       event.target.name
     ].checked;
     this.setState({ pelicula });
-    console.log(this.state);
   }
 
   render() {
@@ -157,7 +154,6 @@ class AgregarPeli extends Component {
     const categorias = this.state.pelicula.categoria.filter(
       (categoria) => categoria.checked !== false
     );
-    console.log(categorias);
 
     if (
       this.state.pelicula.titulo === "" ||
@@ -215,7 +211,7 @@ class AgregarPeli extends Component {
           console.log(res.data);
           alert("¡Película agregada con éxito!");
         })
-        .catch((err) => console.log(err));
+        .catch((err) => alert(err.response.request.response));
     }
   }
 }

@@ -20,7 +20,6 @@ class AgregarFuncion extends Component {
     const funcion = this.state.funcion;
     funcion[event.target.name] = event.target.value;
     this.setState({ funcion });
-    console.log(this.state.funcion);
   }
 
   componentDidMount() {
@@ -30,8 +29,6 @@ class AgregarFuncion extends Component {
       axios.get(`http://localhost:8000/api/salas/`).then((res) => {
         const salas = res.data;
         this.setState({ salas });
-        console.log(this.state);
-
         this.state.salas.map((sala) => {
           axios
             .get(`http://localhost:8000/api/sucursales/${sala.id_sucursal}`)
@@ -39,7 +36,6 @@ class AgregarFuncion extends Component {
               var sucursales = this.state.sucursales;
               sucursales.push(res.data.nombre);
               this.setState({ sucursales });
-              console.log(this.state);
             });
         });
       });
@@ -126,7 +122,6 @@ class AgregarFuncion extends Component {
 
   handleFuncion() {
     const today = new Date();
-    console.log(today);
     const fecha = new Date(Date.parse(this.state.funcion.fecha));
     fecha.setMinutes(fecha.getMinutes() + fecha.getTimezoneOffset());
 
@@ -179,11 +174,10 @@ class AgregarFuncion extends Component {
           { headers: { "Content-Type": "application/json" } }
         )
         .then((res) => {
-          console.log(res);
           console.log(res.data);
           alert("Función agregada correctamente");
         })
-        .catch((err) => console.log(err));
+        .catch((err) => alert(err.response.request.response));
     }
   }
 }

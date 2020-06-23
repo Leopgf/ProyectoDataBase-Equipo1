@@ -25,11 +25,6 @@ class IniciarSesion extends Component {
                 Recuerde que el Usuario es el número de su Cédula de Identidad
               </Form.Text>
             </Form.Group>
-
-            <Form.Group controlId="formBasicPassword">
-              <Form.Label>Contraseña:</Form.Label>
-              <Form.Control type="password" placeholder="Contraseña" />
-            </Form.Group>
             <Button
               variant="outline-primary"
               style={{ width: "100%" }}

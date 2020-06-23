@@ -3,12 +3,10 @@ from django.db import models
 
 #Usuarios
 class Usuario(models.Model):
-    cedula = models.CharField(max_length=15)
-    contrasena = models.CharField(max_length=200)
+    cedula = models.CharField(max_length=15, unique=True)
     nombre = models.CharField(max_length=100)
     apellido = models.CharField(max_length=100)
     puntos = models.IntegerField(default=0)
-    estado = models.BooleanField(default=True)
     tipo_usuario = models.BooleanField(default=False)
 
     def __str__(self):

@@ -29,7 +29,7 @@ class AgregarFuncion extends Component {
       axios.get(`http://localhost:8000/api/salas/`).then((res) => {
         const salas = res.data;
         this.setState({ salas });
-        this.state.salas.map((sala) => {
+        this.state.salas.forEach((sala) => {
           axios
             .get(`http://localhost:8000/api/sucursales/${sala.id_sucursal}`)
             .then((res) => {

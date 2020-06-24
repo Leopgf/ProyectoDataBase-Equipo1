@@ -20,21 +20,17 @@ class UsuarioViewset(viewsets.ModelViewSet):
     queryset = models.Usuario.objects.all()
     serializer_class = serializers.UsuariosSerializer
 
-
 class CategoriaViewset(viewsets.ModelViewSet):
     queryset = models.Categoria.objects.all()
     serializer_class = serializers.CategoriasSerializer
-
 
 class registroCategoriaViewset(viewsets.ModelViewSet):
     queryset = models.registroCategorias.objects.all()
     serializer_class = serializers.registroCategoriasSerializer
 
-
 class SucursalViewset(viewsets.ModelViewSet):
     queryset = models.Sucursal.objects.all()
     serializer_class = serializers.SucursalesSerializer
-
 
 class SalaViewset(viewsets.ModelViewSet):
     queryset = models.Sala.objects.all()
@@ -42,7 +38,7 @@ class SalaViewset(viewsets.ModelViewSet):
 
 
 class FuncionViewset(viewsets.ModelViewSet):
-    queryset = models.Funcion.objects.all()
+    queryset = models.Funcion.objects.all().filter(estado = True)
     serializer_class = serializers.FuncionSerializer
 
 

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import HeaderCliente from "../Headers/HeaderCliente";
+import Error from "../Error";
 import { Card } from "react-bootstrap";
 import { ListGroup } from "react-bootstrap";
 import { ListGroupItem } from "react-bootstrap";
@@ -18,6 +19,18 @@ class Estrenos extends Component {
   }
 
   render() {
+    if(this.state.estrenos.length === 0) {
+      return (
+        <div className="row">
+        <div className="col-12">
+          <HeaderCliente />
+        </div>
+        <div className="col-12 mt-3">
+          <Error />
+        </div>
+        </div>
+      );
+    }
     return (
       <div className="row">
         <div className="col-12">

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import HeaderAdmin from "../Headers/HeaderAdmin";
+import Error from "../Error";
 import Table from "react-bootstrap/Table";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -59,6 +60,37 @@ class PeliculaAdmin extends Component {
   }
 
   render() {
+    if (this.state.peliculas.length === 0) {
+      return (
+        <div className="row">
+          <div className="col-12">
+            <HeaderAdmin />
+          </div>
+          <div className="col-12 text-center mt-3">
+            <h4>LISTA DE PELÍCULAS DE LENG CINEMA</h4>
+          </div>
+          <div className="col-12 col-md-6 text-center mt-3 "></div>
+          <div className="col-11 col-md-4 col-lg-4 d-flex justify-content-end">
+            <button className="btn btn-success">
+              <a
+                href="/agregar-peli"
+                className="text-light text-decoration-none d-flex align-content-center"
+              >
+                AGREGAR
+                <FontAwesomeIcon
+                  className="text-light ml-2"
+                  style={{ width: "25px", height: "25px" }}
+                  icon={faPlus}
+                />
+              </a>
+            </button>
+          </div>
+          <div className="col-12 mt-3">
+            <Error/>
+          </div>
+        </div>
+      );
+    }
     return (
       <div className="row">
         <div className="col-12">

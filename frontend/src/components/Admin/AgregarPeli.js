@@ -20,7 +20,7 @@ class AgregarPeli extends Component {
   componentDidMount() {
     axios.get(`http://localhost:8000/api/categorias/`).then((response) => {
       var categoria = [];
-      response.data.map((cat) => {
+      response.data.forEach((cat) => {
         const category = {
           id: cat.id,
           categoria: cat.categoria,
@@ -46,6 +46,71 @@ class AgregarPeli extends Component {
       event.target.name
     ].checked;
     this.setState({ pelicula });
+  }
+
+  handlePelicula() {
+    const categorias = this.state.pelicula.categoria.filter(
+      (categoria) => categoria.checked !== false
+    );
+
+    if (
+      this.state.pelicula.titulo === "" ||
+      this.state.pelicula.sinopsis === "" ||
+      this.state.pelicula.imagen === "" ||
+      this.state.pelicula.fecha_estreno === "" ||
+      this.state.pelicula.fecha_salida === "" ||
+      this.state.pelicula.duracion === "" ||
+      categorias.length === 0
+    ) {
+      alert("Error: Campos vacíos o inválidos");
+    } else {
+      const {
+        titulo,
+        sinopsis,
+        imagen,
+        fecha_estreno,
+        fecha_salida,
+        duracion,
+        estado,
+      } = this.state.pelicula;
+      axios
+        .post(
+          `http://localhost:8000/api/peliculas/`,
+          {
+            titulo,
+            sinopsis,
+            imagen,
+            fecha_estreno,
+            fecha_salida,
+            duracion,
+            estado,
+          },
+          { headers: { "Content-Type": "application/json" } }
+        )
+        .then((res) => {
+          this.state.pelicula.categoria.forEach((categoria) => {
+            if (categoria.checked === true) {
+              const id_pelicula = res.data.id;
+              const id_categoria = categoria.id;
+              axios
+                .post(
+                  `http://localhost:8000/api/registroCategorias/`,
+                  {
+                    id_pelicula,
+                    id_categoria,
+                  },
+                  { headers: { "Content-Type": "application/json" } }
+                )
+                .then((res) => {
+                  console.log(res.data);
+                });
+            }
+          });
+          console.log(res.data);
+          alert("¡Película agregada con éxito!");
+        })
+        .catch((err) => alert(err.response.request.response));
+    }
   }
 
   render() {
@@ -150,69 +215,6 @@ class AgregarPeli extends Component {
     );
   }
 
-  handlePelicula() {
-    const categorias = this.state.pelicula.categoria.filter(
-      (categoria) => categoria.checked !== false
-    );
-
-    if (
-      this.state.pelicula.titulo === "" ||
-      this.state.pelicula.sinopsis === "" ||
-      this.state.pelicula.imagen === "" ||
-      this.state.pelicula.fecha_estreno === "" ||
-      this.state.pelicula.fecha_salida === "" ||
-      this.state.pelicula.duracion === "" ||
-      categorias.length === 0
-    ) {
-      alert("Error: Campos vacíos o inválidos");
-    } else {
-      const {
-        titulo,
-        sinopsis,
-        imagen,
-        fecha_estreno,
-        fecha_salida,
-        duracion,
-        estado,
-      } = this.state.pelicula;
-      axios
-        .post(
-          `http://localhost:8000/api/peliculas/`,
-          {
-            titulo,
-            sinopsis,
-            imagen,
-            fecha_estreno,
-            fecha_salida,
-            duracion,
-            estado,
-          },
-          { headers: { "Content-Type": "application/json" } }
-        )
-        .then((res) => {
-          this.state.pelicula.categoria.map((categoria) => {
-            if (categoria.checked === true) {
-              const id_pelicula = res.data.id;
-              const id_categoria = categoria.id;
-              axios
-                .post(
-                  `http://localhost:8000/api/registroCategorias/`,
-                  {
-                    id_pelicula,
-                    id_categoria,
-                  },
-                  { headers: { "Content-Type": "application/json" } }
-                )
-                .then((res) => {
-                  console.log(res.data);
-                });
-            }
-          });
-          console.log(res.data);
-          alert("¡Película agregada con éxito!");
-        })
-        .catch((err) => alert(err.response.request.response));
-    }
-  }
+  
 }
 export default AgregarPeli;

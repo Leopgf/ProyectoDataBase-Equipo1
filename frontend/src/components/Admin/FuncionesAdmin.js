@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import HeaderAdmin from "../Headers/HeaderAdmin";
+import Error from "../Error";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
@@ -18,7 +19,7 @@ class Funciones extends Component {
     axios.get(`http://localhost:8000/api/funciones/`).then((res) => {
       const funciones = res.data;
       this.setState({ funciones });
-      this.state.funciones.map((funcion) => {
+      this.state.funciones.forEach((funcion) => {
         axios
           .get(`http://localhost:8000/api/peliculas/${funcion.id_pelicula}`)
           .then((res) => {
@@ -38,16 +39,44 @@ class Funciones extends Component {
                 const sucursales = this.state.sucursales;
                 sucursales.push(sucursal.data.nombre);
                 this.setState({ sucursales });
-                console.log(this.state);
               });
           });
       });
     });
   }
 
-  getPelicula(id) {}
-
   render() {
+    if (this.state.funciones.length === 0){
+      return (
+        <div className="row">
+        <div className="col-12">
+          <HeaderAdmin />
+        </div>
+        <div className="col-12 text-center mt-3">
+          <h4>LISTA DE FUNCIONES DE LENG CINEMA</h4>
+        </div>
+        <div className="col-12 col-md-6 text-center mt-3 "></div>
+        <div className="col-11 col-md-4 col-lg-4 d-flex justify-content-end">
+          <button className="btn btn-success">
+            <a
+              href="/agregar-funcion"
+              className="text-light text-decoration-none d-flex align-content-center"
+            >
+              AGREGAR
+              <FontAwesomeIcon
+                className="text-light ml-2"
+                style={{ width: "25px", height: "25px" }}
+                icon={faPlus}
+              />
+            </a>
+          </button>
+        </div>
+        <div className="col-12 mt-3">
+          <Error/>
+        </div>
+        </div>
+      );
+    }
     return (
       <div className="row">
         <div className="col-12">
@@ -78,6 +107,7 @@ class Funciones extends Component {
           style={{ display: "flex", justifyContent: "center" }}
         >
           <Table
+            className="table-responsive w-auto"
             striped
             bordered
             hover

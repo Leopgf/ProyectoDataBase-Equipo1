@@ -25,54 +25,79 @@ class Detalles extends Component {
         this.setState({ titulo, sinopsis, imagen, fecha_estreno, duracion });
         axios.get(`http://localhost:8000/api/regis/${id}`);
       })
-      .catch((err) => alert(err));
+      .catch((err) => {
+        alert(err.response.request.response);
+        window.location.href = "http://localhost:3000/cartelera";
+      });
   }
 
   render() {
-    return (
-      <div className="row  mb-3">
-        <div className="col-12">
-          <HeaderCliente />
+    if (
+      this.state.id === "" &&
+      this.state.titulo === "" &&
+      this.state.sinopsis === "" &&
+      this.state.categorias.length === 0 &&
+      this.state.imagen === "" &&
+      this.state.fecha_estreno === "" &&
+      this.state.duracion === ""
+    ) {
+      return (
+        <div className="row mb-3">
+          <div className="col-12">
+            <HeaderCliente />
+          </div>
         </div>
-        <Container className="d-flex">
-          <div className="col-xl-6 mt-2">
-            {" "}
-            {/* Imagen de la película*/}
-            <img src={this.state.imagen} width="80%" alt={this.state.titulo} />
+      );
+    } else {
+      return (
+        <div className="row  mb-3">
+          <div className="col-12">
+            <HeaderCliente />
           </div>
-          <div className="col-xl-5 col-sm-12 justify-content-center">
-            {" "}
-            {/* Detalles de la película*/}
-            <Card
-              style={{
-                left: "50%",
-                top: "50%",
-                transform: "translate(-50%, -50%)",
-              }}
-            >
-              <Card.Body>
-                <Card.Title>
-                  <h3>{this.state.titulo} </h3>
-                </Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">
-                  Categorías:
-                </Card.Subtitle>
-                <Card.Subtitle className="mb-2 text-muted">
-                  Duración: {this.state.duracion}
-                </Card.Subtitle>
-                <Card.Subtitle className="mb-2 text-muted">
-                  Fecha de estreno: {this.state.fecha_estreno}
-                </Card.Subtitle>
-                <Card.Text>Sinopsis: {this.state.sinopsis}</Card.Text>
-                <Link to={`/iniciar-sesion`}>
-                  <Button variant="success">COMPRAR ENTRADA</Button>
-                </Link>
-              </Card.Body>
-            </Card>
-          </div>
-        </Container>
-      </div>
-    );
+          <Container className="d-flex">
+            <div className="col-xl-6 mt-2">
+              {" "}
+              {/* Imagen de la película*/}
+              <img
+                src={this.state.imagen}
+                width="80%"
+                alt={this.state.titulo}
+              />
+            </div>
+            <div className="col-xl-5 col-sm-12 justify-content-center">
+              {" "}
+              {/* Detalles de la película*/}
+              <Card
+                style={{
+                  left: "50%",
+                  top: "50%",
+                  transform: "translate(-50%, -50%)",
+                }}
+              >
+                <Card.Body>
+                  <Card.Title>
+                    <h3>{this.state.titulo} </h3>
+                  </Card.Title>
+                  <Card.Subtitle className="mb-2 text-muted">
+                    Categorías:
+                  </Card.Subtitle>
+                  <Card.Subtitle className="mb-2 text-muted">
+                    Duración: {this.state.duracion}
+                  </Card.Subtitle>
+                  <Card.Subtitle className="mb-2 text-muted">
+                    Fecha de estreno: {this.state.fecha_estreno}
+                  </Card.Subtitle>
+                  <Card.Text>Sinopsis: {this.state.sinopsis}</Card.Text>
+                  <Link to={`/iniciar-sesion`}>
+                    <Button variant="success">COMPRAR ENTRADA</Button>
+                  </Link>
+                </Card.Body>
+              </Card>
+            </div>
+          </Container>
+        </div>
+      );
+    }
   }
 }
 export default Detalles;

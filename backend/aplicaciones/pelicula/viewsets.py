@@ -1,4 +1,6 @@
 from rest_framework import viewsets
+from rest_framework import generics
+from django_filters.rest_framework import DjangoFilterBackend
 from . import models
 from . import serializers
 import datetime
@@ -24,10 +26,15 @@ class CategoriaViewset(viewsets.ModelViewSet):
     queryset = models.Categoria.objects.all()
     serializer_class = serializers.CategoriasSerializer
 
-class registroCategoriaViewset(viewsets.ModelViewSet):
-    queryset = models.registroCategorias.objects.all()
-    serializer_class = serializers.registroCategoriasSerializer
 
+class registroCategoriaViewset(generics.ListAPIView):
+    serializer_class = serializers.CategoriasSerializer
+    
+    def get_queryset(self):
+        pelicula = self.kwargs['id_pelicula']
+        return models.Categoria.objects.all().filter(registrocategorias__id_pelicula = pelicula)      
+
+    
 class SucursalViewset(viewsets.ModelViewSet):
     queryset = models.Sucursal.objects.all()
     serializer_class = serializers.SucursalesSerializer

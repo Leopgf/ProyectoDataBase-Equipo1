@@ -9,7 +9,7 @@ class Detalles extends Component {
     id: "",
     titulo: "",
     sinopsis: "",
-    categorias: [],
+    categoria: [],
     imagen: "",
     fecha_estreno: "",
     duracion: "",
@@ -23,7 +23,12 @@ class Detalles extends Component {
       .then((res) => {
         const { titulo, sinopsis, imagen, fecha_estreno, duracion } = res.data;
         this.setState({ titulo, sinopsis, imagen, fecha_estreno, duracion });
-        axios.get(`http://localhost:8000/api/regis/${id}`);
+        axios.get(`http://localhost:8000/api/registroCategorias/${id}`)
+        .then((res)=>{
+          const categoria = res.data;
+          this.setState({categoria});
+          console.log(res.data)
+        });
       })
       .catch((err) => {
         alert(err.response.request.response);
@@ -53,6 +58,41 @@ class Detalles extends Component {
         <div className="row  mb-3">
           <div className="col-12">
             <HeaderCliente />
+          <div className="col-xl-5 col-sm-12 justify-content-center">
+            {" "}
+            {/* Detalles de la película*/}
+            <Card
+              style={{
+                left: "50%",
+                top: "50%",
+                transform: "translate(-50%, -50%)",
+              }}
+            >
+              <Card.Body>
+                <Card.Title>
+                  <h3>{this.state.titulo} </h3>
+                </Card.Title>
+                <Card.Subtitle className="mb-2 text-muted">
+                  Categorías:
+                </Card.Subtitle>
+                {
+                  this.state.categoria.map((categoria)=>
+                  (<Card.Text>
+                    {categoria.categoria}
+                  </Card.Text>)
+                  )}
+                <Card.Subtitle className="mb-2 text-muted">
+                  Duración: {this.state.duracion}
+                </Card.Subtitle>
+                <Card.Subtitle className="mb-2 text-muted">
+                  Fecha de estreno: {this.state.fecha_estreno}
+                </Card.Subtitle>
+                <Card.Text>Sinopsis: {this.state.sinopsis}</Card.Text>
+                <Link to={`/iniciar-sesion`}>
+                  <Button variant="success">COMPRAR ENTRADA</Button>
+                </Link>
+              </Card.Body>
+            </Card>
           </div>
           <Container className="d-flex">
             <div className="col-xl-6 mt-2">
@@ -64,37 +104,8 @@ class Detalles extends Component {
                 alt={this.state.titulo}
               />
             </div>
-            <div className="col-xl-5 col-sm-12 justify-content-center">
-              {" "}
-              {/* Detalles de la película*/}
-              <Card
-                style={{
-                  left: "50%",
-                  top: "50%",
-                  transform: "translate(-50%, -50%)",
-                }}
-              >
-                <Card.Body>
-                  <Card.Title>
-                    <h3>{this.state.titulo} </h3>
-                  </Card.Title>
-                  <Card.Subtitle className="mb-2 text-muted">
-                    Categorías:
-                  </Card.Subtitle>
-                  <Card.Subtitle className="mb-2 text-muted">
-                    Duración: {this.state.duracion}
-                  </Card.Subtitle>
-                  <Card.Subtitle className="mb-2 text-muted">
-                    Fecha de estreno: {this.state.fecha_estreno}
-                  </Card.Subtitle>
-                  <Card.Text>Sinopsis: {this.state.sinopsis}</Card.Text>
-                  <Link to={`/iniciar-sesion`}>
-                    <Button variant="success">COMPRAR ENTRADA</Button>
-                  </Link>
-                </Card.Body>
-              </Card>
-            </div>
           </Container>
+        </div>
         </div>
       );
     }

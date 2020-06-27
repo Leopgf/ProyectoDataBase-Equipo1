@@ -82,7 +82,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'lengcinema',
         'USER': 'root',
-        'PASSWORD': '1e0nard0G',
+        'PASSWORD': 'giselle',
         'HOST': 'localhost',
         'PORT': 3306,
     }
@@ -130,9 +130,6 @@ REST_FRAMEWORK = {
     'DEFAULT_PARSER_CLASSES': [
         'rest_framework.parsers.JSONParser',
     ],
-    'DEFAULT_FILTER_BACKENDS': [
-        'django_filters.rest_framework.DjangoFilterBackend',
-        ]
 }
 
 # Static files (CSS, JavaScript, Images)

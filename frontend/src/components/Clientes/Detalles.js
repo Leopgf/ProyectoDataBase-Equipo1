@@ -17,18 +17,17 @@ class Detalles extends Component {
 
   componentDidMount() {
     const id = this.props.match.params.id;
-    console.log(id);
     axios
       .get(`http://localhost:8000/api/peliculas/${id}`)
       .then((res) => {
         const { titulo, sinopsis, imagen, fecha_estreno, duracion } = res.data;
         this.setState({ titulo, sinopsis, imagen, fecha_estreno, duracion });
-        axios.get(`http://localhost:8000/api/registroCategorias/${id}`)
-        .then((res)=>{
-          const categoria = res.data;
-          this.setState({categoria});
-          console.log(res.data)
-        });
+        axios
+          .get(`http://localhost:8000/api/registroCategorias/${id}`)
+          .then((res) => {
+            const categoria = res.data;
+            this.setState({ categoria });
+          });
       })
       .catch((err) => {
         alert(err.response.request.response);
@@ -41,7 +40,7 @@ class Detalles extends Component {
       this.state.id === "" &&
       this.state.titulo === "" &&
       this.state.sinopsis === "" &&
-      this.state.categorias.length === 0 &&
+      this.state.categoria.length === 0 &&
       this.state.imagen === "" &&
       this.state.fecha_estreno === "" &&
       this.state.duracion === ""
@@ -56,8 +55,15 @@ class Detalles extends Component {
     } else {
       return (
         <div className="row  mb-3">
-          <div className="col-12">
-            <HeaderCliente />
+        <div className="col-12">
+          <HeaderCliente />
+        </div>
+        <Container className="d-flex">
+          <div className="col-xl-6 mt-2">
+            {" "}
+            {/* Imagen de la película*/}
+            <img src={this.state.imagen} width="80%" alt={this.state.titulo} />
+          </div>
           <div className="col-xl-5 col-sm-12 justify-content-center">
             {" "}
             {/* Detalles de la película*/}
@@ -94,19 +100,8 @@ class Detalles extends Component {
               </Card.Body>
             </Card>
           </div>
-          <Container className="d-flex">
-            <div className="col-xl-6 mt-2">
-              {" "}
-              {/* Imagen de la película*/}
-              <img
-                src={this.state.imagen}
-                width="80%"
-                alt={this.state.titulo}
-              />
-            </div>
-          </Container>
-        </div>
-        </div>
+        </Container>
+      </div>
       );
     }
   }

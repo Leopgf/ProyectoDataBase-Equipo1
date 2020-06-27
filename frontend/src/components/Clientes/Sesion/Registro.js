@@ -42,6 +42,7 @@ class Registro extends Component {
         .then((res) => {
           console.log(res.data);
           alert("¡Su usuario ha sido registrado con éxito!");
+          window.location.href = "http://localhost:3000/iniciar-sesion";
         })
         .catch((err) => alert(err.response.request.response));
     }

@@ -10,7 +10,6 @@ router.register('peliculas',PeliculaViewset)
 router.register('peliculas-admin',PeliculaAdminViewset)
 router.register('estrenos',EstrenosViewset)
 router.register('categorias',CategoriaViewset)
-
 router.register('sucursales',SucursalViewset)
 router.register('salas',SalaViewset)
 router.register('funciones',FuncionViewset)

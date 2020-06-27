@@ -98,6 +98,7 @@ class AgregarFuncion extends Component {
         .then((res) => {
           console.log(res.data);
           alert("Función agregada correctamente");
+          window.location.href = "http://localhost:3000/funciones-admin";
         })
         .catch((err) => alert(err.response.request.response));
     }

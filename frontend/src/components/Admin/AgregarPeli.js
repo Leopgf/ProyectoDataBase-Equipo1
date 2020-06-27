@@ -128,6 +128,7 @@ class AgregarPeli extends Component {
           });
           console.log(res.data);
           alert("¡Película agregada con éxito!");
+          window.location.href = "http://localhost:3000/peliculas-admin";
         })
         .catch((err) => alert(err.response.request.response));
     }

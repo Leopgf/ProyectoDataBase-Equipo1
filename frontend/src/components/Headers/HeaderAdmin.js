@@ -12,12 +12,13 @@ class HeaderAdmin extends Component {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link href="/admin">Home Admin</Nav.Link>
+              <Nav.Link href="/admin">Home</Nav.Link>
               <Nav.Link href="/pelicula-admin">Películas</Nav.Link>
               <Nav.Link href="/funciones-admin">Funciones</Nav.Link>
               <Nav.Link href="/categorias-admin">Categorias</Nav.Link>
               <Nav.Link href="/productos-admin">Productos</Nav.Link>
               <Nav.Link href="/combos-admin">Combos</Nav.Link>
+              <Nav.Link href="/promos-admin">Promociones</Nav.Link>
               <Nav.Link href="">Estadísticas</Nav.Link>
             </Nav>
            </Navbar.Collapse>

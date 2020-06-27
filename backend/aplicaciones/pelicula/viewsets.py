@@ -78,7 +78,7 @@ class FacturaViewset(viewsets.ModelViewSet):
 
 
 class PromocionesViewset(viewsets.ModelViewSet):
-    queryset = models.Promociones.objects.all()
+    queryset = models.Promociones.objects.all().filter(estado = True)
     serializer_class = serializers.PromocionesSerializer
 
 

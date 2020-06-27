@@ -19,6 +19,8 @@ import ProductosAdmin from "./components/Admin/ProductosAdmin";
 import AgregarProducto from "./components/Admin/AgregarProducto";
 import AgregarCombo from "./components/Admin/AgregarCombo";
 import CombosAdmin from "./components/Admin/CombosAdmin";
+import AgregarPromo from "./components/Admin/AgregarPromo";
+import PromosAdmin from "./components/Admin/PromosAdmin";
 
 function App() {
   return (
@@ -48,6 +50,8 @@ function App() {
           <Route path="/agregar-producto" component={AgregarProducto} />
           <Route path="/combos-admin" component={CombosAdmin} />
           <Route path="/agregar-combo" component={AgregarCombo} />
+          <Route path="/promos-admin" component={PromosAdmin} />
+          <Route path="/agregar-promo" component={AgregarPromo} />
         </Switch>
       </Router>
     </React.Fragment>

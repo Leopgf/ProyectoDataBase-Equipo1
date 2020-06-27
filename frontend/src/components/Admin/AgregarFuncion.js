@@ -42,6 +42,67 @@ class AgregarFuncion extends Component {
     });
   }
 
+  handleFuncion() {
+    const today = new Date();
+    const fecha = new Date(Date.parse(this.state.funcion.fecha));
+    fecha.setMinutes(fecha.getMinutes() + fecha.getTimezoneOffset());
+
+    if (
+      this.state.funcion.fecha === "" ||
+      this.state.funcion.hora === "" ||
+      this.state.funcion.id_pelicula === "" ||
+      this.state.funcion.id_sala === ""
+    ) {
+      alert("Error: Campos vacíos o inválidos");
+    } else if (fecha <= today) {
+      alert("Error: La fecha no puede ser menor o igual a hoy");
+    } else if (
+      this.state.funcion.hora < "11:00" ||
+      this.state.funcion.hora > "20:00"
+    ) {
+      alert(
+        "Error: Hora inválida, el cine solo opera entre las 11:00 horas y las 20:00 horas"
+      );
+    } else {
+      const pelicula = this.state.peliculas.filter(
+        (pelicula) => pelicula.titulo === this.state.funcion.id_pelicula
+      );
+      const sala = this.state.salas.filter(
+        (sala) => sala.nombre === this.state.funcion.id_sala
+      );
+      const butacas = sala[0].numero_filas * sala[0].numero_columnas;
+
+      const funcion = {
+        fecha: this.state.funcion.fecha,
+        hora: this.state.funcion.hora,
+        butacas_disponibles: butacas,
+        estado: true,
+        id_pelicula: pelicula[0].id,
+        id_sala: sala[0].id,
+      };
+
+      const {
+        fecha,
+        hora,
+        butacas_disponibles,
+        estado,
+        id_pelicula,
+        id_sala,
+      } = funcion;
+      axios
+        .post(
+          `http://localhost:8000/api/funciones/`,
+          { fecha, hora, butacas_disponibles, estado, id_pelicula, id_sala },
+          { headers: { "Content-Type": "application/json" } }
+        )
+        .then((res) => {
+          console.log(res.data);
+          alert("Función agregada correctamente");
+        })
+        .catch((err) => alert(err.response.request.response));
+    }
+  }
+
   render() {
     return (
       <div className="row justify-content-center">
@@ -119,66 +180,6 @@ class AgregarFuncion extends Component {
       </div>
     );
   }
-
-  handleFuncion() {
-    const today = new Date();
-    const fecha = new Date(Date.parse(this.state.funcion.fecha));
-    fecha.setMinutes(fecha.getMinutes() + fecha.getTimezoneOffset());
-
-    if (
-      this.state.funcion.fecha === "" ||
-      this.state.funcion.hora === "" ||
-      this.state.funcion.id_pelicula === "" ||
-      this.state.funcion.id_sala === ""
-    ) {
-      alert("Error: Campos vacíos o inválidos");
-    } else if (fecha <= today) {
-      alert("Error: La fecha no puede ser menor o igual a hoy");
-    } else if (
-      this.state.funcion.hora < "11:00" ||
-      this.state.funcion.hora > "20:00"
-    ) {
-      alert(
-        "Error: Hora inválida, el cine solo opera entre las 11:00 horas y las 20:00 horas"
-      );
-    } else {
-      const pelicula = this.state.peliculas.filter(
-        (pelicula) => pelicula.titulo === this.state.funcion.id_pelicula
-      );
-      const sala = this.state.salas.filter(
-        (sala) => sala.nombre === this.state.funcion.id_sala
-      );
-      const butacas = sala[0].numero_filas * sala[0].numero_columnas;
-
-      const funcion = {
-        fecha: this.state.funcion.fecha,
-        hora: this.state.funcion.hora,
-        butacas_disponibles: butacas,
-        estado: true,
-        id_pelicula: pelicula[0].id,
-        id_sala: sala[0].id,
-      };
-
-      const {
-        fecha,
-        hora,
-        butacas_disponibles,
-        estado,
-        id_pelicula,
-        id_sala,
-      } = funcion;
-      axios
-        .post(
-          `http://localhost:8000/api/funciones/`,
-          { fecha, hora, butacas_disponibles, estado, id_pelicula, id_sala },
-          { headers: { "Content-Type": "application/json" } }
-        )
-        .then((res) => {
-          console.log(res.data);
-          alert("Función agregada correctamente");
-        })
-        .catch((err) => alert(err.response.request.response));
-    }
-  }
 }
+
 export default AgregarFuncion;

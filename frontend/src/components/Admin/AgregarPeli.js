@@ -15,6 +15,7 @@ class AgregarPeli extends Component {
       duracion: "",
       estado: true,
     },
+    
   };
 
   componentDidMount() {
@@ -53,6 +54,16 @@ class AgregarPeli extends Component {
       (categoria) => categoria.checked !== false
     );
 
+    const today = new Date();
+    var fecha_estreno;
+    var fecha_salida;
+    if (this.state.pelicula.fecha_estreno !== '' && this.state.pelicula.fecha_salida !== ''){
+      fecha_estreno = new Date(Date.parse(this.state.pelicula.fecha_estreno));
+      fecha_salida = new Date(Date.parse(this.state.pelicula.fecha_salida));
+      fecha_estreno.setMinutes(fecha_estreno.getMinutes() + fecha_estreno.getTimezoneOffset());
+      fecha_salida.setMinutes(fecha_salida.getMinutes() + fecha_salida.getTimezoneOffset());
+    }
+
     if (
       this.state.pelicula.titulo === "" ||
       this.state.pelicula.sinopsis === "" ||
@@ -63,7 +74,16 @@ class AgregarPeli extends Component {
       categorias.length === 0
     ) {
       alert("Error: Campos vacíos o inválidos");
-    } else {
+    } else if(
+      (new Date(2000, 1, 1, 1, 0, 0, 0)) >
+			(new Date(2000, 1, 1, parseInt(this.state.pelicula.duracion.split(':')[0]), parseInt(this.state.pelicula.duracion.split(':')[1]), 0, 0))
+    ){
+      alert('Error: No se pueden agregar películas que duren menos de 1 hora')
+    } else if(fecha_salida < today){
+      alert('Error: No puedes registrar una película con la fecha de salida anterior a hoy');
+    }else if( fecha_salida < fecha_estreno){
+      alert('Error: La fecha de salida de la película no puede ser anterior a la fecha de estreno');
+    }else{
       const {
         titulo,
         sinopsis,

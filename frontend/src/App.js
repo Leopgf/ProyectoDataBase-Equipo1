@@ -34,7 +34,7 @@ function App() {
           <Route path="/admin" component={HomeAdmin} />
           <Route path="/pelicula-admin" component={PeliculaAdmin} />
           <Route path="/agregar-peli" component={AgregarPeli} />
-          <Route path="/funciones" component={Funciones} />
+          <Route path="/funciones-admin" component={Funciones} />
           <Route path="/agregar-funcion" component={AgregarFuncion} />
         </Switch>
       </Router>

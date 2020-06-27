@@ -21,12 +21,11 @@ class PeliculaAdmin extends Component {
 
   handleEliminar(id) {
     axios
-      .get(`http://localhost:8000/api/peliculas/${id}/`)
+      .get(`http://localhost:8000/api/peliculas-admin/${id}/`)
       .then((response) => {
         const {
           titulo,
           sinopsis,
-          categoria,
           imagen,
           fecha_estreno,
           fecha_salida,
@@ -35,10 +34,9 @@ class PeliculaAdmin extends Component {
         const estado = false;
 
         axios
-          .put(`http://localhost:8000/api/peliculas/${id}/`, {
+          .put(`http://localhost:8000/api/peliculas-admin/${id}/`, {
             titulo,
             sinopsis,
-            categoria,
             imagen,
             fecha_estreno,
             fecha_salida,
@@ -47,11 +45,11 @@ class PeliculaAdmin extends Component {
           })
           .then((response) => {
             console.log(response);
-            alert("Película eliminada con éxito");
+            alert("¡Película eliminada con éxito!");
             this.componentDidMount();
           })
           .catch((err) => {
-            console.log(err);
+            alert(err.response.request.response);
           });
       })
       .catch((err) => {

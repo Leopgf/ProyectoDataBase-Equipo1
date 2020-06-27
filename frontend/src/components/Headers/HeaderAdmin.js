@@ -14,7 +14,7 @@ class HeaderAdmin extends Component {
             <Nav className="mr-auto">
               <Nav.Link href="/admin">Home Admin</Nav.Link>
               <Nav.Link href="/pelicula-admin">Películas</Nav.Link>
-              <Nav.Link href="/funciones">Funciones</Nav.Link>
+              <Nav.Link href="/funciones-admin">Funciones</Nav.Link>
               <Nav.Link href="">Estadísticas</Nav.Link>
             </Nav>
            </Navbar.Collapse>

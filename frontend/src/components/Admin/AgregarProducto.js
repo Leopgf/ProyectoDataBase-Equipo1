@@ -19,11 +19,13 @@ class AgregarProducto extends Component {
     axios.get(`http://localhost:8000/api/tipoProductos/`).then((response) => {
       var tipos = [];
       response.data.forEach((tip) => {
-        const tipo = {
-          id: tip.id,
-          tipo: tip.tipo,
-        };
-        tipos.push(tipo);
+        if(tip.tipo !== 'Combo'){
+          const tipo = {
+            id: tip.id,
+            tipo: tip.tipo,
+          };
+          tipos.push(tipo);
+        }
       });
       var producto = this.state.producto;
       producto.tipos = tipos;

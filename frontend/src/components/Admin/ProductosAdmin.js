@@ -32,7 +32,7 @@ class ProductosAdmin extends Component {
         const estado = false;
 
         axios
-          .put(`http://localhost:8000/api/peliculas-admin/${id}/`, {
+          .put(`http://localhost:8000/api/productos/${id}/`, {
             nombre,
             descripcion,
             precio,
@@ -123,6 +123,7 @@ class ProductosAdmin extends Component {
             <thead>
               <tr>
                 <th>Producto</th>
+                <th>Precio</th>
                 <th>Modificar</th>
                 <th>Eliminar</th>
               </tr>
@@ -131,6 +132,7 @@ class ProductosAdmin extends Component {
               {this.state.productos.map((producto) => (
                 <tr key={producto.id}>
                   <td>{producto.nombre}</td>
+                  <td>{producto.precio} $</td>
                   <td>
                     <Button className="btn btn-info">
                       <FontAwesomeIcon

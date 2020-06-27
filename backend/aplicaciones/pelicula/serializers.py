@@ -18,13 +18,14 @@ class PeliculasSerializer(serializers.ModelSerializer):
 class CategoriasSerializer(serializers.ModelSerializer):
     class Meta:
         model = Categoria
-        fields = '__all__'
+        fields = ['categoria']
 
 
 class registroCategoriasSerializer(serializers.ModelSerializer):
+    id_categoria = serializers.StringRelatedField(many=True)
     class Meta:
         model = registroCategorias
-        fields = '__all__'
+        fields = ['id_categoria']
 
 
 class SucursalesSerializer(serializers.ModelSerializer):

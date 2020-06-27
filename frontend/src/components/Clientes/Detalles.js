@@ -9,7 +9,7 @@ class Detalles extends Component {
     id: "",
     titulo: "",
     sinopsis: "",
-    categorias: [],
+    categoria: [],
     imagen: "",
     fecha_estreno: "",
     duracion: "",
@@ -23,7 +23,12 @@ class Detalles extends Component {
       .then((res) => {
         const { titulo, sinopsis, imagen, fecha_estreno, duracion } = res.data;
         this.setState({ titulo, sinopsis, imagen, fecha_estreno, duracion });
-        axios.get(`http://localhost:8000/api/regis/${id}`);
+        axios.get(`http://localhost:8000/api/registroCategorias/${id}`)
+        .then((res)=>{
+          const categoria = res.data;
+          this.setState({categoria});
+          console.log(res.data)
+        });
       })
       .catch((err) => alert(err));
   }
@@ -57,6 +62,12 @@ class Detalles extends Component {
                 <Card.Subtitle className="mb-2 text-muted">
                   Categorías:
                 </Card.Subtitle>
+                {
+                  this.state.categoria.map((categoria)=>
+                  (<Card.Text>
+                    {categoria.categoria}
+                  </Card.Text>)
+                  )}
                 <Card.Subtitle className="mb-2 text-muted">
                   Duración: {this.state.duracion}
                 </Card.Subtitle>

@@ -13,6 +13,8 @@ import PeliculaAdmin from "./components/Admin/PeliculaAdmin";
 import AgregarPeli from "./components/Admin/AgregarPeli";
 import Funciones from "./components/Admin/FuncionesAdmin";
 import AgregarFuncion from "./components/Admin/AgregarFuncion";
+import AgregarCategoria from "./components/Admin/AgregarCategoria";
+import CategoriasAdmin from "./components/Admin/CategoriasAdmin";
 
 function App() {
   return (
@@ -36,6 +38,8 @@ function App() {
           <Route path="/agregar-peli" component={AgregarPeli} />
           <Route path="/funciones-admin" component={Funciones} />
           <Route path="/agregar-funcion" component={AgregarFuncion} />
+          <Route path="/categorias-admin" component={CategoriasAdmin} />
+          <Route path="/agregar-categoria" component={AgregarCategoria} />
         </Switch>
       </Router>
     </React.Fragment>

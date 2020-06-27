@@ -22,7 +22,7 @@ class UsuarioViewset(viewsets.ModelViewSet):
     serializer_class = serializers.UsuariosSerializer
 
 class CategoriaViewset(viewsets.ModelViewSet):
-    queryset = models.Categoria.objects.all()
+    queryset = models.Categoria.objects.all().filter(estado = True)
     serializer_class = serializers.CategoriasSerializer
 
 
@@ -31,7 +31,7 @@ class registroCategoriaViewset(generics.ListAPIView):
     
     def get_queryset(self):
         pelicula = self.kwargs['id_pelicula']
-        return models.Categoria.objects.all().filter(registrocategorias__id_pelicula = pelicula)      
+        return models.Categoria.objects.all().filter(registrocategorias__id_pelicula = pelicula).filter(estado = True)      
 
     
 class SucursalViewset(viewsets.ModelViewSet):

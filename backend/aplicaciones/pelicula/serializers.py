@@ -18,7 +18,7 @@ class PeliculasSerializer(serializers.ModelSerializer):
 class CategoriasSerializer(serializers.ModelSerializer):
     class Meta:
         model = Categoria
-        fields = ['categoria']
+        fields = '__all__'
 
 
 class registroCategoriasSerializer(serializers.ModelSerializer):

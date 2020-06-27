@@ -15,6 +15,7 @@ class HeaderAdmin extends Component {
               <Nav.Link href="/admin">Home Admin</Nav.Link>
               <Nav.Link href="/pelicula-admin">Películas</Nav.Link>
               <Nav.Link href="/funciones-admin">Funciones</Nav.Link>
+              <Nav.Link href="/categorias-admin">Categorias</Nav.Link>
               <Nav.Link href="">Estadísticas</Nav.Link>
             </Nav>
            </Navbar.Collapse>

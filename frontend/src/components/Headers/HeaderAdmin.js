@@ -19,6 +19,8 @@ class HeaderAdmin extends Component {
               <Nav.Link href="/productos-admin">Productos</Nav.Link>
               <Nav.Link href="/combos-admin">Combos</Nav.Link>
               <Nav.Link href="/promos-admin">Promociones</Nav.Link>
+              <Nav.Link href="/sucursales-admin">Sucursales</Nav.Link>
+              <Nav.Link href="/salas-admin">Salas</Nav.Link>
               <Nav.Link href="">Estadísticas</Nav.Link>
             </Nav>
            </Navbar.Collapse>

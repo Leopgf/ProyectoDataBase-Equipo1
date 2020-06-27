@@ -21,6 +21,10 @@ import AgregarCombo from "./components/Admin/AgregarCombo";
 import CombosAdmin from "./components/Admin/CombosAdmin";
 import AgregarPromo from "./components/Admin/AgregarPromo";
 import PromosAdmin from "./components/Admin/PromosAdmin";
+import AgregarSucursal from "./components/Admin/AgregarSucursal";
+import SucursalesAdmin from "./components/Admin/SucursalesAdmin";
+import AgregarSala from "./components/Admin/AgregarSala";
+import SalasAdmin from "./components/Admin/SalasAdmin";
 
 function App() {
   return (
@@ -52,6 +56,10 @@ function App() {
           <Route path="/agregar-combo" component={AgregarCombo} />
           <Route path="/promos-admin" component={PromosAdmin} />
           <Route path="/agregar-promo" component={AgregarPromo} />
+          <Route path="/sucursales-admin" component={SucursalesAdmin} />
+          <Route path="/agregar-sucursal" component={AgregarSucursal} />
+          <Route path="/salas-admin" component={SalasAdmin} />
+          <Route path="/agregar-sala" component={AgregarSala} />
         </Switch>
       </Router>
     </React.Fragment>

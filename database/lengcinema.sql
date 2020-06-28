@@ -186,6 +186,33 @@ LOCK TABLES `auth_user_user_permissions` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `combos_combo`
+--
+
+DROP TABLE IF EXISTS `combos_combo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `combos_combo` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(200) NOT NULL,
+  `descripcion` longtext NOT NULL,
+  `precio` double NOT NULL,
+  `estado` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `combos_combo`
+--
+
+LOCK TABLES `combos_combo` WRITE;
+/*!40000 ALTER TABLE `combos_combo` DISABLE KEYS */;
+INSERT INTO `combos_combo` VALUES (1,'Combo Informático','1 Cotufa, 1 Refresco, 1 Golosina, 1 Chuchería salada.',9,1),(2,'Combo Leng en Familia','2 Cotufas y 4 Refrescos',15,1),(3,'Combo Caliente','1 Perro Caliente y 1 Refresco',6,1),(4,'Combo Caliente Caliente','2 Perros Calientes y 2 Refrescos',12,1),(5,'Combo Acompañado','2 Cotufas, 2 Refrescos y 2 Chucherías saladas',14.5,1),(6,'Combo Enamorado','1 Cotufa, 2 Refescos y 1 Golosina',9.25,1);
+/*!40000 ALTER TABLE `combos_combo` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `django_admin_log`
 --
 
@@ -299,6 +326,92 @@ INSERT INTO `django_session` VALUES ('x59f4fdd71o1vmhk5zlxr341pf3hkg6t','Mzk2Nzh
 UNLOCK TABLES;
 
 --
+-- Table structure for table `factura_comprascombos`
+--
+
+DROP TABLE IF EXISTS `factura_comprascombos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `factura_comprascombos` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `cantidad` int NOT NULL,
+  `id_combos_id` int NOT NULL,
+  `id_factura_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `factura_comprascombos_id_combos_id_4d0e9547_fk_combos_combo_id` (`id_combos_id`),
+  KEY `factura_comprascombo_id_factura_id_f955b6db_fk_factura_f` (`id_factura_id`),
+  CONSTRAINT `factura_comprascombo_id_factura_id_f955b6db_fk_factura_f` FOREIGN KEY (`id_factura_id`) REFERENCES `factura_factura` (`id`),
+  CONSTRAINT `factura_comprascombos_id_combos_id_4d0e9547_fk_combos_combo_id` FOREIGN KEY (`id_combos_id`) REFERENCES `combos_combo` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `factura_comprascombos`
+--
+
+LOCK TABLES `factura_comprascombos` WRITE;
+/*!40000 ALTER TABLE `factura_comprascombos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `factura_comprascombos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `factura_comprasentradas`
+--
+
+DROP TABLE IF EXISTS `factura_comprasentradas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `factura_comprasentradas` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `id_asiento_id` int NOT NULL,
+  `id_entrada_id` int NOT NULL,
+  `id_factura_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `factura_comprasentra_id_asiento_id_ab0f053c_fk_pelicula_` (`id_asiento_id`),
+  KEY `factura_comprasentra_id_entrada_id_9639526c_fk_pelicula_` (`id_entrada_id`),
+  KEY `factura_comprasentra_id_factura_id_a30f0691_fk_factura_f` (`id_factura_id`),
+  CONSTRAINT `factura_comprasentra_id_asiento_id_ab0f053c_fk_pelicula_` FOREIGN KEY (`id_asiento_id`) REFERENCES `pelicula_asiento` (`id`),
+  CONSTRAINT `factura_comprasentra_id_entrada_id_9639526c_fk_pelicula_` FOREIGN KEY (`id_entrada_id`) REFERENCES `pelicula_entrada` (`id`),
+  CONSTRAINT `factura_comprasentra_id_factura_id_a30f0691_fk_factura_f` FOREIGN KEY (`id_factura_id`) REFERENCES `factura_factura` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `factura_comprasentradas`
+--
+
+LOCK TABLES `factura_comprasentradas` WRITE;
+/*!40000 ALTER TABLE `factura_comprasentradas` DISABLE KEYS */;
+/*!40000 ALTER TABLE `factura_comprasentradas` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `factura_factura`
+--
+
+DROP TABLE IF EXISTS `factura_factura`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `factura_factura` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `fecha_compra` date NOT NULL,
+  `id_funcion_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `factura_factura_id_funcion_id_b6a76d08_fk_pelicula_funcion_id` (`id_funcion_id`),
+  CONSTRAINT `factura_factura_id_funcion_id_b6a76d08_fk_pelicula_funcion_id` FOREIGN KEY (`id_funcion_id`) REFERENCES `pelicula_funcion` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `factura_factura`
+--
+
+LOCK TABLES `factura_factura` WRITE;
+/*!40000 ALTER TABLE `factura_factura` DISABLE KEYS */;
+/*!40000 ALTER TABLE `factura_factura` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `pelicula_asiento`
 --
 
@@ -349,6 +462,118 @@ LOCK TABLES `pelicula_categoria` WRITE;
 /*!40000 ALTER TABLE `pelicula_categoria` DISABLE KEYS */;
 INSERT INTO `pelicula_categoria` VALUES (1,'Acción',1),(2,'Animación',1),(3,'Aventura',1),(4,'Ciencia Ficción',1),(5,'Comedia',1),(6,'Fantasía',1),(7,'Deporte',1),(8,'Documental',1),(9,'Drama',1),(10,'Historia',1),(11,'Infantil',1),(12,'Musical',1),(13,'Romance',1),(14,'Terror',1),(15,'Suspenso',1),(16,'Clásica',1);
 /*!40000 ALTER TABLE `pelicula_categoria` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pelicula_combo`
+--
+
+DROP TABLE IF EXISTS `pelicula_combo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `pelicula_combo` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(200) NOT NULL,
+  `descripcion` longtext NOT NULL,
+  `precio` double NOT NULL,
+  `estado` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pelicula_combo`
+--
+
+LOCK TABLES `pelicula_combo` WRITE;
+/*!40000 ALTER TABLE `pelicula_combo` DISABLE KEYS */;
+INSERT INTO `pelicula_combo` VALUES (1,'Combo Informático','1 Cotufa\r\n1 Refresco\r\n1 Golosina\r\n1 Cuchería Salada',9,1),(2,'Combo Leng en Familia','2 Cotufas\r\n4 Refrescos',15,1),(3,'Combo Caliente','1 Perro Caliente\r\n1 Refresco',6,1),(4,'Combo Caliente Caliente','2 Perros Calientes\r\n2 Refrescos',12,1),(5,'Combo Acompañado','2 Cotufas\r\n2 Refrescos\r\n2 Chucherías Saladas',14.5,1),(6,'Combo Enamorado','1 Cotufa\r\n2 Refrescos\r\n1 Golosina',9.25,1);
+/*!40000 ALTER TABLE `pelicula_combo` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pelicula_comprascombos`
+--
+
+DROP TABLE IF EXISTS `pelicula_comprascombos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `pelicula_comprascombos` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `cantidad` int NOT NULL,
+  `id_combos_id` int NOT NULL,
+  `id_factura_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `pelicula_comprascomb_id_combos_id_97f2df8f_fk_pelicula_` (`id_combos_id`),
+  KEY `pelicula_comprascomb_id_factura_id_cb0c535d_fk_pelicula_` (`id_factura_id`),
+  CONSTRAINT `pelicula_comprascomb_id_combos_id_97f2df8f_fk_pelicula_` FOREIGN KEY (`id_combos_id`) REFERENCES `pelicula_combo` (`id`),
+  CONSTRAINT `pelicula_comprascomb_id_factura_id_cb0c535d_fk_pelicula_` FOREIGN KEY (`id_factura_id`) REFERENCES `pelicula_factura` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pelicula_comprascombos`
+--
+
+LOCK TABLES `pelicula_comprascombos` WRITE;
+/*!40000 ALTER TABLE `pelicula_comprascombos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pelicula_comprascombos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pelicula_comprasentradas`
+--
+
+DROP TABLE IF EXISTS `pelicula_comprasentradas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `pelicula_comprasentradas` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `id_asiento_id` int NOT NULL,
+  `id_entrada_id` int NOT NULL,
+  `id_factura_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `pelicula_comprasentr_id_asiento_id_1ccf8305_fk_pelicula_` (`id_asiento_id`),
+  KEY `pelicula_comprasentr_id_entrada_id_6657f3c5_fk_pelicula_` (`id_entrada_id`),
+  KEY `pelicula_comprasentr_id_factura_id_00fe0613_fk_pelicula_` (`id_factura_id`),
+  CONSTRAINT `pelicula_comprasentr_id_asiento_id_1ccf8305_fk_pelicula_` FOREIGN KEY (`id_asiento_id`) REFERENCES `pelicula_asiento` (`id`),
+  CONSTRAINT `pelicula_comprasentr_id_entrada_id_6657f3c5_fk_pelicula_` FOREIGN KEY (`id_entrada_id`) REFERENCES `pelicula_entrada` (`id`),
+  CONSTRAINT `pelicula_comprasentr_id_factura_id_00fe0613_fk_pelicula_` FOREIGN KEY (`id_factura_id`) REFERENCES `pelicula_factura` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pelicula_comprasentradas`
+--
+
+LOCK TABLES `pelicula_comprasentradas` WRITE;
+/*!40000 ALTER TABLE `pelicula_comprasentradas` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pelicula_comprasentradas` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pelicula_entrada`
+--
+
+DROP TABLE IF EXISTS `pelicula_entrada`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `pelicula_entrada` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `tipo` varchar(20) NOT NULL,
+  `precio` double NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pelicula_entrada`
+--
+
+LOCK TABLES `pelicula_entrada` WRITE;
+/*!40000 ALTER TABLE `pelicula_entrada` DISABLE KEYS */;
+INSERT INTO `pelicula_entrada` VALUES (1,'Menor de Edad',5),(2,'General',10),(3,'Tercera Edad',4);
+/*!40000 ALTER TABLE `pelicula_entrada` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -651,6 +876,35 @@ LOCK TABLES `pelicula_registropromociones` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `pelicula_reservarasientos`
+--
+
+DROP TABLE IF EXISTS `pelicula_reservarasientos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `pelicula_reservarasientos` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `estado` tinyint(1) NOT NULL,
+  `id_asiento_id` int NOT NULL,
+  `id_funcion_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `pelicula_reservaasie_id_asiento_id_b784471f_fk_pelicula_` (`id_asiento_id`),
+  KEY `pelicula_reservaasie_id_funcion_id_00f3ce6f_fk_pelicula_` (`id_funcion_id`),
+  CONSTRAINT `pelicula_reservaasie_id_asiento_id_b784471f_fk_pelicula_` FOREIGN KEY (`id_asiento_id`) REFERENCES `pelicula_asiento` (`id`),
+  CONSTRAINT `pelicula_reservaasie_id_funcion_id_00f3ce6f_fk_pelicula_` FOREIGN KEY (`id_funcion_id`) REFERENCES `pelicula_funcion` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pelicula_reservarasientos`
+--
+
+LOCK TABLES `pelicula_reservarasientos` WRITE;
+/*!40000 ALTER TABLE `pelicula_reservarasientos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pelicula_reservarasientos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `pelicula_sala`
 --
 
@@ -744,7 +998,7 @@ CREATE TABLE `pelicula_usuario` (
   `tipo_usuario` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `pelicula_usuario_cedula_fdb022e3_uniq` (`cedula`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -753,8 +1007,35 @@ CREATE TABLE `pelicula_usuario` (
 
 LOCK TABLES `pelicula_usuario` WRITE;
 /*!40000 ALTER TABLE `pelicula_usuario` DISABLE KEYS */;
-INSERT INTO `pelicula_usuario` VALUES (1,'28052067','Giselle','Ferreira',0,0),(2,'13312795','Maria','Correia',0,0),(3,'27130910','Jorge','El Asmar',0,0);
+INSERT INTO `pelicula_usuario` VALUES (1,'28052067','Giselle','Ferreira',0,0),(2,'13312795','Maria','Correia',0,0),(3,'27130910','Jorge','El Asmar',0,0),(4,'27053225','Leonardo','Gonzalez',0,0);
 /*!40000 ALTER TABLE `pelicula_usuario` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pelicula_usuarios`
+--
+
+DROP TABLE IF EXISTS `pelicula_usuarios`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `pelicula_usuarios` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `cedula` varchar(15) NOT NULL,
+  `contrasena` varchar(200) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `apellido` varchar(100) NOT NULL,
+  `puntos` int NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pelicula_usuarios`
+--
+
+LOCK TABLES `pelicula_usuarios` WRITE;
+/*!40000 ALTER TABLE `pelicula_usuarios` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pelicula_usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -766,4 +1047,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-06-27 21:39:53
+-- Dump completed on 2020-06-27 22:03:38

@@ -16,11 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
-from aplicaciones.pelicula.viewsets import registroCategoriaViewset
+from aplicaciones.pelicula.viewsets import registroCategoriaViewset, registroCombosViewset
 from .router import router
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
-    url('^api/registroCategorias/(?P<id_pelicula>.+)/$', registroCategoriaViewset.as_view(),name="registroCategorias")
+    url('^api/registroCategorias/(?P<id_pelicula>.+)/$', registroCategoriaViewset.as_view(),name="registroCategorias"),
+    url('^api/registroCombos/(?P<id_producto_combo>.+)/$', registroCombosViewset.as_view(), name ="registroCombos" )
 ]

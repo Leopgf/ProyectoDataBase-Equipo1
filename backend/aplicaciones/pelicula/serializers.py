@@ -22,8 +22,7 @@ class CategoriasSerializer(serializers.ModelSerializer):
 
 
 class registroCategoriasSerializer(serializers.ModelSerializer):
-    id_categoria = serializers.StringRelatedField(many=True)
-    class Meta:
+   class Meta:
         model = registroCategorias
         fields = ['id_categoria']
 
@@ -66,8 +65,8 @@ class ProductosSerializer(serializers.ModelSerializer):
 
 class registroCombosSerializer(serializers.ModelSerializer):
     class Meta:
-        model = registroCombos
-        fields = '__all__'
+        model = Producto
+        fields = ['nombre']
 
 
 class FacturaSerializer(serializers.ModelSerializer):

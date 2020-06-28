@@ -17,9 +17,12 @@ class EstrenosViewset(viewsets.ModelViewSet):
     queryset = models.Pelicula.objects.all().filter(fecha_estreno__gte = datetime.date.today()).filter(estado = True)
     serializer_class = serializers.PeliculasSerializer
 
-class UsuarioViewset(viewsets.ModelViewSet):
-    queryset = models.Usuario.objects.all()
+class UsuarioViewset(generics.ListAPIView):
     serializer_class = serializers.UsuariosSerializer
+    def get_queryset(self):
+        usuario = self.kwargs['cedula']
+        return models.Usuario.objects.all().filter(cedula = usuario)
+
 
 class CategoriaViewset(viewsets.ModelViewSet):
     queryset = models.Categoria.objects.all().filter(estado = True)

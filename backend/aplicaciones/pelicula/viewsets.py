@@ -17,9 +17,12 @@ class EstrenosViewset(viewsets.ModelViewSet):
     queryset = models.Pelicula.objects.all().filter(fecha_estreno__gte = datetime.date.today()).filter(estado = True)
     serializer_class = serializers.PeliculasSerializer
 
-class UsuarioViewset(viewsets.ModelViewSet):
-    queryset = models.Usuario.objects.all()
+class UsuarioViewset(generics.ListAPIView):
     serializer_class = serializers.UsuariosSerializer
+    def get_queryset(self):
+        usuario = self.kwargs['cedula']
+        return models.Usuario.objects.all().filter(cedula = usuario)
+
 
 class CategoriaViewset(viewsets.ModelViewSet):
     queryset = models.Categoria.objects.all().filter(estado = True)
@@ -63,13 +66,15 @@ class ProductoViewset(viewsets.ModelViewSet):
     serializer_class = serializers.ProductosSerializer
 
 class CombosViewset(viewsets.ModelViewSet):
-    queryset = models.Producto.objects.all().filter(estado = True).filter(id_tipos_productos_id = 3)
+    queryset = models.Producto.objects.all().filter(estado = True).filter(id_tipos_productos = 3)
     serializer_class = serializers.ProductosSerializer
 
 
-class registroCombosViewset(viewsets.ModelViewSet):
-    queryset = models.registroCombos.objects.all()
+class registroCombosViewset(generics.ListAPIView):
     serializer_class = serializers.registroCombosSerializer
+    def get_queryset(self):
+        combo = self.kwargs['id_producto_combo']
+        return models.Producto.objects.all().filter(producto__id_producto_combo = combo).filter(estado = True)
 
 
 class FacturaViewset(viewsets.ModelViewSet):

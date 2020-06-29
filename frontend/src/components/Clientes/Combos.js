@@ -6,12 +6,18 @@ import HeaderCliente from "../Headers/HeaderCliente";
 class Combos extends Component {
   state = {
     combos: [],
+    productos: [],
   };
 
   componentDidMount() {
+    
     axios.get(`http://localhost:8000/api/combos/`).then((res) => {
       const combos = res.data;
       this.setState({ combos });
+      axios.get(`http://localhost:8000/api/registroCombos/${combos.id}`).then((res)=>{
+        const productos = res.data;
+        this.setState({productos});
+      })
     });
   }
 
@@ -39,6 +45,12 @@ class Combos extends Component {
               <Card.Body>
                 <Card.Text>{combo.descripcion}</Card.Text>
                 <Card.Text>Incluye: </Card.Text>
+                {
+                  this.state.productos.map((productos)=>
+                <Card.Text>
+                  {productos.productos}
+                </Card.Text>
+                  )}
                 <Card.Text>Precio: {combo.precio} $</Card.Text>
                 <Card.Text style={{ color: "green" }}>
                   Puede ser adquirido al comprar una entrada

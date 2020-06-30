@@ -41,6 +41,7 @@ class SucursalViewset(viewsets.ModelViewSet):
     queryset = models.Sucursal.objects.all()
     serializer_class = serializers.SucursalesSerializer
 
+
 class SalaViewset(viewsets.ModelViewSet):
     queryset = models.Sala.objects.all()
     serializer_class = serializers.SalaSerializer
@@ -77,9 +78,39 @@ class registroCombosViewset(generics.ListAPIView):
         return models.Producto.objects.all().filter(producto__id_producto_combo = combo).filter(estado = True)
 
 
+class RegistroCombosAdminViewset(viewsets.ModelViewSet):
+    queryset = models.registroCombos.objects.all()
+    serializer_class = serializers.registroCombosAdminSerializer
+
+
 class FacturaViewset(viewsets.ModelViewSet):
     queryset = models.Factura.objects.all()
     serializer_class = serializers.FacturaSerializer
+
+
+class AlimentoViewset(viewsets.ModelViewSet):
+    queryset = models.Alimento.objects.all()
+    serializer_class = serializers.AlimentoSerializer
+
+
+class EntradaViewset(viewsets.ModelViewSet):
+    queryset = models.Entrada.objects.all()
+    serializer_class = serializers.EntradaSerializer
+
+
+class ComboCineViewset(viewsets.ModelViewSet):
+    queryset = models.ComboCine.objects.all()
+    serializer_class = serializers.ComboCineSerializer
+
+
+class ClienteViewset(viewsets.ModelViewSet):
+    queryset = models.Cliente.objects.all()
+    serializer_class = serializers.ClienteSerializer
+
+
+class EmpleadoViewset(viewsets.ModelViewSet):
+    queryset = models.Empleado.objects.all()
+    serializer_class = serializers.EmpleadoSerializer
 
 
 class PromocionesViewset(viewsets.ModelViewSet):

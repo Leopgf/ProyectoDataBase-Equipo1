@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 
-from .models import Usuario, Pelicula, Categoria, registroCategorias, Sucursal, Sala, Funcion, Asiento, tipoProductos, Producto, registroCombos, Factura, Promociones, registroPromociones, registroCompras, registroAsientosReservados
+from .models import Usuario, Pelicula, Categoria, registroCategorias, Alimento, Entrada, ComboCine, Cliente, Empleado, Sucursal, Sala, Funcion, Asiento, tipoProductos, Producto, registroCombos, Factura, Promociones, registroPromociones, registroCompras, registroAsientosReservados
 
 admin.site.register(Usuario)
 admin.site.register(Pelicula)
@@ -19,3 +19,8 @@ admin.site.register(Promociones)
 admin.site.register(registroPromociones)
 admin.site.register(registroCompras)
 admin.site.register(registroAsientosReservados)
+admin.site.register(Alimento)
+admin.site.register(Entrada)
+admin.site.register(ComboCine)
+admin.site.register(Cliente)
+admin.site.register(Empleado)

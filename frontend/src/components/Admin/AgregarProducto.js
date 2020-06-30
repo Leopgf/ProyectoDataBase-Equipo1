@@ -7,11 +7,12 @@ class AgregarProducto extends Component {
   state = {
     producto: {
       nombre: "",
-      descripcion: "",
       precio: "",
       id_tipos_productos: "",
       estado: true,
       tipos: [],
+      contenido_neto: "",
+      tipo: "",
     },
   };
 
@@ -19,7 +20,7 @@ class AgregarProducto extends Component {
     axios.get(`http://localhost:8000/api/tipoProductos/`).then((response) => {
       var tipos = [];
       response.data.forEach((tip) => {
-        if(tip.tipo !== 'Combo'){
+        if (tip.tipo !== "Combo") {
           const tipo = {
             id: tip.id,
             tipo: tip.tipo,
@@ -40,6 +41,38 @@ class AgregarProducto extends Component {
     console.log(this.state);
   }
 
+  handleTipo() {
+    if (this.state.producto.id_tipos_productos === "Alimento") {
+      return (
+        <Form.Group controlId="formBasicImagen">
+          <Form.Label>Contenido Neto del alimento:</Form.Label>
+          <Form.Control
+            type="text"
+            name="contenido_neto"
+            placeholder="Contenido Neto"
+            value={this.state.producto.contenido_neto}
+            onChange={this.handleChange.bind(this)}
+          />
+        </Form.Group>
+      );
+    } else if (this.state.producto.id_tipos_productos === "Entrada") {
+      return (
+        <Form.Group controlId="formBasicImagen">
+          <Form.Label>Tipo de entrada:</Form.Label>
+          <Form.Control
+            type="text"
+            name="tipo"
+            placeholder="Tipo"
+            value={this.state.producto.tipo}
+            onChange={this.handleChange.bind(this)}
+          />
+        </Form.Group>
+      );
+    } else {
+      return (<div></div>);
+    }
+  }
+
   handleProducto() {
     if (
       this.state.producto.nombre === "" ||
@@ -49,30 +82,77 @@ class AgregarProducto extends Component {
     ) {
       alert("Error: Campos vacíos o inválidos");
     } else {
-      const { nombre, descripcion, precio, estado } = this.state.producto;
-      var id_tipos_productos = this.state.producto.tipos.filter(
-        (tipo) => tipo.tipo === this.state.producto.id_tipos_productos
-      );
-      id_tipos_productos = id_tipos_productos[0].id;
-
-      axios
-        .post(
-          `http://localhost:8000/api/productos/`,
-          {
-            nombre,
-            descripcion,
-            precio,
-            id_tipos_productos,
-            estado,
-          },
-          { headers: { "Content-Type": "application/json" } }
-        )
-        .then((res) => {
-          console.log(res.data);
-          alert("Producto agregado con éxito!");
-          window.location.href = "http://localhost:3000/productos-admin";
-        })
-        .catch((err) => alert(err.response.request.response));
+      if (
+        this.state.producto.id_tipos_productos === "Alimento" &&
+        this.state.producto.contenido_neto === ""
+      ) {
+        alert("Error: Campos vacíos o inválidos");
+      } else if (
+        this.state.producto.id_tipos_productos === "Entrada" &&
+        this.state.producto.tipo === ""
+      ) {
+        alert("Error: Campos vacíos o inválidos");
+      } else {
+        const {
+          nombre,
+          precio,
+          estado,
+          tipo,
+          contenido_neto,
+        } = this.state.producto;
+        var id_tipos_productos = this.state.producto.tipos.filter(
+          (tipo) => tipo.tipo === this.state.producto.id_tipos_productos
+        );
+        id_tipos_productos = id_tipos_productos[0].id;
+        axios
+          .post(
+            `http://localhost:8000/api/productos/`,
+            {
+              nombre,
+              precio,
+              id_tipos_productos,
+              estado,
+            },
+            { headers: { "Content-Type": "application/json" } }
+          )
+          .then((res) => {
+            const id_producto = res.data.id;
+            if (id_tipos_productos === 1) {
+              axios
+                .post(
+                  `http://localhost:8000/api/entradas/`,
+                  {
+                    tipo,
+                    id_producto,
+                  },
+                  { headers: { "Content-Type": "application/json" } }
+                )
+                .then((respuesta) => {
+                  alert("Producto agregado con éxito!");
+                  window.location.href =
+                    "http://localhost:3000/productos-admin";
+                })
+                .catch((err) => alert(err.response.request.response));
+            } else {
+              axios
+                .post(
+                  `http://localhost:8000/api/alimentos/`,
+                  {
+                    contenido_neto,
+                    id_producto,
+                  },
+                  { headers: { "Content-Type": "application/json" } }
+                )
+                .then((respuesta) => {
+                  alert("Producto agregado con éxito!");
+                  window.location.href =
+                    "http://localhost:3000/productos-admin";
+                })
+                .catch((err) => alert(err.response.request.response));
+            }
+          })
+          .catch((err) => alert(err.response.request.response));
+      }
     }
   }
 
@@ -99,17 +179,6 @@ class AgregarProducto extends Component {
                   onChange={this.handleChange.bind(this)}
                 />
               </Form.Group>
-              <Form.Group controlId="formBasicSinopsis">
-                <Form.Label>Descripción del Producto:</Form.Label>
-                <textarea
-                  className="form-control"
-                  name="descripcion"
-                  rows={3}
-                  placeholder="Descripción"
-                  value={this.state.producto.descripcion}
-                  onChange={this.handleChange.bind(this)}
-                ></textarea>
-              </Form.Group>
               <Form.Group controlId="exampleForm.ControlSelect">
                 <Form.Label>Tipo de Producto:</Form.Label>
                 <Form.Group>
@@ -125,6 +194,7 @@ class AgregarProducto extends Component {
                   </Form.Control>
                 </Form.Group>
               </Form.Group>
+              {this.handleTipo()}
               <Form.Group controlId="formBasicImagen">
                 <Form.Label>Precio del producto:</Form.Label>
                 <Form.Control

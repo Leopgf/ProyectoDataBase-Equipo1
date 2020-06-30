@@ -44,7 +44,7 @@ function App() {
 
           {/* RUTAS ADMIN*/}
           <Route path="/admin" component={HomeAdmin} />
-          <Route path="/pelicula-admin" component={PeliculaAdmin} />
+          <Route path="/peliculas-admin" component={PeliculaAdmin} />
           <Route path="/agregar-peli" component={AgregarPeli} />
           <Route path="/funciones-admin" component={Funciones} />
           <Route path="/agregar-funcion" component={AgregarFuncion} />

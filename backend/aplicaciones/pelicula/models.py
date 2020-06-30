@@ -38,7 +38,7 @@ class Pelicula(models.Model):
 
 #Categorias
 class Categoria(models.Model):
-    categoria = models.CharField(max_length=200)
+    categoria = models.CharField(max_length=200, unique=True)
     estado = models.BooleanField(default=True)
 
     def __str__(self):
@@ -61,7 +61,7 @@ class registroCategorias(models.Model):
 
 #Sucursal
 class Sucursal(models.Model):
-    nombre = models.CharField(max_length=200)
+    nombre = models.CharField(max_length=200, unique=True)
     ubicacion = models.CharField(max_length=200)
 
     def __str__(self):
@@ -131,7 +131,7 @@ class tipoProductos(models.Model):
 #Productos
 class Producto(models.Model):
     id_tipos_productos = models.ForeignKey(tipoProductos, on_delete=models.CASCADE)
-    nombre = models.CharField(max_length=200)
+    nombre = models.CharField(max_length=200, unique=True)
     precio = models.FloatField()
     estado = models.BooleanField(default=True)
 
@@ -169,7 +169,7 @@ class Factura(models.Model):
 
 #Promociones
 class Promociones(models.Model):
-    nombre = models.CharField(max_length=200)
+    nombre = models.CharField(max_length=200, unique=True)
     descripcion = models.TextField()
     descuento = models.FloatField()
     fecha_inicio = models.DateField(auto_now=True)

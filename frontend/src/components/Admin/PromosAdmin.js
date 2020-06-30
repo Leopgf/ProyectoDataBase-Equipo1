@@ -120,7 +120,7 @@ class PromosAdmin extends Component {
             <thead>
               <tr>
                 <th>Promoción</th>
-                <th>Condición</th>
+                <th>Descripción</th>
                 <th>Descuento</th>
                 <th>Modificar</th>
                 <th>Eliminar</th>
@@ -130,8 +130,8 @@ class PromosAdmin extends Component {
               {this.state.promociones.map((promo) => (
                 <tr key={promo.id}>
                   <td>{promo.nombre}</td>
-                  <td>{promo.condicion}</td>
-                  <td>{promo.descuento}</td>
+                  <td>{promo.descripcion}</td>
+                  <td>{promo.descuento}%</td>
                   <td>
                     <Button className="btn btn-info">
                       <FontAwesomeIcon

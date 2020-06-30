@@ -8,8 +8,9 @@ class AgregarPromo extends Component {
     promocion: {
       nombre: "",
       descripcion: "",
-      condicion: "",
       descuento: 0,
+      fecha_inicio: 0,
+      fecha_fin: 0,
       estado: true,
     },
   };
@@ -23,12 +24,15 @@ class AgregarPromo extends Component {
   handlePromocion() {
     if (this.state.promocion.nombre === "" || 
     this.state.promocion.descripcion === "" || 
-    this.state.promocion.condicion === "" || 
+    this.state.promocion.fecha_fin === "" || 
+    this.state.promocion.fecha_inicio === "" || 
     this.state.promocion.descuento === 0
     ) {
       alert("Error: Campos vacíos o inválidos");
-    } else {
-      const { nombre, descripcion, condicion, descuento, estado } = this.state.promocion;
+    } else if(this.state.promocion.descuento <= 0 || this.state.promocion.descuento > 100){
+      alert('Error: El descuento debe ser mayor de 0 y menor o igual a 100');
+    } else{
+      const { nombre, descripcion, fecha_inicio, fecha_fin, descuento, estado } = this.state.promocion;
       axios
         .post(
           `http://localhost:8000/api/promociones/`,
@@ -36,7 +40,8 @@ class AgregarPromo extends Component {
             nombre,
             descuento,
             descripcion,
-            condicion,
+            fecha_fin,
+            fecha_inicio,
             estado,
           },
           { headers: { "Content-Type": "application/json" } }
@@ -84,12 +89,22 @@ class AgregarPromo extends Component {
                 />
               </Form.Group>
               <Form.Group controlId="formBasicTitulo">
-                <Form.Label>Condición de la Promoción:</Form.Label>
+                <Form.Label>Fecha de Inicio de la Promoción:</Form.Label>
                 <Form.Control
-                  type="text"
-                  name="condicion"
-                  placeholder="Condición"
-                  value={this.state.promocion.condicion}
+                  type="date"
+                  name="fecha_inicio"
+                  placeholder="Fecha de Inicio"
+                  value={this.state.promocion.fecha_inicio}
+                  onChange={this.handleChange.bind(this)}
+                />
+              </Form.Group>
+              <Form.Group controlId="formBasicTitulo">
+                <Form.Label>Fecha de Fin de la Promoción:</Form.Label>
+                <Form.Control
+                  type="date"
+                  name="fecha_fin"
+                  placeholder="Fecha de Fin"
+                  value={this.state.promocion.fecha_fin}
                   onChange={this.handleChange.bind(this)}
                 />
               </Form.Group>

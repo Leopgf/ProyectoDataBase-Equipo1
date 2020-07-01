@@ -13,7 +13,7 @@ class HeaderAdmin extends Component {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
               <Nav.Link href="/admin">Home</Nav.Link>
-              <Nav.Link href="/pelicula-admin">Películas</Nav.Link>
+              <Nav.Link href="/peliculas-admin">Películas</Nav.Link>
               <Nav.Link href="/funciones-admin">Funciones</Nav.Link>
               <Nav.Link href="/categorias-admin">Categorias</Nav.Link>
               <Nav.Link href="/productos-admin">Productos</Nav.Link>

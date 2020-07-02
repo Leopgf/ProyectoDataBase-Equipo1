@@ -1,5 +1,6 @@
 from rest_framework import viewsets
 from rest_framework import generics
+from django.db.models import Prefetch
 from . import models
 from . import serializers
 import datetime
@@ -75,7 +76,7 @@ class registroCombosViewset(generics.ListAPIView):
     serializer_class = serializers.registroCombosSerializer
     def get_queryset(self):
         combo = self.kwargs['id_producto_combo']
-        return models.Producto.objects.all().filter(producto__id_producto_combo = combo).filter(estado = True)
+        return models.registroCombos.objects.all().filter(id_producto_combo = combo)
 
 
 class RegistroCombosAdminViewset(viewsets.ModelViewSet):

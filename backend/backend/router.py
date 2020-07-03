@@ -22,3 +22,4 @@ router.register('promociones',PromocionesViewset)
 router.register('registroPromociones',registroPromocionesViewset)
 router.register('registroCompras',registroComprasViewset)
 router.register('registroAsientosReservados',registroAsientosReservadosViewset)
+

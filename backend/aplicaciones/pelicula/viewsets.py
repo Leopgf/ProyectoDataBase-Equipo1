@@ -1,13 +1,16 @@
-from rest_framework import viewsets
-from rest_framework import generics
+from rest_framework import viewsets, generics, filters
 from . import models
 from . import serializers
 import datetime
 
 
+
 class PeliculaViewset(viewsets.ModelViewSet):
     queryset = models.Pelicula.objects.all().filter(fecha_estreno__lte = datetime.date.today()).filter(fecha_salida__gte = datetime.date.today()).filter(estado = True)
     serializer_class = serializers.PeliculasSerializer
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ['titulo']
+    
 
 class PeliculaAdminViewset(viewsets.ModelViewSet):
     queryset = models.Pelicula.objects.all().filter(estado = True)
@@ -100,3 +103,7 @@ class registroComprasViewset(viewsets.ModelViewSet):
 class registroAsientosReservadosViewset(viewsets.ModelViewSet):
     queryset = models.registroAsientosReservados.objects.all()
     serializer_class = serializers.registroAsientosReservadosSerializer
+
+
+
+

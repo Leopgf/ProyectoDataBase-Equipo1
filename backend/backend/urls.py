@@ -24,5 +24,6 @@ urlpatterns = [
     path('api/', include(router.urls)),
     url('^api/registroCategorias/(?P<id_pelicula>.+)/$', registroCategoriaViewset.as_view(),name="registroCategorias"),
     url('^api/registroCombos/(?P<id_producto_combo>.+)/$', registroCombosViewset.as_view(), name ="registroCombos" ),
-    url('^api/iniciarSesion/(?P<cedula>.+)/$', UsuarioViewset.as_view(), name ="iniciarSesion" )
+    url('^api/iniciarSesion/(?P<cedula>.+)/$', UsuarioViewset.as_view(), name ="iniciarSesion" ),
+    
 ]

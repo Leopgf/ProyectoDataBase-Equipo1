@@ -1,4 +1,4 @@
-from aplicaciones.pelicula.viewsets import  CombosViewset, RegistroCombosAdminViewset, PeliculaViewset, AlimentoViewset, EntradaViewset, ComboCineViewset, ClienteViewset, EmpleadoViewset, PeliculaAdminViewset, EstrenosViewset, CategoriaViewset, registroCategoriaViewset, SucursalViewset, SalaViewset, FuncionViewset, AsientoViewset, tipoProductoViewset, ProductoViewset, registroCombosViewset, FacturaViewset, PromocionesViewset, registroPromocionesViewset, registroComprasViewset, registroAsientosReservadosViewset
+from aplicaciones.pelicula.viewsets import  UsuariosViewset, CombosViewset, RegistroCombosAdminViewset, PeliculaViewset, AlimentoViewset, EntradaViewset, ComboCineViewset, ClientesViewset, EmpleadoViewset, PeliculaAdminViewset, EstrenosViewset, CategoriaViewset, registroCategoriaViewset, SucursalViewset, SalaViewset, FuncionViewset, AsientoViewset, tipoProductoViewset, ProductoViewset, registroCombosViewset, FacturaViewset, PromocionesViewset, registroPromocionesViewset, registroComprasViewset, registroAsientosReservadosViewset
 
 from rest_framework import routers
 
@@ -20,9 +20,9 @@ router.register('facturas',FacturaViewset)
 router.register('promociones',PromocionesViewset)
 router.register('alimentos',AlimentoViewset)
 router.register('entradas',EntradaViewset)
+router.register('usuarios',UsuariosViewset)
 router.register('comboscine',ComboCineViewset)
-router.register('clientes',ClienteViewset)
-router.register('empleados',EmpleadoViewset)
+router.register('clientes',ClientesViewset)
 router.register('registroPromociones',registroPromocionesViewset)
 router.register('registroCompras',registroComprasViewset)
 router.register('registroAsientosReservados',registroAsientosReservadosViewset)

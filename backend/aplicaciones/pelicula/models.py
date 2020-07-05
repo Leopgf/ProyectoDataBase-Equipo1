@@ -6,7 +6,6 @@ class Usuario(models.Model):
     cedula = models.CharField(max_length=15, unique=True)
     nombre = models.CharField(max_length=100)
     apellido = models.CharField(max_length=100)
-    tipo_usuario = models.BooleanField(default=False)
 
     def __str__(self):
         return self.nombre
@@ -15,6 +14,44 @@ class Usuario(models.Model):
         ordering = ['nombre']
         verbose_name = 'Usuario'
         verbose_name_plural = 'Usuarios'  
+
+
+#Sucursal
+class Sucursal(models.Model):
+    nombre = models.CharField(max_length=200, unique=True)
+    ubicacion = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.nombre
+
+    class Meta:
+        ordering = ['nombre']
+        verbose_name = 'Sucursal'
+        verbose_name_plural = 'Sucursales'  
+
+
+#Empleado
+class Empleado(models.Model):
+    id_usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    id_sucursal = models.ForeignKey(Sucursal, on_delete=models.CASCADE)
+    tiene_permisos = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name = 'Empleado'
+
+
+#Clientes
+class Cliente(models.Model):
+    id_usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    puntos = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.nombre
+
+    class Meta:
+        ordering = ['puntos']
+        verbose_name = 'Cliente'
+        verbose_name_plural = 'Cliente'  
 
 
 #Pelicula
@@ -58,19 +95,6 @@ class registroCategorias(models.Model):
     class Meta:
         verbose_name = 'Reistro Categoria'
         verbose_name_plural = 'Registro Categorias'  
-
-#Sucursal
-class Sucursal(models.Model):
-    nombre = models.CharField(max_length=200, unique=True)
-    ubicacion = models.CharField(max_length=200)
-
-    def __str__(self):
-        return self.nombre
-
-    class Meta:
-        ordering = ['nombre']
-        verbose_name = 'Sucursal'
-        verbose_name_plural = 'Sucursales'  
 
 
 #Sala
@@ -218,30 +242,6 @@ class registroAsientosReservados(models.Model):
         verbose_name = 'Registro Asiento Reservado'
         verbose_name_plural = 'Registros Asientos Reservados'
     
-
-#Empleado
-class Empleado(models.Model):
-    id_usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
-    id_sucursal = models.ForeignKey(Sucursal, on_delete=models.CASCADE)
-    tiene_permisos = models.BooleanField(default=False)
-
-    class Meta:
-        verbose_name = 'Empleado'
-
-
-#Clientes
-class Cliente(models.Model):
-    id_usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
-    puntos = models.IntegerField(default=0)
-
-    def __str__(self):
-        return self.nombre
-
-    class Meta:
-        ordering = ['puntos']
-        verbose_name = 'Cliente'
-        verbose_name_plural = 'Cliente'  
-
 
 #Combos
 class ComboCine(models.Model):

@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
-from aplicaciones.pelicula.viewsets import registroCategoriaViewset, registroCombosViewset, UsuarioViewset
+from aplicaciones.pelicula.viewsets import registroCategoriaViewset, registroCombosViewset, UsuarioViewset, EmpleadoViewset, ClienteViewset
 from .router import router
 
 urlpatterns = [
@@ -24,5 +24,7 @@ urlpatterns = [
     path('api/', include(router.urls)),
     url('^api/registroCategorias/(?P<id_pelicula>.+)/$', registroCategoriaViewset.as_view(),name="registroCategorias"),
     url('^api/registroCombos/(?P<id_producto_combo>.+)/$', registroCombosViewset.as_view(), name ="registroCombos" ),
-    url('^api/iniciarSesion/(?P<cedula>.+)/$', UsuarioViewset.as_view(), name ="iniciarSesion" )
+    url('^api/usuario/(?P<cedula>.+)/$', UsuarioViewset.as_view(), name ="usuario"),
+    url('^api/empleado/(?P<cedula>.+)/$', EmpleadoViewset.as_view(), name ="empleado" ),
+    url('^api/cliente/(?P<cedula>.+)/$', ClienteViewset.as_view(), name ="cliente" ),
 ]

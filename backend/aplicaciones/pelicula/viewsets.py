@@ -18,8 +18,14 @@ class EstrenosViewset(viewsets.ModelViewSet):
     queryset = models.Pelicula.objects.all().filter(fecha_estreno__gte = datetime.date.today()).filter(estado = True)
     serializer_class = serializers.PeliculasSerializer
 
+
+class UsuariosViewset(viewsets.ModelViewSet):
+    queryset = models.Usuario.objects.all()
+    serializer_class = serializers.UsuarioSerializer
+
+
 class UsuarioViewset(generics.ListAPIView):
-    serializer_class = serializers.UsuariosSerializer
+    serializer_class = serializers.UsuarioSerializer
     def get_queryset(self):
         usuario = self.kwargs['cedula']
         return models.Usuario.objects.all().filter(cedula = usuario)
@@ -104,14 +110,25 @@ class ComboCineViewset(viewsets.ModelViewSet):
     serializer_class = serializers.ComboCineSerializer
 
 
-class ClienteViewset(viewsets.ModelViewSet):
+class ClientesViewset(viewsets.ModelViewSet):
     queryset = models.Cliente.objects.all()
     serializer_class = serializers.ClienteSerializer
 
 
-class EmpleadoViewset(viewsets.ModelViewSet):
-    queryset = models.Empleado.objects.all()
+class ClienteViewset(generics.ListAPIView):
+    serializer_class = serializers.ClienteSerializer
+    def get_queryset(self):
+        cedulaUser = self.kwargs['cedula']
+        user = models.Usuario.objects.all().filter(cedula = cedulaUser)[0].id
+        return models.Cliente.objects.all().filter(id_usuario = user)
+
+
+class EmpleadoViewset(generics.ListAPIView):
     serializer_class = serializers.EmpleadoSerializer
+    def get_queryset(self):
+        cedulaUser = self.kwargs['cedula']
+        user = models.Usuario.objects.all().filter(cedula = cedulaUser)[0].id
+        return models.Empleado.objects.all().filter(id_usuario = user)
 
 
 class PromocionesViewset(viewsets.ModelViewSet):

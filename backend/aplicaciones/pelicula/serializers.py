@@ -4,11 +4,6 @@ from django.contrib.auth.hashers import make_password
 from .models import Usuario, Pelicula, Categoria, Alimento, Entrada, Cliente, ComboCine, Empleado, registroCategorias, Sucursal, Sala, Funcion, Asiento, tipoProductos, Producto, registroCombos, Factura, Promociones, registroPromociones, registroCompras, registroAsientosReservados
 
 
-class UsuariosSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Usuario
-        fields = '__all__'
-
 class PeliculasSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pelicula
@@ -93,10 +88,23 @@ class EmpleadoSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class registroCombosSerializer(serializers.ModelSerializer):
+class UsuarioSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Usuario
+        fields = '__all__'
+
+
+class ProductosRegistroCombosSerializer(serializers.ModelSerializer):
     class Meta:
         model = Producto
-        fields = ['nombre']
+        fields = ['nombre', 'estado']
+
+
+class registroCombosSerializer(serializers.ModelSerializer):
+    producto = ProductosRegistroCombosSerializer(source='id_producto')
+    class Meta:
+        model = registroCombos
+        fields = ['producto', 'cantidad']
 
 
 class registroCombosAdminSerializer(serializers.ModelSerializer):

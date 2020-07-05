@@ -10,7 +10,6 @@ class Registro extends Component {
       nombre: "",
       apellido: "",
       puntos: 0,
-      tipo_usuario: false,
     },
   };
 
@@ -21,6 +20,7 @@ class Registro extends Component {
   }
 
   handleUsuario() {
+    // Revisar que los datos esten completos
     if (
       this.state.usuario.nombre === "" ||
       this.state.usuario.apellido === "" ||
@@ -28,23 +28,86 @@ class Registro extends Component {
     ) {
       alert("Error: Campos vacíos o inválidos");
     } else {
-      const {
-        cedula, nombre, apellido, puntos, tipo_usuario
-      } = this.state.usuario;
+      const { cedula, nombre, apellido, puntos } = this.state.usuario;
+
+      // Revisar si el usuario existe
       axios
-        .post(
-          `http://localhost:8000/api/usuarios/`,
-          {
-            cedula, nombre, apellido, puntos, tipo_usuario
-          },
-          { headers: { "Content-Type": "application/json" } }
-        )
-        .then((res) => {
-          console.log(res.data);
-          alert("¡Su usuario ha sido registrado con éxito!");
-          window.location.href = "http://localhost:3000/iniciar-sesion";
+        .get(`http://localhost:8000/api/usuario/${cedula}`)
+        .then((usuarioR) => {
+          // Si el usuario no existe, entonces crear usuario y cliente
+          if (usuarioR.data.length === 0) {
+            // Crear usuario
+            axios
+              .post(
+                `http://localhost:8000/api/usuarios/`,
+                {
+                  cedula,
+                  nombre,
+                  apellido,
+                },
+                { headers: { "Content-Type": "application/json" } }
+              )
+              .then((usuario) => {
+                const id_usuario = usuario.data.id;
+                // Crear cliente
+                axios
+                  .post(
+                    `http://localhost:8000/api/clientes/`,
+                    {
+                      id_usuario,
+                      puntos,
+                    },
+                    { headers: { "Content-Type": "application/json" } }
+                  )
+                  .then((res) => {
+                    alert("Su usuario ha sido creado con éxito");
+                  })
+                  .catch((error) => {
+                    alert(error.response.request.response);
+                  });
+              })
+              .catch((error) => {
+                alert(error.response.request.response);
+              });
+          } else {
+            // Si el usuario existe, se revisa si es cliente
+            axios
+              .get(`http://localhost:8000/api/cliente/${cedula}`)
+              .then((cliente) => {
+                // Si no es cliente, entonces se crea el cliente
+                if (cliente.data.length === 0) {
+                  const id_usuario = usuarioR.data[0].id;
+                  // Crear cliente
+                  axios
+                    .post(
+                      `http://localhost:8000/api/clientes/`,
+                      {
+                        id_usuario,
+                        puntos,
+                      },
+                      { headers: { "Content-Type": "application/json" } }
+                    )
+                    .then((res) => {
+                      console.log(res.data);
+                      alert("Su usuario ha sido creado con éxito!");
+                      window.location.href = "http://localhost:3000/cartelera";
+                    })
+                    .catch((error) => {
+                      console.log(error.response.request.response);
+                    });
+                } else {
+                  // Si es cliente, entonces arroja error
+                  alert("Error: Ya hay un cliente registrado con esa cédula.");
+                }
+              })
+              .catch((error) => {
+                console.log(error.response.request.response);
+              });
+          }
         })
-        .catch((err) => alert(err.response.request.response));
+        .catch((error) => {
+          alert(error.response.request.response);
+        });
     }
   }
 

@@ -61,6 +61,7 @@ class Registro extends Component {
                   )
                   .then((res) => {
                     alert("Su usuario ha sido creado con éxito");
+                    window.location.href = "http://localhost:3000/cartelera";
                   })
                   .catch((error) => {
                     alert(error.response.request.response);

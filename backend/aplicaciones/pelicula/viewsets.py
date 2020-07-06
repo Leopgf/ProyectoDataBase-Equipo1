@@ -165,6 +165,14 @@ class IniciarSesionEmpleadoViewset(generics.ListAPIView):
         return models.Empleado.objects.all().filter(id_usuario = user)
 
 
+# DEVUELVE UN EMPLEADO A PARTIR DE SU ID_USUARIO
+class IdUsuarioEmpleadoViewset(generics.ListAPIView):
+    serializer_class = serializers.EmpleadoSerializer
+    def get_queryset(self):
+        idUser = self.kwargs['id_usuario']
+        return models.Empleado.objects.all().filter(id_usuario = idUser)
+
+
 # TODAS LAS FACTURAS
 class FacturaViewset(viewsets.ModelViewSet):
     queryset = models.Factura.objects.all()

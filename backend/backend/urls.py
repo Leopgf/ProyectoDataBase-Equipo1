@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
-from aplicaciones.pelicula.viewsets import RegistroCategoriaViewset, RegistroCombosViewset, UsuarioViewset, IniciarSesionEmpleadoViewset, IniciarSesionClienteViewset
+from aplicaciones.pelicula.viewsets import RegistroCategoriaViewset, RegistroCombosViewset, UsuarioViewset, IdUsuarioEmpleadoViewset, IniciarSesionEmpleadoViewset, IniciarSesionClienteViewset
 from .router import router
 
 urlpatterns = [
@@ -33,4 +33,7 @@ urlpatterns = [
     url('^api/usuario/(?P<cedula>.+)/$', UsuarioViewset.as_view(), name ="usuario"),
     url('^api/iniciar-sesion-empleado/(?P<cedula>.+)/$', IniciarSesionEmpleadoViewset.as_view(), name ="iniciar-sesion-empleado" ),
     url('^api/iniciar-sesion-cliente/(?P<cedula>.+)/$', IniciarSesionClienteViewset.as_view(), name ="inicir-sesion-cliente" ),
+
+    # RUTA PARA TRAER UN EMPLEADO POR EL ID DEL USUARIO
+    url('^api/permisos-empleado/(?P<id_usuario>.+)/$', IdUsuarioEmpleadoViewset.as_view(), name ="permisos-empleado" ),
 ]

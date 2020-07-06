@@ -13,9 +13,31 @@ class AgregarCombo extends Component {
       estado: true,
       id_producto: [],
     },
+    id_empleado: "",
+    empleado: {
+      id_usuario: 0,
+      tiene_permisos: false,
+      id_sucursal: "",
+    }
   };
 
   componentDidMount() {
+    const id_empleado = this.props.match.params.id_empleado;
+    this.setState({ id_empleado });
+    axios
+        .get(
+          `http://localhost:8000/api/permisos-empleado/${id_empleado}`
+        )
+        .then((emp) => {
+          const empleado = emp.data[0];
+          this.setState({ empleado });
+          console.log(this.state);
+        })
+        .catch((err) => {
+          alert("Error: Usuario inválido o inexistente.");
+          window.location.href = `http://localhost:3000/`;
+        });
+
     axios.get(`http://localhost:8000/api/productos/`).then((response) => {
       var productos = [];
       response.data.forEach((prod) => {
@@ -150,7 +172,7 @@ class AgregarCombo extends Component {
     return (
       <div className="row justify-content-center">
         <div className="col-12">
-          <HeaderAdmin />
+          <HeaderAdmin tiene_permisos={this.state.empleado.tiene_permisos} id_empleado={this.state.id_empleado}/>
           <h3 className="mt-3 text-center">AGREGAR COMBO</h3>
         </div>
         <div

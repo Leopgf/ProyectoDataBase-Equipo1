@@ -48,22 +48,22 @@ function App() {
 
           {/* RUTAS ADMIN*/}
           <Route path="/admin/:id_empleado" component={HomeAdmin} />
-          <Route path="/peliculas-admin" component={PeliculaAdmin} />
-          <Route path="/agregar-peli" component={AgregarPeli} />
-          <Route path="/funciones-admin" component={Funciones} />
-          <Route path="/agregar-funcion" component={AgregarFuncion} />
-          <Route path="/categorias-admin" component={CategoriasAdmin} />
-          <Route path="/agregar-categoria" component={AgregarCategoria} />
-          <Route path="/productos-admin" component={ProductosAdmin} />
-          <Route path="/agregar-producto" component={AgregarProducto} />
-          <Route path="/combos-admin" component={CombosAdmin} />
-          <Route path="/agregar-combo" component={AgregarCombo} />
-          <Route path="/promos-admin" component={PromosAdmin} />
-          <Route path="/agregar-promo" component={AgregarPromo} />
-          <Route path="/sucursales-admin" component={SucursalesAdmin} />
-          <Route path="/agregar-sucursal" component={AgregarSucursal} />
-          <Route path="/salas-admin" component={SalasAdmin} />
-          <Route path="/agregar-sala" component={AgregarSala} />
+          <Route path="/peliculas-admin/:id_empleado" component={PeliculaAdmin} />
+          <Route path="/agregar-peli/:id_empleado" component={AgregarPeli} />
+          <Route path="/funciones-admin/:id_empleado" component={Funciones} />
+          <Route path="/agregar-funcion/:id_empleado" component={AgregarFuncion} />
+          <Route path="/categorias-admin/:id_empleado" component={CategoriasAdmin} />
+          <Route path="/agregar-categoria/:id_empleado" component={AgregarCategoria} />
+          <Route path="/productos-admin/:id_empleado" component={ProductosAdmin} />
+          <Route path="/agregar-producto/:id_empleado" component={AgregarProducto} />
+          <Route path="/combos-admin/:id_empleado" component={CombosAdmin} />
+          <Route path="/agregar-combo/:id_empleado" component={AgregarCombo} />
+          <Route path="/promos-admin/:id_empleado" component={PromosAdmin} />
+          <Route path="/agregar-promo/:id_empleado" component={AgregarPromo} />
+          <Route path="/sucursales-admin/:id_empleado" component={SucursalesAdmin} />
+          <Route path="/agregar-sucursal/:id_empleado" component={AgregarSucursal} />
+          <Route path="/salas-admin/:id_empleado" component={SalasAdmin} />
+          <Route path="/agregar-sala/:id_empleado" component={AgregarSala} />
         </Switch>
       </Router>
     </React.Fragment>

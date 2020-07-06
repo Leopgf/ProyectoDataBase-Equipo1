@@ -10,9 +10,30 @@ import { Button } from "react-bootstrap";
 class PromosAdmin extends Component {
   state = {
     promociones: [],
+    id_empleado: "",
+    empleado: {
+      id_usuario: 0,
+      tiene_permisos: false,
+      id_sucursal: "",
+    }
   };
 
   componentDidMount() {
+    const id_empleado = this.props.match.params.id_empleado;
+    this.setState({ id_empleado });
+    axios
+        .get(
+          `http://localhost:8000/api/permisos-empleado/${id_empleado}`
+        )
+        .then((emp) => {
+          const empleado = emp.data[0];
+          this.setState({ empleado });
+          console.log(this.state);
+        })
+        .catch((err) => {
+          alert("Error: Usuario inválido o inexistente.");
+          window.location.href = `http://localhost:3000/`;
+        });
     axios.get(`http://localhost:8000/api/promociones/`).then((res) => {
       const promociones = res.data;
       this.setState({ promociones });
@@ -55,7 +76,7 @@ class PromosAdmin extends Component {
       return (
         <div className="row">
           <div className="col-12">
-            <HeaderAdmin />
+            <HeaderAdmin tiene_permisos={this.state.empleado.tiene_permisos} id_empleado={this.state.id_empleado}/>
           </div>
           <div className="col-12 text-center mt-3">
             <h4>LISTA DE PROMOCIONES DE LENG CINEMA</h4>
@@ -85,7 +106,7 @@ class PromosAdmin extends Component {
     return (
       <div className="row">
         <div className="col-12">
-          <HeaderAdmin />
+          <HeaderAdmin tiene_permisos={this.state.empleado.tiene_permisos} id_empleado={this.state.id_empleado}/>
         </div>
         <div className="col-12 text-center mt-3">
           <h4>LISTA DE PROMOCIONES DE LENG CINEMA</h4>

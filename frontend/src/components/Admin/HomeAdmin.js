@@ -1,19 +1,48 @@
 import React, { Component } from "react";
 import HeaderAdmin from "../Headers/HeaderAdmin";
 import Table from "react-bootstrap/Table";
+import axios from "axios";
 
 class HomeAdmin extends Component {
+
+  state = {
+    id_empleado: "",
+    empleado: {
+      id_usuario: 0,
+      tiene_permisos: false,
+      id_sucursal: "",
+    }
+  }
+
+  componentDidMount(){
+    const id_empleado = this.props.match.params.id_empleado;
+    this.setState({ id_empleado });
+    axios
+        .get(
+          `http://localhost:8000/api/permisos-empleado/${id_empleado}`
+        )
+        .then((emp) => {
+          const empleado = emp.data[0];
+          this.setState({ empleado });
+          console.log(this.state);
+        })
+        .catch((err) => {
+          alert("Error: Usuario inválido o inexistente.");
+          window.location.href = `http://localhost:3000/`;
+        });
+  }
+
   render() {
     return (
       <div className="row">
         <div className="col-12">
-          <HeaderAdmin />
+          <HeaderAdmin tiene_permisos={this.state.empleado.tiene_permisos} id_empleado={this.state.id_empleado}/>
         </div>
         <div className="col-12 text-center mt-3">
-          <h4>¡Bienvenido Administrador!</h4>
+          <h2>¡BIENVENIDO EMPLEADO!</h2>
         </div>
         <div className="col-12 text-center mt-5">
-          <h6>LISTA DE USUARIOS DE LENG CINEMA</h6>
+          <h4>LISTA DE USUARIOS DE LENG CINEMA</h4>
         </div>
         <div
           className="col-12 mt-2"

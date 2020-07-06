@@ -40,7 +40,7 @@ class IniciarSesionAdmin extends Component {
     return (
       <div className="row justify-content-center">
         <div className="col-12">
-          <HeaderAdmin />
+          <HeaderAdmin tiene_permisos={false} id_empleado={"0"}/>
         </div>
         <div className="col-12 text-center mt-3">
           <h5>INICIAR SESIÓN</h5>

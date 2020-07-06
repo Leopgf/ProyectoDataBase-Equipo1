@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import HeaderAdmin from "../Headers/HeaderAdmin";
 import Table from "react-bootstrap/Table";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus} from "@fortawesome/free-solid-svg-icons";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
 class HomeAdmin extends Component {
@@ -35,29 +35,26 @@ class HomeAdmin extends Component {
     axios.get(`http://localhost:8000/api/usuarios/`).then((res) => {
       const usuarios = res.data;
       this.setState({ usuarios });
+      var cargos = this.state.cargos;
+      for (let index = 0; index < usuarios.length; index++) {
+        cargos.push("");
+      }
 
       this.state.usuarios.forEach((usuario) => {
         axios
           .get(`http://localhost:8000/api/permisos-empleado/${usuario.id}`)
           .then((perm) => {
-            var cargos = this.state.cargos;
             var permisos = this.state.permisos;
             if (perm.data.length === 0) {
-              cargos.push("Cliente");
+              cargos[usuario.id - 1] = "Cliente";
             } else {
-              cargos.push("Empleado");
+              cargos[usuario.id - 1] = "Empleado";
             }
-            if (perm.data.length !== 0 && perm.data[0].tiene_permisos) {
-              permisos.push(perm.data[0].tiene_permisos);
-            } else if (perm.data.length !== 0 && !perm.data[0].tiene_permisos) {
-              permisos.push(perm.data[0].tiene_permisos);
-            } else {
-              permisos.push("No Aplica");
-            }
-            this.setState({ cargos, permisos });
-            console.log(this.state);
+            this.setState({ cargos });
           })
-          .catch();
+          .catch((err) => {
+            alert("Error");
+          });
       });
     });
   }
@@ -93,15 +90,25 @@ class HomeAdmin extends Component {
             </a>
           </button>
         </div>
-        <div
-          className="col-12 mt-3 mb-3"
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            textAlign: "center",
-          }}
-        >
+        <div className="col-12 col-md-6 text-center mt-3 "></div>
+        <div className="col-11 col-md-4 col-lg-4 d-flex justify-content-end mt-2">
+          <button className="btn btn-info">
+            <a
+              href={`/permisos-admin/${this.state.id_empleado}`}
+              className="text-light text-decoration-none d-flex align-content-center"
+            >
+              ADMINISTRAR PERMISOS
+              <FontAwesomeIcon
+                className="text-light ml-2"
+                style={{ width: "25px", height: "25px" }}
+                icon={faPlus}
+              />
+            </a>
+          </button>
+        </div>
+        <div className="col-12 mt-3 mb-3 d-flex justify-content-center">
           <Table
+            responsive="lg"
             striped
             bordered
             hover

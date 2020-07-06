@@ -27,6 +27,7 @@ import AgregarSucursal from "./components/Admin/AgregarSucursal";
 import SucursalesAdmin from "./components/Admin/SucursalesAdmin";
 import AgregarSala from "./components/Admin/AgregarSala";
 import SalasAdmin from "./components/Admin/SalasAdmin";
+import AdministrarPermisos from "./components/Admin/AdministrarPermisos";
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
 
           {/* RUTAS ADMIN*/}
           <Route path="/admin/:id_empleado" component={HomeAdmin} />
+          <Route path="/permisos-admin/:id_empleado" component={AdministrarPermisos} />
           <Route path="/peliculas-admin/:id_empleado" component={PeliculaAdmin} />
           <Route path="/agregar-peli/:id_empleado" component={AgregarPeli} />
           <Route path="/funciones-admin/:id_empleado" component={Funciones} />

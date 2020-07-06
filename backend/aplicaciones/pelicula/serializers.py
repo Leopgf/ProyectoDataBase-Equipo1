@@ -118,6 +118,13 @@ class EmpleadoSerializer(serializers.ModelSerializer):
         model = Empleado
         fields = '__all__'
 
+# SERIALIZER QUE TRAE TODOS LOS CAMPOS DE LOS EMPLEADOS CON SUS USUARIOS
+class EmpleadosConUsuariosSerializer(serializers.ModelSerializer):
+    usuario = UsuarioSerializer(source='id_usuario')
+    class Meta:
+        model = Empleado
+        fields = ['usuario', 'id']
+
 # SERIALIZER QUE TRAE TODOS LOS CAMPOS DE LAS FACTURAS
 class FacturaSerializer(serializers.ModelSerializer):
     class Meta:

@@ -163,6 +163,11 @@ class EmpleadosViewset(viewsets.ModelViewSet):
     queryset = models.Empleado.objects.all()
     serializer_class = serializers.EmpleadoSerializer
 
+# TODOS LOS EMPLEADOS CON SUS USUARIOS
+class EmpleadosConUsuariosViewset(viewsets.ModelViewSet):
+    queryset = models.Empleado.objects.all()
+    serializer_class = serializers.EmpleadosConUsuariosSerializer
+
 
 # DEVUELVE UN EMPLEADO A PARTIR DE SU CEDULA
 class IniciarSesionEmpleadoViewset(generics.ListAPIView):

@@ -192,7 +192,6 @@ class Usuario(models.Model):
         return self.nombre
 
     class Meta:
-        ordering = ['nombre']
         verbose_name = 'Usuario'
         verbose_name_plural = 'Usuarios'  
 

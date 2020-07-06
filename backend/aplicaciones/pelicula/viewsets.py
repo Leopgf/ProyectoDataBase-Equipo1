@@ -150,6 +150,14 @@ class IniciarSesionClienteViewset(generics.ListAPIView):
         return models.Cliente.objects.all().filter(id_usuario = user)
 
 
+# DEVUELVE UN CLIENTE A PARTIR DE SU ID_USUARIO
+class IdUsuarioClienteViewset(generics.ListAPIView):
+    serializer_class = serializers.ClienteSerializer
+    def get_queryset(self):
+        idUser = self.kwargs['id_usuario']
+        return models.Cliente.objects.all().filter(id_usuario = idUser)
+
+
 # TODOS LOS EMPLEADOS
 class EmpleadosViewset(viewsets.ModelViewSet):
     queryset = models.Empleado.objects.all()

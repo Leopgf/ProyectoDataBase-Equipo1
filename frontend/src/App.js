@@ -43,7 +43,7 @@ function App() {
           {/* RUTAS INICIAR SESIÓN*/}
           <Route path="/registro" component={Registro} />
           <Route path="/iniciar-sesion/:id_pelicula" component={IniciarSesion} />
-          <Route path="/registro-admin" component={RegistroAdmin} />
+          <Route path="/registro-admin/:id_empleado" component={RegistroAdmin} />
           <Route path="/iniciar-sesion-admin" component={IniciarSesionAdmin} />
 
           {/* RUTAS ADMIN*/}

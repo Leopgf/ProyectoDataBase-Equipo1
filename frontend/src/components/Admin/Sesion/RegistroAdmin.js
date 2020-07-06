@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import HeaderCliente from "../../Headers/HeaderCliente";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
+import HeaderAdmin from "../../Headers/HeaderAdmin";
 
 class Registro extends Component {
   state = {
@@ -9,13 +9,53 @@ class Registro extends Component {
       cedula: "",
       nombre: "",
       apellido: "",
-      puntos: 0,
+      tiene_permisos: false,
+      id_sucursal: "",
     },
+    id_empleado: "",
+    empleado: {
+      id_usuario: 0,
+      tiene_permisos: false,
+      id_sucursal: "",
+    },
+    sucursales: [],
   };
+
+  componentDidMount() {
+    const id_empleado = this.props.match.params.id_empleado;
+    this.setState({ id_empleado });
+    axios
+      .get(`http://localhost:8000/api/permisos-empleado/${id_empleado}`)
+      .then((emp) => {
+        const empleado = emp.data[0];
+        this.setState({ empleado });
+        if (this.state.empleado.tiene_permisos === false) {
+          alert(
+            "Error: Usted no tiene permisos para agregar nuevos empleados."
+          );
+          window.location.href = `http://localhost:3000/admin/${this.state.id_empleado}`;
+        }
+      })
+      .catch((err) => {
+        alert("Error: Usuario inválido o inexistente.");
+        window.location.href = `http://localhost:3000/`;
+      });
+    axios.get(`http://localhost:8000/api/sucursales/`).then((res) => {
+      const sucursales = res.data;
+      this.setState({ sucursales });
+    });
+  }
 
   handleChange(event) {
     const usuario = this.state.usuario;
     usuario[event.target.name] = event.target.value;
+    this.setState({ usuario });
+    console.log(this.state);
+  }
+
+  handlePermisos(event) {
+    const usuario = this.state.usuario;
+    usuario.tiene_permisos= !usuario.tiene_permisos;
     this.setState({ usuario });
   }
 
@@ -24,17 +64,22 @@ class Registro extends Component {
     if (
       this.state.usuario.nombre === "" ||
       this.state.usuario.apellido === "" ||
-      this.state.usuario.cedula === ""
+      this.state.usuario.cedula === "" ||
+      this.state.usuario.id_sucursal === ""
     ) {
       alert("Error: Campos vacíos o inválidos");
     } else {
-      const { cedula, nombre, apellido, puntos } = this.state.usuario;
+      const sucursal = this.state.sucursales.filter(
+        (sucursal) => sucursal.nombre === this.state.usuario.id_sucursal
+      );
+      const id_sucursal = sucursal[0].id;
+      const { cedula, nombre, apellido, tiene_permisos } = this.state.usuario;
 
       // Revisar si el usuario existe
       axios
         .get(`http://localhost:8000/api/usuario/${cedula}`)
         .then((usuarioR) => {
-          // Si el usuario no existe, entonces crear usuario y cliente
+          // Si el usuario no existe, entonces crear usuario y empleado
           if (usuarioR.data.length === 0) {
             // Crear usuario
             axios
@@ -49,19 +94,20 @@ class Registro extends Component {
               )
               .then((usuario) => {
                 const id_usuario = usuario.data.id;
-                // Crear cliente
+                // Crear empleado
                 axios
                   .post(
-                    `http://localhost:8000/api/clientes/`,
+                    `http://localhost:8000/api/empleados/`,
                     {
                       id_usuario,
-                      puntos,
+                      tiene_permisos,
+                      id_sucursal,
                     },
                     { headers: { "Content-Type": "application/json" } }
                   )
-                  .then((res) => {
-                    alert("Su usuario ha sido creado con éxito");
-                    window.location.href = "http://localhost:3000/cartelera";
+                  .then(() => {
+                    alert("El empleado ha sido creado con éxito");
+                    window.location.href = `http://localhost:3000/admin/${this.state.id_empleado}`;
                   })
                   .catch((error) => {
                     alert(error.response.request.response);
@@ -71,34 +117,37 @@ class Registro extends Component {
                 alert(error.response.request.response);
               });
           } else {
-            // Si el usuario existe, se revisa si es cliente
+            // Si el usuario existe, se revisa si es empleado
             axios
-              .get(`http://localhost:8000/api/cliente/${cedula}`)
-              .then((cliente) => {
-                // Si no es cliente, entonces se crea el cliente
-                if (cliente.data.length === 0) {
+              .get(
+                `http://localhost:8000/api/iniciar-sesion-empleado/${cedula}`
+              )
+              .then((empleado) => {
+                // Si no es empleado, entonces se crea el empleado
+                if (empleado.data.length === 0) {
                   const id_usuario = usuarioR.data[0].id;
-                  // Crear cliente
+                  // Crear empleado
                   axios
                     .post(
-                      `http://localhost:8000/api/clientes/`,
+                      `http://localhost:8000/api/empleados/`,
                       {
                         id_usuario,
-                        puntos,
+                        tiene_permisos,
+                        id_sucursal,
                       },
                       { headers: { "Content-Type": "application/json" } }
                     )
                     .then((res) => {
                       console.log(res.data);
-                      alert("Su usuario ha sido creado con éxito!");
-                      window.location.href = "http://localhost:3000/cartelera";
+                      alert("El empleado ha sido creado con éxito!");
+                      window.location.href = `http://localhost:3000/admin/${this.state.id_empleado}`;
                     })
                     .catch((error) => {
                       console.log(error.response.request.response);
                     });
                 } else {
-                  // Si es cliente, entonces arroja error
-                  alert("Error: Ya hay un cliente registrado con esa cédula.");
+                  // Si es empleado, entonces arroja error
+                  alert("Error: Ya hay un empleado registrado con esa cédula.");
                 }
               })
               .catch((error) => {
@@ -116,7 +165,10 @@ class Registro extends Component {
     return (
       <div className="row justify-content-center">
         <div className="col-12">
-          <HeaderCliente />
+          <HeaderAdmin
+            tiene_permisos={this.state.empleado.tiene_permisos}
+            id_empleado={this.state.id_empleado}
+          />
         </div>
         <div className="col-12 text-center mt-3">
           <h5>REGISTRARSE</h5>
@@ -155,6 +207,28 @@ class Registro extends Component {
                   placeholder="Ingrese su Cédula"
                   value={this.state.usuario.cedula}
                   onChange={this.handleChange.bind(this)}
+                />
+              </Form.Group>
+              <Form.Group controlId="formBasicSucursal">
+                <Form.Control
+                  as="select"
+                  name="id_sucursal"
+                  value={this.state.usuario.id_sucursal}
+                  onChange={this.handleChange.bind(this)}
+                >
+                  <option></option>
+                  {this.state.sucursales.map((sucursal) => (
+                    <option key={sucursal.id}>{sucursal.nombre}</option>
+                  ))}
+                </Form.Control>
+              </Form.Group>
+              <Form.Group controlId="formBasicCheckbox">
+                <Form.Check
+                  type="checkbox"
+                  name="tiene_permisos"
+                  value={this.state.usuario.tiene_permisos}
+                  onChange={this.handlePermisos.bind(this)}
+                  label="Check me out"
                 />
               </Form.Group>
               <Form.Group className="d-flex justify-content-center">

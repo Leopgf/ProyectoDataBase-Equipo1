@@ -1,59 +1,6 @@
 from django.db import models
 
 
-#Usuarios
-class Usuario(models.Model):
-    cedula = models.CharField(max_length=15, unique=True)
-    nombre = models.CharField(max_length=100)
-    apellido = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.nombre
-
-    class Meta:
-        ordering = ['nombre']
-        verbose_name = 'Usuario'
-        verbose_name_plural = 'Usuarios'  
-
-
-#Sucursal
-class Sucursal(models.Model):
-    nombre = models.CharField(max_length=200, unique=True)
-    ubicacion = models.CharField(max_length=200)
-
-    def __str__(self):
-        return self.nombre
-
-    class Meta:
-        ordering = ['nombre']
-        verbose_name = 'Sucursal'
-        verbose_name_plural = 'Sucursales'  
-
-
-#Empleado
-class Empleado(models.Model):
-    id_usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
-    id_sucursal = models.ForeignKey(Sucursal, on_delete=models.CASCADE)
-    tiene_permisos = models.BooleanField(default=False)
-
-    class Meta:
-        verbose_name = 'Empleado'
-
-
-#Clientes
-class Cliente(models.Model):
-    id_usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
-    puntos = models.IntegerField(default=0)
-
-    def __str__(self):
-        return self.nombre
-
-    class Meta:
-        ordering = ['puntos']
-        verbose_name = 'Cliente'
-        verbose_name_plural = 'Cliente'  
-
-
 #Pelicula
 class Pelicula(models.Model):
     titulo = models.CharField(max_length=200)
@@ -97,6 +44,20 @@ class registroCategorias(models.Model):
         verbose_name_plural = 'Registro Categorias'  
 
 
+#Sucursal
+class Sucursal(models.Model):
+    nombre = models.CharField(max_length=200, unique=True)
+    ubicacion = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.nombre
+
+    class Meta:
+        ordering = ['nombre']
+        verbose_name = 'Sucursal'
+        verbose_name_plural = 'Sucursales'  
+
+
 #Sala
 class Sala(models.Model):
     nombre = models.CharField(max_length=200)
@@ -111,6 +72,18 @@ class Sala(models.Model):
         ordering = ['nombre']
         verbose_name = 'Sala'
         verbose_name_plural = 'Salas'
+
+
+#Asiento
+class Asiento(models.Model):
+    fila = models.IntegerField()
+    columna = models.IntegerField()
+    id_sala = models.ForeignKey(Sala, on_delete=models.CASCADE)
+
+    class Meta:
+        ordering = ['id_sala']
+        verbose_name = 'Asiento'
+        verbose_name_plural = 'Asientos'
 
 
 #Funcion
@@ -128,18 +101,6 @@ class Funcion(models.Model):
         verbose_name_plural = 'Funciones'
 
 
-#Asiento
-class Asiento(models.Model):
-    fila = models.IntegerField()
-    columna = models.IntegerField()
-    id_sala = models.ForeignKey(Sala, on_delete=models.CASCADE)
-
-    class Meta:
-        ordering = ['id_sala']
-        verbose_name = 'Asiento'
-        verbose_name_plural = 'Asientos'
-
-
 #TipoProductos
 class tipoProductos(models.Model):
     tipo = models.CharField(max_length=200)
@@ -151,6 +112,7 @@ class tipoProductos(models.Model):
         ordering = ['tipo']
         verbose_name = 'Tipo Producto'
         verbose_name_plural = 'Tipo Productos'
+
 
 #Productos
 class Producto(models.Model):
@@ -168,6 +130,47 @@ class Producto(models.Model):
         verbose_name_plural = 'Productos'
 
 
+#Alimento
+class Alimento(models.Model):
+    id_producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    contenido_neto = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.contenido_neto
+
+    class Meta:
+        verbose_name = 'Alimento'
+        verbose_name_plural = 'Alimentos'
+
+
+#Entrada
+class Entrada(models.Model):
+    id_producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    tipo = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.tipo
+
+    class Meta:
+        ordering = ['tipo']
+        verbose_name = 'Entrada'
+        verbose_name_plural = 'Entradas'
+
+        
+#Combos
+class ComboCine(models.Model):
+    id_producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    descripcion = models.TextField()
+    descuento = models.FloatField()
+
+    def __str__(self):
+        return self.descripcion
+
+    class Meta:
+        verbose_name = 'Combo Cine'
+        verbose_name_plural = 'Combos Cine'
+
+
 #RegistroCombos
 class registroCombos(models.Model):
     id_producto_combo = models.ForeignKey(Producto, on_delete=models.CASCADE, related_name='combo')
@@ -177,6 +180,46 @@ class registroCombos(models.Model):
     class Meta:
         verbose_name = 'Registro Combo'
         verbose_name_plural = 'Registro Combos'
+
+
+#Usuarios
+class Usuario(models.Model):
+    cedula = models.CharField(max_length=15, unique=True)
+    nombre = models.CharField(max_length=100)
+    apellido = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.nombre
+
+    class Meta:
+        ordering = ['nombre']
+        verbose_name = 'Usuario'
+        verbose_name_plural = 'Usuarios'  
+
+
+#Empleado
+class Empleado(models.Model):
+    id_usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    id_sucursal = models.ForeignKey(Sucursal, on_delete=models.CASCADE)
+    tiene_permisos = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name = 'Empleado'
+
+
+#Clientes
+class Cliente(models.Model):
+    id_usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    puntos = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.nombre
+
+    class Meta:
+        ordering = ['puntos']
+        verbose_name = 'Cliente'
+        verbose_name_plural = 'Cliente'  
+
 
 #Factura
 class Factura(models.Model):
@@ -241,44 +284,3 @@ class registroAsientosReservados(models.Model):
     class Meta:
         verbose_name = 'Registro Asiento Reservado'
         verbose_name_plural = 'Registros Asientos Reservados'
-    
-
-#Combos
-class ComboCine(models.Model):
-    id_producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
-    descripcion = models.TextField()
-    descuento = models.FloatField()
-
-    def __str__(self):
-        return self.descripcion
-
-    class Meta:
-        verbose_name = 'Combo Cine'
-        verbose_name_plural = 'Combos Cine'
-
-
-#Alimento
-class Alimento(models.Model):
-    id_producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
-    contenido_neto = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.contenido_neto
-
-    class Meta:
-        verbose_name = 'Alimento'
-        verbose_name_plural = 'Alimentos'
-
-
-#Entrada
-class Entrada(models.Model):
-    id_producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
-    tipo = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.tipo
-
-    class Meta:
-        ordering = ['tipo']
-        verbose_name = 'Entrada'
-        verbose_name_plural = 'Entradas'

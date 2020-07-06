@@ -15,7 +15,6 @@ class HomeAdmin extends Component {
     },
     usuarios: [],
     cargos: [],
-    permisos: [],
   };
 
   componentDidMount() {
@@ -44,7 +43,6 @@ class HomeAdmin extends Component {
         axios
           .get(`http://localhost:8000/api/permisos-empleado/${usuario.id}`)
           .then((perm) => {
-            var permisos = this.state.permisos;
             if (perm.data.length === 0) {
               cargos[usuario.id - 1] = "Cliente";
             } else {

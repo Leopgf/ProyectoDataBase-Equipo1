@@ -24,7 +24,7 @@ urlpatterns = [
     path('api/', include(router.urls)),
 
     # RUTA PARA TRAER LAS CATEGORIAS DE UNA PELÍCULA
-    url('^api/registroCategorias/(?P<id_pelicula>.+)/$', RegistroCategoriaViewset.as_view(),name="registroCategorias"),
+    url('^api/registroCategorias/(?P<id_pelicula>.+)/$', RegistroCategoriaViewset.as_view(),name="categoriasUnaPeli"),
 
     # RUTA PARA TRAER LOS PRODUCTOS DE UN COMBO
     url('^api/registroCombos/(?P<id_producto_combo>.+)/$', RegistroCombosViewset.as_view(), name ="registroCombos"),

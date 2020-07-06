@@ -132,7 +132,7 @@ class CombosAdmin extends Component {
                 {this.state.combos.map((combo) => (
                   <tr key={combo.id}>
                     <td>{combo.nombre}</td>
-                    <td>{combo.precio}</td>
+                    <td>{combo.precio}$</td>
                     <td>
                       <Button className="btn btn-info">
                         <FontAwesomeIcon

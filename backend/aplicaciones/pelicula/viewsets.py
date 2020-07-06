@@ -35,6 +35,12 @@ class CategoriaViewset(viewsets.ModelViewSet):
     serializer_class = serializers.CategoriasSerializer
 
 
+# TODAS LOS REGISTROSCATEGORIAS
+class RegistroCategoriasTodasViewset(viewsets.ModelViewSet):
+    queryset = models.RegistroCategorias.objects.all()
+    serializer_class = serializers.RegistroCategoriasTodasSerializer
+
+
 # DEVUELVE LA CATEGORIA DE UNA PELICULA
 class RegistroCategoriaViewset(generics.ListAPIView):
     serializer_class = serializers.CategoriasSerializer

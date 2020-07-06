@@ -15,6 +15,12 @@ class CategoriasSerializer(serializers.ModelSerializer):
         model = Categoria
         fields = '__all__'
 
+# SERIALIZER CON TODOS LOS CAMPOS DE REGISTROCATEGORIAS
+class RegistroCategoriasTodasSerializer(serializers.ModelSerializer):
+   class Meta:
+        model = RegistroCategorias
+        fields = '__all__'
+
 # SERIALIZER QUE SOLO TRAE EL CAMPO DEL ID DE LA CATEGORIA EN LA TABLA DE REGISTROCATEGORIAS
 class RegistroCategoriasSerializer(serializers.ModelSerializer):
    class Meta:

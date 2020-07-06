@@ -11,7 +11,7 @@ class Cartelera extends Component {
   };
 
   componentDidMount() {
-    axios.get(`http://localhost:8000/api/peliculas/`).then((res) => {
+    axios.get(`http://localhost:8000/api/peliculas-estrenadas/`).then((res) => {
       const peliculas = res.data;
       this.setState({ peliculas });
     });

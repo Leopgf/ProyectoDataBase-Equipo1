@@ -212,9 +212,6 @@ class Cliente(models.Model):
     id_usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     puntos = models.IntegerField(default=0)
 
-    def __str__(self):
-        return self.nombre
-
     class Meta:
         ordering = ['puntos']
         verbose_name = 'Cliente'

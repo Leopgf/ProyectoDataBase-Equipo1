@@ -95,7 +95,7 @@ class AgregarPeli extends Component {
       } = this.state.pelicula;
       axios
         .post(
-          `http://localhost:8000/api/peliculas/`,
+          `http://localhost:8000/api/peliculas-todas/`,
           {
             titulo,
             sinopsis,
@@ -114,7 +114,7 @@ class AgregarPeli extends Component {
               const id_categoria = categoria.id;
               axios
                 .post(
-                  `http://localhost:8000/api/registroCategorias/`,
+                  `http://localhost:8000/api/registrocategorias-todas/`,
                   {
                     id_pelicula,
                     id_categoria,

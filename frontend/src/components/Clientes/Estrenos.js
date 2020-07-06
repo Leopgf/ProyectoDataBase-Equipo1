@@ -12,7 +12,7 @@ class Estrenos extends Component {
   };
 
   componentDidMount() {
-    axios.get(`http://localhost:8000/api/estrenos/`).then((res) => {
+    axios.get(`http://localhost:8000/api/peliculas-noestrenadas/`).then((res) => {
       const estrenos = res.data;
       this.setState({ estrenos });
     });

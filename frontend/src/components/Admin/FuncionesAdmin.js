@@ -21,7 +21,7 @@ class Funciones extends Component {
       this.setState({ funciones });
       this.state.funciones.forEach((funcion) => {
         axios
-          .get(`http://localhost:8000/api/peliculas-admin/${funcion.id_pelicula}`)
+          .get(`http://localhost:8000/api/peliculas-todas/${funcion.id_pelicula}`)
           .then((res) => {
             var peliculas = this.state.peliculas;
             peliculas.push(res.data.titulo);

@@ -13,7 +13,7 @@ class PeliculaAdmin extends Component {
   };
 
   componentDidMount() {
-    axios.get(`http://localhost:8000/api/peliculas-admin/`).then((res) => {
+    axios.get(`http://localhost:8000/api/peliculas-todas/`).then((res) => {
       const peliculas = res.data;
       this.setState({ peliculas });
     });
@@ -21,7 +21,7 @@ class PeliculaAdmin extends Component {
 
   handleEliminar(id) {
     axios
-      .get(`http://localhost:8000/api/peliculas-admin/${id}/`)
+      .get(`http://localhost:8000/api/peliculas-todas/${id}/`)
       .then((response) => {
         const {
           titulo,
@@ -34,7 +34,7 @@ class PeliculaAdmin extends Component {
         const estado = false;
 
         axios
-          .put(`http://localhost:8000/api/peliculas-admin/${id}/`, {
+          .put(`http://localhost:8000/api/peliculas-todas/${id}/`, {
             titulo,
             sinopsis,
             imagen,

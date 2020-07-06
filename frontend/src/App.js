@@ -40,7 +40,7 @@ function App() {
 
           {/* RUTAS INICIAR SESIÓN*/}
           <Route path="/registro" component={Registro} />
-          <Route path="/iniciar-sesion" component={IniciarSesion} />
+          <Route path="/iniciar-sesion/:id_pelicula" component={IniciarSesion} />
 
           {/* RUTAS ADMIN*/}
           <Route path="/admin" component={HomeAdmin} />

@@ -149,6 +149,15 @@ class ClienteViewset(generics.ListAPIView):
         user = models.Usuario.objects.all().filter(cedula = cedulaUser)[0].id
         return models.Cliente.objects.all().filter(id_usuario = user)
 
+
+# DEVUELVE UN CLIENTE A PARTIR DE SU CEDULA CON SU USUARIO CORRESPONDIENTE
+class IniciarSesionClienteViewset(generics.ListAPIView):
+    serializer_class = serializers.ClienteSerializer
+    def get_queryset(self):
+        cedulaUser = self.kwargs['cedula']
+        user = models.Usuario.objects.all().filter(cedula = cedulaUser)[0].id
+        return models.Cliente.objects.all().filter(id_usuario = user)
+
 # DEVUELVE UN EMPLEADO A PARTIR DE SU CEDULA
 class EmpleadoViewset(generics.ListAPIView):
     serializer_class = serializers.EmpleadoSerializer

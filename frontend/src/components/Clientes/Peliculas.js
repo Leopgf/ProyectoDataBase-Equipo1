@@ -51,7 +51,7 @@ class Cartelera extends Component {
                     </Button>
                   </Link>{" "}
                   {/* BTN QUE REDIRIGE A PANTALLA CON INFO DETALLADA DE LA PELI Y COMPRA*/}
-                  <Link to={`/iniciar-sesion`}>
+                  <Link to={`/iniciar-sesion/${pelicula.id}`}>
                     <Button
                       className="mt-1"
                       variant="success"

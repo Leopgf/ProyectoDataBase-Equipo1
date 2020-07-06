@@ -17,6 +17,7 @@ class Detalles extends Component {
 
   componentDidMount() {
     const id = this.props.match.params.id;
+    this.setState({ id });
     axios
       .get(`http://localhost:8000/api/peliculas-todas/${id}`)
       .then((res) => {
@@ -97,7 +98,7 @@ class Detalles extends Component {
                   Fecha de estreno: {this.state.fecha_estreno}
                 </Card.Subtitle>
                 <Card.Text>Sinopsis: {this.state.sinopsis}</Card.Text>
-                <Link to={`/iniciar-sesion`}>
+                <Link to={`/iniciar-sesion/${this.state.id}`}>
                   <Button variant="success">COMPRAR ENTRADA</Button>
                 </Link>
               </Card.Body>

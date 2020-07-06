@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import HeaderAdmin from "../Headers/HeaderAdmin";
 import Table from "react-bootstrap/Table";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faMinusSquare, faPlusSquare } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
 class HomeAdmin extends Component {
@@ -14,6 +14,8 @@ class HomeAdmin extends Component {
       id_sucursal: "",
     },
     usuarios: [],
+    cargos: [],
+    permisos: [],
   };
 
   componentDidMount() {
@@ -33,6 +35,30 @@ class HomeAdmin extends Component {
     axios.get(`http://localhost:8000/api/usuarios/`).then((res) => {
       const usuarios = res.data;
       this.setState({ usuarios });
+
+      this.state.usuarios.forEach((usuario) => {
+        axios
+          .get(`http://localhost:8000/api/permisos-empleado/${usuario.id}`)
+          .then((perm) => {
+            var cargos = this.state.cargos;
+            var permisos = this.state.permisos;
+            if (perm.data.length === 0) {
+              cargos.push("Cliente");
+            } else {
+              cargos.push("Empleado");
+            }
+            if (perm.data.length !== 0 && perm.data[0].tiene_permisos) {
+              permisos.push(perm.data[0].tiene_permisos);
+            } else if (perm.data.length !== 0 && !perm.data[0].tiene_permisos) {
+              permisos.push(perm.data[0].tiene_permisos);
+            } else {
+              permisos.push("No Aplica");
+            }
+            this.setState({ cargos, permisos });
+            console.log(this.state);
+          })
+          .catch();
+      });
     });
   }
 
@@ -55,7 +81,7 @@ class HomeAdmin extends Component {
         <div className="col-11 col-md-4 col-lg-4 d-flex justify-content-end">
           <button className="btn btn-success">
             <a
-              href={ `/registro-admin/${this.state.id_empleado}` }
+              href={`/registro-admin/${this.state.id_empleado}`}
               className="text-light text-decoration-none d-flex align-content-center"
             >
               REGISTRAR
@@ -69,7 +95,11 @@ class HomeAdmin extends Component {
         </div>
         <div
           className="col-12 mt-3 mb-3"
-          style={{ display: "flex", justifyContent: "center" }}
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            textAlign: "center",
+          }}
         >
           <Table
             striped
@@ -83,15 +113,17 @@ class HomeAdmin extends Component {
                 <th>CÉDULA</th>
                 <th>NOMBRE</th>
                 <th>APELLIDO</th>
+                <th>CARGO</th>
               </tr>
             </thead>
             <tbody>
-              {this.state.usuarios.map((usuario) => (
-                (<tr key={usuario.id}>
+              {this.state.usuarios.map((usuario, index) => (
+                <tr key={usuario.id}>
                   <td>{usuario.cedula}</td>
                   <td>{usuario.nombre}</td>
                   <td>{usuario.apellido}</td>
-                </tr>)
+                  <td>{this.state.cargos[index]}</td>
+                </tr>
               ))}
             </tbody>
           </Table>

@@ -21,6 +21,8 @@ class PromosAdmin extends Component {
   componentDidMount() {
     const id_empleado = this.props.match.params.id_empleado;
     this.setState({ id_empleado });
+    console.log(id_empleado);
+    
     axios
         .get(
           `http://localhost:8000/api/permisos-empleado/${id_empleado}`
@@ -155,7 +157,7 @@ class PromosAdmin extends Component {
                   <td>{promo.descripcion}</td>
                   <td>{promo.descuento}%</td>
                   <td>
-                    <Button className="btn btn-info">
+                    <Button className="btn btn-info" href={`/editar-promos-admin/${this.state.id_empleado}/${promo.id}`}>
                       <FontAwesomeIcon
                         className="text-light"
                         style={{ width: "25px", height: "25px" }}

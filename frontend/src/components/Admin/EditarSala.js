@@ -47,7 +47,7 @@ class EditarSala extends Component {
       this.setState({ sucursales });
     });
     axios.get(`http://localhost:8000/api/salas/${this.props.match.params.id_sala}`).then((res) => {
-        const sala = res.data[0];
+        const sala = res.data;
         this.setState({ sala });
     });
   }
@@ -67,9 +67,13 @@ class EditarSala extends Component {
       );
       const id_sucursal = sucursal[0].id;
       const { nombre, numero_columnas, numero_filas } = this.state.sala;
+      console.log(this.state.sala);
+      console.log(id_sucursal);
+      
+      
       axios
         .put(
-          `http://localhost:8000/api/salas/`,
+          `http://localhost:8000/api/salas/${this.state.sala.id}/`,
           {
             nombre,
             numero_filas,

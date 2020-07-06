@@ -130,7 +130,7 @@ class SalasAdmin extends Component {
                   <td>{sala.nombre}</td>
                   <td>{this.state.sucursales[index]}</td>
                   <td>
-                    <Button className="btn btn-info">
+                    <Button className="btn btn-info" href={`/editar-sala/${this.state.id_empleado}/${sala.id}`}>
                       <FontAwesomeIcon
                         className="text-light"
                         style={{ width: "25px", height: "25px" }}

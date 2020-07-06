@@ -1,37 +1,20 @@
 import React, { Component } from "react";
-import HeaderCliente from "../../Headers/HeaderCliente";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
+import HeaderAdmin from "../../Headers/HeaderAdmin";
 
-class IniciarSesion extends Component {
+class IniciarSesionAdmin extends Component {
   state = {
-    compra: {
-      id_pelicula: "",
-      id_cliente: "",
+    admin: {
+      id_empleado: "",
       cedula: "",
     },
   };
 
-  componentDidMount() {
-    console.log(this.props);
-
-    const id_pelicula = this.props.match.params.id_pelicula;
-    const compra = this.state.compra;
-    compra.id_pelicula = id_pelicula;
-    this.setState({ compra });
-
-    axios
-      .get(`http://localhost:8000/api/peliculas-todas/${id_pelicula}`)
-      .catch((err) => {
-        alert(err.response.request.response);
-        window.location.href = "http://localhost:3000/cartelera";
-      });
-  }
-
   handleChange(event) {
-    const compra = this.state.compra;
-    compra[event.target.name] = event.target.value;
-    this.setState({ compra });
+    const admin = this.state.admin;
+    admin[event.target.name] = event.target.value;
+    this.setState({ admin });
   }
 
   handleInicioDeSesion() {
@@ -40,14 +23,14 @@ class IniciarSesion extends Component {
     } else {
       axios
         .get(
-          `http://localhost:8000/api/iniciar-sesion-cliente/${this.state.compra.cedula}`
+          `http://localhost:8000/api/iniciar-sesion-empleado/${this.state.admin.cedula}`
         )
         .then((usuario) => {
-          const compra = this.state.compra;
-          const id_cliente = usuario.data[0].id;
-          compra.id_cliente = id_cliente;
-          this.setState({ compra });
-          window.location.href = `http://localhost:3000/comprar/${this.state.compra.id_pelicula}/${this.state.compra.id_cliente}`;
+          const admin = this.state.admin;
+          const id_empleado = usuario.data[0].id_usuario;
+          admin.id_empleado = id_empleado;
+          this.setState({ admin });
+          window.location.href = `http://localhost:3000/admin/${this.state.admin.id_empleado}`;
         })
         .catch((err) => alert("Error: Usuario inválido o inexistente."));
     }
@@ -57,7 +40,7 @@ class IniciarSesion extends Component {
     return (
       <div className="row justify-content-center">
         <div className="col-12">
-          <HeaderCliente />
+          <HeaderAdmin />
         </div>
         <div className="col-12 text-center mt-3">
           <h5>INICIAR SESIÓN</h5>
@@ -74,7 +57,7 @@ class IniciarSesion extends Component {
                   type="number"
                   name="cedula"
                   placeholder="Ingrese su Cédula"
-                  value={this.state.compra.cedula}
+                  value={this.state.admin.cedula}
                   onChange={this.handleChange.bind(this)}
                 />
               </Form.Group>
@@ -86,11 +69,6 @@ class IniciarSesion extends Component {
                   SIGUIENTE
                 </Button>
               </Form.Group>
-              <Form.Group className="d-flex justify-content-center">
-                <Button href="/registro" className="w-100 btn btn-dark">
-                  REGISTRARSE
-                </Button>
-              </Form.Group>
             </div>
           </Form>
         </div>
@@ -98,4 +76,4 @@ class IniciarSesion extends Component {
     );
   }
 }
-export default IniciarSesion;
+export default IniciarSesionAdmin;

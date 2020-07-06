@@ -9,6 +9,8 @@ import HomeAdmin from "./components/Admin/HomeAdmin";
 import Cartelera from "./components/Clientes/Cartelera";
 import Registro from "./components/Clientes/Sesion/Registro";
 import IniciarSesion from "./components/Clientes/Sesion/IniciarSesion";
+import RegistroAdmin from "./components/Admin/Sesion/RegistroAdmin";
+import IniciarSesionAdmin from "./components/Admin/Sesion/IniciarSesionAdmin";
 import PeliculaAdmin from "./components/Admin/PeliculaAdmin";
 import AgregarPeli from "./components/Admin/AgregarPeli";
 import Funciones from "./components/Admin/FuncionesAdmin";
@@ -41,9 +43,11 @@ function App() {
           {/* RUTAS INICIAR SESIÓN*/}
           <Route path="/registro" component={Registro} />
           <Route path="/iniciar-sesion/:id_pelicula" component={IniciarSesion} />
+          <Route path="/registro-admin" component={RegistroAdmin} />
+          <Route path="/iniciar-sesion-admin" component={IniciarSesionAdmin} />
 
           {/* RUTAS ADMIN*/}
-          <Route path="/admin" component={HomeAdmin} />
+          <Route path="/admin/:id_empleado" component={HomeAdmin} />
           <Route path="/peliculas-admin" component={PeliculaAdmin} />
           <Route path="/agregar-peli" component={AgregarPeli} />
           <Route path="/funciones-admin" component={Funciones} />

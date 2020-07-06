@@ -13,8 +13,6 @@ class IniciarSesion extends Component {
   };
 
   componentDidMount() {
-    console.log(this.props);
-
     const id_pelicula = this.props.match.params.id_pelicula;
     const compra = this.state.compra;
     compra.id_pelicula = id_pelicula;
@@ -44,7 +42,7 @@ class IniciarSesion extends Component {
         )
         .then((usuario) => {
           const compra = this.state.compra;
-          const id_cliente = usuario.data[0].id;
+          const id_cliente = usuario.data[0].id_usuario;
           compra.id_cliente = id_cliente;
           this.setState({ compra });
           window.location.href = `http://localhost:3000/comprar/${this.state.compra.id_pelicula}/${this.state.compra.id_cliente}`;

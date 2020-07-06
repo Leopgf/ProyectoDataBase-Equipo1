@@ -10,7 +10,7 @@ class Header extends Component {
     render() {
         return (
           <Navbar expand="lg" bg="dark" variant="dark" >
-          <Navbar.Brand href="/admin"><img src={logo} width="200px" height="50px" alt="LengCinema"/></Navbar.Brand> {/* Imagen de Logo con tamaño */}
+          <Navbar.Brand href="/iniciar-sesion-admin"><img src={logo} width="200px" height="50px" alt="LengCinema"/></Navbar.Brand> {/* Imagen de Logo con tamaño */}
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">

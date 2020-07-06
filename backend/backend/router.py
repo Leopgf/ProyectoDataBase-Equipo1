@@ -1,29 +1,49 @@
-from aplicaciones.pelicula.viewsets import  UsuariosViewset, CombosViewset, RegistroCombosAdminViewset, PeliculaViewset, AlimentoViewset, EntradaViewset, ComboCineViewset, ClientesViewset, EmpleadoViewset, PeliculaAdminViewset, EstrenosViewset, CategoriaViewset, registroCategoriaViewset, SucursalViewset, SalaViewset, FuncionViewset, AsientoViewset, tipoProductoViewset, ProductoViewset, registroCombosViewset, FacturaViewset, PromocionesViewset, registroPromocionesViewset, registroComprasViewset, registroAsientosReservadosViewset
+from aplicaciones.pelicula.viewsets import  PeliculaTodasViewset, PeliculasEstrenadasViewset, PeliculasNoEstrenadasViewset, BuscadorPeliculaViewset, UsuariosViewset, CombosViewset, RegistroCombosTodosViewset, AlimentoViewset, EntradaViewset, ComboCineViewset, ClientesViewset, EmpleadoViewset, CategoriaViewset, RegistroCategoriaViewset, SucursalViewset, SalaViewset, FuncionViewset, AsientoViewset, TipoProductoViewset, ProductoViewset, RegistroCombosViewset, FacturaViewset, PromocionesViewset, RegistroPromocionesViewset, RegistroComprasViewset, RegistroAsientosReservadosViewset
 
 from rest_framework import routers
 
 router = routers.DefaultRouter()
 
-router.register('peliculas',PeliculaViewset)
-router.register('peliculas-admin',PeliculaAdminViewset)
-router.register('estrenos',EstrenosViewset)
+# RUTAS DE PELICULAS
+router.register('peliculas-estrenadas',PeliculasEstrenadasViewset)
+router.register('peliculas-todas',PeliculaTodasViewset)
+router.register('peliculas-noestrenadas',PeliculasNoEstrenadasViewset)
+router.register('peliculas-buscador',BuscadorPeliculaViewset)
+
+# RUTAS CATEGORIAS
 router.register('categorias',CategoriaViewset)
+
+# RUTAS SUCURSALES
 router.register('sucursales',SucursalViewset)
+
+# RUTAS SALAS
 router.register('salas',SalaViewset)
-router.register('funciones',FuncionViewset)
+
+# RUTAS ASIENTOS
 router.register('asientos',AsientoViewset)
-router.register('tipoProductos',tipoProductoViewset)
+
+# RUTAS FUNCIONES
+router.register('funciones',FuncionViewset)
+
+# RUTAS PRODUCTOS
+router.register('tipoProductos',TipoProductoViewset)
 router.register('productos',ProductoViewset)
 router.register('combos',CombosViewset)
-router.register('registro-combos-admin',RegistroCombosAdminViewset)
-router.register('facturas',FacturaViewset)
-router.register('promociones',PromocionesViewset)
 router.register('alimentos',AlimentoViewset)
 router.register('entradas',EntradaViewset)
-router.register('usuarios',UsuariosViewset)
 router.register('comboscine',ComboCineViewset)
+router.register('registrocombos-todos',RegistroCombosTodosViewset)
+
+# RUTAS PROMOCIONES
+router.register('promociones',PromocionesViewset)
+
+# RUTAS USUARIOS
+router.register('usuarios',UsuariosViewset)
 router.register('clientes',ClientesViewset)
-router.register('registroPromociones',registroPromocionesViewset)
-router.register('registroCompras',registroComprasViewset)
-router.register('registroAsientosReservados',registroAsientosReservadosViewset)
+
+# RUTAS FACTURAS
+router.register('facturas',FacturaViewset)
+router.register('registroPromociones',RegistroPromocionesViewset)
+router.register('registroCompras',RegistroComprasViewset)
+router.register('registroAsientosReservados',RegistroAsientosReservadosViewset)
 

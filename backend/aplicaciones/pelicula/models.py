@@ -35,7 +35,7 @@ class Categoria(models.Model):
 
 
 #Registro Categorias
-class registroCategorias(models.Model):
+class RegistroCategorias(models.Model):
     id_pelicula = models.ForeignKey(Pelicula, on_delete=models.CASCADE)
     id_categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
 
@@ -102,7 +102,7 @@ class Funcion(models.Model):
 
 
 #TipoProductos
-class tipoProductos(models.Model):
+class TipoProductos(models.Model):
     tipo = models.CharField(max_length=200)
 
     def __str__(self):
@@ -116,7 +116,7 @@ class tipoProductos(models.Model):
 
 #Productos
 class Producto(models.Model):
-    id_tipos_productos = models.ForeignKey(tipoProductos, on_delete=models.CASCADE)
+    id_tipos_productos = models.ForeignKey(TipoProductos, on_delete=models.CASCADE)
     nombre = models.CharField(max_length=200, unique=True)
     precio = models.FloatField()
     estado = models.BooleanField(default=True)
@@ -172,7 +172,7 @@ class ComboCine(models.Model):
 
 
 #RegistroCombos
-class registroCombos(models.Model):
+class RegistroCombos(models.Model):
     id_producto_combo = models.ForeignKey(Producto, on_delete=models.CASCADE, related_name='combo')
     id_producto = models.ForeignKey(Producto, on_delete=models.CASCADE, related_name='producto')
     cantidad = models.IntegerField()
@@ -253,7 +253,7 @@ class Promociones(models.Model):
 
 
 #RegistroPromociones
-class registroPromociones(models.Model):
+class RegistroPromociones(models.Model):
     id_factura = models.ForeignKey(Factura, on_delete=models.CASCADE)
     id_promociones = models.ForeignKey(Promociones, on_delete=models.CASCADE)
     descuento_aplicado = models.FloatField()
@@ -264,7 +264,7 @@ class registroPromociones(models.Model):
 
 
 #RegistroCompras
-class registroCompras(models.Model):
+class RegistroCompras(models.Model):
     id_factura = models.ForeignKey(Factura, on_delete=models.CASCADE)
     id_producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
     cantidad = models.IntegerField()
@@ -276,7 +276,7 @@ class registroCompras(models.Model):
 
 
 #RegistroAsientosReservados
-class registroAsientosReservados(models.Model):
+class RegistroAsientosReservados(models.Model):
     id_factura = models.ForeignKey(Factura, on_delete=models.CASCADE)
     id_asientos = models.ForeignKey(Asiento, on_delete=models.CASCADE)
     id_funciones = models.ForeignKey(Funcion, on_delete=models.CASCADE)

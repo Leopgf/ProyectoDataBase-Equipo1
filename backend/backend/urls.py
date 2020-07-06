@@ -16,14 +16,20 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
-from aplicaciones.pelicula.viewsets import registroCategoriaViewset, registroCombosViewset, UsuarioViewset, EmpleadoViewset, ClienteViewset
+from aplicaciones.pelicula.viewsets import RegistroCategoriaViewset, RegistroCombosViewset, UsuarioViewset, EmpleadoViewset, ClienteViewset
 from .router import router
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
-    url('^api/registroCategorias/(?P<id_pelicula>.+)/$', registroCategoriaViewset.as_view(),name="registroCategorias"),
-    url('^api/registroCombos/(?P<id_producto_combo>.+)/$', registroCombosViewset.as_view(), name ="registroCombos" ),
+
+    # RUTA PARA TRAER LAS CATEGORIAS DE UNA PELÍCULA
+    url('^api/registroCategorias/(?P<id_pelicula>.+)/$', RegistroCategoriaViewset.as_view(),name="registroCategorias"),
+
+    # RUTA PARA TRAER LOS PRODUCTOS DE UN COMBO
+    url('^api/registroCombos/(?P<id_producto_combo>.+)/$', RegistroCombosViewset.as_view(), name ="registroCombos"),
+
+    # RUTA PARA TRAER UN USUARIO/CLIENTE/EMPLEADO POR SU CEDULA
     url('^api/usuario/(?P<cedula>.+)/$', UsuarioViewset.as_view(), name ="usuario"),
     url('^api/empleado/(?P<cedula>.+)/$', EmpleadoViewset.as_view(), name ="empleado" ),
     url('^api/cliente/(?P<cedula>.+)/$', ClienteViewset.as_view(), name ="cliente" ),

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import HeaderAdmin from "../Headers/HeaderAdmin";
 import Table from "react-bootstrap/Table";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faMinusSquare, faPlusSquare } from "@fortawesome/free-solid-svg-icons";
+import { faPlus} from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
 class HomeAdmin extends Component {

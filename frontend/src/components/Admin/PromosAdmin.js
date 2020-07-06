@@ -45,7 +45,7 @@ class PromosAdmin extends Component {
       .get(`http://localhost:8000/api/promociones/${id}/`)
       .then((response) => {
         const {
-          id, nombre, descripcion, condicion, descuento,
+          id, nombre, descripcion, fecha_inicio, fecha_fin, descuento,
         } = response.data;
         const estado = false;
 
@@ -53,7 +53,8 @@ class PromosAdmin extends Component {
           .put(`http://localhost:8000/api/promociones/${id}/`, {
             nombre,
             descripcion,
-            condicion,
+            fecha_inicio,
+            fecha_fin,
             descuento,
             estado,
           })

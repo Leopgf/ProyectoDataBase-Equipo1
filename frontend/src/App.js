@@ -29,6 +29,8 @@ import SucursalesAdmin from "./components/Admin/SucursalesAdmin";
 import AgregarSala from "./components/Admin/AgregarSala";
 import SalasAdmin from "./components/Admin/SalasAdmin";
 import AdministrarPermisos from "./components/Admin/AdministrarPermisos";
+import EditarPromosAdmin from "./components/Admin/EditarPromocion";
+import EditarSala from "./components/Admin/EditarSala";
 
 function App() {
   return (
@@ -68,6 +70,8 @@ function App() {
           <Route path="/agregar-sucursal/:id_empleado" component={AgregarSucursal} />
           <Route path="/salas-admin/:id_empleado" component={SalasAdmin} />
           <Route path="/agregar-sala/:id_empleado" component={AgregarSala} />
+          <Route path="/editar-promos-admin/:id_empleado/:id_promocion" component={EditarPromosAdmin} />
+          <Route path="/editar-sala/:id_empleado/:id_sala" component={EditarSala} />
         </Switch>
       </Router>
     </React.Fragment>

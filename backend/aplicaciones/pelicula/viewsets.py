@@ -197,6 +197,11 @@ class PromocionesViewset(viewsets.ModelViewSet):
     queryset = models.Promociones.objects.all().filter(estado = True)
     serializer_class = serializers.PromocionesSerializer
 
+# TODAS LAS PROMOCIONES ACTIVAS 
+class PromocionesActivasViewset(viewsets.ModelViewSet):
+    queryset = models.Promociones.objects.all().filter(estado = True).filter(fecha_inicio__lte = datetime.date.today()).filter(fecha_fin__gte = datetime.date.today())
+    serializer_class = serializers.PromocionesSerializer
+
 
 # TODOS LOS REGISTROS DE PROMOCIONES EN FACTURAS
 class RegistroPromocionesViewset(viewsets.ModelViewSet):
@@ -221,5 +226,4 @@ class AsientosDeSalaViewset(generics.ListAPIView):
     def get_queryset(self):
         Sala = self.kwargs['id_sala']
         return models.Asiento.objects.all().filter(id_sala = Sala)
-
 

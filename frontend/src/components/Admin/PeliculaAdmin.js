@@ -10,10 +10,31 @@ import { Button } from "react-bootstrap";
 class PeliculaAdmin extends Component {
   state = {
     peliculas: [],
+    id_empleado: "",
+    empleado: {
+      id_usuario: 0,
+      tiene_permisos: false,
+      id_sucursal: "",
+    }
   };
 
   componentDidMount() {
-    axios.get(`http://localhost:8000/api/peliculas-admin/`).then((res) => {
+    const id_empleado = this.props.match.params.id_empleado;
+    this.setState({ id_empleado });
+    axios
+        .get(
+          `http://localhost:8000/api/permisos-empleado/${id_empleado}`
+        )
+        .then((emp) => {
+          const empleado = emp.data[0];
+          this.setState({ empleado });
+          console.log(this.state);
+        })
+        .catch((err) => {
+          alert("Error: Usuario inválido o inexistente.");
+          window.location.href = `http://localhost:3000/`;
+        });
+    axios.get(`http://localhost:8000/api/peliculas-todas/`).then((res) => {
       const peliculas = res.data;
       this.setState({ peliculas });
     });
@@ -21,7 +42,7 @@ class PeliculaAdmin extends Component {
 
   handleEliminar(id) {
     axios
-      .get(`http://localhost:8000/api/peliculas-admin/${id}/`)
+      .get(`http://localhost:8000/api/peliculas-todas/${id}/`)
       .then((response) => {
         const {
           titulo,
@@ -34,7 +55,7 @@ class PeliculaAdmin extends Component {
         const estado = false;
 
         axios
-          .put(`http://localhost:8000/api/peliculas-admin/${id}/`, {
+          .put(`http://localhost:8000/api/peliculas-todas/${id}/`, {
             titulo,
             sinopsis,
             imagen,
@@ -62,7 +83,7 @@ class PeliculaAdmin extends Component {
       return (
         <div className="row">
           <div className="col-12">
-            <HeaderAdmin />
+            <HeaderAdmin tiene_permisos={this.state.empleado.tiene_permisos} id_empleado={this.state.id_empleado}/>
           </div>
           <div className="col-12 text-center mt-3">
             <h4>LISTA DE PELÍCULAS DE LENG CINEMA</h4>
@@ -92,7 +113,7 @@ class PeliculaAdmin extends Component {
     return (
       <div className="row">
         <div className="col-12">
-          <HeaderAdmin />
+          <HeaderAdmin tiene_permisos={this.state.empleado.tiene_permisos} id_empleado={this.state.id_empleado}/>
         </div>
         <div className="col-12 text-center mt-3">
           <h4>LISTA DE PELÍCULAS DE LENG CINEMA</h4>

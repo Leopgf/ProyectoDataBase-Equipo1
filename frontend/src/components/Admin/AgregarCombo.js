@@ -8,13 +8,36 @@ class AgregarCombo extends Component {
     combo: {
       nombre: "",
       descripcion: "",
+      descuento: "",
       id_tipos_productos: 3,
       estado: true,
       id_producto: [],
     },
+    id_empleado: "",
+    empleado: {
+      id_usuario: 0,
+      tiene_permisos: false,
+      id_sucursal: "",
+    }
   };
 
   componentDidMount() {
+    const id_empleado = this.props.match.params.id_empleado;
+    this.setState({ id_empleado });
+    axios
+        .get(
+          `http://localhost:8000/api/permisos-empleado/${id_empleado}`
+        )
+        .then((emp) => {
+          const empleado = emp.data[0];
+          this.setState({ empleado });
+          console.log(this.state);
+        })
+        .catch((err) => {
+          alert("Error: Usuario inválido o inexistente.");
+          window.location.href = `http://localhost:3000/`;
+        });
+
     axios.get(`http://localhost:8000/api/productos/`).then((response) => {
       var productos = [];
       response.data.forEach((prod) => {
@@ -54,7 +77,6 @@ class AgregarCombo extends Component {
     combo.id_producto[event.target.name].cantidad = event.target.value;
     this.setState({ combo });
     console.log(combo);
-    
   }
 
   handleCombo() {
@@ -65,6 +87,7 @@ class AgregarCombo extends Component {
     if (
       this.state.combo.nombre === "" ||
       this.state.combo.descripcion === "" ||
+      this.state.combo.descuento === "" ||
       productos.length === 0
     ) {
       alert("Error: Campos vacíos o inválidos");
@@ -74,21 +97,20 @@ class AgregarCombo extends Component {
       const {
         nombre,
         descripcion,
+        descuento,
         id_tipos_productos,
         estado,
       } = this.state.combo;
       var precio = 0;
       productos.forEach((producto) => {
-        precio = precio + (producto.precio * producto.cantidad);
+        precio = precio + producto.precio * producto.cantidad;
       });
-      console.log(precio);
 
       axios
         .post(
           `http://localhost:8000/api/productos/`,
           {
             nombre,
-            descripcion,
             precio,
             id_tipos_productos,
             estado,
@@ -96,31 +118,53 @@ class AgregarCombo extends Component {
           { headers: { "Content-Type": "application/json" } }
         )
         .then((res) => {
-          productos.forEach((producto) => {
-            if (producto.checked === true) {
-              const id_producto_combo = res.data.id;
-              const id_producto = producto.id;
-              const cantidad = producto.cantidad;
-              axios
-                .post(
-                  `http://localhost:8000/api/registroCombos/`,
-                  {
-                    id_producto_combo,
-                    id_producto,
-                    cantidad,
-                  },
-                  { headers: { "Content-Type": "application/json" } }
-                )
-                .then((res) => {
-                  console.log(res.data);
-                }).catch(err => alert(err));
-            }
+          const id_producto = res.data.id;
+          const id_producto_combo = res.data.id;
+          axios
+            .post(
+              `http://localhost:8000/api/comboscine/`,
+              {
+                descripcion,
+                descuento,
+                id_producto,
+              },
+              { headers: { "Content-Type": "application/json" } }
+            )
+            .then((respuesta) => {
+              console.log(respuesta.data);
+            })
+            .catch((err) => console.log(err.response.request.response));
+          console.log(productos);
+          productos.forEach((product) => {
+            const id_producto = product.id;
+            const cantidad = product.cantidad;
+            console.log(
+              id_producto +
+                " - cantidad: " +
+                cantidad +
+                " - combo: " +
+                id_producto_combo
+            );
+            axios
+              .post(
+                `http://localhost:8000/api/registro-combos-admin/`,
+                {
+                  id_producto_combo,
+                  id_producto,
+                  cantidad,
+                },
+                { headers: { "Content-Type": "application/json" } }
+              )
+              .then((resp) => {
+                console.log(resp.data);
+              })
+              .catch((err) => console.log(err.response.request.response));
           });
           console.log(res.data);
           alert("Combo agregado con éxito!");
           window.location.href = "http://localhost:3000/combos-admin";
         })
-        .catch((err) => alert(err));
+        .catch((err) => alert(err.response.request.response));
     }
   }
 
@@ -128,7 +172,7 @@ class AgregarCombo extends Component {
     return (
       <div className="row justify-content-center">
         <div className="col-12">
-          <HeaderAdmin />
+          <HeaderAdmin tiene_permisos={this.state.empleado.tiene_permisos} id_empleado={this.state.id_empleado}/>
           <h3 className="mt-3 text-center">AGREGAR COMBO</h3>
         </div>
         <div
@@ -137,7 +181,7 @@ class AgregarCombo extends Component {
         >
           <Form className="w-75 mb-3 border border-dark rounded">
             <div className="m-5">
-              <Form.Group controlId="formBasicTitulo">
+              <Form.Group>
                 <Form.Label>Nombre del Combo:</Form.Label>
                 <Form.Control
                   type="text"
@@ -147,7 +191,7 @@ class AgregarCombo extends Component {
                   onChange={this.handleChange.bind(this)}
                 />
               </Form.Group>
-              <Form.Group controlId="formBasicSinopsis">
+              <Form.Group>
                 <Form.Label>Descripción del Combo:</Form.Label>
                 <textarea
                   className="form-control"
@@ -157,6 +201,16 @@ class AgregarCombo extends Component {
                   value={this.state.combo.descripcion}
                   onChange={this.handleChange.bind(this)}
                 ></textarea>
+              </Form.Group>
+              <Form.Group controlId="formBasicTitulo">
+                <Form.Label>Descuento del Combo:</Form.Label>
+                <Form.Control
+                  type="number"
+                  name="descuento"
+                  placeholder="Descuento"
+                  value={this.state.combo.descuento}
+                  onChange={this.handleChange.bind(this)}
+                />
               </Form.Group>
               <Form.Group controlId="exampleForm.ControlSelect">
                 <Form.Label>Seleccione los productos:</Form.Label>

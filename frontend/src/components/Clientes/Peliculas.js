@@ -11,7 +11,7 @@ class Cartelera extends Component {
   };
 
   componentDidMount() {
-    axios.get(`http://localhost:8000/api/peliculas/`).then((res) => {
+    axios.get(`http://localhost:8000/api/peliculas-estrenadas/`).then((res) => {
       const peliculas = res.data;
       this.setState({ peliculas });
     });
@@ -51,7 +51,7 @@ class Cartelera extends Component {
                     </Button>
                   </Link>{" "}
                   {/* BTN QUE REDIRIGE A PANTALLA CON INFO DETALLADA DE LA PELI Y COMPRA*/}
-                  <Link to={`/iniciar-sesion`}>
+                  <Link to={`/iniciar-sesion/${pelicula.id}`}>
                     <Button
                       className="mt-1"
                       variant="success"

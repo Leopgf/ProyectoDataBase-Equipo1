@@ -17,8 +17,9 @@ class Detalles extends Component {
 
   componentDidMount() {
     const id = this.props.match.params.id;
+    this.setState({ id });
     axios
-      .get(`http://localhost:8000/api/peliculas/${id}`)
+      .get(`http://localhost:8000/api/peliculas-todas/${id}`)
       .then((res) => {
         const { titulo, sinopsis, imagen, fecha_estreno, duracion } = res.data;
         this.setState({ titulo, sinopsis, imagen, fecha_estreno, duracion });
@@ -27,6 +28,8 @@ class Detalles extends Component {
           .then((res) => {
             const categoria = res.data;
             this.setState({ categoria });
+            console.log(res.data);
+            
           });
       })
       .catch((err) => {
@@ -82,11 +85,12 @@ class Detalles extends Component {
                   Categorías:
                 </Card.Subtitle>
                 {
-                  this.state.categoria.map((categoria)=>
-                  (<Card.Text>
+                  this.state.categoria.map((categoria, index)=>
+                  (<Card.Text key={index}>
                     {categoria.categoria}
                   </Card.Text>)
-                  )}
+                  )
+                }
                 <Card.Subtitle className="mb-2 text-muted">
                   Duración: {this.state.duracion}
                 </Card.Subtitle>
@@ -94,7 +98,7 @@ class Detalles extends Component {
                   Fecha de estreno: {this.state.fecha_estreno}
                 </Card.Subtitle>
                 <Card.Text>Sinopsis: {this.state.sinopsis}</Card.Text>
-                <Link to={`/iniciar-sesion`}>
+                <Link to={`/iniciar-sesion/${this.state.id}`}>
                   <Button variant="success">COMPRAR ENTRADA</Button>
                 </Link>
               </Card.Body>

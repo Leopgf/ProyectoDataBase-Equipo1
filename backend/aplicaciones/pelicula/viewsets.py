@@ -215,6 +215,11 @@ class RegistroAsientosReservadosViewset(viewsets.ModelViewSet):
     queryset = models.RegistroAsientosReservados.objects.all()
     serializer_class = serializers.RegistroAsientosReservadosSerializer
 
-
+# TODOS LOS ASIENTOS DE UNA SALA
+class AsientosDeSalaViewset(generics.ListAPIView):
+    serializer_class = serializers.AsientoSerializer
+    def get_queryset(self):
+        Sala = self.kwargs['id_sala']
+        return models.Asiento.objects.all().filter(id_sala = Sala)
 
 

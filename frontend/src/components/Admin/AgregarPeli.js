@@ -20,25 +20,23 @@ class AgregarPeli extends Component {
       id_usuario: 0,
       tiene_permisos: false,
       id_sucursal: "",
-    }
+    },
   };
 
   componentDidMount() {
     const id_empleado = this.props.match.params.id_empleado;
     this.setState({ id_empleado });
     axios
-        .get(
-          `http://localhost:8000/api/permisos-empleado/${id_empleado}`
-        )
-        .then((emp) => {
-          const empleado = emp.data[0];
-          this.setState({ empleado });
-          console.log(this.state);
-        })
-        .catch((err) => {
-          alert("Error: Usuario inválido o inexistente.");
-          window.location.href = `http://localhost:3000/`;
-        });
+      .get(`http://localhost:8000/api/permisos-empleado/${id_empleado}`)
+      .then((emp) => {
+        const empleado = emp.data[0];
+        this.setState({ empleado });
+        console.log(this.state);
+      })
+      .catch((err) => {
+        alert("Error: Usuario inválido o inexistente.");
+        window.location.href = `http://localhost:3000/`;
+      });
     axios.get(`http://localhost:8000/api/categorias/`).then((response) => {
       var categoria = [];
       response.data.forEach((cat) => {
@@ -77,11 +75,18 @@ class AgregarPeli extends Component {
     const today = new Date();
     var fecha_estreno;
     var fecha_salida;
-    if (this.state.pelicula.fecha_estreno !== '' && this.state.pelicula.fecha_salida !== ''){
+    if (
+      this.state.pelicula.fecha_estreno !== "" &&
+      this.state.pelicula.fecha_salida !== ""
+    ) {
       fecha_estreno = new Date(Date.parse(this.state.pelicula.fecha_estreno));
       fecha_salida = new Date(Date.parse(this.state.pelicula.fecha_salida));
-      fecha_estreno.setMinutes(fecha_estreno.getMinutes() + fecha_estreno.getTimezoneOffset());
-      fecha_salida.setMinutes(fecha_salida.getMinutes() + fecha_salida.getTimezoneOffset());
+      fecha_estreno.setMinutes(
+        fecha_estreno.getMinutes() + fecha_estreno.getTimezoneOffset()
+      );
+      fecha_salida.setMinutes(
+        fecha_salida.getMinutes() + fecha_salida.getTimezoneOffset()
+      );
     }
 
     if (
@@ -94,16 +99,28 @@ class AgregarPeli extends Component {
       categorias.length === 0
     ) {
       alert("Error: Campos vacíos o inválidos");
-    } else if(
-      (new Date(2000, 1, 1, 1, 0, 0, 0)) >
-			(new Date(2000, 1, 1, parseInt(this.state.pelicula.duracion.split(':')[0]), parseInt(this.state.pelicula.duracion.split(':')[1]), 0, 0))
-    ){
-      alert('Error: No se pueden agregar películas que duren menos de 1 hora')
-    } else if(fecha_salida < today){
-      alert('Error: No puedes registrar una película con la fecha de salida anterior a hoy');
-    }else if( fecha_salida < fecha_estreno){
-      alert('Error: La fecha de salida de la película no puede ser anterior a la fecha de estreno');
-    }else{
+    } else if (
+      new Date(2000, 1, 1, 1, 0, 0, 0) >
+      new Date(
+        2000,
+        1,
+        1,
+        parseInt(this.state.pelicula.duracion.split(":")[0]),
+        parseInt(this.state.pelicula.duracion.split(":")[1]),
+        0,
+        0
+      )
+    ) {
+      alert("Error: No se pueden agregar películas que duren menos de 1 hora");
+    } else if (fecha_salida < today) {
+      alert(
+        "Error: No puedes registrar una película con la fecha de salida anterior a hoy"
+      );
+    } else if (fecha_salida < fecha_estreno) {
+      alert(
+        "Error: La fecha de salida de la película no puede ser anterior a la fecha de estreno"
+      );
+    } else {
       const {
         titulo,
         sinopsis,
@@ -148,7 +165,7 @@ class AgregarPeli extends Component {
           });
           console.log(res.data);
           alert("¡Película agregada con éxito!");
-          window.location.href = "http://localhost:3000/peliculas-admin";
+          window.location.href = `http://localhost:3000/peliculas-admin/${this.state.id_empleado}`;
         })
         .catch((err) => alert(err.response.request.response));
     }
@@ -158,7 +175,10 @@ class AgregarPeli extends Component {
     return (
       <div className="row justify-content-center">
         <div className="col-12">
-          <HeaderAdmin tiene_permisos={this.state.empleado.tiene_permisos} id_empleado={this.state.id_empleado}/>
+          <HeaderAdmin
+            tiene_permisos={this.state.empleado.tiene_permisos}
+            id_empleado={this.state.id_empleado}
+          />
           <h3 className="mt-3 text-center">AGREGAR PELÍCULA</h3>
         </div>
         <div
@@ -255,7 +275,5 @@ class AgregarPeli extends Component {
       </div>
     );
   }
-
-  
 }
 export default AgregarPeli;

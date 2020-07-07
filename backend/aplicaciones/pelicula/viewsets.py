@@ -73,6 +73,14 @@ class FuncionViewset(viewsets.ModelViewSet):
     serializer_class = serializers.FuncionSerializer
 
 
+# TODAS LAS FUNCIONES DE UNA PELICULA ESPECÍFICA
+class FuncionPorPeliculaViewset(generics.ListAPIView):
+    serializer_class = serializers.FuncionSerializer
+    def get_queryset(self):
+        pelicula = self.kwargs['id_pelicula']
+        return models.Funcion.objects.all().filter(id_pelicula = pelicula).filter(estado = True)
+
+
 # TODOS LOS TIPOS DE PRODUCTOS
 class TipoProductoViewset(viewsets.ModelViewSet):
     queryset = models.TipoProductos.objects.all()

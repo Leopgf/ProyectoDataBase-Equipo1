@@ -31,6 +31,11 @@ import SalasAdmin from "./components/Admin/SalasAdmin";
 import AdministrarPermisos from "./components/Admin/AdministrarPermisos";
 import EditarPromosAdmin from "./components/Admin/EditarPromocion";
 import EditarSala from "./components/Admin/EditarSala";
+import InicioCompra from "./components/VistasCompra/InicioCompra";
+import SiguienteCompra from "./components/VistasCompra/SiguienteCompra";
+import FinalCompra from "./components/VistasCompra/FinalCompra";
+
+
 
 function App() {
   return (
@@ -50,6 +55,11 @@ function App() {
           <Route path="/iniciar-sesion/:id_pelicula" component={IniciarSesion} />
           <Route path="/registro-admin/:id_empleado" component={RegistroAdmin} />
           <Route path="/iniciar-sesion-admin" component={IniciarSesionAdmin} />
+
+          {/* RUTAS COMPRA ENTRADA*/}
+          <Route path="/inicioCompra" component={InicioCompra} />
+          <Route path="/siguienteCompra" component={SiguienteCompra} />
+          <Route path="/finalCompra" component={FinalCompra} />
 
           {/* RUTAS ADMIN*/}
           <Route path="/admin/:id_empleado" component={HomeAdmin} />

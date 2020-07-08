@@ -50,7 +50,7 @@ class FuncionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Funcion
         fields = '__all__'
-
+        
 # SERIALIZER QUE TRAE TODOS LOS CAMPOS DE LOS TIPOS DE PRODUCTOS
 class TipoProductosSerializer(serializers.ModelSerializer):
     class Meta:
@@ -154,3 +154,31 @@ class RegistroAsientosReservadosSerializer(serializers.ModelSerializer):
     class Meta:
         model = RegistroAsientosReservados
         fields = '__all__'
+
+
+# SERIALIZER QUE TRAE EL TITULO DE LA PELICULA
+class TituloPeliculaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Pelicula
+        fields = ['titulo']
+        
+# SERIALIZER QUE TRAE EL NOMBRE DE LA SUCURSAL
+class NombreSucursalSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Sucursal
+        fields = ['nombre']
+        
+# SERIALIZER QUE TRAE EL NOMBRE DE LA SALA
+class NombreSalaSerializer(serializers.ModelSerializer):
+    sucursal = NombreSucursalSerializer(source='id_sucursal')
+    class Meta:
+        model = Sala
+        fields = ['sucursal', 'nombre']
+        
+# SERIALIZER QUE TRAE LA FECHA, HORA, PELICULA, SALA Y SUCURSAL DE LA FUNCION
+class FuncionRepetidaSerializer(serializers.ModelSerializer):
+    pelicula = TituloPeliculaSerializer(source='id_pelicula')
+    sala = NombreSalaSerializer(source='id_sala')
+    class Meta:
+        model = Funcion
+        fields = ('pelicula', 'sala', 'fecha', 'hora')

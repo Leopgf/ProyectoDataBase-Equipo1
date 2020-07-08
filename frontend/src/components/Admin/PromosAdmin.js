@@ -88,7 +88,7 @@ class PromosAdmin extends Component {
           <div className="col-11 col-md-4 col-lg-4 d-flex justify-content-end">
             <button className="btn btn-success">
               <a
-                href="/agregar-promo"
+                href={`/agregar-promo/${this.state.id_empleado}`}
                 className="text-light text-decoration-none d-flex align-content-center"
               >
                 AGREGAR
@@ -118,7 +118,7 @@ class PromosAdmin extends Component {
         <div className="col-11 col-md-4 col-lg-4 d-flex justify-content-end">
           <button className="btn btn-success">
             <a
-              href="/agregar-promo"
+              href={`/agregar-promo/${this.state.id_empleado}`}
               className="text-light text-decoration-none d-flex align-content-center"
             >
               AGREGAR

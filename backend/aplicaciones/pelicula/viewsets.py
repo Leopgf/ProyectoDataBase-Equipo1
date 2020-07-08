@@ -17,7 +17,7 @@ class PeliculasEstrenadasViewset(viewsets.ModelViewSet):
 
 # SOLO PELICULAS DE PROXIMOS ESTRENOS ACTIVOS
 class PeliculasNoEstrenadasViewset(viewsets.ModelViewSet):
-    queryset = models.Pelicula.objects.all().filter(fecha_estreno__gte = datetime.date.today()).filter(estado = True)
+    queryset = models.Pelicula.objects.all().filter(fecha_estreno__gt = datetime.date.today()).filter(estado = True)
     serializer_class = serializers.PeliculasSerializer
 
 
@@ -33,6 +33,20 @@ class BuscadorPeliculaViewset(viewsets.ModelViewSet):
 class CategoriaViewset(viewsets.ModelViewSet):
     queryset = models.Categoria.objects.all().filter(estado = True)
     serializer_class = serializers.CategoriasSerializer
+
+# TODAS LAS CATEGORIAS
+class CategoriasTodasViewset(viewsets.ModelViewSet):
+    queryset = models.Categoria.objects.all()
+    serializer_class = serializers.CategoriasSerializer
+
+
+# DEVUELVE LA CATEGORIA ELIMINADA DADA LA CATEGORIA
+class CategoriaEliminadaViewset(generics.ListAPIView):
+    serializer_class = serializers.CategoriasSerializer
+    
+    def get_queryset(self):
+        category = self.kwargs['categoria']
+        return models.Categoria.objects.all().filter(categoria = category).filter(estado = False)      
 
 
 # TODAS LOS REGISTROSCATEGORIAS
@@ -71,6 +85,30 @@ class AsientoViewset(viewsets.ModelViewSet):
 class FuncionViewset(viewsets.ModelViewSet):
     queryset = models.Funcion.objects.all().filter(estado = True)
     serializer_class = serializers.FuncionSerializer
+
+
+# TODAS LAS FUNCIONES QUE NO HAN PASADO
+class FuncionesDisponiblesViewset(viewsets.ModelViewSet):
+    queryset = models.Funcion.objects.all().filter(estado = True).filter(fecha__gte = datetime.date.today())
+    serializer_class = serializers.FuncionSerializer
+
+
+# TODAS LAS FUNCIONES DE UNA PELICULA ESPECÍFICA
+class FuncionPorPeliculaViewset(generics.ListAPIView):
+    serializer_class = serializers.FuncionSerializer
+    def get_queryset(self):
+        pelicula = self.kwargs['id_pelicula']
+        return models.Funcion.objects.all().filter(id_pelicula = pelicula).filter(estado = True)
+
+
+# DEVUELVE SI HAY UNA FUNCIÓN EN EL BLOQUE HORARIO DE ESA PELICULA
+class FuncionOcupadaViewset(generics.ListAPIView):
+    serializer_class = serializers.FuncionRepetidaSerializer
+    def get_queryset(self):
+        sala = self.kwargs['id_sala']
+        fecha_add = self.kwargs['fecha']
+        hora_add = self.kwargs['hora']
+        return models.Funcion.objects.all().filter(estado = True).filter(id_sala = sala).filter(fecha = fecha_add).filter(hora = hora_add)
 
 
 # TODOS LOS TIPOS DE PRODUCTOS

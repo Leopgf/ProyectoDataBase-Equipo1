@@ -1,4 +1,5 @@
 from aplicaciones.pelicula.viewsets import  EmpleadosConUsuariosViewset, RegistroCategoriasTodasViewset, PeliculaTodasViewset, PeliculasEstrenadasViewset, PeliculasNoEstrenadasViewset, BuscadorPeliculaViewset, UsuariosViewset, CombosViewset, RegistroCombosTodosViewset, AlimentoViewset, EntradaViewset, ComboCineViewset, ClientesViewset, EmpleadosViewset, CategoriaViewset, RegistroCategoriaViewset, SucursalViewset, SalaViewset, FuncionViewset, AsientoViewset, TipoProductoViewset, ProductoViewset, RegistroCombosViewset, FacturaViewset, PromocionesViewset, RegistroPromocionesViewset, RegistroComprasViewset, RegistroAsientosReservadosViewset, PromocionesActivasViewset
+from aplicaciones.pelicula.viewsets import FuncionesDisponiblesViewset, CategoriasTodasViewset, EmpleadosConUsuariosViewset, RegistroCategoriasTodasViewset, PeliculaTodasViewset, PeliculasEstrenadasViewset, PeliculasNoEstrenadasViewset, BuscadorPeliculaViewset, UsuariosViewset, CombosViewset, RegistroCombosTodosViewset, AlimentoViewset, EntradaViewset, ComboCineViewset, ClientesViewset, EmpleadosViewset, CategoriaViewset, RegistroCategoriaViewset, SucursalViewset, SalaViewset, FuncionViewset, AsientoViewset, TipoProductoViewset, ProductoViewset, RegistroCombosViewset, FacturaViewset, PromocionesViewset, RegistroPromocionesViewset, RegistroComprasViewset, RegistroAsientosReservadosViewset
 
 from rest_framework import routers
 
@@ -11,6 +12,7 @@ router.register('peliculas-noestrenadas',PeliculasNoEstrenadasViewset)
 router.register('peliculas-buscador',BuscadorPeliculaViewset)
 
 # RUTAS CATEGORIAS
+router.register('categorias-todas',CategoriasTodasViewset)
 router.register('categorias',CategoriaViewset)
 router.register('registrocategorias-todas',RegistroCategoriasTodasViewset)
 
@@ -25,6 +27,7 @@ router.register('asientos',AsientoViewset)
 
 # RUTAS FUNCIONES
 router.register('funciones',FuncionViewset)
+router.register('funciones-disponibles',FuncionesDisponiblesViewset)
 
 # RUTAS PRODUCTOS
 router.register('tipoProductos',TipoProductoViewset)

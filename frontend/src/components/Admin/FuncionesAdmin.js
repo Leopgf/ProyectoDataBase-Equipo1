@@ -18,7 +18,7 @@ class Funciones extends Component {
       id_usuario: 0,
       tiene_permisos: false,
       id_sucursal: "",
-    }
+    },
   };
 
   componentDidMount() {
@@ -35,71 +35,119 @@ class Funciones extends Component {
         alert("Error: Usuario inválido o inexistente.");
         window.location.href = `http://localhost:3000/`;
       });
-    axios.get(`http://localhost:8000/api/funciones/`).then((res) => {
-      const funciones = res.data;
-      this.setState({ funciones });
-      this.state.funciones.forEach((funcion) => {
-        axios
-          .get(`http://localhost:8000/api/peliculas-todas/${funcion.id_pelicula}`)
-          .then((res) => {
-            var peliculas = this.state.peliculas;
-            peliculas.push(res.data.titulo);
-            this.setState({ peliculas });
-          });
-        axios
-          .get(`http://localhost:8000/api/salas/${funcion.id_sala}`)
-          .then((res) => {
-            var salas = this.state.salas;
-            salas.push(res.data.nombre);
-            this.setState({ salas });
-            axios
-              .get(`http://localhost:8000/api/sucursales/${res.data.id}`)
-              .then((sucursal) => {
-                const sucursales = this.state.sucursales;
-                sucursales.push(sucursal.data.nombre);
-                this.setState({ sucursales });
-              });
-          });
+    axios
+      .get(`http://localhost:8000/api/funciones-disponibles/`)
+      .then((res) => {
+        const funciones = res.data;
+        this.setState({ funciones });
+
+        var peliculas = this.state.peliculas;
+        var salas = this.state.salas;
+        var sucursales = this.state.sucursales;
+        for (let index = 0; index < peliculas.length; index++) {
+          peliculas.push("");
+          salas.push("");
+          sucursales.push("");
+        }
+
+        this.state.funciones.forEach((funcion, index) => {
+          axios
+            .get(
+              `http://localhost:8000/api/peliculas-todas/${funcion.id_pelicula}`
+            )
+            .then((res) => {
+              peliculas[index] = res.data.titulo;
+              this.setState({ peliculas });
+            });
+          axios
+            .get(`http://localhost:8000/api/salas/${funcion.id_sala}`)
+            .then((res) => {
+              salas[index] = res.data.nombre;
+              this.setState({ salas });
+              axios
+                .get(`http://localhost:8000/api/sucursales/${res.data.id}`)
+                .then((sucursal) => {
+                  sucursales[index] = sucursal.data.nombre;
+                  this.setState({ sucursales });
+                });
+            });
+        });
       });
+  }
+
+  handleEliminar(id) {
+    axios.get(`http://localhost:8000/api/funciones/${id}/`).then((response) => {
+      const {
+        fecha,
+        hora,
+        butacas_disponibles,
+        id_pelicula,
+        id_sala,
+      } = response.data;
+      const estado = false;
+
+      axios
+        .put(`http://localhost:8000/api/funciones/${id}/`, {
+          fecha,
+          hora,
+          butacas_disponibles,
+          id_pelicula,
+          id_sala,
+          estado,
+        })
+        .then((response) => {
+          console.log(response);
+          alert("¡Función eliminada con éxito!");
+          window.location.href = `http://localhost:3000/funciones-admin/${this.state.id_empleado}`;
+        })
+        .catch((err) => {
+          console.log(err.response.request.response);
+        });
     });
   }
 
   render() {
-    if (this.state.funciones.length === 0){
+    if (this.state.funciones.length === 0) {
       return (
         <div className="row">
-        <div className="col-12">
-          <HeaderAdmin tiene_permisos={this.state.empleado.tiene_permisos} id_empleado={this.state.id_empleado}/>
-        </div>
-        <div className="col-12 text-center mt-3">
-          <h4>LISTA DE FUNCIONES DE LENG CINEMA</h4>
-        </div>
-        <div className="col-12 col-md-6 text-center mt-3 "></div>
-        <div className="col-11 col-md-4 col-lg-4 d-flex justify-content-end">
-          <button className="btn btn-success">
-            <a
-              href="/agregar-funcion"
-              className="text-light text-decoration-none d-flex align-content-center"
-            >
-              AGREGAR
-              <FontAwesomeIcon
-                className="text-light ml-2"
-                style={{ width: "25px", height: "25px" }}
-                icon={faPlus}
-              />
-            </a>
-          </button>
-        </div>
-        <div className="col-12 mt-3">
-          <Error/>
-        </div>
+          <div className="col-12">
+            <HeaderAdmin
+              tiene_permisos={this.state.empleado.tiene_permisos}
+              id_empleado={this.state.id_empleado}
+            />
+          </div>
+          <div className="col-12 text-center mt-3">
+            <h4>LISTA DE FUNCIONES DE LENG CINEMA</h4>
+          </div>
+          <div className="col-12 col-md-6 text-center mt-3 "></div>
+          <div className="col-11 col-md-4 col-lg-4 d-flex justify-content-end">
+            <button className="btn btn-success">
+              <a
+                href={`/agregar-funcion/${this.state.id_empleado}`}
+                className="text-light text-decoration-none d-flex align-content-center"
+              >
+                AGREGAR
+                <FontAwesomeIcon
+                  className="text-light ml-2"
+                  style={{ width: "25px", height: "25px" }}
+                  icon={faPlus}
+                />
+              </a>
+            </button>
+          </div>
+          <div className="col-12 mt-3">
+            <Error />
+          </div>
         </div>
       );
     }
     return (
       <div className="row">
         <div className="col-12">
-          <HeaderAdmin tiene_permisos={this.state.empleado.tiene_permisos} id_empleado={this.state.id_empleado}/>
+          <HeaderAdmin
+            tiene_permisos={this.state.empleado.tiene_permisos}
+            id_empleado={this.state.id_empleado}
+          />
         </div>
         <div className="col-12 text-center mt-3">
           <h4>LISTA DE FUNCIONES DE LENG CINEMA</h4>
@@ -108,7 +156,7 @@ class Funciones extends Component {
         <div className="col-11 col-md-4 col-lg-4 d-flex justify-content-end">
           <button className="btn btn-success">
             <a
-              href="/agregar-funcion"
+              href={`/agregar-funcion/${this.state.id_empleado}`}
               className="text-light text-decoration-none d-flex align-content-center"
             >
               AGREGAR
@@ -163,7 +211,10 @@ class Funciones extends Component {
                     </Button>
                   </td>
                   <td>
-                    <Button className="btn btn-danger">
+                    <Button
+                      className="btn btn-danger"
+                      onClick={() => this.handleEliminar(funcion.id)}
+                    >
                       <FontAwesomeIcon
                         className="text-light"
                         style={{ width: "25px", height: "25px" }}

@@ -65,7 +65,7 @@ class AgregarSucursal extends Component {
         .then((res) => {
           console.log(res.data);
           alert("Sucursal agregada con éxito!");
-          window.location.href = "http://localhost:3000/sucursales-admin";
+          window.location.href = `http://localhost:3000/sucursales-admin/${this.state.id_empleado}`;
         })
         .catch((err) => alert(err.response.request.response));
     }

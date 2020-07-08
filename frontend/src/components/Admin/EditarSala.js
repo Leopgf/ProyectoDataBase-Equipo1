@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import HeaderAdmin from "../../components/Headers/HeaderAdmin";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Alert } from "react-bootstrap";
 import axios from "axios";
 
 class EditarSala extends Component {
@@ -17,7 +17,7 @@ class EditarSala extends Component {
       id_usuario: 0,
       tiene_permisos: false,
       id_sucursal: "",
-    }
+    },
   };
 
   handleChange(event) {
@@ -30,28 +30,27 @@ class EditarSala extends Component {
     const id_empleado = this.props.match.params.id_empleado;
     this.setState({ id_empleado });
     axios
-        .get(
-          `http://localhost:8000/api/permisos-empleado/${id_empleado}`
-        )
-        .then((emp) => {
-          const empleado = emp.data[0];
-          this.setState({ empleado });
-          console.log(this.state);
-        })
-        .catch((err) => {
-          alert("Error: Usuario inválido o inexistente.");
-          window.location.href = `http://localhost:3000/`;
-        });
+      .get(`http://localhost:8000/api/permisos-empleado/${id_empleado}`)
+      .then((emp) => {
+        const empleado = emp.data[0];
+        this.setState({ empleado });
+        console.log(this.state);
+      })
+      .catch((err) => {
+        alert("Error: Usuario inválido o inexistente.");
+        window.location.href = `http://localhost:3000/`;
+      });
     axios.get(`http://localhost:8000/api/sucursales/`).then((res) => {
       const sucursales = res.data;
       this.setState({ sucursales });
     });
-    axios.get(`http://localhost:8000/api/salas/${this.props.match.params.id_sala}`).then((res) => {
+    axios
+      .get(`http://localhost:8000/api/salas/${this.props.match.params.id_sala}`)
+      .then((res) => {
         const sala = res.data;
         this.setState({ sala });
-    });
+      });
   }
-
 
   handleEditarSala() {
     if (
@@ -69,32 +68,16 @@ class EditarSala extends Component {
       const id_sucursal = sucursal[0].id;
       const { nombre, numero_columnas, numero_filas } = this.state.sala;
       axios
-        .put(
-          `http://localhost:8000/api/salas/${this.state.sala.id}/`,
-          {
-            nombre,
-            numero_filas,
-            numero_columnas,
-            id_sucursal,
-          }
-        )
+        .put(`http://localhost:8000/api/salas/${this.state.sala.id}/`, {
+          nombre,
+          numero_filas,
+          numero_columnas,
+          id_sucursal,
+        })
         .then((res) => {
-          const id_sala = res.data.id;
-        //   for (let fila = 1; fila <= numero_filas; fila++) {
-        //     for (let columna = 1; columna <= numero_columnas; columna++) {
-        //       axios
-        //         .post(`http://localhost:8000/api/asientos/`, {
-        //           fila,
-        //           columna,
-        //           id_sala,
-        //         })
-        //         .then((res) => {})
-        //         .catch((err) => alert(err.response.request.response));
-        //     }
-        //   }
           console.log(res.data);
           alert("Sala editada correctamente");
-          window.location.href = "http://localhost:3000/salas-admin";
+          window.location.href = `http://localhost:3000/salas-admin/${this.state.id_empleado}`;
         })
         .catch((err) => alert(err.response.request.response));
     }
@@ -104,7 +87,10 @@ class EditarSala extends Component {
     return (
       <div className="row justify-content-center">
         <div className="col-12">
-          <HeaderAdmin tiene_permisos={this.state.empleado.tiene_permisos} id_empleado={this.state.id_empleado}/>
+          <HeaderAdmin
+            tiene_permisos={this.state.empleado.tiene_permisos}
+            id_empleado={this.state.id_empleado}
+          />
           <h3 className="mt-3 text-center">EDITAR SALA</h3>
         </div>
         <div
@@ -113,30 +99,18 @@ class EditarSala extends Component {
         >
           <Form className="w-75 mb-3 border border-dark rounded">
             <div className="m-5">
+              <Alert className="alert-info">
+                La sala tiene {this.state.sala.numero_filas} filas y{" "}
+                {this.state.sala.numero_columnas} columnas, para un total de{" "}
+                {this.state.sala.numero_columnas * this.state.sala.numero_filas}{" "}
+                asientos.
+              </Alert>
               <Form.Group controlId="formBasicFecha">
                 <Form.Label>Nombre de la Sala:</Form.Label>
                 <Form.Control
                   type="text"
                   name="nombre"
                   value={this.state.sala.nombre}
-                  onChange={this.handleChange.bind(this)}
-                />
-              </Form.Group>
-              <Form.Group controlId="formBasicHora">
-                <Form.Label>Número de Filas:</Form.Label>
-                <Form.Control
-                  type="number"
-                  name="numero_filas"
-                  value={this.state.sala.numero_filas}
-                  onChange={this.handleChange.bind(this)}
-                />
-              </Form.Group>
-              <Form.Group controlId="formBasicHora">
-                <Form.Label>Número de Columnas:</Form.Label>
-                <Form.Control
-                  type="number"
-                  name="numero_columnas"
-                  value={this.state.sala.numero_columnas}
                   onChange={this.handleChange.bind(this)}
                 />
               </Form.Group>

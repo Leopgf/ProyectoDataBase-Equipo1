@@ -18,25 +18,23 @@ class AgregarPromo extends Component {
       id_usuario: 0,
       tiene_permisos: false,
       id_sucursal: "",
-    }
+    },
   };
 
-  componentDidMount(){
+  componentDidMount() {
     const id_empleado = this.props.match.params.id_empleado;
     this.setState({ id_empleado });
     axios
-        .get(
-          `http://localhost:8000/api/permisos-empleado/${id_empleado}`
-        )
-        .then((emp) => {
-          const empleado = emp.data[0];
-          this.setState({ empleado });
-          console.log(this.state);
-        })
-        .catch((err) => {
-          alert("Error: Usuario inválido o inexistente.");
-          window.location.href = `http://localhost:3000/`;
-        });
+      .get(`http://localhost:8000/api/permisos-empleado/${id_empleado}`)
+      .then((emp) => {
+        const empleado = emp.data[0];
+        this.setState({ empleado });
+        console.log(this.state);
+      })
+      .catch((err) => {
+        alert("Error: Usuario inválido o inexistente.");
+        window.location.href = `http://localhost:3000/`;
+      });
   }
 
   handleChange(event) {
@@ -46,17 +44,53 @@ class AgregarPromo extends Component {
   }
 
   handlePromocion() {
-    if (this.state.promocion.nombre === "" || 
-    this.state.promocion.descripcion === "" || 
-    this.state.promocion.fecha_fin === "" || 
-    this.state.promocion.fecha_inicio === "" || 
-    this.state.promocion.descuento === 0
+    const today = new Date();
+    var fecha_inicio;
+    var fecha_fin;
+    if (
+      this.state.promocion.fecha_inicio !== "" &&
+      this.state.promocion.fecha_fin !== ""
+    ) {
+      fecha_inicio = new Date(Date.parse(this.state.promocion.fecha_inicio));
+      fecha_fin = new Date(Date.parse(this.state.promocion.fecha_fin));
+      fecha_inicio.setMinutes(
+        fecha_inicio.getMinutes() + fecha_inicio.getTimezoneOffset()
+      );
+      fecha_fin.setMinutes(
+        fecha_fin.getMinutes() + fecha_fin.getTimezoneOffset()
+      );
+    }
+
+    if (
+      this.state.promocion.nombre === "" ||
+      this.state.promocion.descripcion === "" ||
+      this.state.promocion.fecha_fin === "" ||
+      this.state.promocion.fecha_inicio === "" ||
+      this.state.promocion.descuento === 0
     ) {
       alert("Error: Campos vacíos o inválidos");
-    } else if(this.state.promocion.descuento <= 0 || this.state.promocion.descuento > 100){
-      alert('Error: El descuento debe ser mayor de 0 y menor o igual a 100');
-    } else{
-      const { nombre, descripcion, fecha_inicio, fecha_fin, descuento, estado } = this.state.promocion;
+    } else if (
+      this.state.promocion.descuento <= 0 ||
+      this.state.promocion.descuento > 100
+    ) {
+      alert("Error: El descuento debe ser mayor de 0% y menor o igual a 100%");
+    } else if (fecha_inicio < today) {
+      alert(
+        "Error: No puedes registrar una promocion con la fecha de inicio anterior a hoy"
+      );
+    } else if (fecha_fin < fecha_inicio) {
+      alert(
+        "Error: La fecha de fin de la promoción no puede ser anterior a la fecha de inicio"
+      );
+    } else {
+      const {
+        nombre,
+        descripcion,
+        fecha_inicio,
+        fecha_fin,
+        descuento,
+        estado,
+      } = this.state.promocion;
       axios
         .post(
           `http://localhost:8000/api/promociones/`,
@@ -73,7 +107,7 @@ class AgregarPromo extends Component {
         .then((res) => {
           console.log(res.data);
           alert("Promoción agregada con éxito!");
-          window.location.href = "http://localhost:3000/promos-admin";
+          window.location.href = `http://localhost:3000/promos-admin/${this.state.id_empleado}`;
         })
         .catch((err) => alert(err.response.request.response));
     }
@@ -83,7 +117,10 @@ class AgregarPromo extends Component {
     return (
       <div className="row justify-content-center">
         <div className="col-12">
-          <HeaderAdmin tiene_permisos={this.state.empleado.tiene_permisos} id_empleado={this.state.id_empleado}/>
+          <HeaderAdmin
+            tiene_permisos={this.state.empleado.tiene_permisos}
+            id_empleado={this.state.id_empleado}
+          />
           <h3 className="mt-3 text-center">AGREGAR PROMOCIÓN</h3>
         </div>
         <div

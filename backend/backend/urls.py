@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
 from aplicaciones.pelicula.viewsets import RegistroCategoriaViewset, RegistroCombosViewset, UsuarioViewset, IdUsuarioEmpleadoViewset, IdUsuarioClienteViewset, IniciarSesionEmpleadoViewset, IniciarSesionClienteViewset, AsientosDeSalaViewset
+from aplicaciones.pelicula.viewsets import RegistroCategoriaViewset, CategoriaEliminadaViewset, FuncionPorPeliculaViewset, FuncionOcupadaViewset, RegistroCombosViewset, UsuarioViewset, IdUsuarioEmpleadoViewset, IdUsuarioClienteViewset, IniciarSesionEmpleadoViewset, IniciarSesionClienteViewset
 from .router import router
 
 urlpatterns = [
@@ -25,6 +26,15 @@ urlpatterns = [
 
     # RUTA PARA TRAER LAS CATEGORIAS DE UNA PELÍCULA
     url('^api/registroCategorias/(?P<id_pelicula>.+)/$', RegistroCategoriaViewset.as_view(),name="categoriasUnaPeli"),
+
+    # RUTA PARA TRAER LA CATEGORIAS ELIMINADA DADO EL NOMBRE DE LA CATEGORIA
+    url('^api/categoria-eliminada/(?P<categoria>.+)/$', CategoriaEliminadaViewset.as_view(),name="categoriasEliminadas"),
+
+    # RUTA PARA TRAER LAS FUNCIONES DE UNA PELÍCULA
+    url('^api/funciones-pelicula/(?P<id_pelicula>.+)/$', FuncionPorPeliculaViewset.as_view(),name="funcionesPorPeli"),
+
+    # RUTA PARA VALIDAR QUE NO EXISTA OTRA FUNCIÓN EN ESE MOMENTO
+    url('^api/agregar-funcion/(?P<id_sala>.+)/(?P<fecha>.+)/(?P<hora>.+)/$', FuncionOcupadaViewset.as_view(),name="funcionesPorPeli"),
 
     # RUTA PARA TRAER LOS PRODUCTOS DE UN COMBO
     url('^api/registroCombos/(?P<id_producto_combo>.+)/$', RegistroCombosViewset.as_view(), name ="registroCombos"),

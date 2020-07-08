@@ -54,7 +54,7 @@ class SucursalesAdmin extends Component {
           <div className="col-11 col-md-4 col-lg-4 d-flex justify-content-end">
             <button className="btn btn-success">
               <a
-                href="/agregar-sucursal"
+                href={`/agregar-sucursal/${this.state.id_empleado}`}
                 className="text-light text-decoration-none d-flex align-content-center"
               >
                 AGREGAR
@@ -84,7 +84,7 @@ class SucursalesAdmin extends Component {
         <div className="col-11 col-md-4 col-lg-4 d-flex justify-content-end">
           <button className="btn btn-success">
             <a
-              href="/agregar-sucursal"
+              href={`/agregar-sucursal/${this.state.id_empleado}`}
               className="text-light text-decoration-none d-flex align-content-center"
             >
               AGREGAR
@@ -110,6 +110,7 @@ class SucursalesAdmin extends Component {
             <thead>
               <tr>
                 <th>Sucursal</th>
+                <th>Ubicación</th>
                 <th>Modificar</th>
               </tr>
             </thead>
@@ -117,6 +118,7 @@ class SucursalesAdmin extends Component {
               {this.state.sucursales.map((sucursal) => (
                 <tr key={sucursal.id}>
                   <td>{sucursal.nombre}</td>
+                  <td>{sucursal.ubicacion}</td>
                   <td>
                     <Button className="btn btn-info">
                       <FontAwesomeIcon

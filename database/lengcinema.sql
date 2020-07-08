@@ -125,7 +125,7 @@ CREATE TABLE `auth_user` (
 
 LOCK TABLES `auth_user` WRITE;
 /*!40000 ALTER TABLE `auth_user` DISABLE KEYS */;
-INSERT INTO `auth_user` VALUES (1,'pbkdf2_sha256$180000$IoI0wGs2k93C$J/oYjTfLhQZCeigemdqlxPtlKDgxuQbZKefpMfgG6xY=','2020-06-21 16:55:48.575040',1,'lengcinema','','','hola@gmail.com',1,1,'2020-06-21 16:55:40.302202');
+INSERT INTO `auth_user` VALUES (1,'pbkdf2_sha256$180000$IoI0wGs2k93C$J/oYjTfLhQZCeigemdqlxPtlKDgxuQbZKefpMfgG6xY=','2020-07-07 18:37:20.008519',1,'lengcinema','','','hola@gmail.com',1,1,'2020-06-21 16:55:40.302202');
 /*!40000 ALTER TABLE `auth_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -207,7 +207,7 @@ CREATE TABLE `django_admin_log` (
   CONSTRAINT `django_admin_log_content_type_id_c4bce8eb_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`),
   CONSTRAINT `django_admin_log_user_id_c564eba6_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`),
   CONSTRAINT `django_admin_log_chk_1` CHECK ((`action_flag` >= 0))
-) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=89 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -216,7 +216,7 @@ CREATE TABLE `django_admin_log` (
 
 LOCK TABLES `django_admin_log` WRITE;
 /*!40000 ALTER TABLE `django_admin_log` DISABLE KEYS */;
-INSERT INTO `django_admin_log` VALUES (1,'2020-06-21 17:51:11.416614','1','Black Widow',1,'[{\"added\": {}}]',9,1),(2,'2020-06-21 17:52:53.224375','1','Black Widow',2,'[{\"changed\": {\"fields\": [\"Imagen\"]}}]',9,1),(3,'2020-06-21 17:53:30.314136','1','Acción',1,'[{\"added\": {}}]',7,1),(4,'2020-06-21 17:53:35.782677','2','Animación',1,'[{\"added\": {}}]',7,1),(5,'2020-06-21 17:53:39.842230','3','Aventura',1,'[{\"added\": {}}]',7,1),(6,'2020-06-21 17:53:45.649995','4','Ciencia Ficción',1,'[{\"added\": {}}]',7,1),(7,'2020-06-21 17:53:50.395580','5','Comedia',1,'[{\"added\": {}}]',7,1),(8,'2020-06-21 17:53:59.786741','6','Fantasía',1,'[{\"added\": {}}]',7,1),(9,'2020-06-21 17:54:04.210497','7','Deporte',1,'[{\"added\": {}}]',7,1),(10,'2020-06-21 17:54:08.663685','8','Documental',1,'[{\"added\": {}}]',7,1),(11,'2020-06-21 17:54:13.431700','9','Drama',1,'[{\"added\": {}}]',7,1),(12,'2020-06-21 17:54:19.182939','10','Historia',1,'[{\"added\": {}}]',7,1),(13,'2020-06-21 17:54:23.948634','11','Infantil',1,'[{\"added\": {}}]',7,1),(14,'2020-06-21 17:54:27.987291','12','Musical',1,'[{\"added\": {}}]',7,1),(15,'2020-06-21 17:54:32.757562','13','Romance',1,'[{\"added\": {}}]',7,1),(16,'2020-06-21 17:54:36.935507','14','Terror',1,'[{\"added\": {}}]',7,1),(17,'2020-06-21 17:55:03.300095','1','registroCategorias object (1)',1,'[{\"added\": {}}]',19,1),(18,'2020-06-21 17:55:16.491018','2','registroCategorias object (2)',1,'[{\"added\": {}}]',19,1),(19,'2020-06-21 18:00:02.833079','2','Godzilla vs. Kong',1,'[{\"added\": {}}]',9,1),(20,'2020-06-21 18:00:28.751278','3','registroCategorias object (3)',1,'[{\"added\": {}}]',19,1),(21,'2020-06-21 18:00:36.164470','4','registroCategorias object (4)',1,'[{\"added\": {}}]',19,1),(22,'2020-06-21 18:09:48.298100','1','Entrada',1,'[{\"added\": {}}]',13,1),(23,'2020-06-21 18:09:53.025751','2','Alimento',1,'[{\"added\": {}}]',13,1),(24,'2020-06-21 18:09:56.024523','3','Combo',1,'[{\"added\": {}}]',13,1),(25,'2020-06-21 18:15:42.674291','1','Entrada Menor de Edad',1,'[{\"added\": {}}]',10,1),(26,'2020-06-21 18:16:17.637138','2','Entrada General',1,'[{\"added\": {}}]',10,1),(27,'2020-06-21 18:16:58.817380','3','Entrada Adulto Mayor',1,'[{\"added\": {}}]',10,1),(28,'2020-06-21 18:27:04.359983','4','Cotufa Pequeña',1,'[{\"added\": {}}]',10,1),(29,'2020-06-21 18:27:32.392427','5','Cotufa Mediana',1,'[{\"added\": {}}]',10,1),(30,'2020-06-21 18:27:52.210388','6','Cotufa Grande',1,'[{\"added\": {}}]',10,1),(31,'2020-06-21 18:28:18.595945','7','Refresco Pequeño',1,'[{\"added\": {}}]',10,1),(32,'2020-06-21 18:28:38.226396','8','Refresco Grande',1,'[{\"added\": {}}]',10,1),(33,'2020-06-21 18:29:19.704237','9','Golosina',1,'[{\"added\": {}}]',10,1),(34,'2020-06-21 18:29:53.559393','10','Bolsa de Maní',1,'[{\"added\": {}}]',10,1),(35,'2020-06-21 18:30:22.944962','11','Perro Caliente',1,'[{\"added\": {}}]',10,1),(36,'2020-06-21 18:30:50.684646','9','Gomitas de Azucar',2,'[{\"changed\": {\"fields\": [\"Nombre\", \"Descripcion\"]}}]',10,1),(37,'2020-06-21 18:31:54.217199','12','Combo Informático',1,'[{\"added\": {}}]',10,1),(38,'2020-06-21 18:32:20.155911','1','registroCombos object (1)',1,'[{\"added\": {}}]',18,1),(39,'2020-06-21 18:32:40.101354','2','registroCombos object (2)',1,'[{\"added\": {}}]',18,1),(40,'2020-06-21 18:33:02.014649','3','registroCombos object (3)',1,'[{\"added\": {}}]',18,1),(41,'2020-06-21 18:33:19.509948','4','registroCombos object (4)',1,'[{\"added\": {}}]',18,1),(42,'2020-06-21 18:41:31.703619','12','Combo Informático',2,'[{\"changed\": {\"fields\": [\"Descripcion\"]}}]',10,1),(43,'2020-06-21 18:42:17.248476','12','Combo Informático',2,'[{\"changed\": {\"fields\": [\"Precio\"]}}]',10,1),(44,'2020-06-21 18:44:54.725828','12','Combo Informático',2,'[{\"changed\": {\"fields\": [\"Descripcion\"]}}]',10,1),(45,'2020-06-21 21:00:55.458072','3','Wonder Woman 2',2,'[{\"changed\": {\"fields\": [\"Titulo\", \"Sinopsis\", \"Imagen\", \"Fecha estreno\", \"Fecha salida\", \"Duracion\"]}}]',9,1),(46,'2020-06-21 21:01:27.005287','5','registroCategorias object (5)',2,'[{\"changed\": {\"fields\": [\"Id pelicula\", \"Id categoria\"]}}]',19,1),(47,'2020-06-21 21:01:36.112069','6','registroCategorias object (6)',2,'[{\"changed\": {\"fields\": [\"Id pelicula\", \"Id categoria\"]}}]',19,1),(48,'2020-06-21 21:03:12.856352','4','El hombre invisible',2,'[{\"changed\": {\"fields\": [\"Titulo\", \"Sinopsis\", \"Imagen\", \"Fecha estreno\", \"Fecha salida\", \"Duracion\"]}}]',9,1),(49,'2020-06-21 21:03:30.430847','15','Suspenso',1,'[{\"added\": {}}]',7,1),(50,'2020-06-21 21:03:50.037627','9','registroCategorias object (9)',1,'[{\"added\": {}}]',19,1),(51,'2020-06-21 21:03:58.217461','10','registroCategorias object (10)',1,'[{\"added\": {}}]',19,1),(52,'2020-06-21 23:56:14.278245','1','LengCinema Sambil',1,'[{\"added\": {}}]',12,1),(53,'2020-06-21 23:57:00.996237','1','Sala 2D',1,'[{\"added\": {}}]',15,1),(54,'2020-06-21 23:57:20.669517','1','Asiento object (1)',1,'[{\"added\": {}}]',21,1),(55,'2020-06-21 23:57:28.241569','2','Asiento object (2)',1,'[{\"added\": {}}]',21,1),(56,'2020-06-21 23:57:34.017922','3','Asiento object (3)',1,'[{\"added\": {}}]',21,1),(57,'2020-06-21 23:57:39.796731','4','Asiento object (4)',1,'[{\"added\": {}}]',21,1),(58,'2020-06-21 23:57:46.747385','5','Asiento object (5)',1,'[{\"added\": {}}]',21,1),(59,'2020-06-21 23:57:53.083151','6','Asiento object (6)',1,'[{\"added\": {}}]',21,1),(60,'2020-06-21 23:57:58.240822','7','Asiento object (7)',1,'[{\"added\": {}}]',21,1),(61,'2020-06-21 23:58:04.206771','8','Asiento object (8)',1,'[{\"added\": {}}]',21,1),(62,'2020-06-21 23:58:09.296494','9','Asiento object (9)',1,'[{\"added\": {}}]',21,1),(63,'2020-06-21 23:58:18.589395','10','Asiento object (10)',1,'[{\"added\": {}}]',21,1),(64,'2020-06-21 23:58:23.085526','11','Asiento object (11)',1,'[{\"added\": {}}]',21,1),(65,'2020-06-21 23:58:27.478095','12','Asiento object (12)',1,'[{\"added\": {}}]',21,1),(66,'2020-06-21 23:58:31.619471','13','Asiento object (13)',1,'[{\"added\": {}}]',21,1),(67,'2020-06-21 23:58:37.919390','14','Asiento object (14)',1,'[{\"added\": {}}]',21,1),(68,'2020-06-21 23:58:43.083998','15','Asiento object (15)',1,'[{\"added\": {}}]',21,1),(69,'2020-06-21 23:58:50.625989','16','Asiento object (16)',1,'[{\"added\": {}}]',21,1),(70,'2020-06-21 23:59:01.711189','17','Asiento object (17)',1,'[{\"added\": {}}]',21,1),(71,'2020-06-21 23:59:07.574817','18','Asiento object (18)',1,'[{\"added\": {}}]',21,1),(72,'2020-06-21 23:59:12.177307','19','Asiento object (19)',1,'[{\"added\": {}}]',21,1),(73,'2020-06-21 23:59:16.630177','20','Asiento object (20)',1,'[{\"added\": {}}]',21,1),(74,'2020-06-21 23:59:21.032205','21','Asiento object (21)',1,'[{\"added\": {}}]',21,1),(75,'2020-06-21 23:59:26.029543','22','Asiento object (22)',1,'[{\"added\": {}}]',21,1),(76,'2020-06-21 23:59:30.595850','23','Asiento object (23)',1,'[{\"added\": {}}]',21,1),(77,'2020-06-21 23:59:36.511813','24','Asiento object (24)',1,'[{\"added\": {}}]',21,1),(78,'2020-06-22 00:00:05.998303','19','Asiento object (19)',2,'[{\"changed\": {\"fields\": [\"Columna\"]}}]',21,1),(79,'2020-06-22 00:00:15.381813','20','Asiento object (20)',2,'[{\"changed\": {\"fields\": [\"Columna\"]}}]',21,1),(80,'2020-06-22 00:00:21.701795','21','Asiento object (21)',2,'[{\"changed\": {\"fields\": [\"Fila\", \"Columna\"]}}]',21,1),(81,'2020-06-22 00:00:27.261297','21','Asiento object (21)',2,'[{\"changed\": {\"fields\": [\"Columna\"]}}]',21,1),(82,'2020-06-22 00:00:41.842196','21','Asiento object (21)',2,'[{\"changed\": {\"fields\": [\"Columna\"]}}]',21,1),(83,'2020-06-22 00:00:46.932053','22','Asiento object (22)',2,'[{\"changed\": {\"fields\": [\"Columna\"]}}]',21,1),(84,'2020-06-22 00:00:51.642034','23','Asiento object (23)',2,'[{\"changed\": {\"fields\": [\"Columna\"]}}]',21,1),(85,'2020-06-22 00:00:54.868085','24','Asiento object (24)',2,'[{\"changed\": {\"fields\": [\"Columna\"]}}]',21,1),(86,'2020-06-22 00:01:00.946960','25','Asiento object (25)',1,'[{\"added\": {}}]',21,1),(87,'2020-06-29 18:53:39.848084','1','Black Widow',2,'[{\"changed\": {\"fields\": [\"Fecha salida\"]}}]',9,1),(88,'2020-06-29 22:28:04.476834','2','175 gramos',1,'[{\"added\": {}}]',27,1),(89,'2020-06-29 22:28:49.449079','3','100 gramos',1,'[{\"added\": {}}]',27,1),(90,'2020-06-29 22:29:00.685747','4','70 gramos',1,'[{\"added\": {}}]',27,1),(91,'2020-06-29 22:29:09.319296','5','50 gramos',1,'[{\"added\": {}}]',27,1),(92,'2020-06-29 22:33:18.817954','6','50 gramos',1,'[{\"added\": {}}]',27,1),(93,'2020-06-29 22:33:37.817290','7','200 gramos',1,'[{\"added\": {}}]',27,1),(94,'2020-06-29 22:33:50.145811','8','150 gramos',1,'[{\"added\": {}}]',27,1),(95,'2020-06-29 22:34:40.563576','9','300 mililitros',1,'[{\"added\": {}}]',27,1),(96,'2020-06-29 22:34:51.862474','10','300 mililitros',1,'[{\"added\": {}}]',27,1),(97,'2020-06-29 22:35:03.707658','9','700 mililitros',2,'[{\"changed\": {\"fields\": [\"Contenido neto\"]}}]',27,1),(98,'2020-06-29 22:35:37.630404','1','Adultos',1,'[{\"added\": {}}]',23,1),(99,'2020-06-29 22:35:55.146321','2','Tercera Edad',1,'[{\"added\": {}}]',23,1),(100,'2020-06-29 22:36:11.071613','3','Niños',1,'[{\"added\": {}}]',23,1),(101,'2020-06-29 22:37:27.825972','1','El combo ideal para los adictos a las computadoras.',1,'[{\"added\": {}}]',25,1),(102,'2020-06-29 23:12:59.685574','2','El combo perfecto para las parejas más románticas.',3,'',25,1),(103,'2020-06-29 23:13:10.784833','15','Combo Enamorados',3,'',10,1),(104,'2020-06-29 23:14:34.220175','16','Combo Enamorados',3,'',10,1),(105,'2020-06-29 23:16:19.533258','17','Combo Caliente',3,'',10,1),(106,'2020-06-29 23:20:26.588575','18','Combo Caliente',3,'',10,1),(107,'2020-06-29 23:24:40.397719','19','Combo Enamorados',3,'',10,1),(108,'2020-06-29 23:27:58.556851','20','Combo Caliente',3,'',10,1),(109,'2020-06-29 23:34:40.814652','21','Combo Caliente',3,'',10,1),(110,'2020-06-29 23:42:37.229214','22','Combo Caliente',3,'',10,1),(111,'2020-06-29 23:46:16.720739','23','Combo Caliente',3,'',10,1),(112,'2020-06-29 23:50:20.519025','24','Combo Caliente',3,'',10,1);
+INSERT INTO `django_admin_log` VALUES (1,'2020-06-21 17:51:11.416614','1','Black Widow',1,'[{\"added\": {}}]',9,1),(2,'2020-06-21 17:52:53.224375','1','Black Widow',2,'[{\"changed\": {\"fields\": [\"Imagen\"]}}]',9,1),(3,'2020-06-21 17:53:30.314136','1','Acción',1,'[{\"added\": {}}]',7,1),(4,'2020-06-21 17:53:35.782677','2','Animación',1,'[{\"added\": {}}]',7,1),(5,'2020-06-21 17:53:39.842230','3','Aventura',1,'[{\"added\": {}}]',7,1),(6,'2020-06-21 17:53:45.649995','4','Ciencia Ficción',1,'[{\"added\": {}}]',7,1),(7,'2020-06-21 17:53:50.395580','5','Comedia',1,'[{\"added\": {}}]',7,1),(8,'2020-06-21 17:53:59.786741','6','Fantasía',1,'[{\"added\": {}}]',7,1),(9,'2020-06-21 17:54:04.210497','7','Deporte',1,'[{\"added\": {}}]',7,1),(10,'2020-06-21 17:54:08.663685','8','Documental',1,'[{\"added\": {}}]',7,1),(11,'2020-06-21 17:54:13.431700','9','Drama',1,'[{\"added\": {}}]',7,1),(12,'2020-06-21 17:54:19.182939','10','Historia',1,'[{\"added\": {}}]',7,1),(13,'2020-06-21 17:54:23.948634','11','Infantil',1,'[{\"added\": {}}]',7,1),(14,'2020-06-21 17:54:27.987291','12','Musical',1,'[{\"added\": {}}]',7,1),(15,'2020-06-21 17:54:32.757562','13','Romance',1,'[{\"added\": {}}]',7,1),(16,'2020-06-21 17:54:36.935507','14','Terror',1,'[{\"added\": {}}]',7,1),(17,'2020-06-21 17:55:03.300095','1','registroCategorias object (1)',1,'[{\"added\": {}}]',19,1),(18,'2020-06-21 17:55:16.491018','2','registroCategorias object (2)',1,'[{\"added\": {}}]',19,1),(19,'2020-06-21 18:00:02.833079','2','Godzilla vs. Kong',1,'[{\"added\": {}}]',9,1),(20,'2020-06-21 18:00:28.751278','3','registroCategorias object (3)',1,'[{\"added\": {}}]',19,1),(21,'2020-06-21 18:00:36.164470','4','registroCategorias object (4)',1,'[{\"added\": {}}]',19,1),(22,'2020-06-21 18:09:48.298100','1','Entrada',1,'[{\"added\": {}}]',13,1),(23,'2020-06-21 18:09:53.025751','2','Alimento',1,'[{\"added\": {}}]',13,1),(24,'2020-06-21 18:09:56.024523','3','Combo',1,'[{\"added\": {}}]',13,1),(25,'2020-06-21 18:15:42.674291','1','Entrada Menor de Edad',1,'[{\"added\": {}}]',10,1),(26,'2020-06-21 18:16:17.637138','2','Entrada General',1,'[{\"added\": {}}]',10,1),(27,'2020-06-21 18:16:58.817380','3','Entrada Adulto Mayor',1,'[{\"added\": {}}]',10,1),(28,'2020-06-21 18:27:04.359983','4','Cotufa Pequeña',1,'[{\"added\": {}}]',10,1),(29,'2020-06-21 18:27:32.392427','5','Cotufa Mediana',1,'[{\"added\": {}}]',10,1),(30,'2020-06-21 18:27:52.210388','6','Cotufa Grande',1,'[{\"added\": {}}]',10,1),(31,'2020-06-21 18:28:18.595945','7','Refresco Pequeño',1,'[{\"added\": {}}]',10,1),(32,'2020-06-21 18:28:38.226396','8','Refresco Grande',1,'[{\"added\": {}}]',10,1),(33,'2020-06-21 18:29:19.704237','9','Golosina',1,'[{\"added\": {}}]',10,1),(34,'2020-06-21 18:29:53.559393','10','Bolsa de Maní',1,'[{\"added\": {}}]',10,1),(35,'2020-06-21 18:30:22.944962','11','Perro Caliente',1,'[{\"added\": {}}]',10,1),(36,'2020-06-21 18:30:50.684646','9','Gomitas de Azucar',2,'[{\"changed\": {\"fields\": [\"Nombre\", \"Descripcion\"]}}]',10,1),(37,'2020-06-21 18:31:54.217199','12','Combo Informático',1,'[{\"added\": {}}]',10,1),(38,'2020-06-21 18:32:20.155911','1','registroCombos object (1)',1,'[{\"added\": {}}]',18,1),(39,'2020-06-21 18:32:40.101354','2','registroCombos object (2)',1,'[{\"added\": {}}]',18,1),(40,'2020-06-21 18:33:02.014649','3','registroCombos object (3)',1,'[{\"added\": {}}]',18,1),(41,'2020-06-21 18:33:19.509948','4','registroCombos object (4)',1,'[{\"added\": {}}]',18,1),(42,'2020-06-21 18:41:31.703619','12','Combo Informático',2,'[{\"changed\": {\"fields\": [\"Descripcion\"]}}]',10,1),(43,'2020-06-21 18:42:17.248476','12','Combo Informático',2,'[{\"changed\": {\"fields\": [\"Precio\"]}}]',10,1),(44,'2020-06-21 18:44:54.725828','12','Combo Informático',2,'[{\"changed\": {\"fields\": [\"Descripcion\"]}}]',10,1),(45,'2020-06-21 21:00:55.458072','3','Wonder Woman 2',2,'[{\"changed\": {\"fields\": [\"Titulo\", \"Sinopsis\", \"Imagen\", \"Fecha estreno\", \"Fecha salida\", \"Duracion\"]}}]',9,1),(46,'2020-06-21 21:01:27.005287','5','registroCategorias object (5)',2,'[{\"changed\": {\"fields\": [\"Id pelicula\", \"Id categoria\"]}}]',19,1),(47,'2020-06-21 21:01:36.112069','6','registroCategorias object (6)',2,'[{\"changed\": {\"fields\": [\"Id pelicula\", \"Id categoria\"]}}]',19,1),(48,'2020-06-21 21:03:12.856352','4','El hombre invisible',2,'[{\"changed\": {\"fields\": [\"Titulo\", \"Sinopsis\", \"Imagen\", \"Fecha estreno\", \"Fecha salida\", \"Duracion\"]}}]',9,1),(49,'2020-06-21 21:03:30.430847','15','Suspenso',1,'[{\"added\": {}}]',7,1),(50,'2020-06-21 21:03:50.037627','9','registroCategorias object (9)',1,'[{\"added\": {}}]',19,1),(51,'2020-06-21 21:03:58.217461','10','registroCategorias object (10)',1,'[{\"added\": {}}]',19,1),(52,'2020-06-21 23:56:14.278245','1','LengCinema Sambil',1,'[{\"added\": {}}]',12,1),(53,'2020-06-21 23:57:00.996237','1','Sala 2D',1,'[{\"added\": {}}]',15,1),(54,'2020-06-21 23:57:20.669517','1','Asiento object (1)',1,'[{\"added\": {}}]',21,1),(55,'2020-06-21 23:57:28.241569','2','Asiento object (2)',1,'[{\"added\": {}}]',21,1),(56,'2020-06-21 23:57:34.017922','3','Asiento object (3)',1,'[{\"added\": {}}]',21,1),(57,'2020-06-21 23:57:39.796731','4','Asiento object (4)',1,'[{\"added\": {}}]',21,1),(58,'2020-06-21 23:57:46.747385','5','Asiento object (5)',1,'[{\"added\": {}}]',21,1),(59,'2020-06-21 23:57:53.083151','6','Asiento object (6)',1,'[{\"added\": {}}]',21,1),(60,'2020-06-21 23:57:58.240822','7','Asiento object (7)',1,'[{\"added\": {}}]',21,1),(61,'2020-06-21 23:58:04.206771','8','Asiento object (8)',1,'[{\"added\": {}}]',21,1),(62,'2020-06-21 23:58:09.296494','9','Asiento object (9)',1,'[{\"added\": {}}]',21,1),(63,'2020-06-21 23:58:18.589395','10','Asiento object (10)',1,'[{\"added\": {}}]',21,1),(64,'2020-06-21 23:58:23.085526','11','Asiento object (11)',1,'[{\"added\": {}}]',21,1),(65,'2020-06-21 23:58:27.478095','12','Asiento object (12)',1,'[{\"added\": {}}]',21,1),(66,'2020-06-21 23:58:31.619471','13','Asiento object (13)',1,'[{\"added\": {}}]',21,1),(67,'2020-06-21 23:58:37.919390','14','Asiento object (14)',1,'[{\"added\": {}}]',21,1),(68,'2020-06-21 23:58:43.083998','15','Asiento object (15)',1,'[{\"added\": {}}]',21,1),(69,'2020-06-21 23:58:50.625989','16','Asiento object (16)',1,'[{\"added\": {}}]',21,1),(70,'2020-06-21 23:59:01.711189','17','Asiento object (17)',1,'[{\"added\": {}}]',21,1),(71,'2020-06-21 23:59:07.574817','18','Asiento object (18)',1,'[{\"added\": {}}]',21,1),(72,'2020-06-21 23:59:12.177307','19','Asiento object (19)',1,'[{\"added\": {}}]',21,1),(73,'2020-06-21 23:59:16.630177','20','Asiento object (20)',1,'[{\"added\": {}}]',21,1),(74,'2020-06-21 23:59:21.032205','21','Asiento object (21)',1,'[{\"added\": {}}]',21,1),(75,'2020-06-21 23:59:26.029543','22','Asiento object (22)',1,'[{\"added\": {}}]',21,1),(76,'2020-06-21 23:59:30.595850','23','Asiento object (23)',1,'[{\"added\": {}}]',21,1),(77,'2020-06-21 23:59:36.511813','24','Asiento object (24)',1,'[{\"added\": {}}]',21,1),(78,'2020-06-22 00:00:05.998303','19','Asiento object (19)',2,'[{\"changed\": {\"fields\": [\"Columna\"]}}]',21,1),(79,'2020-06-22 00:00:15.381813','20','Asiento object (20)',2,'[{\"changed\": {\"fields\": [\"Columna\"]}}]',21,1),(80,'2020-06-22 00:00:21.701795','21','Asiento object (21)',2,'[{\"changed\": {\"fields\": [\"Fila\", \"Columna\"]}}]',21,1),(81,'2020-06-22 00:00:27.261297','21','Asiento object (21)',2,'[{\"changed\": {\"fields\": [\"Columna\"]}}]',21,1),(82,'2020-06-22 00:00:41.842196','21','Asiento object (21)',2,'[{\"changed\": {\"fields\": [\"Columna\"]}}]',21,1),(83,'2020-06-22 00:00:46.932053','22','Asiento object (22)',2,'[{\"changed\": {\"fields\": [\"Columna\"]}}]',21,1),(84,'2020-06-22 00:00:51.642034','23','Asiento object (23)',2,'[{\"changed\": {\"fields\": [\"Columna\"]}}]',21,1),(85,'2020-06-22 00:00:54.868085','24','Asiento object (24)',2,'[{\"changed\": {\"fields\": [\"Columna\"]}}]',21,1),(86,'2020-06-22 00:01:00.946960','25','Asiento object (25)',1,'[{\"added\": {}}]',21,1),(87,'2020-06-29 18:53:39.848084','1','Black Widow',2,'[{\"changed\": {\"fields\": [\"Fecha salida\"]}}]',9,1),(88,'2020-07-07 18:48:34.736968','1','Fin del Trimestre',1,'[{\"added\": {}}]',11,1);
 /*!40000 ALTER TABLE `django_admin_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -259,7 +259,7 @@ CREATE TABLE `django_migrations` (
   `name` varchar(255) NOT NULL,
   `applied` datetime(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -268,7 +268,7 @@ CREATE TABLE `django_migrations` (
 
 LOCK TABLES `django_migrations` WRITE;
 /*!40000 ALTER TABLE `django_migrations` DISABLE KEYS */;
-INSERT INTO `django_migrations` VALUES (1,'contenttypes','0001_initial','2020-06-21 16:49:32.986884'),(2,'auth','0001_initial','2020-06-21 16:49:40.228664'),(3,'admin','0001_initial','2020-06-21 16:50:14.467719'),(4,'admin','0002_logentry_remove_auto_add','2020-06-21 16:50:20.383143'),(5,'admin','0003_logentry_add_action_flag_choices','2020-06-21 16:50:20.655414'),(6,'contenttypes','0002_remove_content_type_name','2020-06-21 16:50:29.428567'),(7,'auth','0002_alter_permission_name_max_length','2020-06-21 16:50:33.567709'),(8,'auth','0003_alter_user_email_max_length','2020-06-21 16:50:34.163422'),(9,'auth','0004_alter_user_username_opts','2020-06-21 16:50:34.414414'),(10,'auth','0005_alter_user_last_login_null','2020-06-21 16:50:36.751918'),(11,'auth','0006_require_contenttypes_0002','2020-06-21 16:50:36.854780'),(12,'auth','0007_alter_validators_add_error_messages','2020-06-21 16:50:37.051549'),(13,'auth','0008_alter_user_username_max_length','2020-06-21 16:50:39.962117'),(14,'auth','0009_alter_user_last_name_max_length','2020-06-21 16:50:46.189039'),(15,'auth','0010_alter_group_name_max_length','2020-06-21 16:50:47.520813'),(16,'auth','0011_update_proxy_permissions','2020-06-21 16:50:47.870573'),(17,'pelicula','0001_initial','2020-06-21 16:51:12.575135'),(18,'sessions','0001_initial','2020-06-21 16:52:06.745452'),(19,'pelicula','0002_registroasientosreservados','2020-06-21 16:54:23.814016'),(20,'pelicula','0003_categoria_estado','2020-06-21 22:37:32.305840'),(21,'pelicula','0004_registrocombos_estado','2020-06-21 22:48:12.095081'),(22,'pelicula','0005_factura_puntos_usados','2020-06-21 23:46:21.311332'),(23,'pelicula','0006_auto_20200622_2159','2020-06-29 04:44:25.747511'),(24,'pelicula','0007_auto_20200622_2214','2020-06-29 04:44:26.324645'),(25,'pelicula','0008_auto_20200629_0044','2020-06-29 04:44:45.524428'),(26,'pelicula','0009_auto_20200629_1716','2020-06-29 21:16:32.753869'),(27,'pelicula','0010_auto_20200629_1826','2020-06-29 22:26:36.217917');
+INSERT INTO `django_migrations` VALUES (1,'contenttypes','0001_initial','2020-06-21 16:49:32.986884'),(2,'auth','0001_initial','2020-06-21 16:49:40.228664'),(3,'admin','0001_initial','2020-06-21 16:50:14.467719'),(4,'admin','0002_logentry_remove_auto_add','2020-06-21 16:50:20.383143'),(5,'admin','0003_logentry_add_action_flag_choices','2020-06-21 16:50:20.655414'),(6,'contenttypes','0002_remove_content_type_name','2020-06-21 16:50:29.428567'),(7,'auth','0002_alter_permission_name_max_length','2020-06-21 16:50:33.567709'),(8,'auth','0003_alter_user_email_max_length','2020-06-21 16:50:34.163422'),(9,'auth','0004_alter_user_username_opts','2020-06-21 16:50:34.414414'),(10,'auth','0005_alter_user_last_login_null','2020-06-21 16:50:36.751918'),(11,'auth','0006_require_contenttypes_0002','2020-06-21 16:50:36.854780'),(12,'auth','0007_alter_validators_add_error_messages','2020-06-21 16:50:37.051549'),(13,'auth','0008_alter_user_username_max_length','2020-06-21 16:50:39.962117'),(14,'auth','0009_alter_user_last_name_max_length','2020-06-21 16:50:46.189039'),(15,'auth','0010_alter_group_name_max_length','2020-06-21 16:50:47.520813'),(16,'auth','0011_update_proxy_permissions','2020-06-21 16:50:47.870573'),(17,'pelicula','0001_initial','2020-06-21 16:51:12.575135'),(18,'sessions','0001_initial','2020-06-21 16:52:06.745452'),(19,'pelicula','0002_registroasientosreservados','2020-06-21 16:54:23.814016'),(20,'pelicula','0003_categoria_estado','2020-06-21 22:37:32.305840'),(21,'pelicula','0004_registrocombos_estado','2020-06-21 22:48:12.095081'),(22,'pelicula','0005_factura_puntos_usados','2020-06-21 23:46:21.311332'),(23,'pelicula','0006_auto_20200622_2159','2020-06-29 04:44:25.747511'),(24,'pelicula','0007_auto_20200622_2214','2020-06-29 04:44:26.324645'),(25,'pelicula','0008_auto_20200629_0044','2020-06-29 04:44:45.524428'),(26,'pelicula','0009_auto_20200629_1716','2020-07-07 18:45:59.509032'),(27,'pelicula','0010_auto_20200629_1826','2020-07-07 18:45:59.646848'),(28,'pelicula','0011_auto_20200705_2048','2020-07-07 18:45:59.794689'),(29,'pelicula','0012_auto_20200705_2048','2020-07-07 18:45:59.931327'),(30,'pelicula','0013_auto_20200706_1729','2020-07-07 18:46:00.075906'),(31,'pelicula','0014_auto_20200707_1445','2020-07-07 18:46:00.420010');
 /*!40000 ALTER TABLE `django_migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -294,7 +294,7 @@ CREATE TABLE `django_session` (
 
 LOCK TABLES `django_session` WRITE;
 /*!40000 ALTER TABLE `django_session` DISABLE KEYS */;
-INSERT INTO `django_session` VALUES ('x59f4fdd71o1vmhk5zlxr341pf3hkg6t','Mzk2NzhhMTQxMDY0NmNlMmE5ZWJmMThjNThjN2M5NGVkYjg3YzkzNTp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJmNWRmZWY4MzRiZDEzNTQ5YzkyZTgyMWY4ZjZhZTFiNzNjZTcxYzYzIn0=','2020-07-05 16:55:48.679758');
+INSERT INTO `django_session` VALUES ('ek5d7b2lflg93bubb5fcuf59fod4k1pu','Mzk2NzhhMTQxMDY0NmNlMmE5ZWJmMThjNThjN2M5NGVkYjg3YzkzNTp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJmNWRmZWY4MzRiZDEzNTQ5YzkyZTgyMWY4ZjZhZTFiNzNjZTcxYzYzIn0=','2020-07-21 18:37:20.013489'),('x59f4fdd71o1vmhk5zlxr341pf3hkg6t','Mzk2NzhhMTQxMDY0NmNlMmE5ZWJmMThjNThjN2M5NGVkYjg3YzkzNTp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJmNWRmZWY4MzRiZDEzNTQ5YzkyZTgyMWY4ZjZhZTFiNzNjZTcxYzYzIn0=','2020-07-05 16:55:48.679758');
 /*!40000 ALTER TABLE `django_session` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -312,7 +312,7 @@ CREATE TABLE `pelicula_alimento` (
   PRIMARY KEY (`id`),
   KEY `pelicula_alimento_id_producto_id_42634ea9_fk_pelicula_` (`id_producto_id`),
   CONSTRAINT `pelicula_alimento_id_producto_id_42634ea9_fk_pelicula_` FOREIGN KEY (`id_producto_id`) REFERENCES `pelicula_producto` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -321,7 +321,6 @@ CREATE TABLE `pelicula_alimento` (
 
 LOCK TABLES `pelicula_alimento` WRITE;
 /*!40000 ALTER TABLE `pelicula_alimento` DISABLE KEYS */;
-INSERT INTO `pelicula_alimento` VALUES (1,'30 gramos',14),(2,'175 gramos',10),(3,'100 gramos',6),(4,'70 gramos',5),(5,'50 gramos',4),(6,'50 gramos',9),(7,'200 gramos',11),(8,'150 gramos',13),(9,'700 mililitros',8),(10,'300 mililitros',7),(11,'4 unidades',27);
 /*!40000 ALTER TABLE `pelicula_alimento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -366,7 +365,7 @@ CREATE TABLE `pelicula_categoria` (
   `estado` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `pelicula_categoria_categoria_9dc5469f_uniq` (`categoria`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -375,7 +374,7 @@ CREATE TABLE `pelicula_categoria` (
 
 LOCK TABLES `pelicula_categoria` WRITE;
 /*!40000 ALTER TABLE `pelicula_categoria` DISABLE KEYS */;
-INSERT INTO `pelicula_categoria` VALUES (1,'Acción',1),(2,'Animación',1),(3,'Aventura',1),(4,'Ciencia Ficción',1),(5,'Comedia',1),(6,'Fantasía',1),(7,'Deporte',1),(8,'Documental',1),(9,'Drama',1),(10,'Historia',1),(11,'Infantil',1),(12,'Musical',1),(13,'Romance',1),(14,'Terror',1),(15,'Suspenso',1),(16,'Familiar',1);
+INSERT INTO `pelicula_categoria` VALUES (1,'Acción',1),(2,'Animación',1),(3,'Aventura',1),(4,'Ciencia Ficción',1),(5,'Comedia',1),(6,'Fantasía',1),(7,'Deporte',1),(8,'Documental',1),(9,'Drama',1),(10,'Historia',1),(11,'Infantil',1),(12,'Musical',1),(13,'Romance',1),(14,'Terror',1),(15,'Suspenso',1);
 /*!40000 ALTER TABLE `pelicula_categoria` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -420,7 +419,7 @@ CREATE TABLE `pelicula_combocine` (
   PRIMARY KEY (`id`),
   KEY `pelicula_combocine_id_producto_id_a68de568_fk_pelicula_` (`id_producto_id`),
   CONSTRAINT `pelicula_combocine_id_producto_id_a68de568_fk_pelicula_` FOREIGN KEY (`id_producto_id`) REFERENCES `pelicula_producto` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -429,7 +428,6 @@ CREATE TABLE `pelicula_combocine` (
 
 LOCK TABLES `pelicula_combocine` WRITE;
 /*!40000 ALTER TABLE `pelicula_combocine` DISABLE KEYS */;
-INSERT INTO `pelicula_combocine` VALUES (1,'El combo ideal para los adictos a las computadoras.',10,12),(12,'Combo de perros.',5,25),(13,'Combo para personas románticas.',20,26),(14,'Combo para fanaticos de los perros calientes y de mascota, versión mejorada.',0.25,28);
 /*!40000 ALTER TABLE `pelicula_combocine` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -476,7 +474,7 @@ CREATE TABLE `pelicula_entrada` (
   PRIMARY KEY (`id`),
   KEY `pelicula_entrada_id_producto_id_5777ec57_fk_pelicula_producto_id` (`id_producto_id`),
   CONSTRAINT `pelicula_entrada_id_producto_id_5777ec57_fk_pelicula_producto_id` FOREIGN KEY (`id_producto_id`) REFERENCES `pelicula_producto` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -485,7 +483,6 @@ CREATE TABLE `pelicula_entrada` (
 
 LOCK TABLES `pelicula_entrada` WRITE;
 /*!40000 ALTER TABLE `pelicula_entrada` DISABLE KEYS */;
-INSERT INTO `pelicula_entrada` VALUES (1,'Adultos',2),(2,'Tercera Edad',3),(3,'Niños',1);
 /*!40000 ALTER TABLE `pelicula_entrada` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -537,7 +534,7 @@ CREATE TABLE `pelicula_funcion` (
   KEY `pelicula_funcion_id_sala_id_c8b9d374_fk_pelicula_sala_id` (`id_sala_id`),
   CONSTRAINT `pelicula_funcion_id_pelicula_id_0c65fc65_fk_pelicula_pelicula_id` FOREIGN KEY (`id_pelicula_id`) REFERENCES `pelicula_pelicula` (`id`),
   CONSTRAINT `pelicula_funcion_id_sala_id_c8b9d374_fk_pelicula_sala_id` FOREIGN KEY (`id_sala_id`) REFERENCES `pelicula_sala` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -546,7 +543,7 @@ CREATE TABLE `pelicula_funcion` (
 
 LOCK TABLES `pelicula_funcion` WRITE;
 /*!40000 ALTER TABLE `pelicula_funcion` DISABLE KEYS */;
-INSERT INTO `pelicula_funcion` VALUES (1,'2020-07-01','12:00:00.000000',25,1,1,1),(2,'2020-07-03','14:00:00.000000',25,1,7,1);
+INSERT INTO `pelicula_funcion` VALUES (1,'2020-07-01','12:00:00.000000',25,1,1,1);
 /*!40000 ALTER TABLE `pelicula_funcion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -567,7 +564,7 @@ CREATE TABLE `pelicula_pelicula` (
   `duracion` time(6) NOT NULL,
   `estado` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -576,7 +573,7 @@ CREATE TABLE `pelicula_pelicula` (
 
 LOCK TABLES `pelicula_pelicula` WRITE;
 /*!40000 ALTER TABLE `pelicula_pelicula` DISABLE KEYS */;
-INSERT INTO `pelicula_pelicula` VALUES (1,'Black Widow','Al nacer, la Viuda Negra, también conocida como Natasha Romanova, se entrega a la KGB para convertirse en su agente definitivo. Cuando la URSS se separa, el gobierno intenta matarla mientras la acción se traslada a la actual Nueva York.','https://es.web.img3.acsta.net/pictures/20/03/09/18/28/5915477.jpg','2020-04-24','2020-07-24','02:30:00.000000',1),(2,'Godzilla vs. Kong','Godzilla y Kong, dos de las fuerzas más poderosas de un planeta habitado por aterradoras criaturas, se enfrentan en un espectacular combate que sacude los cimientos de la humanidad. Monarch se embarca en una misión de alto riesgo y pone rumbo hacia territorios inexplorados para descubrir los orígenes de estos dos titanes, en un último esfuerzo por tratar de salvar a dos bestias que parecen tener las horas contadas sobre la faz de la Tierra.','https://i.pinimg.com/originals/0e/bf/8d/0ebf8d713b883e18d07fad91b0ef095b.jpg','2020-11-18','2021-01-18','02:00:00.000000',1),(3,'Wonder Woman 2','Diana Prince, conocida como Wonder Woman se enfrenta a Cheetah, una villana que posee fuerza y agilidad sobrehumanas.','https://es.web.img2.acsta.net/pictures/20/06/15/17/12/2946915.jpg','2020-08-12','2020-10-12','02:00:00.000000',1),(4,'El hombre invisible','Un científico loco finge su suicidio y luego utiliza su invisibilidad para aterrorizar a su expareja, quien decide enfrentar al hombre invisible ella misma luego de que la policía no creyera su historia.','https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQTtt8FFdTo6AzHAlbhQv2JvKAYfO3OehbiCL8kdBgOi5isjZkk','2020-04-25','2020-07-25','02:05:00.000000',1),(5,'Unidos','Ambientado en un mundo de fantasía suburbana, dos hermanos elfos adolescentes, Ian y Barley Lightfood, se embarcan en una aventura en la que se proponen descubrir si existe aún algo de magia en el mundo que les permita pasar un último día con su padre, que falleció cuando ellos eran aún muy pequeños como para poder recordarlo.','https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQYUG1bSWlMqpoJhnfQBVzYsYX0xzTzPuTaKREpkb-M0QjRy9PB','2020-04-29','2020-07-29','01:42:00.000000',1),(6,'Soul','Un músico que ha perdido su pasión por la música es transportado fuera de su cuerpo y debe encontrar el camino de regreso con la ayuda de un alma infantil que aprende sobre sí misma.','https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQZihNrmaDPhGzwiJ90h2JOf1aRQbk398YGPV7yEjMBTY_gGCfI','2020-06-17','2020-08-17','02:00:00.000000',1),(7,'Sonic la película','Sonic intenta navegar por las complejidades de la vida en la Tierra con su nuevo mejor amigo, un humano llamado Tom Wachowski. Pronto deben unir fuerzas para evitar que el malvado Dr. Robotnik capture a Sonic y use sus poderes para dominar el mundo.','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0ijOSqW5zTSrLn_TTyoBBR6Fi8WkMkndqmj6KpihRgPA2isJQ','2020-02-14','2020-07-14','01:39:00.000000',1);
+INSERT INTO `pelicula_pelicula` VALUES (1,'Black Widow','Al nacer, la Viuda Negra, también conocida como Natasha Romanova, se entrega a la KGB para convertirse en su agente definitivo. Cuando la URSS se separa, el gobierno intenta matarla mientras la acción se traslada a la actual Nueva York.','https://es.web.img3.acsta.net/pictures/20/03/09/18/28/5915477.jpg','2020-04-24','2020-07-24','02:30:00.000000',1),(2,'Godzilla vs. Kong','Godzilla y Kong, dos de las fuerzas más poderosas de un planeta habitado por aterradoras criaturas, se enfrentan en un espectacular combate que sacude los cimientos de la humanidad. Monarch se embarca en una misión de alto riesgo y pone rumbo hacia territorios inexplorados para descubrir los orígenes de estos dos titanes, en un último esfuerzo por tratar de salvar a dos bestias que parecen tener las horas contadas sobre la faz de la Tierra.','https://i.pinimg.com/originals/0e/bf/8d/0ebf8d713b883e18d07fad91b0ef095b.jpg','2020-11-18','2021-01-18','02:00:00.000000',1),(3,'Wonder Woman 2','Diana Prince, conocida como Wonder Woman se enfrenta a Cheetah, una villana que posee fuerza y agilidad sobrehumanas.','https://es.web.img2.acsta.net/pictures/20/06/15/17/12/2946915.jpg','2020-08-12','2020-10-12','02:00:00.000000',1),(4,'El hombre invisible','Un científico loco finge su suicidio y luego utiliza su invisibilidad para aterrorizar a su expareja, quien decide enfrentar al hombre invisible ella misma luego de que la policía no creyera su historia.','https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQTtt8FFdTo6AzHAlbhQv2JvKAYfO3OehbiCL8kdBgOi5isjZkk','2020-04-25','2020-07-25','02:05:00.000000',1),(5,'Unidos','Ambientado en un mundo de fantasía suburbana, dos hermanos elfos adolescentes, Ian y Barley Lightfood, se embarcan en una aventura en la que se proponen descubrir si existe aún algo de magia en el mundo que les permita pasar un último día con su padre, que falleció cuando ellos eran aún muy pequeños como para poder recordarlo.','https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQYUG1bSWlMqpoJhnfQBVzYsYX0xzTzPuTaKREpkb-M0QjRy9PB','2020-04-29','2020-07-29','01:42:00.000000',1),(6,'Soul','Un músico que ha perdido su pasión por la música es transportado fuera de su cuerpo y debe encontrar el camino de regreso con la ayuda de un alma infantil que aprende sobre sí misma.','https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQZihNrmaDPhGzwiJ90h2JOf1aRQbk398YGPV7yEjMBTY_gGCfI','2020-06-17','2020-08-17','02:00:00.000000',1);
 /*!40000 ALTER TABLE `pelicula_pelicula` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -597,7 +594,7 @@ CREATE TABLE `pelicula_producto` (
   UNIQUE KEY `pelicula_producto_nombre_a12f2279_uniq` (`nombre`),
   KEY `pelicula_producto_id_tipos_productos_i_387bfe3b_fk_pelicula_` (`id_tipos_productos_id`),
   CONSTRAINT `pelicula_producto_id_tipos_productos_i_387bfe3b_fk_pelicula_` FOREIGN KEY (`id_tipos_productos_id`) REFERENCES `pelicula_tipoproductos` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -606,7 +603,7 @@ CREATE TABLE `pelicula_producto` (
 
 LOCK TABLES `pelicula_producto` WRITE;
 /*!40000 ALTER TABLE `pelicula_producto` DISABLE KEYS */;
-INSERT INTO `pelicula_producto` VALUES (1,'Entrada Menor de Edad',5,1,1),(2,'Entrada General',10,1,1),(3,'Entrada Adulto Mayor',6,1,1),(4,'Cotufa Pequeña',3.5,1,2),(5,'Cotufa Mediana',4.5,1,2),(6,'Cotufa Grande',5,1,2),(7,'Refresco Pequeño',3,1,2),(8,'Refresco Grande',5,1,2),(9,'Gomitas de Azucar',2,1,2),(10,'Bolsa de Maní',5,1,2),(11,'Perro Caliente',4,1,2),(12,'Combo Informático',16.5,1,3),(13,'Platanitos Natuchips',2.5,1,2),(14,'Chocolate de Leche Savoy Pequeño',1,1,2),(25,'Combo Caliente',14,1,3),(26,'Combo Enamorados',23,1,3),(27,'Ración Pequeña de Tequeños',2,1,2),(28,'Combo Caliente Caliente',18,1,3);
+INSERT INTO `pelicula_producto` VALUES (1,'Entrada Menor de Edad',5,1,1),(2,'Entrada General',10,1,1),(3,'Entrada Adulto Mayor',6,1,1),(4,'Cotufa Pequeña',3.5,1,2),(5,'Cotufa Mediana',4.5,1,2),(6,'Cotufa Grande',5,1,2),(7,'Refresco Pequeño',3,1,2),(8,'Refresco Grande',5,1,2),(9,'Gomitas de Azucar',2,1,2),(10,'Bolsa de Maní',5,1,2),(11,'Perro Caliente',4,1,2),(12,'Combo Informático',16.5,1,3);
 /*!40000 ALTER TABLE `pelicula_producto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -636,7 +633,7 @@ CREATE TABLE `pelicula_promociones` (
 
 LOCK TABLES `pelicula_promociones` WRITE;
 /*!40000 ALTER TABLE `pelicula_promociones` DISABLE KEYS */;
-INSERT INTO `pelicula_promociones` VALUES (1,'Promo Navidad','Promoción durante todas las fiestas navideñas.',50,1,'2020-06-29','2020-06-29');
+INSERT INTO `pelicula_promociones` VALUES (1,'Fin del Trimestre','Promoción que se aplica para celebrar el fin del trimestre de la universidad',10,1,'2020-07-12','2020-07-07');
 /*!40000 ALTER TABLE `pelicula_promociones` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -717,7 +714,7 @@ CREATE TABLE `pelicula_registrocombos` (
   KEY `pelicula_registrocom_id_producto_combo_id_b2db4991_fk_pelicula_` (`id_producto_combo_id`),
   CONSTRAINT `pelicula_registrocom_id_producto_combo_id_b2db4991_fk_pelicula_` FOREIGN KEY (`id_producto_combo_id`) REFERENCES `pelicula_producto` (`id`),
   CONSTRAINT `pelicula_registrocom_id_producto_id_5fe0533c_fk_pelicula_` FOREIGN KEY (`id_producto_id`) REFERENCES `pelicula_producto` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -726,7 +723,7 @@ CREATE TABLE `pelicula_registrocombos` (
 
 LOCK TABLES `pelicula_registrocombos` WRITE;
 /*!40000 ALTER TABLE `pelicula_registrocombos` DISABLE KEYS */;
-INSERT INTO `pelicula_registrocombos` VALUES (1,1,5,12),(2,1,8,12),(3,1,9,12),(4,1,10,12),(11,1,6,25),(12,1,11,25),(13,1,8,25),(14,2,14,26),(15,2,5,26),(16,1,9,26),(17,2,8,26),(18,2,11,28),(19,1,6,28);
+INSERT INTO `pelicula_registrocombos` VALUES (1,1,5,12),(2,1,8,12),(3,1,9,12),(4,1,10,12);
 /*!40000 ALTER TABLE `pelicula_registrocombos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -880,7 +877,6 @@ CREATE TABLE `pelicula_usuario` (
   `cedula` varchar(15) NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `apellido` varchar(100) NOT NULL,
-  `tipo_usuario` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `pelicula_usuario_cedula_fdb022e3_uniq` (`cedula`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -904,4 +900,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-07-01 15:28:33
+-- Dump completed on 2020-07-07 14:50:55

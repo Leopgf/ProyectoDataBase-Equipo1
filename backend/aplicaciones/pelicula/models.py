@@ -235,8 +235,8 @@ class Promociones(models.Model):
     nombre = models.CharField(max_length=200, unique=True)
     descripcion = models.TextField()
     descuento = models.FloatField()
-    fecha_inicio = models.DateField(auto_now=True)
-    fecha_fin = models.DateField(auto_now=True)
+    fecha_inicio = models.DateField()
+    fecha_fin = models.DateField()
     estado = models.BooleanField(default=True)
 
     def __str__(self):

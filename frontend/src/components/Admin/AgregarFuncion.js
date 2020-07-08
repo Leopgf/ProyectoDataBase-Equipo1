@@ -19,7 +19,7 @@ class AgregarFuncion extends Component {
       id_usuario: 0,
       tiene_permisos: false,
       id_sucursal: "",
-    }
+    },
   };
 
   handleChange(event) {
@@ -32,18 +32,16 @@ class AgregarFuncion extends Component {
     const id_empleado = this.props.match.params.id_empleado;
     this.setState({ id_empleado });
     axios
-        .get(
-          `http://localhost:8000/api/permisos-empleado/${id_empleado}`
-        )
-        .then((emp) => {
-          const empleado = emp.data[0];
-          this.setState({ empleado });
-          console.log(this.state);
-        })
-        .catch((err) => {
-          alert("Error: Usuario inválido o inexistente.");
-          window.location.href = `http://localhost:3000/`;
-        });
+      .get(`http://localhost:8000/api/permisos-empleado/${id_empleado}`)
+      .then((emp) => {
+        const empleado = emp.data[0];
+        this.setState({ empleado });
+        console.log(this.state);
+      })
+      .catch((err) => {
+        alert("Error: Usuario inválido o inexistente.");
+        window.location.href = `http://localhost:3000/`;
+      });
 
     axios.get(`http://localhost:8000/api/peliculas-estrenadas/`).then((res) => {
       const peliculas = res.data;
@@ -51,12 +49,15 @@ class AgregarFuncion extends Component {
       axios.get(`http://localhost:8000/api/salas/`).then((res) => {
         const salas = res.data;
         this.setState({ salas });
-        this.state.salas.forEach((sala) => {
+        var sucursales = this.state.sucursales;
+        for (let index = 0; index < salas.length; index++) {
+          sucursales.push("");
+        }
+        this.state.salas.forEach((sala, index) => {
           axios
             .get(`http://localhost:8000/api/sucursales/${sala.id_sucursal}`)
             .then((res) => {
-              var sucursales = this.state.sucursales;
-              sucursales.push(res.data.nombre);
+              sucursales[index] = res.data.nombre;
               this.setState({ sucursales });
             });
         });
@@ -111,18 +112,43 @@ class AgregarFuncion extends Component {
         id_pelicula,
         id_sala,
       } = funcion;
+
       axios
-        .post(
-          `http://localhost:8000/api/funciones/`,
-          { fecha, hora, butacas_disponibles, estado, id_pelicula, id_sala },
-          { headers: { "Content-Type": "application/json" } }
+        .get(
+          `http://localhost:8000/api/agregar-funcion/${id_sala}/${fecha}/${hora}/`
         )
-        .then((res) => {
-          console.log(res.data);
-          alert("Función agregada correctamente");
-          window.location.href = "http://localhost:3000/funciones-admin";
+        .then((funcioncita) => {
+          const f = funcioncita.data;
+
+          if (f.length === 0) {
+            axios
+              .post(
+                `http://localhost:8000/api/funciones/`,
+                {
+                  fecha,
+                  hora,
+                  butacas_disponibles,
+                  estado,
+                  id_pelicula,
+                  id_sala,
+                },
+                { headers: { "Content-Type": "application/json" } }
+              )
+              .then((res) => {
+                console.log(res.data);
+                alert("Función agregada correctamente");
+                window.location.href = `http://localhost:3000/funciones-admin/${this.state.id_empleado}`;
+              })
+              .catch((err) => alert(err.response.request.response));
+          } else {
+            alert(
+              `Error: Ya existe una función en ${f[0].sala.sucursal.nombre} en la sala ${f[0].sala.nombre} el día ${f[0].fecha} a las ${f[0].hora} de la película: ${f[0].pelicula.titulo}`
+            );
+          }
         })
-        .catch((err) => alert(err.response.request.response));
+        .catch((err) => {
+          console.log(err);
+        });
     }
   }
 
@@ -130,7 +156,10 @@ class AgregarFuncion extends Component {
     return (
       <div className="row justify-content-center">
         <div className="col-12">
-          <HeaderAdmin tiene_permisos={this.state.empleado.tiene_permisos} id_empleado={this.state.id_empleado}/>
+          <HeaderAdmin
+            tiene_permisos={this.state.empleado.tiene_permisos}
+            id_empleado={this.state.id_empleado}
+          />
           <h3 className="mt-3 text-center">AGREGAR FUNCIÓN</h3>
         </div>
         <div

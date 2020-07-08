@@ -29,6 +29,9 @@ urlpatterns = [
     # RUTA PARA TRAER LAS FUNCIONES DE UNA PELÍCULA
     url('^api/funciones-pelicula/(?P<id_pelicula>.+)/$', FuncionPorPeliculaViewset.as_view(),name="funcionesPorPeli"),
 
+    # RUTA PARA VALIDAR QUE NO EXISTA OTRA FUNCIÓN EN ESE MOMENTO
+    url('^api/agregar-funcion/(?P<id_sala>.+)/(?P<fecha>.+)/(?P<hora>.+)/$', FuncionPorPeliculaViewset.as_view(),name="funcionesPorPeli"),
+
     # RUTA PARA TRAER LOS PRODUCTOS DE UN COMBO
     url('^api/registroCombos/(?P<id_producto_combo>.+)/$', RegistroCombosViewset.as_view(), name ="registroCombos"),
 

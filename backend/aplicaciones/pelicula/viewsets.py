@@ -73,12 +73,28 @@ class FuncionViewset(viewsets.ModelViewSet):
     serializer_class = serializers.FuncionSerializer
 
 
+# TODAS LAS FUNCIONES QUE NO HAN PASADO
+class FuncionesDisponiblesViewset(viewsets.ModelViewSet):
+    queryset = models.Funcion.objects.all().filter(estado = True).filter(fecha__gte = datetime.date.today())
+    serializer_class = serializers.FuncionSerializer
+
+
 # TODAS LAS FUNCIONES DE UNA PELICULA ESPECÍFICA
 class FuncionPorPeliculaViewset(generics.ListAPIView):
     serializer_class = serializers.FuncionSerializer
     def get_queryset(self):
         pelicula = self.kwargs['id_pelicula']
         return models.Funcion.objects.all().filter(id_pelicula = pelicula).filter(estado = True)
+
+
+# DEVUELVE SI HAY UNA FUNCIÓN EN EL BLOQUE HORARIO DE ESA PELICULA
+class FuncionPorPeliculaViewset(generics.ListAPIView):
+    serializer_class = serializers.FuncionRepetidaSerializer
+    def get_queryset(self):
+        sala = self.kwargs['id_sala']
+        fecha_add = self.kwargs['fecha']
+        hora_add = self.kwargs['hora']
+        return models.Funcion.objects.all().filter(estado = True).filter(id_sala = sala).filter(fecha = fecha_add).filter(hora = hora_add)
 
 
 # TODOS LOS TIPOS DE PRODUCTOS
@@ -222,7 +238,3 @@ class RegistroComprasViewset(viewsets.ModelViewSet):
 class RegistroAsientosReservadosViewset(viewsets.ModelViewSet):
     queryset = models.RegistroAsientosReservados.objects.all()
     serializer_class = serializers.RegistroAsientosReservadosSerializer
-
-
-
-

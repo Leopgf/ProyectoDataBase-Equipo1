@@ -88,7 +88,7 @@ class FuncionPorPeliculaViewset(generics.ListAPIView):
 
 
 # DEVUELVE SI HAY UNA FUNCIÓN EN EL BLOQUE HORARIO DE ESA PELICULA
-class FuncionPorPeliculaViewset(generics.ListAPIView):
+class FuncionOcupadaViewset(generics.ListAPIView):
     serializer_class = serializers.FuncionRepetidaSerializer
     def get_queryset(self):
         sala = self.kwargs['id_sala']

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Carousel } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import cine from "../../assest/cinec.jpg";
 import aclamado from "../../assest/aclamado.jpg";
 import cotufas from "../../assest/cotufas.jpg";
@@ -11,11 +12,35 @@ class Home extends Component {
       <div>
         <HeaderCliente />
         <Slider />
+        <Integrantes />
       </div>
     );
   }
 }
 export default Home;
+
+class Integrantes extends Component {
+  render() {
+    return (
+      <div className="row center text-center">
+      <div className="col-12 m-3 ">
+      
+        <Card style={{ display:'flex', justifyContent:'center' }}>
+          <Card.Body>
+            <Card.Title>Leng Cinema</Card.Title>
+            <Card.Subtitle className="mb-2 text-muted">Equipo 1</Card.Subtitle>
+            <Card.Text>
+              Integrantes: Brito, Ferreira, Gonzalez y Pizzurro.
+            </Card.Text>
+          </Card.Body>
+        </Card>
+        </div>
+        </div>
+
+    );
+  }
+}
+
 
 class Slider extends Component {
   render() {

@@ -79,11 +79,11 @@ class AgregarProducto extends Component {
     } else if (this.state.producto.id_tipos_productos === "Entrada") {
       return (
         <Form.Group controlId="formBasicImagen">
-          <Form.Label>Tipo de entrada:</Form.Label>
+          <Form.Label>Condición de la entrada:</Form.Label>
           <Form.Control
             type="text"
             name="tipo"
-            placeholder="Tipo"
+            placeholder="Condición"
             value={this.state.producto.tipo}
             onChange={this.handleChange.bind(this)}
           />
@@ -151,7 +151,7 @@ class AgregarProducto extends Component {
                 .then((respuesta) => {
                   alert("Producto agregado con éxito!");
                   window.location.href =
-                    "http://localhost:3000/productos-admin";
+                    `http://localhost:3000/productos-admin/${this.state.id_empleado}`;
                 })
                 .catch((err) => alert(err.response.request.response));
             } else {
@@ -167,7 +167,7 @@ class AgregarProducto extends Component {
                 .then((respuesta) => {
                   alert("Producto agregado con éxito!");
                   window.location.href =
-                    "http://localhost:3000/productos-admin";
+                  `http://localhost:3000/productos-admin/${this.state.id_empleado}`;
                 })
                 .catch((err) => alert(err.response.request.response));
             }

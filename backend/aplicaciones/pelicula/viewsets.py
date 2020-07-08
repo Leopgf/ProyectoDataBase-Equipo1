@@ -98,7 +98,7 @@ class FuncionPorPeliculaViewset(generics.ListAPIView):
     serializer_class = serializers.FuncionSerializer
     def get_queryset(self):
         pelicula = self.kwargs['id_pelicula']
-        return models.Funcion.objects.all().filter(id_pelicula = pelicula).filter(estado = True)
+        return models.Funcion.objects.all().filter(id_pelicula = pelicula).filter(estado = True).filter(fecha__gte = datetime.date.today())
 
 
 # DEVUELVE SI HAY UNA FUNCIÓN EN EL BLOQUE HORARIO DE ESA PELICULA
@@ -205,6 +205,11 @@ class EmpleadosViewset(viewsets.ModelViewSet):
 class EmpleadosConUsuariosViewset(viewsets.ModelViewSet):
     queryset = models.Empleado.objects.all()
     serializer_class = serializers.EmpleadosConUsuariosSerializer
+
+# TODOS LOS CLIENTES CON SUS USUARIOS
+class ClientesConUsuariosViewset(viewsets.ModelViewSet):
+    queryset = models.Cliente.objects.all()
+    serializer_class = serializers.ClientesConUsuariosSerializer
 
 
 # DEVUELVE UN EMPLEADO A PARTIR DE SU CEDULA

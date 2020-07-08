@@ -112,6 +112,13 @@ class ClienteSerializer(serializers.ModelSerializer):
         model = Cliente
         fields = '__all__'
 
+# SERIALIZER QUE TRAE TODOS LOS CAMPOS DE LOS CLIENTES CON SUS USUARIOS
+class ClientesConUsuariosSerializer(serializers.ModelSerializer):
+    usuario = UsuarioSerializer(source='id_usuario')
+    class Meta:
+        model = Cliente
+        fields = ['usuario', 'id']
+
 # SERIALIZER QUE TRAE TODOS LOS CAMPOS DE LOS EMPLEADOS
 class EmpleadoSerializer(serializers.ModelSerializer):
     class Meta:

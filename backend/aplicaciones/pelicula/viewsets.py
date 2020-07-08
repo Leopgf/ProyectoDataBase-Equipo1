@@ -34,6 +34,20 @@ class CategoriaViewset(viewsets.ModelViewSet):
     queryset = models.Categoria.objects.all().filter(estado = True)
     serializer_class = serializers.CategoriasSerializer
 
+# TODAS LAS CATEGORIAS
+class CategoriasTodasViewset(viewsets.ModelViewSet):
+    queryset = models.Categoria.objects.all()
+    serializer_class = serializers.CategoriasSerializer
+
+
+# DEVUELVE LA CATEGORIA ELIMINADA DADA LA CATEGORIA
+class CategoriaEliminadaViewset(generics.ListAPIView):
+    serializer_class = serializers.CategoriasSerializer
+    
+    def get_queryset(self):
+        category = self.kwargs['categoria']
+        return models.Categoria.objects.all().filter(categoria = category).filter(estado = False)      
+
 
 # TODAS LOS REGISTROSCATEGORIAS
 class RegistroCategoriasTodasViewset(viewsets.ModelViewSet):

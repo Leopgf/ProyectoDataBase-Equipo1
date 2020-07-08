@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
-from aplicaciones.pelicula.viewsets import RegistroCategoriaViewset, FuncionPorPeliculaViewset, FuncionOcupadaViewset, RegistroCombosViewset, UsuarioViewset, IdUsuarioEmpleadoViewset, IdUsuarioClienteViewset, IniciarSesionEmpleadoViewset, IniciarSesionClienteViewset
+from aplicaciones.pelicula.viewsets import RegistroCategoriaViewset, CategoriaEliminadaViewset, FuncionPorPeliculaViewset, FuncionOcupadaViewset, RegistroCombosViewset, UsuarioViewset, IdUsuarioEmpleadoViewset, IdUsuarioClienteViewset, IniciarSesionEmpleadoViewset, IniciarSesionClienteViewset
 from .router import router
 
 urlpatterns = [
@@ -25,6 +25,9 @@ urlpatterns = [
 
     # RUTA PARA TRAER LAS CATEGORIAS DE UNA PELÍCULA
     url('^api/registroCategorias/(?P<id_pelicula>.+)/$', RegistroCategoriaViewset.as_view(),name="categoriasUnaPeli"),
+
+    # RUTA PARA TRAER LA CATEGORIAS ELIMINADA DADO EL NOMBRE DE LA CATEGORIA
+    url('^api/categoria-eliminada/(?P<categoria>.+)/$', CategoriaEliminadaViewset.as_view(),name="categoriasEliminadas"),
 
     # RUTA PARA TRAER LAS FUNCIONES DE UNA PELÍCULA
     url('^api/funciones-pelicula/(?P<id_pelicula>.+)/$', FuncionPorPeliculaViewset.as_view(),name="funcionesPorPeli"),

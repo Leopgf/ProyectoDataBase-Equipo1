@@ -8,7 +8,7 @@ class HeaderCompra extends Component {
     render() {
     return (
       <Navbar expand="lg" bg="dark" variant="dark">
-        <Navbar.Brand href="/iniciar-sesion-admin">
+        <Navbar.Brand href="/">
           <img src={logo} width="200px" height="50px" alt="LengCinema" />
         </Navbar.Brand>{" "}
         {/* Imagen de Logo con tamaño */}

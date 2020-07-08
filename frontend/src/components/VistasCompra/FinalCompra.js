@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import HeaderCompra from "../VistasCompra/HeaderCompra";
+import HeaderFinalizado from "../VistasCompra/HeaderFinalizado";
 import DatosCompra from "../VistasCompra/DatosCompra";
 
 
@@ -8,8 +8,8 @@ class FinalCompra extends Component {
   render() {
     return (
       <div>
-        <HeaderCompra />
-      
+        <HeaderFinalizado />
+        <DatosCompra />
       </div>
     );
   }

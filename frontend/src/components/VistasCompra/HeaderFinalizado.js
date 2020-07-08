@@ -3,7 +3,7 @@ import { Nav } from "react-bootstrap";
 import { Navbar } from "react-bootstrap";
 import logo from "../../assest/lengCinemaNewLogo.jpg"; // import imagen para trabajarla
 
-class HeaderCompra extends Component {
+class HeaderFinalizado extends Component {
 
     render() {
     return (
@@ -13,14 +13,9 @@ class HeaderCompra extends Component {
         </Navbar.Brand>{" "}
         {/* Imagen de Logo con tamaño */}
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto text-right">
-            <Nav.Link href="/">Salir</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
       </Navbar>
     );
   }
 }
 
-export default HeaderCompra;
+export default HeaderFinalizado;

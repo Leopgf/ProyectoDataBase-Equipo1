@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Card } from "react-bootstrap";
+import { ListGroup } from "react-bootstrap";
+import { ListGroupItem } from "react-bootstrap";
 import axios from "axios";
 
 class InfoPeli extends Component {
@@ -16,16 +18,19 @@ class InfoPeli extends Component {
 
   render() {
       return (
-        <div className="row m-3">
+        <div className="row m-3 center">
+          <div className="col-6 m-3 center text-center">
+            <h5 class="font-italic Italica">Tu película seleccionada es:</h5>
+          </div>
           {this.state.peliculas.map((pelicula) => (
-            <div className="col-xs-12 col-sm-6 col-md-4 col-xlg-4 text-center mb-2" style={{ display: "flex", justifyContent: "center" }}
+            <div className="col-6 mb-3 text-center" style={{ display: "flex", justifyContent: "center" }}
               key={pelicula.id}
               titulo={pelicula.titulo}
             >
               <Card>
                 <Card.Img
                   variant="top"
-                  style={{ width: "25 rem", height: "35rem" }}
+                  style={{ width: "20rem"}}
                   src={pelicula.imagen}
                 />
                 <Card.Header
@@ -34,13 +39,6 @@ class InfoPeli extends Component {
                 >
                   {pelicula.titulo}
                 </Card.Header>
-                <Card.Body>
-                    <ListGroup className="list-group-flush">
-                        <ListGroupItem>
-                        Categoría: {pelicula.categoria}
-                        </ListGroupItem>
-                    </ListGroup>
-                </Card.Body>
               </Card>
             </div>
           ))}

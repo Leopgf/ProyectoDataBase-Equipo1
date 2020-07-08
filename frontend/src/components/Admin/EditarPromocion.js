@@ -46,35 +46,47 @@ class EditarPromosAdmin extends Component {
   }
 
   handleEditar() {
-    const {
-      id,
-      nombre,
-      descripcion,
-      fecha_inicio,
-      fecha_fin,
-      descuento,
-      estado,
-    } = this.state.promociones;
 
-    axios
-      .put(
-        `http://localhost:8000/api/promociones/${this.state.promociones.id}/`,
-        {
+    if (this.state.promocion.nombre === "" || 
+    this.state.promocion.descripcion === "" || 
+    this.state.promocion.fecha_fin === "" || 
+    this.state.promocion.fecha_inicio === "" || 
+    this.state.promocion.descuento === 0
+    ) {
+      alert("Error: Campos vacíos o inválidos");
+    } else if(this.state.promocion.descuento <= 0 || this.state.promocion.descuento > 100){
+      alert('Error: El descuento debe ser mayor de 0 y menor o igual a 100');
+    } else{ 
+        const {
+          id,
           nombre,
           descripcion,
           fecha_inicio,
           fecha_fin,
           descuento,
           estado,
-        }
-      )
-      .then((response) => {
-        console.log(response);
-        alert("Promoción editada con éxito!");
-      })
-      .catch((err) => {
-        alert(err.response.request.response);
-      });
+        } = this.state.promociones;
+
+        axios
+          .put(
+            `http://localhost:8000/api/promociones/${this.state.promociones.id}/`,
+            {
+              nombre,
+              descripcion,
+              fecha_inicio,
+              fecha_fin,
+              descuento,
+              estado,
+            }
+          )
+          .then((response) => {
+            console.log(response);
+            alert("Promoción editada con éxito!");
+          })
+          .catch((err) => {
+            alert(err.response.request.response);
+          });
+    }
   }
 
   handleChange(event) {

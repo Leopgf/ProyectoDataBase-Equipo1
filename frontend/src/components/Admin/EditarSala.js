@@ -62,15 +62,12 @@ class EditarSala extends Component {
     ) {
       alert("Error: Campos vacíos o inválidos");
     } else {
+      
       const sucursal = this.state.sucursales.filter(
         (sucursal) => sucursal.nombre === this.state.sala.id_sucursal
       );
       const id_sucursal = sucursal[0].id;
       const { nombre, numero_columnas, numero_filas } = this.state.sala;
-      console.log(this.state.sala);
-      console.log(id_sucursal);
-      
-      
       axios
         .put(
           `http://localhost:8000/api/salas/${this.state.sala.id}/`,

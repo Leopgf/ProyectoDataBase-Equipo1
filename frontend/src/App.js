@@ -31,6 +31,12 @@ import SalasAdmin from "./components/Admin/SalasAdmin";
 import AdministrarPermisos from "./components/Admin/AdministrarPermisos";
 import EditarPromosAdmin from "./components/Admin/EditarPromocion";
 import EditarSala from "./components/Admin/EditarSala";
+import EditarPeli from "./components/Admin/EditarPeli";
+import EditarFuncion from "./components/Admin/EditarFuncion";
+import EditarCategoria from "./components/Admin/EditarCategoria";
+import EditarSucursal from "./components/Admin/EditarSucursal";
+import EditarCombo from "./components/Admin/EditarCombo";
+import EditarProducto from "./components/Admin/EditarProducto";
 
 function App() {
   return (
@@ -72,6 +78,12 @@ function App() {
           <Route path="/agregar-sala/:id_empleado" component={AgregarSala} />
           <Route path="/editar-promos-admin/:id_empleado/:id_promocion" component={EditarPromosAdmin} />
           <Route path="/editar-sala/:id_empleado/:id_sala" component={EditarSala} />
+          <Route path="/editar-peli-admin/:id_empleado/:id_pelicula" component={EditarPeli} />
+          <Route path="/editar-funciones-admin/:id_empleado/:id_funcion" component={EditarFuncion} />
+          <Route path="/editar-categorias-admin/:id_empleado/:id_categoria" component={EditarCategoria} />
+          <Route path="/editar-sucursales-admin/:id_empleado/:id_sucursal" component={EditarSucursal} />
+          <Route path="/combos-admin/:id_empleado/:id_combo" component={EditarCombo} />
+          <Route path="/editar-producto/:id_empleado/:id_producto" component={EditarProducto} />
         </Switch>
       </Router>
     </React.Fragment>

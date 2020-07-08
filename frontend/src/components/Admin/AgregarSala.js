@@ -57,6 +57,7 @@ class AgregarSala extends Component {
     ) {
       alert("Error: Campos vacíos o inválidos");
     } else {
+      
       const sucursal = this.state.sucursales.filter(
         (sucursal) => sucursal.nombre === this.state.sala.id_sucursal
       );

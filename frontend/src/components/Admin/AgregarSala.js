@@ -56,7 +56,9 @@ class AgregarSala extends Component {
       this.state.sala.id_sucursal === ""
     ) {
       alert("Error: Campos vacíos o inválidos");
-    } else {
+    } else if(this.state.sala.numero_columnas > 20 || this.state.sala.numero_filas > 20){
+      alert("Error: No pueden haber salas con más de 20 filas o columnas");
+    }else {
       const sucursal = this.state.sucursales.filter(
         (sucursal) => sucursal.nombre === this.state.sala.id_sucursal
       );
@@ -83,15 +85,16 @@ class AgregarSala extends Component {
                   columna,
                   id_sala,
                 })
-                .then((res) => {})
+                .then((res) => {
+                  console.log(res.data);
+                })
                 .catch((err) => alert(err.response.request.response));
             }
           }
           console.log(res.data);
-          alert("Sala agregada correctamente");
-          window.location.href = "http://localhost:3000/salas-admin";
         })
         .catch((err) => alert(err.response.request.response));
+        alert("Sala agregada correctamente");
     }
   }
 

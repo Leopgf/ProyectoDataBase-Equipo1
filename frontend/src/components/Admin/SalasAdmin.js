@@ -64,7 +64,7 @@ class SalasAdmin extends Component {
         <div className="col-11 col-md-4 col-lg-4 d-flex justify-content-end">
           <button className="btn btn-success">
             <a
-              href="/agregar-sala"
+              href={`/agregar-sala/${this.state.id_empleado}`}
               className="text-light text-decoration-none d-flex align-content-center"
             >
               AGREGAR
@@ -94,7 +94,7 @@ class SalasAdmin extends Component {
         <div className="col-11 col-md-4 col-lg-4 d-flex justify-content-end">
           <button className="btn btn-success">
             <a
-              href="/agregar-sala"
+              href={`/agregar-sala/${this.state.id_empleado}`}
               className="text-light text-decoration-none d-flex align-content-center"
             >
               AGREGAR
@@ -121,6 +121,9 @@ class SalasAdmin extends Component {
               <tr>
                 <th>Sala</th>
                 <th>Sucursal</th>
+                <th>Nro Filas</th>
+                <th>Nro Columnas</th>
+                <th>Total de asientos</th>
                 <th>Modificar</th>
               </tr>
             </thead>
@@ -129,6 +132,9 @@ class SalasAdmin extends Component {
                 <tr key={sala.id}>
                   <td>{sala.nombre}</td>
                   <td>{this.state.sucursales[index]}</td>
+                  <td>{sala.numero_filas}</td>
+                  <td>{sala.numero_columnas}</td>
+                  <td>{sala.numero_filas * sala.numero_columnas}</td>
                   <td>
                     <Button className="btn btn-info" href={`/editar-sala/${this.state.id_empleado}/${sala.id}`}>
                       <FontAwesomeIcon

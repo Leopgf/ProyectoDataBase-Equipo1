@@ -47,14 +47,14 @@ class EditarPromosAdmin extends Component {
 
   handleEditar() {
 
-    if (this.state.promocion.nombre === "" || 
-    this.state.promocion.descripcion === "" || 
-    this.state.promocion.fecha_fin === "" || 
-    this.state.promocion.fecha_inicio === "" || 
-    this.state.promocion.descuento === 0
+    if (this.state.promociones.nombre === "" || 
+    this.state.promociones.descripcion === "" || 
+    this.state.promociones.fecha_fin === "" || 
+    this.state.promociones.fecha_inicio === "" || 
+    this.state.promociones.descuento === 0
     ) {
       alert("Error: Campos vacíos o inválidos");
-    } else if(this.state.promocion.descuento <= 0 || this.state.promocion.descuento > 100){
+    } else if(this.state.promociones.descuento <= 0 || this.state.promociones .descuento > 100){
       alert('Error: El descuento debe ser mayor de 0 y menor o igual a 100');
     } else{ 
         const {

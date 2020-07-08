@@ -62,7 +62,7 @@ class EditarCategoria extends Component {
         .then((res) => {
           console.log(res.data);
           alert("Categoría editada con éxito!");
-          window.location.href = "http://localhost:3000/categorias-admin";
+         // window.location.href = "http://localhost:3000/categorias-admin";
         })
         .catch((err) => alert(err.response.request.response));
     }

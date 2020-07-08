@@ -157,7 +157,7 @@ class PeliculaAdmin extends Component {
                 <tr key={pelicula.id}>
                   <td>{pelicula.titulo}</td>
                   <td>
-                    <Button className="btn btn-info">
+                    <Button className="btn btn-info" href={`/editar-peli-admin/${this.state.id_empleado}/${pelicula.id}`}>
                       <FontAwesomeIcon
                         className="text-light"
                         style={{ width: "25px", height: "25px" }}

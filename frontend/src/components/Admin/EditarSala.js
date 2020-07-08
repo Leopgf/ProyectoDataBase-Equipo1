@@ -94,7 +94,7 @@ class EditarSala extends Component {
         //   }
           console.log(res.data);
           alert("Sala editada correctamente");
-          window.location.href = "http://localhost:3000/salas-admin";
+          //window.location.href = "http://localhost:3000/salas-admin";
         })
         .catch((err) => alert(err.response.request.response));
     }
@@ -128,7 +128,7 @@ class EditarSala extends Component {
                   type="number"
                   name="numero_filas"
                   value={this.state.sala.numero_filas}
-                  onChange={this.handleChange.bind(this)}
+                  //onChange={this.handleChange.bind(this)}
                 />
               </Form.Group>
               <Form.Group controlId="formBasicHora">
@@ -137,7 +137,7 @@ class EditarSala extends Component {
                   type="number"
                   name="numero_columnas"
                   value={this.state.sala.numero_columnas}
-                  onChange={this.handleChange.bind(this)}
+                  //onChange={this.handleChange.bind(this)}
                 />
               </Form.Group>
               <Form.Group controlId="exampleForm.ControlSelectPelicula">

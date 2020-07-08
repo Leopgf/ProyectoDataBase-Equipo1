@@ -53,7 +53,7 @@ class EditarPeli extends Component {
       pelicula.categoria = categoria;
       this.setState({ pelicula });
     });
-    axios.get(`http://localhost:8000/api/peliculas/${this.props.match.params.id_pelicula}`).then((res) => {
+    axios.get(`http://localhost:8000/api/peliculas-todas/${this.props.match.params.id_pelicula}`).then((res) => {
         const pelicula = res.data;
         this.setState({ pelicula });
     });
@@ -157,7 +157,7 @@ class EditarPeli extends Component {
 
           console.log(res.data);
           alert("¡Película editada con éxito!");
-          window.location.href = "http://localhost:3000/peliculas-admin";
+          //window.location.href = "http://localhost:3000/peliculas-admin";
         })
         .catch((err) => alert(err.response.request.response));
     }

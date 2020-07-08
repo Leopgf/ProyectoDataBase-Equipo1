@@ -118,7 +118,7 @@ class SucursalesAdmin extends Component {
                 <tr key={sucursal.id}>
                   <td>{sucursal.nombre}</td>
                   <td>
-                    <Button className="btn btn-info">
+                    <Button className="btn btn-info" href={`/editar-sucursales-admin/${this.state.id_empleado}/${sucursal.id}`}>
                       <FontAwesomeIcon
                         className="text-light"
                         style={{ width: "25px", height: "25px" }}

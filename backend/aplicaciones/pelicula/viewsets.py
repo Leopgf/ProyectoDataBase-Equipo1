@@ -17,7 +17,7 @@ class PeliculasEstrenadasViewset(viewsets.ModelViewSet):
 
 # SOLO PELICULAS DE PROXIMOS ESTRENOS ACTIVOS
 class PeliculasNoEstrenadasViewset(viewsets.ModelViewSet):
-    queryset = models.Pelicula.objects.all().filter(fecha_estreno__gte = datetime.date.today()).filter(estado = True)
+    queryset = models.Pelicula.objects.all().filter(fecha_estreno__gt = datetime.date.today()).filter(estado = True)
     serializer_class = serializers.PeliculasSerializer
 
 
@@ -108,13 +108,6 @@ class FuncionOcupadaViewset(generics.ListAPIView):
         sala = self.kwargs['id_sala']
         fecha_add = self.kwargs['fecha']
         hora_add = self.kwargs['hora']
-
-        # pelicula-para-agregar = self.kwargs['id_pelicula']
-        # hora_inicio = self.kwargs['hora']
-        # duracion = models.Pelicula.objects.all().filter(id = pelicula-para-agregar)
-        # hora_fin = hora_inicio + duracion
-        # return models.Funcion.objects.all().filter(estado = True).filter(id_sala = sala).filter(fecha = fecha_add).filter(hora__gte = hora_inicio).filter(hora__lte = hora_fin)
-
         return models.Funcion.objects.all().filter(estado = True).filter(id_sala = sala).filter(fecha = fecha_add).filter(hora = hora_add)
 
 

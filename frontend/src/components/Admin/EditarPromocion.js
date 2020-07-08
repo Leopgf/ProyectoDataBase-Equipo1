@@ -9,8 +9,8 @@ class EditarPromosAdmin extends Component {
       nombre: "",
       descripcion: "",
       descuento: 0,
-      fecha_inicio: 0,
-      fecha_fin: 0,
+      fecha_inicio: "",
+      fecha_fin: "",
       estado: true,
     },
     id_empleado: "",
@@ -46,35 +46,75 @@ class EditarPromosAdmin extends Component {
   }
 
   handleEditar() {
-    const {
-      id,
-      nombre,
-      descripcion,
-      fecha_inicio,
-      fecha_fin,
-      descuento,
-      estado,
-    } = this.state.promociones;
+    const today = new Date();
+    var fecha_inicio;
+    var fecha_fin;
+    if (
+      this.state.promociones.fecha_inicio !== "" &&
+      this.state.promociones.fecha_fin !== ""
+    ) {
+      fecha_inicio = new Date(Date.parse(this.state.promociones.fecha_inicio));
+      fecha_fin = new Date(Date.parse(this.state.promociones.fecha_fin));
+      fecha_inicio.setMinutes(
+        fecha_inicio.getMinutes() + fecha_inicio.getTimezoneOffset()
+      );
+      fecha_fin.setMinutes(
+        fecha_fin.getMinutes() + fecha_fin.getTimezoneOffset()
+      );
+    }
 
-    axios
-      .put(
-        `http://localhost:8000/api/promociones/${this.state.promociones.id}/`,
-        {
-          nombre,
-          descripcion,
-          fecha_inicio,
-          fecha_fin,
-          descuento,
-          estado,
-        }
-      )
-      .then((response) => {
-        console.log(response);
-        alert("Promoción editada con éxito!");
-      })
-      .catch((err) => {
-        alert(err.response.request.response);
-      });
+    if (
+      this.state.promociones.nombre === "" ||
+      this.state.promociones.descripcion === "" ||
+      this.state.promociones.fecha_fin === "" ||
+      this.state.promociones.fecha_inicio === "" ||
+      this.state.promociones.descuento === 0
+    ) {
+      alert("Error: Campos vacíos o inválidos");
+    } else if (
+      this.state.promociones.descuento <= 0 ||
+      this.state.promociones.descuento > 100
+    ) {
+      alert("Error: El descuento debe ser mayor de 0% y menor o igual a 100%");
+    } else if (fecha_inicio < today) {
+      alert(
+        "Error: No puedes registrar una promocion con la fecha de inicio anterior a hoy"
+      );
+    } else if (fecha_fin < fecha_inicio) {
+      alert(
+        "Error: La fecha de fin de la promoción no puede ser anterior a la fecha de inicio"
+      );
+    } else {
+      const {
+        nombre,
+        descripcion,
+        fecha_inicio,
+        fecha_fin,
+        descuento,
+        estado,
+      } = this.state.promociones;
+
+      axios
+        .put(
+          `http://localhost:8000/api/promociones/${this.state.promociones.id}/`,
+          {
+            nombre,
+            descripcion,
+            fecha_inicio,
+            fecha_fin,
+            descuento,
+            estado,
+          }
+        )
+        .then((response) => {
+          console.log(response);
+          alert("Promoción editada con éxito!");
+          window.location.href = `http://localhost:3000/promos-admin/${this.state.id_empleado}`;
+        })
+        .catch((err) => {
+          alert(err.response.request.response);
+        });
+    }
   }
 
   handleChange(event) {

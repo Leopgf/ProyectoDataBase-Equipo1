@@ -181,7 +181,18 @@ class EntradaViewset(viewsets.ModelViewSet):
     serializer_class = serializers.EntradaSerializer
 
 
+# TODOS LOS ALIMENTOS CON PRODUCTO
+class AlimentoConProductoViewset(viewsets.ModelViewSet):
+    queryset = models.Alimento.objects.all()
+    serializer_class = serializers.AlimentoConProductoSerializer
+
 # TODOS LOS COMBOS
+class ComboCineConProductoViewset(viewsets.ModelViewSet):
+    queryset = models.ComboCine.objects.all()
+    serializer_class = serializers.ComboCineConProductoSerializer
+
+
+# TODOS LOS COMBOS CON PRODUCTO
 class ComboCineViewset(viewsets.ModelViewSet):
     queryset = models.ComboCine.objects.all()
     serializer_class = serializers.ComboCineSerializer

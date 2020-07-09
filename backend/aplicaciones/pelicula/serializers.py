@@ -88,6 +88,23 @@ class ComboCineSerializer(serializers.ModelSerializer):
         model = ComboCine
         fields = '__all__'
 
+
+# SERIALIZER QUE TRAE TODOS LOS CAMPOS DE LOS ALIMENTOS CON SU PRODUCTO
+class AlimentoConProductoSerializer(serializers.ModelSerializer):
+    producto = ProductosSerializer(source='id_producto')
+    class Meta:
+        model = Alimento
+        fields = ['producto', 'contenido_neto']
+
+    
+# SERIALIZER QUE TRAE TODOS LOS CAMPOS DE LOS COMBOS
+class ComboCineConProductoSerializer(serializers.ModelSerializer):
+    producto = ProductosSerializer(source='id_producto')
+    class Meta:
+        model = ComboCine
+        fields = ['producto', 'descripcion', 'descuento']
+
+
 # SERIALIZER QUE TRAE LOS CAMPOS NOMBRE Y ESTADO DE LOS PRODUCTOS
 class ProductosRegistroCombosSerializer(serializers.ModelSerializer):
     class Meta:

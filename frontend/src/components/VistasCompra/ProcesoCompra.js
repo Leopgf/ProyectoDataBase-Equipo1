@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Table } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import EntradasConAsientos from "./EntradasConAsientos";
+import AlimentosConCombos from "./AlimentosConCombos";
 
  {/* PANTALLA INCIAL DE LA COMPRA: HEADER DE COMPRA,INFO PELI Y FUNCIONES*/}
 class ProcesoCompra extends Component {
@@ -20,42 +21,9 @@ class ProcesoCompra extends Component {
             <div className="col-12 mt-5 center text-center">
                 <h5 className="font-italic Italica">Agrega a tu carrito, si deseas, un combo o alimento</h5>
             </div>
-            <div className="col-12 m-3 text-center">
-                <h6>ALIMENTOS</h6>
-                    <Table striped bordered hover>
-                            <thead>
-                                <tr>
-                                    <th>Alimento</th>
-                                    <th>Cantidad</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>ejemplo1</td>
-                                    <td>ejemplo1</td>
-                                </tr>
-                            </tbody>
-                    </Table>
+            <div className='col-12'>
+            <AlimentosConCombos/>
             </div>
-            <div className="col-12 m-3 text-center">
-
-                <h6>COMBOS</h6>
-                <Table striped bordered hover>
-                        <thead>
-                            <tr>
-                                <th>Combo</th>
-                                <th>Cantidad</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>ejemplo1</td>
-                                <td>ejemplo1</td>
-                            </tr>
-                        </tbody>
-                </Table>
-            </div>
-        
             <div className="col-12 m-2 text-center">
                 <Link to={`/finalCompra`}>
                     <Button  className="mt-1" style={{ width: "50%" }} variant="outline-success">CONFIRMAR</Button> 

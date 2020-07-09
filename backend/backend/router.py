@@ -1,5 +1,5 @@
 from aplicaciones.pelicula.viewsets import  EmpleadosConUsuariosViewset, RegistroCategoriasTodasViewset, PeliculaTodasViewset, PeliculasEstrenadasViewset, PeliculasNoEstrenadasViewset, BuscadorPeliculaViewset, UsuariosViewset, CombosViewset, RegistroCombosTodosViewset, AlimentoViewset, EntradaViewset, ComboCineViewset, ClientesViewset, EmpleadosViewset, CategoriaViewset, RegistroCategoriaViewset, SucursalViewset, SalaViewset, FuncionViewset, AsientoViewset, TipoProductoViewset, ProductoViewset, RegistroCombosViewset, FacturaViewset, PromocionesViewset, RegistroPromocionesViewset, RegistroComprasViewset, RegistroAsientosReservadosViewset, PromocionesActivasViewset
-from aplicaciones.pelicula.viewsets import ClientesConUsuariosViewset, EntradasInfoViewset, FuncionesDisponiblesViewset, CategoriasTodasViewset, EmpleadosConUsuariosViewset, RegistroCategoriasTodasViewset, PeliculaTodasViewset, PeliculasEstrenadasViewset, PeliculasNoEstrenadasViewset, BuscadorPeliculaViewset, UsuariosViewset, CombosViewset, RegistroCombosTodosViewset, AlimentoViewset, EntradaViewset, ComboCineViewset, ClientesViewset, EmpleadosViewset, CategoriaViewset, RegistroCategoriaViewset, SucursalViewset, SalaViewset, FuncionViewset, AsientoViewset, TipoProductoViewset, ProductoViewset, RegistroCombosViewset, FacturaViewset, PromocionesViewset, RegistroPromocionesViewset, RegistroComprasViewset, RegistroAsientosReservadosViewset
+from aplicaciones.pelicula.viewsets import AlimentoConProductoViewset, ComboCineConProductoViewset, ClientesConUsuariosViewset, EntradasInfoViewset, FuncionesDisponiblesViewset, CategoriasTodasViewset, EmpleadosConUsuariosViewset, RegistroCategoriasTodasViewset, PeliculaTodasViewset, PeliculasEstrenadasViewset, PeliculasNoEstrenadasViewset, BuscadorPeliculaViewset, UsuariosViewset, CombosViewset, RegistroCombosTodosViewset, AlimentoViewset, EntradaViewset, ComboCineViewset, ClientesViewset, EmpleadosViewset, CategoriaViewset, RegistroCategoriaViewset, SucursalViewset, SalaViewset, FuncionViewset, AsientoViewset, TipoProductoViewset, ProductoViewset, RegistroCombosViewset, FacturaViewset, PromocionesViewset, RegistroPromocionesViewset, RegistroComprasViewset, RegistroAsientosReservadosViewset
 
 from rest_framework import routers
 
@@ -34,6 +34,8 @@ router.register('tipoProductos',TipoProductoViewset)
 router.register('productos',ProductoViewset)
 router.register('combos',CombosViewset)
 router.register('alimentos',AlimentoViewset)
+router.register('alimentos-productos',AlimentoConProductoViewset)
+router.register('combos-productos',ComboCineConProductoViewset)
 router.register('entradas',EntradaViewset)
 router.register('entradas-info',EntradasInfoViewset)
 router.register('comboscine',ComboCineViewset)

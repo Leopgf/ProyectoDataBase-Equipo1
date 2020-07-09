@@ -39,5 +39,5 @@ urlpatterns = [
     url('^api/cliente/(?P<id_usuario>.+)/$', IdUsuarioClienteViewset.as_view(), name ="cliente" ),
 
     #RUTA PAS TRAER LOS ASIENTOS DE UNA SALA 
-    url('^api/Sala/(?P<id_sala>.+)/$', AsientosDeSalaViewset.as_view(), name ="asientos-de-una-sala" ),
+    url('^api/Sala/(?P<id_sala>.+)/$', AsientosDeSalaViewset.as_view(), name ="asientos-de-una-sala" ), 
 ]

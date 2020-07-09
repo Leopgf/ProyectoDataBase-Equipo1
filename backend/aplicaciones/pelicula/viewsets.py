@@ -1,3 +1,4 @@
+from django.db.models import Sum,Count
 from rest_framework import viewsets, generics, filters
 from . import models
 from . import serializers
@@ -227,3 +228,6 @@ class AsientosDeSalaViewset(generics.ListAPIView):
         Sala = self.kwargs['id_sala']
         return models.Asiento.objects.all().filter(id_sala = Sala)
 
+class TopAsientosViewSet(viewsets.ModelViewSet):
+    serializer_class = serializers.RegistroAsientosReservadosSerializer
+    queryset = models.RegistroAsientosReservados.objects.raw('''SELECT CONCAT(a.columna ,-,a.fila) AS Asiento, COUNT(a.id) AS Cantidad_reservados, s.nombre AS Sala, su.nombre AS Sucursal FROM pelicula_registroasientosreservados AS ra INNER JOIN pelicula_asiento AS a ON (a.id = ra.id_asientos_id) INNER JOIN pelicula_sala AS s ON (s.id = a.id_sala_id) INNER JOIN pelicula_sucursal AS su ON (su.id = s.id_sucursal_id) GROUP BY Asiento, Sucursal ORDER BY  Cantidad_reservados DESC LIMIT 5''')

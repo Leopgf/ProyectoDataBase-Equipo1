@@ -27,7 +27,6 @@ class InfoFuncion extends Component {
     
             var pelicula = this.state.pelicula;
             var sala = this.state.sala;
-            var sucursal = this.state.sucursal;
     
               axios
                 .get(

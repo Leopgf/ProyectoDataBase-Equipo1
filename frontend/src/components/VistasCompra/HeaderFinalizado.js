@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Nav } from "react-bootstrap";
 import { Navbar } from "react-bootstrap";
 import logo from "../../assest/lengCinemaNewLogo.jpg"; // import imagen para trabajarla
 

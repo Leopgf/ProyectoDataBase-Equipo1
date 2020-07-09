@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import { Form } from "react-bootstrap";
 import axios from "axios";
 
-{
-  /* PANTALLA INCIAL DE LA COMPRA: HEADER DE COMPRA,INFO PELI Y FUNCIONES*/
-}
+
 class EntradasConAsientos extends Component {
   state = {
     entradas: [],
@@ -85,6 +83,11 @@ class EntradasConAsientos extends Component {
     asientos[event.target.name].checked = !asientos[event.target.name].checked;
     this.setState({ asientos });
     console.log(this.state);
+  }
+
+  handleEntradasConAsientos(){
+    console.log('Guardando entradas y asientos');
+    
   }
 
   render() {

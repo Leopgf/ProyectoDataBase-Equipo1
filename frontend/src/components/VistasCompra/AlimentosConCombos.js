@@ -2,9 +2,6 @@ import React, { Component } from "react";
 import { Form } from "react-bootstrap";
 import axios from "axios";
 
-{
-  /* PANTALLA INCIAL DE LA COMPRA: HEADER DE COMPRA,INFO PELI Y FUNCIONES*/
-}
 class AlimentosConCombos extends Component {
   state = {
     alimentos: [],
@@ -60,6 +57,11 @@ class AlimentosConCombos extends Component {
     combos[event.target.name].cantidad = event.target.value;
     this.setState({ combos });
     console.log(this.state);
+  }
+
+  handleAlimentosYCombos(){
+      console.log('Guardando alimentos y combos');
+      
   }
 
   render() {

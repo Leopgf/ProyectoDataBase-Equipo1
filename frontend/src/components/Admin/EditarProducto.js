@@ -132,6 +132,7 @@ class EditarProducto extends Component {
           (tipo) => tipo.tipo === this.state.producto.id_tipos_productos
         );
         id_tipos_productos = id_tipos_productos[0].id;
+
         axios
           .put(
             `http://localhost:8000/api/productos/${this.state.producto.id}/`,
@@ -148,7 +149,7 @@ class EditarProducto extends Component {
             if (id_tipos_productos === 1) {
               axios
                 .post(
-                  `http://localhost:8000/api/entradas/`,
+                  `http://localhost:8000/api/entradas/${id_producto}/`,
                   {
                     tipo,
                     id_producto,
@@ -164,7 +165,7 @@ class EditarProducto extends Component {
             } else {
               axios
                 .post(
-                  `http://localhost:8000/api/alimentos/`,
+                  `http://localhost:8000/api/alimentos/${id_producto}/`,
                   {
                     contenido_neto,
                     id_producto,

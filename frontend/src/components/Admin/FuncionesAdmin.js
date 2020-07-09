@@ -154,7 +154,7 @@ class Funciones extends Component {
                   <td>{this.state.salas[index]}</td>
                   <td>{funcion.butacas_disponibles}</td>
                   <td>
-                    <Button className="btn btn-info">
+                    <Button className="btn btn-info" href={`/editar-funciones-admin/${this.state.id_empleado}/${funcion.id}`}>
                       <FontAwesomeIcon
                         className="text-light"
                         style={{ width: "25px", height: "25px" }}

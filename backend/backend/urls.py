@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
 from aplicaciones.pelicula.viewsets import RegistroCategoriaViewset, RegistroCombosViewset, UsuarioViewset, IdUsuarioEmpleadoViewset, IdUsuarioClienteViewset, IniciarSesionEmpleadoViewset, IniciarSesionClienteViewset, AsientosDeSalaViewset
-from aplicaciones.pelicula.viewsets import RegistroCategoriaViewset, CategoriaEliminadaViewset, FuncionPorPeliculaViewset, FuncionOcupadaViewset, RegistroCombosViewset, UsuarioViewset, IdUsuarioEmpleadoViewset, IdUsuarioClienteViewset, IniciarSesionEmpleadoViewset, IniciarSesionClienteViewset
+from aplicaciones.pelicula.viewsets import RegistroCategoriaViewset, AsientosSalaViewset, AsientosOcupadosViewset, CategoriaEliminadaViewset, FuncionPorPeliculaViewset, FuncionOcupadaViewset, RegistroCombosViewset, UsuarioViewset, IdUsuarioEmpleadoViewset, IdUsuarioClienteViewset, IniciarSesionEmpleadoViewset, IniciarSesionClienteViewset
 from .router import router
 
 urlpatterns = [
@@ -38,6 +38,10 @@ urlpatterns = [
 
     # RUTA PARA TRAER LOS PRODUCTOS DE UN COMBO
     url('^api/registroCombos/(?P<id_producto_combo>.+)/$', RegistroCombosViewset.as_view(), name ="registroCombos"),
+
+    # RUTA PARA TRAER LOS ASIENTOS LIBRES DE UNA SALA
+    url('^api/asientos-libres/(?P<id_sala>.+)', AsientosSalaViewset.as_view(), name ="asientos-libres"),
+    url('^api/asientos-ocupados/(?P<id_funcion>.+)/$', AsientosOcupadosViewset.as_view(), name ="asientos-ocupados"),
 
     # RUTA PARA TRAER UN USUARIO/CLIENTE/EMPLEADO POR SU CEDULA
     url('^api/usuario/(?P<cedula>.+)/$', UsuarioViewset.as_view(), name ="usuario"),

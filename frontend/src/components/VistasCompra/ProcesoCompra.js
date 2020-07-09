@@ -1,27 +1,24 @@
 import React, { Component } from "react";
-import HeaderCompra from "../VistasCompra/HeaderCompra";
-import InfoPeli from "../VistasCompra/InfoPeli";
-import FuncionesPeli from "../VistasCompra/FuncionesPeli";
 import { Link } from "react-router-dom";
 import { Table } from "react-bootstrap";
 import { Button } from "react-bootstrap";
+import EntradasConAsientos from "./EntradasConAsientos";
 
  {/* PANTALLA INCIAL DE LA COMPRA: HEADER DE COMPRA,INFO PELI Y FUNCIONES*/}
-class InicioCompra extends Component {
+class ProcesoCompra extends Component {
+
   render() {
+    const id_funcion = this.props.id_funcion;
     return (
         <div className="row m-3">
             <div className="col-12  center text-center">
-                <h5 class="font-italic Italica">¡Selecciona las entradas y asientos!</h5>
+                <h5 className="font-italic Italica">¡Selecciona las entradas y asientos!</h5>
             </div>
-            <div className="col-6 m-2">
-                Seleccion entradas cantidad
-            </div>
-            <div className="col-6 m-2">
-                Seleccion asientos
+            <div className='col-12'>
+            <EntradasConAsientos id_funcion={id_funcion}/>
             </div>
             <div className="col-12 mt-5 center text-center">
-                <h5 class="font-italic Italica">Agrega a tu carrito, si deseas, un combo o alimento</h5>
+                <h5 className="font-italic Italica">Agrega a tu carrito, si deseas, un combo o alimento</h5>
             </div>
             <div className="col-12 m-3 text-center">
                 <h6>ALIMENTOS</h6>
@@ -30,12 +27,10 @@ class InicioCompra extends Component {
                                 <tr>
                                     <th>Alimento</th>
                                     <th>Cantidad</th>
-                                    <th>Agregar</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>ejemplo1</td>
                                     <td>ejemplo1</td>
                                     <td>ejemplo1</td>
                                 </tr>
@@ -50,40 +45,16 @@ class InicioCompra extends Component {
                             <tr>
                                 <th>Combo</th>
                                 <th>Cantidad</th>
-                                <th>Agregar</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>ejemplo1</td>
                                 <td>ejemplo1</td>
                                 <td>ejemplo1</td>
                             </tr>
                         </tbody>
                 </Table>
             </div>
-        
-            <div className="col-12 m-3 text-center">
-            <h4 class="font-weight-bold">TU CARRITO</h4>
-                <Table striped bordered hover variant="dark">
-                        <thead>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Precio</th>
-                                <th>Cantidad</th>
-                                <th>Eliminar</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>ejemplo</td>
-                                <td>ejemplo</td>
-                                <td>ejemplo</td>
-                                <td>ejemplo</td>
-                            </tr>
-                        </tbody>
-                </Table>
-        </div>
         
             <div className="col-12 m-2 text-center">
                 <Link to={`/finalCompra`}>
@@ -94,4 +65,4 @@ class InicioCompra extends Component {
     );
   }
 }
-export default InicioCompra;
+export default ProcesoCompra;

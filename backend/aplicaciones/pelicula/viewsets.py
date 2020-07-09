@@ -81,6 +81,22 @@ class AsientoViewset(viewsets.ModelViewSet):
     queryset = models.Asiento.objects.all()
     serializer_class = serializers.AsientoSerializer
 
+# TODOS LOS ASIENTOS DE UNA SALA
+class AsientosSalaViewset(generics.ListAPIView):
+    serializer_class = serializers.AsientoSerializer
+    def get_queryset(self):
+        sala = self.kwargs['id_sala']
+        asientos_sala = models.Asiento.objects.all().filter(id_sala = sala)
+        return asientos_sala
+
+# TODOS LOS ASIENTOS DE UNA SALA OCUPADOS
+class AsientosOcupadosViewset(generics.ListAPIView):
+    serializer_class = serializers.RegistroAsientosReservadosSerializer
+    def get_queryset(self):
+        funcion = self.kwargs['id_funcion']
+        asientos_ocupados = models.RegistroAsientosReservados.objects.all().filter(id_funciones = funcion)
+        return asientos_ocupados
+
 # TODAS LAS FUNCIONES
 class FuncionViewset(viewsets.ModelViewSet):
     queryset = models.Funcion.objects.all().filter(estado = True)
@@ -145,6 +161,18 @@ class RegistroCombosTodosViewset(viewsets.ModelViewSet):
 class AlimentoViewset(viewsets.ModelViewSet):
     queryset = models.Alimento.objects.all()
     serializer_class = serializers.AlimentoSerializer
+
+
+# TODOS LAS ENTRADAS
+class EntradaViewset(viewsets.ModelViewSet):
+    queryset = models.Entrada.objects.all()
+    serializer_class = serializers.EntradaSerializer
+
+
+# TODOS LAS ENTRADAS CON SU INFO DE PRODUCTO
+class EntradasInfoViewset(viewsets.ModelViewSet):
+    queryset = models.Entrada.objects.all()
+    serializer_class = serializers.EntradasInfoSerializer
 
 
 # TODOS LAS ENTRADAS

@@ -75,6 +75,13 @@ class EntradaSerializer(serializers.ModelSerializer):
         model = Entrada
         fields = '__all__'
 
+# SERIALIZER QUE TRAE TODOS LOS CAMPOS DE LAS ENTRADAS CON INFO DEL PRODUCTO
+class EntradasInfoSerializer(serializers.ModelSerializer):
+    producto = ProductosSerializer(source='id_producto')
+    class Meta:
+        model = Entrada
+        fields = ['producto', 'tipo']
+
 # SERIALIZER QUE TRAE TODOS LOS CAMPOS DE LOS COMBOS
 class ComboCineSerializer(serializers.ModelSerializer):
     class Meta:

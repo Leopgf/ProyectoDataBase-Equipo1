@@ -27,7 +27,7 @@ class HeaderAdmin extends Component {
               <Nav.Link href={ `/promos-admin/${id_empleado}` }>Promociones</Nav.Link>
               <Nav.Link href={ `/sucursales-admin/${id_empleado}` }>Sucursales</Nav.Link>
               <Nav.Link href={ `/salas-admin/${id_empleado}` }>Salas</Nav.Link>
-              <Nav.Link href="">Estadísticas</Nav.Link>
+              <Nav.Link href={ `/estadisticas/${id_empleado}` }>Estadísticas</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>

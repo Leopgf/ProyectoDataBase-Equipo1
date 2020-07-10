@@ -40,6 +40,7 @@ import EditarCategoria from "./components/Admin/EditarCategoria";
 import EditarSucursal from "./components/Admin/EditarSucursal";
 import EditarCombo from "./components/Admin/EditarCombo";
 import EditarProducto from "./components/Admin/EditarProducto";
+import Estadisticas from "./components/Admin/Estadisticas";
 
 function App() {
   return (
@@ -92,6 +93,7 @@ function App() {
           <Route path="/editar-sucursales-admin/:id_empleado/:id_sucursal" component={EditarSucursal} />
           <Route path="/editar-combos-admin/:id_empleado/:id_combo" component={EditarCombo} />
           <Route path="/editar-producto/:id_empleado/:id_producto" component={EditarProducto} />
+          <Route path="/estadisticas/:id_empleado" component={Estadisticas} />
         </Switch>
       </Router>
     </React.Fragment>

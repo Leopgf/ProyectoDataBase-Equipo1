@@ -61,9 +61,9 @@ function App() {
           <Route path="/iniciar-sesion-admin" component={IniciarSesionAdmin} />
 
           {/* RUTAS COMPRA ENTRADA*/}
-          <Route path="/inicioCompra" component={InicioCompra} />
-          <Route path="/siguienteCompra" component={SiguienteCompra} />
-          <Route path="/finalCompra" component={FinalCompra} />
+          <Route path="/comprar/:id_pelicula/:id_cliente" component={InicioCompra} />
+          <Route path="/paso2-compra/:id_pelicula/:id_cliente/:id_funcion" component={SiguienteCompra} />
+          <Route path="/factura-compra/:id_factura/" component={FinalCompra} />
 
           {/* RUTAS ADMIN*/}
           <Route path="/admin/:id_empleado" component={HomeAdmin} />

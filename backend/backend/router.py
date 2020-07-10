@@ -1,5 +1,4 @@
-
-from aplicaciones.pelicula.viewsets import PromocionesActivasViewset, FuncionesDisponiblesViewset, CategoriasTodasViewset, EmpleadosConUsuariosViewset, RegistroCategoriasTodasViewset, PeliculaTodasViewset, PeliculasEstrenadasViewset, PeliculasNoEstrenadasViewset, BuscadorPeliculaViewset, UsuariosViewset, CombosViewset, RegistroCombosTodosViewset, AlimentoViewset, EntradaViewset, ComboCineViewset, ClientesViewset, EmpleadosViewset, CategoriaViewset, RegistroCategoriaViewset, SucursalViewset, SalaViewset, FuncionViewset, AsientoViewset, TipoProductoViewset, ProductoViewset, RegistroCombosViewset, FacturaViewset, PromocionesViewset, RegistroPromocionesViewset, RegistroComprasViewset, RegistroAsientosReservadosViewset, TopAsientosViewSet, TopPeliculasViewset, TopProductoViewset, TopSucursalesViewset
+from aplicaciones.pelicula.viewsets import PromocionesActivasViewset, FuncionesDisponiblesViewset, CategoriasTodasViewset, RegistroCategoriasTodasViewset, PeliculaTodasViewset, PeliculasEstrenadasViewset, PeliculasNoEstrenadasViewset, BuscadorPeliculaViewset, UsuariosViewset, CombosViewset, RegistroCombosTodosViewset, AlimentoViewset, EntradaViewset, ComboCineViewset, ClientesViewset, EmpleadosViewset, CategoriaViewset, RegistroCategoriaViewset, SucursalViewset, SalaViewset, FuncionViewset, AsientoViewset, TipoProductoViewset, ProductoViewset, RegistroCombosViewset, FacturaViewset, PromocionesViewset, RegistroPromocionesViewset, RegistroComprasViewset, RegistroAsientosReservadosViewset, TopAsientosViewSet, TopPeliculasViewset, TopProductoViewset, TopSucursalesViewset, AlimentoConProductoViewset, ComboCineConProductoViewset, ClientesConUsuariosViewset, EntradasInfoViewset, EmpleadosConUsuariosViewset
 
 from rest_framework import routers
 
@@ -34,7 +33,10 @@ router.register('tipoProductos',TipoProductoViewset)
 router.register('productos',ProductoViewset)
 router.register('combos',CombosViewset)
 router.register('alimentos',AlimentoViewset)
+router.register('alimentos-productos',AlimentoConProductoViewset)
+router.register('combos-productos',ComboCineConProductoViewset)
 router.register('entradas',EntradaViewset)
+router.register('entradas-info',EntradasInfoViewset)
 router.register('comboscine',ComboCineViewset)
 router.register('registrocombos-todos',RegistroCombosTodosViewset)
 
@@ -45,6 +47,7 @@ router.register('promociones-activas',PromocionesActivasViewset)
 # RUTAS USUARIOS
 router.register('usuarios',UsuariosViewset)
 router.register('clientes',ClientesViewset)
+router.register('clientes-usuarios',ClientesConUsuariosViewset)
 router.register('empleados',EmpleadosViewset)
 router.register('empleados-usuarios',EmpleadosConUsuariosViewset)
 

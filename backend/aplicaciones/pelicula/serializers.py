@@ -75,11 +75,35 @@ class EntradaSerializer(serializers.ModelSerializer):
         model = Entrada
         fields = '__all__'
 
+# SERIALIZER QUE TRAE TODOS LOS CAMPOS DE LAS ENTRADAS CON INFO DEL PRODUCTO
+class EntradasInfoSerializer(serializers.ModelSerializer):
+    producto = ProductosSerializer(source='id_producto')
+    class Meta:
+        model = Entrada
+        fields = ['producto', 'tipo']
+
 # SERIALIZER QUE TRAE TODOS LOS CAMPOS DE LOS COMBOS
 class ComboCineSerializer(serializers.ModelSerializer):
     class Meta:
         model = ComboCine
         fields = '__all__'
+
+
+# SERIALIZER QUE TRAE TODOS LOS CAMPOS DE LOS ALIMENTOS CON SU PRODUCTO
+class AlimentoConProductoSerializer(serializers.ModelSerializer):
+    producto = ProductosSerializer(source='id_producto')
+    class Meta:
+        model = Alimento
+        fields = ['producto', 'contenido_neto']
+
+    
+# SERIALIZER QUE TRAE TODOS LOS CAMPOS DE LOS COMBOS
+class ComboCineConProductoSerializer(serializers.ModelSerializer):
+    producto = ProductosSerializer(source='id_producto')
+    class Meta:
+        model = ComboCine
+        fields = ['producto', 'descripcion', 'descuento']
+
 
 # SERIALIZER QUE TRAE LOS CAMPOS NOMBRE Y ESTADO DE LOS PRODUCTOS
 class ProductosRegistroCombosSerializer(serializers.ModelSerializer):
@@ -111,6 +135,13 @@ class ClienteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cliente
         fields = '__all__'
+
+# SERIALIZER QUE TRAE TODOS LOS CAMPOS DE LOS CLIENTES CON SUS USUARIOS
+class ClientesConUsuariosSerializer(serializers.ModelSerializer):
+    usuario = UsuarioSerializer(source='id_usuario')
+    class Meta:
+        model = Cliente
+        fields = ['usuario', 'id']
 
 # SERIALIZER QUE TRAE TODOS LOS CAMPOS DE LOS EMPLEADOS
 class EmpleadoSerializer(serializers.ModelSerializer):
@@ -182,6 +213,7 @@ class FuncionRepetidaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Funcion
         fields = ('pelicula', 'sala', 'fecha', 'hora')
+        
 # SERIALIZER QUE TRAE EL TOP DE ASIENTOS
 class AsientosTopSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField()

@@ -1,15 +1,16 @@
 import React, { Component } from "react";
-import HeaderFinalizado from "../VistasCompra/HeaderFinalizado";
 import DatosCompra from "../VistasCompra/DatosCompra";
+import HeaderCompra from "./HeaderCompra";
 
 
- {/* PANTALLA INCIAL DE LA COMPRA: HEADER DE COMPRA,INFO PELI Y FUNCIONES*/}
 class FinalCompra extends Component {
+
   render() {
+    const id_factura = this.props.match.params.id_factura;
     return (
       <div>
-        <HeaderFinalizado />
-        <DatosCompra />
+        <HeaderCompra/>
+        <DatosCompra id_factura = {id_factura} es_cliente = {true}/>
       </div>
     );
   }

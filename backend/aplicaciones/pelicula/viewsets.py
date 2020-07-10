@@ -85,6 +85,22 @@ class AsientoViewset(viewsets.ModelViewSet):
     queryset = models.Asiento.objects.all()
     serializer_class = serializers.AsientoSerializer
 
+# TODOS LOS ASIENTOS DE UNA SALA
+class AsientosSalaViewset(generics.ListAPIView):
+    serializer_class = serializers.AsientoSerializer
+    def get_queryset(self):
+        sala = self.kwargs['id_sala']
+        asientos_sala = models.Asiento.objects.all().filter(id_sala = sala)
+        return asientos_sala
+
+# TODOS LOS ASIENTOS DE UNA SALA OCUPADOS
+class AsientosOcupadosViewset(generics.ListAPIView):
+    serializer_class = serializers.RegistroAsientosReservadosSerializer
+    def get_queryset(self):
+        funcion = self.kwargs['id_funcion']
+        asientos_ocupados = models.RegistroAsientosReservados.objects.all().filter(id_funciones = funcion)
+        return asientos_ocupados
+
 # TODAS LAS FUNCIONES
 
 
@@ -104,7 +120,7 @@ class FuncionPorPeliculaViewset(generics.ListAPIView):
     serializer_class = serializers.FuncionSerializer
     def get_queryset(self):
         pelicula = self.kwargs['id_pelicula']
-        return models.Funcion.objects.all().filter(id_pelicula = pelicula).filter(estado = True)
+        return models.Funcion.objects.all().filter(id_pelicula = pelicula).filter(estado = True).filter(fecha__gte = datetime.date.today())
 
 
 # DEVUELVE SI HAY UNA FUNCIÓN EN EL BLOQUE HORARIO DE ESA PELICULA
@@ -166,7 +182,30 @@ class EntradaViewset(viewsets.ModelViewSet):
     serializer_class = serializers.EntradaSerializer
 
 
+# TODOS LAS ENTRADAS CON SU INFO DE PRODUCTO
+class EntradasInfoViewset(viewsets.ModelViewSet):
+    queryset = models.Entrada.objects.all()
+    serializer_class = serializers.EntradasInfoSerializer
+
+
+# TODOS LAS ENTRADAS
+class EntradaViewset(viewsets.ModelViewSet):
+    queryset = models.Entrada.objects.all()
+    serializer_class = serializers.EntradaSerializer
+
+
+# TODOS LOS ALIMENTOS CON PRODUCTO
+class AlimentoConProductoViewset(viewsets.ModelViewSet):
+    queryset = models.Alimento.objects.all()
+    serializer_class = serializers.AlimentoConProductoSerializer
+
 # TODOS LOS COMBOS
+class ComboCineConProductoViewset(viewsets.ModelViewSet):
+    queryset = models.ComboCine.objects.all()
+    serializer_class = serializers.ComboCineConProductoSerializer
+
+
+# TODOS LOS COMBOS CON PRODUCTO
 class ComboCineViewset(viewsets.ModelViewSet):
     queryset = models.ComboCine.objects.all()
     serializer_class = serializers.ComboCineSerializer
@@ -223,6 +262,11 @@ class EmpleadosViewset(viewsets.ModelViewSet):
 class EmpleadosConUsuariosViewset(viewsets.ModelViewSet):
     queryset = models.Empleado.objects.all()
     serializer_class = serializers.EmpleadosConUsuariosSerializer
+
+# TODOS LOS CLIENTES CON SUS USUARIOS
+class ClientesConUsuariosViewset(viewsets.ModelViewSet):
+    queryset = models.Cliente.objects.all()
+    serializer_class = serializers.ClientesConUsuariosSerializer
 
 
 # DEVUELVE UN EMPLEADO A PARTIR DE SU CEDULA

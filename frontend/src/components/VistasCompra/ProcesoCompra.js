@@ -6,7 +6,12 @@ import axios from "axios";
 
 class ProcesoCompra extends Component {
   state = {
+    id_factura: "",
+    id_cliente: "",
     compra_finalizada: false,
+    entradas: [],
+    alimentos: [],
+    combos: [],
   };
 
   triggerChildAlert = () => {
@@ -21,15 +26,18 @@ class ProcesoCompra extends Component {
         var entradas = this.entradas_asientos.state.entradas.filter(
           (entrada) => entrada.cantidad
         );
+        this.setState({ entradas });
         var asientos = this.entradas_asientos.state.asientos.filter(
           (asiento) => asiento.checked
         );
         var alimentos = this.alimentos_combos.state.alimentos.filter(
           (alimento) => alimento.cantidad
         );
+        this.setState({ alimentos });
         var combos = this.alimentos_combos.state.combos.filter(
           (combo) => combo.cantidad
         );
+        this.setState({ combos });
 
         for (let index = 0; index < entradas.length; index++) {
           cantidad_entradas =
@@ -87,8 +95,8 @@ class ProcesoCompra extends Component {
               { headers: { "Content-Type": "application/json" } }
             )
             .then((res) => {
-              console.log(res.data);
               const id_factura = res.data.id;
+              this.setState({ id_factura });
               entradas.forEach((entrada) => {
                 const cantidad = entrada.cantidad;
                 const precio = entrada.producto.precio;
@@ -190,6 +198,49 @@ class ProcesoCompra extends Component {
       .catch((err) => alert(err.response.request.response));
   };
 
+  verFactura() {
+    var total_factura = 0;
+
+    for (let index = 0; index < this.state.entradas.length; index++) {
+      total_factura =
+        total_factura +
+        parseInt(this.state.entradas[index].cantidad) *
+          parseInt(this.state.entradas[index].producto.precio);
+    }
+
+    for (let index = 0; index < this.state.alimentos.length; index++) {
+      total_factura =
+        total_factura +
+        parseInt(this.state.alimentos[index].cantidad) *
+          parseInt(this.state.alimentos[index].producto.precio);
+    }
+    for (let index = 0; index < this.state.combos.length; index++) {
+      total_factura =
+        total_factura +
+        parseInt(this.state.combos[index].cantidad) *
+          (parseInt(this.state.combos[index].producto.precio) *
+            ((100 - parseInt(this.state.combos[index].descuento)) / 100));
+    }
+
+    axios
+      .get(`http://localhost:8000/api/facturas/${this.state.id_factura}`)
+      .then((res) => {
+        const { fecha_compra, id_usuario, puntos_usados } = res.data;
+        axios
+          .put(`http://localhost:8000/api/facturas/${this.state.id_factura}/`, {
+            fecha_compra,
+            id_usuario,
+            puntos_usados,
+            total_factura,
+          })
+          .then((res) => {
+            window.location.href = `http://localhost:3000/factura-compra/${this.state.id_factura}`;
+          })
+          .catch((err) => alert(err.response.request.response));
+      })
+      .catch((err) => alert(err.response.request.response));
+  }
+
   render() {
     const id_funcion = this.props.id_funcion;
     return (
@@ -221,8 +272,7 @@ class ProcesoCompra extends Component {
         </div>
         <div className="col-12 m-2 text-center">
           <Button
-            disabled={this.state.compra_finalizada}
-            className="mt-1"
+            className={`mt-1 ${this.state.compra_finalizada && "disabled"}`}
             style={{ width: "50%" }}
             variant="success"
             onClick={this.triggerChildAlert}
@@ -232,11 +282,12 @@ class ProcesoCompra extends Component {
         </div>
         <div className="col-12 m-2 text-center">
           <Button
-            disabled={!this.state.compra_finalizada}
-            className="mt-1"
+            className={`mt-1 ${!this.state.compra_finalizada && "disabled"}`}
             style={{ width: "50%" }}
             variant="success"
-            // onClick={this.triggerChildAlert}
+            onClick={() => {
+              this.verFactura();
+            }}
           >
             VER FACTURA
           </Button>

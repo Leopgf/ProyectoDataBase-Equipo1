@@ -147,7 +147,7 @@ class CategoriasAdmin extends Component {
                 <tr key={categoria.id}>
                   <td>{categoria.categoria}</td>
                   <td>
-                    <Button className="btn btn-info">
+                    <Button className="btn btn-info" href={`/editar-categorias-admin/${this.state.id_empleado}/${categoria.id}`}>
                       <FontAwesomeIcon
                         className="text-light"
                         style={{ width: "25px", height: "25px" }}

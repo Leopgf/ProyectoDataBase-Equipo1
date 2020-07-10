@@ -193,7 +193,7 @@ class PeliculaAdmin extends Component {
                   <td>{pelicula.fecha_estreno}</td>
                   <td>{pelicula.fecha_salida}</td>
                   <td>
-                    <Button className="btn btn-info">
+                    <Button className="btn btn-info" href={`/editar-peli-admin/${this.state.id_empleado}/${pelicula.id}`}>
                       <FontAwesomeIcon
                         className="text-light"
                         style={{ width: "25px", height: "25px" }}

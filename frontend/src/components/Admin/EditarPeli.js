@@ -27,36 +27,38 @@ class EditarPeli extends Component {
     const id_empleado = this.props.match.params.id_empleado;
     this.setState({ id_empleado });
     axios
-        .get(
-          `http://localhost:8000/api/permisos-empleado/${id_empleado}`
-        )
-        .then((emp) => {
-          const empleado = emp.data[0];
-          this.setState({ empleado });
-          console.log(this.state);
-        })
-        .catch((err) => {
-          alert("Error: Usuario inválido o inexistente.");
-          window.location.href = `http://localhost:3000/`;
-        });
-    axios.get(`http://localhost:8000/api/categorias/`).then((response) => {
-      var categoria = [];
-      response.data.forEach((cat) => {
-        const category = {
-          id: cat.id,
-          categoria: cat.categoria,
-          checked: false,
-        };
-        categoria.push(category);
+      .get(
+        `http://localhost:8000/api/permisos-empleado/${id_empleado}`
+      )
+      .then((emp) => {
+        const empleado = emp.data[0];
+        this.setState({ empleado });
+        console.log(this.state);
+      })
+      .catch((err) => {
+        alert("Error: Usuario inválido o inexistente.");
+        window.location.href = `http://localhost:3000/`;
       });
-      var pelicula = this.state.pelicula;
-      pelicula.categoria = categoria;
+    axios.get(`http://localhost:8000/api/peliculas-todas/${this.props.match.params.id_pelicula}`).then((res) => {
+      const pelicula = res.data;
       this.setState({ pelicula });
+      console.log(this.state.pelicula)
     });
-    axios.get(`http://localhost:8000/api/peliculas/${this.props.match.params.id_pelicula}`).then((res) => {
-        const pelicula = res.data;
-        this.setState({ pelicula });
-    });
+    // axios.get(`http://localhost:8000/api/categorias/`).then((response) => {
+    //   var categoria = [];
+    //   response.data.forEach((cat) => {
+    //     const category = {
+    //       id: cat.id,
+    //       categoria: cat.categoria,
+    //       checked: false,
+    //     };
+    //     categoria.push(category);
+    //   });
+    //   var pelicula = this.state.pelicula;
+    //   pelicula.categoria = categoria;
+    //   this.setState({ pelicula });
+    // });
+
   }
 
   handleChange(event) {
@@ -74,14 +76,14 @@ class EditarPeli extends Component {
   }
 
   handleEditarPelicula() {
-    const categorias = this.state.pelicula.categoria.filter(
-      (categoria) => categoria.checked !== false
-    );
+    // const categorias = this.state.pelicula.categoria.filter(
+    //   (categoria) => categoria.checked !== false
+    // );
 
     const today = new Date();
     var fecha_estreno;
     var fecha_salida;
-    if (this.state.pelicula.fecha_estreno !== '' && this.state.pelicula.fecha_salida !== ''){
+    if (this.state.pelicula.fecha_estreno !== '' && this.state.pelicula.fecha_salida !== '') {
       fecha_estreno = new Date(Date.parse(this.state.pelicula.fecha_estreno));
       fecha_salida = new Date(Date.parse(this.state.pelicula.fecha_salida));
       fecha_estreno.setMinutes(fecha_estreno.getMinutes() + fecha_estreno.getTimezoneOffset());
@@ -94,20 +96,20 @@ class EditarPeli extends Component {
       this.state.pelicula.imagen === "" ||
       this.state.pelicula.fecha_estreno === "" ||
       this.state.pelicula.fecha_salida === "" ||
-      this.state.pelicula.duracion === "" ||
-      categorias.length === 0
+      this.state.pelicula.duracion === "" 
+      // categorias.length === 0
     ) {
       alert("Error: Campos vacíos o inválidos");
-    } else if(
+    } else if (
       (new Date(2000, 1, 1, 1, 0, 0, 0)) >
-			(new Date(2000, 1, 1, parseInt(this.state.pelicula.duracion.split(':')[0]), parseInt(this.state.pelicula.duracion.split(':')[1]), 0, 0))
-    ){
+      (new Date(2000, 1, 1, parseInt(this.state.pelicula.duracion.split(':')[0]), parseInt(this.state.pelicula.duracion.split(':')[1]), 0, 0))
+    ) {
       alert('Error: No se pueden agregar películas que duren menos de 1 hora')
-    } else if(fecha_salida < today){
+    } else if (fecha_salida < today) {
       alert('Error: No puedes registrar una película con la fecha de salida anterior a hoy');
-    }else if( fecha_salida < fecha_estreno){
+    } else if (fecha_salida < fecha_estreno) {
       alert('Error: La fecha de salida de la película no puede ser anterior a la fecha de estreno');
-    }else{
+    } else {
 
       const {
         titulo,
@@ -120,7 +122,7 @@ class EditarPeli extends Component {
       } = this.state.pelicula;
 
       axios
-        .put(            
+        .put(
           `http://localhost:8000/api/peliculas-todas/${this.state.pelicula.id}/`,
           {
             titulo,
@@ -134,30 +136,30 @@ class EditarPeli extends Component {
         )
         .then((res) => {
 
-            //SI FALLA COMENTAR DESDE AQUI...
-            this.state.pelicula.categoria.forEach((categoria) => {
-                if (categoria.checked === true) {
-                const id_pelicula = res.data.id;
-                const id_categoria = categoria.id;
-                axios
-                    .put(
-                        //AQUI ES DONDE PUEDE FALLAR (en lo de this.state.pelicula.categoria)
-                    `http://localhost:8000/api/registrocategorias-todas/${this.state.pelicula.categoria}/`,
-                    {
-                        id_pelicula,
-                        id_categoria,
-                    }
-                    )
-                    .then((res) => {
-                    console.log(res.data);
-                    });
-                }
-          });
+          //SI FALLA COMENTAR DESDE AQUI...
+          // this.state.pelicula.categoria.forEach((categoria) => {
+          //   if (categoria.checked === true) {
+          //     const id_pelicula = res.data.id;
+          //     const id_categoria = categoria.id;
+          //     axios
+          //       .put(
+          //         //AQUI ES DONDE PUEDE FALLAR (en lo de this.state.pelicula.categoria)
+          //         `http://localhost:8000/api/registrocategorias-todas/${this.state.pelicula.categoria}/`,
+          //         {
+          //           id_pelicula,
+          //           id_categoria,
+          //         }
+          //       )
+          //       .then((res) => {
+          //         console.log(res.data);
+          //       });
+          //   }
+          // });
           //....HASTA AQUI
 
           console.log(res.data);
           alert("¡Película editada con éxito!");
-          window.location.href = "http://localhost:3000/peliculas-admin";
+          //window.location.href = "http://localhost:3000/peliculas-admin";
         })
         .catch((err) => alert(err.response.request.response));
     }
@@ -167,7 +169,7 @@ class EditarPeli extends Component {
     return (
       <div className="row justify-content-center">
         <div className="col-12">
-          <HeaderAdmin tiene_permisos={this.state.empleado.tiene_permisos} id_empleado={this.state.id_empleado}/>
+          <HeaderAdmin tiene_permisos={this.state.empleado.tiene_permisos} id_empleado={this.state.id_empleado} />
           <h3 className="mt-3 text-center">EDITAR PELÍCULA</h3>
         </div>
         <div
@@ -192,15 +194,15 @@ class EditarPeli extends Component {
                   className="form-control"
                   name="sinopsis"
                   rows={3}
-                  placeholder="Sinopsis"
+                  placeholder={this.state.pelicula.sinopsis}
                   value={this.state.pelicula.sinopsis}
                   onChange={this.handleChange.bind(this)}
                 ></textarea>
               </Form.Group>
-              <Form.Group controlId="exampleForm.ControlSelect">
-                <Form.Label> Categoría de la Película:</Form.Label>
-                <Form.Group>
-                  {this.state.pelicula.categoria.map((categoria, index) => (
+              {/* <Form.Group controlId="exampleForm.ControlSelect"> */}
+                {/* <Form.Label> Categoría de la Película:</Form.Label>
+                <Form.Group> */}
+                  {/* {this.state.pelicula.categoria.map((categoria, index) => (
                     <Form.Check
                       key={categoria.id}
                       type="checkbox"
@@ -209,9 +211,9 @@ class EditarPeli extends Component {
                       onChange={this.handleCategorias.bind(this)}
                       checked={categoria.checked}
                     />
-                  ))}
-                </Form.Group>
-              </Form.Group>
+                  ))} */}
+                {/* </Form.Group>
+              </Form.Group> */}
               <Form.Group controlId="formBasicImagen">
                 <Form.Label>URL de la Imagen de la Película:</Form.Label>
                 <Form.Control
@@ -265,6 +267,6 @@ class EditarPeli extends Component {
     );
   }
 
-  
+
 }
 export default EditarPeli;

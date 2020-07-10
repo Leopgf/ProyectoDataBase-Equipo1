@@ -155,7 +155,7 @@ class ProductosAdmin extends Component {
                   <td>{producto.nombre}</td>
                   <td>{producto.precio} $</td>
                   <td>
-                    <Button className="btn btn-info">
+                    <Button className="btn btn-info" href={`/editar-producto/${this.state.id_empleado}/${producto.id}`}>
                       <FontAwesomeIcon
                         className="text-light"
                         style={{ width: "25px", height: "25px" }}

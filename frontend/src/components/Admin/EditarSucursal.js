@@ -68,7 +68,7 @@ class EditarSucursal extends Component {
         .then((res) => {
           console.log(res.data);
           alert("Sucursal editada con éxito!");
-          window.location.href = "http://localhost:3000/sucursales-admin";
+         // window.location.href = "http://localhost:3000/sucursales-admin";
         })
         .catch((err) => alert(err.response.request.response));
     }

@@ -124,51 +124,54 @@ class EditarCombo extends Component {
           }
         )
         .then((res) => {
+
+          //..........
           const id_producto = res.data.id;
           const id_producto_combo = res.data.id;
           axios
-            .post(
-              `http://localhost:8000/api/comboscine/`,
+            .put(
+              `http://localhost:8000/api/comboscine/${res.data.id}/`,
               {
                 descripcion,
                 descuento,
                 id_producto,
-              },
-              { headers: { "Content-Type": "application/json" } }
+              }
             )
             .then((respuesta) => {
               console.log(respuesta.data);
             })
             .catch((err) => console.log(err.response.request.response));
-            console.log(productos);
-            productos.forEach((product) => {
-            const id_producto = product.id;
-            const cantidad = product.cantidad;
-            console.log(
-              id_producto +
-                " - cantidad: " +
-                cantidad +
-                " - combo: " +
-                id_producto_combo
-            );
-            axios
-              .post(
-                `http://localhost:8000/api/registro-combos-admin/`,
-                {
-                  id_producto_combo,
-                  id_producto,
-                  cantidad,
-                },
-                { headers: { "Content-Type": "application/json" } }
-              )
-              .then((resp) => {
-                console.log(resp.data);
-              })
-              .catch((err) => console.log(err.response.request.response));
-          });
+            // console.log(productos);
+            // productos.forEach((product) => {
+            // const id_producto = product.id;
+            // const cantidad = product.cantidad;
+            // console.log(
+            //   id_producto +
+            //     " - cantidad: " +
+            //     cantidad +
+            //     " - combo: " +
+            //     id_producto_combo
+            // );
+            // axios
+            //   .post(
+            //     `http://localhost:8000/api/registro-combos-admin/`,
+            //     {
+            //       id_producto_combo,
+            //       id_producto,
+            //       cantidad,
+            //     },
+            //     { headers: { "Content-Type": "application/json" } }
+            //   )
+            //   .then((resp) => {
+            //     console.log(resp.data);
+            //   })
+            //   .catch((err) => console.log(err.response.request.response));
+          //});
+          //..........
+
           console.log(res.data);
           alert("Combo agregado con éxito!");
-          window.location.href = "http://localhost:3000/combos-admin";
+          //window.location.href = "http://localhost:3000/combos-admin";
         })
         .catch((err) => alert(err.response.request.response));
     }

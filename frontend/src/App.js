@@ -90,7 +90,7 @@ function App() {
           <Route path="/editar-funciones-admin/:id_empleado/:id_funcion" component={EditarFuncion} />
           <Route path="/editar-categorias-admin/:id_empleado/:id_categoria" component={EditarCategoria} />
           <Route path="/editar-sucursales-admin/:id_empleado/:id_sucursal" component={EditarSucursal} />
-          <Route path="/combos-admin/:id_empleado/:id_combo" component={EditarCombo} />
+          <Route path="/editar-combos-admin/:id_empleado/:id_combo" component={EditarCombo} />
           <Route path="/editar-producto/:id_empleado/:id_producto" component={EditarProducto} />
         </Switch>
       </Router>

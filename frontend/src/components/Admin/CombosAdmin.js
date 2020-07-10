@@ -155,7 +155,7 @@ class CombosAdmin extends Component {
                     <td>{combo.nombre}</td>
                     <td>{combo.precio}$</td>
                     <td>
-                      <Button className="btn btn-info">
+                      <Button className="btn btn-info" href={`/editar-combos-admin/${this.state.id_empleado}/${combo.id}`}>
                         <FontAwesomeIcon
                           className="text-light"
                           style={{ width: "25px", height: "25px" }}

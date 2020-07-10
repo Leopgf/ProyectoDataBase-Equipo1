@@ -52,4 +52,4 @@ router.register('registroCompras',RegistroComprasViewset)
 router.register('registroAsientosReservados',RegistroAsientosReservadosViewset)
 
 # RUTAS QUERYS YUKA
-router.register('TopAsientos', TopAsientosViewSet)
+router.register('TopAsientos', TopAsientosViewSet, basename='TopAsientos')

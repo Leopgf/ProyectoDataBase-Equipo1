@@ -154,3 +154,15 @@ class RegistroAsientosReservadosSerializer(serializers.ModelSerializer):
     class Meta:
         model = RegistroAsientosReservados
         fields = '__all__'
+
+# SERIALIZER QUE TRAE EL TOP DE ASIENTOS
+class AsientosTopSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField()
+    asiento = serializers.CharField()
+    cantidad_reservados = serializers.IntegerField()
+    sala = serializers.CharField()
+    sucursal = serializers.CharField()
+
+    class Meta:
+        model = RegistroAsientosReservados
+        fields = ['id', 'asiento', 'cantidad_reservados', 'sala', 'sucursal']

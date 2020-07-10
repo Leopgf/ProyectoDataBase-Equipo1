@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import DatosCompra from "../VistasCompra/DatosCompra";
 import HeaderCompra from "./HeaderCompra";
-import axios from "axios";
 
 
 class FinalCompra extends Component {
@@ -11,7 +10,7 @@ class FinalCompra extends Component {
     return (
       <div>
         <HeaderCompra/>
-        <DatosCompra />
+        <DatosCompra id_factura = {id_factura} es_cliente = {true}/>
       </div>
     );
   }

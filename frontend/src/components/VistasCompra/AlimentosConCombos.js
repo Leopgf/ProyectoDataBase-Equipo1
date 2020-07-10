@@ -49,14 +49,12 @@ class AlimentosConCombos extends Component {
     var alimentos = this.state.alimentos;
     alimentos[event.target.name].cantidad = event.target.value;
     this.setState({ alimentos });
-    console.log(this.state);
   }
 
   handleCombosCantidad(event) {
     var combos = this.state.combos;
     combos[event.target.name].cantidad = event.target.value;
     this.setState({ combos });
-    console.log(this.state);
   }
 
   handleAlimentosYCombos(){
@@ -76,7 +74,7 @@ class AlimentosConCombos extends Component {
               <div className="row border border-dark" key={index}>
                 <div className="col-9">
                   <p>{alimento.producto.nombre}</p>
-                  <p>Contenido_neto: {alimento.contenido_neto}</p>
+                  <p>Contenido neto: {alimento.contenido_neto}</p>
                   <p>Precio: {alimento.producto.precio} $</p>
                 </div>
                 <div className="col-3 align-content-center">

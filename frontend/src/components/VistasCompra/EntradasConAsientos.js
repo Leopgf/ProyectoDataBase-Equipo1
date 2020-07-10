@@ -75,14 +75,12 @@ class EntradasConAsientos extends Component {
     var entradas = this.state.entradas;
     entradas[event.target.name].cantidad = event.target.value;
     this.setState({ entradas });
-    console.log(this.state);
   }
 
   handleAsientos(event) {
     const asientos = this.state.asientos;
     asientos[event.target.name].checked = !asientos[event.target.name].checked;
     this.setState({ asientos });
-    console.log(this.state);
   }
 
   handleEntradasConAsientos(){

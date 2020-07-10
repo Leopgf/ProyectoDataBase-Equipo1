@@ -1,4 +1,4 @@
-from aplicaciones.pelicula.viewsets import  EmpleadosConUsuariosViewset, RegistroCategoriasTodasViewset, PeliculaTodasViewset, PeliculasEstrenadasViewset, PeliculasNoEstrenadasViewset, BuscadorPeliculaViewset, UsuariosViewset, CombosViewset, RegistroCombosTodosViewset, AlimentoViewset, EntradaViewset, ComboCineViewset, ClientesViewset, EmpleadosViewset, CategoriaViewset, RegistroCategoriaViewset, SucursalViewset, SalaViewset, FuncionViewset, AsientoViewset, TipoProductoViewset, ProductoViewset, RegistroCombosViewset, FacturaViewset, PromocionesViewset, RegistroPromocionesViewset, RegistroComprasViewset, RegistroAsientosReservadosViewset, PromocionesActivasViewset, TopAsientosViewSet
+from aplicaciones.pelicula.viewsets import  EmpleadosConUsuariosViewset, RegistroCategoriasTodasViewset, PeliculaTodasViewset, PeliculasEstrenadasViewset, PeliculasNoEstrenadasViewset, BuscadorPeliculaViewset, UsuariosViewset, CombosViewset, RegistroCombosTodosViewset, AlimentoViewset, EntradaViewset, ComboCineViewset, ClientesViewset, EmpleadosViewset, CategoriaViewset, RegistroCategoriaViewset, SucursalViewset, SalaViewset, FuncionViewset, AsientoViewset, TipoProductoViewset, ProductoViewset, RegistroCombosViewset, FacturaViewset, PromocionesViewset, RegistroPromocionesViewset, RegistroComprasViewset, RegistroAsientosReservadosViewset, PromocionesActivasViewset, TopAsientosViewSet, TopPeliculasViewset, TopProductoViewset, TopSucursalesViewset
 
 from rest_framework import routers
 
@@ -53,3 +53,6 @@ router.register('registroAsientosReservados',RegistroAsientosReservadosViewset)
 
 # RUTAS QUERYS YUKA
 router.register('TopAsientos', TopAsientosViewSet, basename='TopAsientos')
+router.register('TopPeliculas', TopPeliculasViewset, basename = 'TopPeliculas')
+router.register('TopProductos', TopProductoViewset , basename = 'TopProducto')
+router.register('TopSucursales', TopSucursalesViewset , basename = 'TopSucursales')

@@ -254,7 +254,7 @@ class AsientosDeSalaViewset(generics.ListAPIView):
         Sala = self.kwargs['id_sala']
         return models.Asiento.objects.all().filter(id_sala=Sala)
 
-
+# TOP ASIENTOS
 class TopAsientosViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.AsientosTopSerializer
 
@@ -272,3 +272,53 @@ class TopAsientosViewSet(viewsets.ModelViewSet):
             GROUP BY Asiento, Sucursal 
             ORDER BY  Cantidad_reservados DESC 
             LIMIT 5""")
+
+# TOP PELICULAS
+class TopPeliculasViewset(viewsets.ModelViewSet):
+    serializer_class = serializers.TopPeliculasSerializer
+
+    def get_queryset(self):
+        return models.RegistroAsientosReservados.objects.raw("""
+            SELECT p.id AS id, 
+            p.titulo AS pelicula,
+            COUNT(p.id) AS veces_comprada, 
+            su.nombre AS sucursal 
+            FROM pelicula_registroasientosreservados AS ra
+            INNER JOIN pelicula_funcion AS f ON (ra.id_funciones_id = f.id)
+            INNER JOIN pelicula_pelicula AS p ON (f.id_pelicula_id = p.id)
+            INNER JOIN pelicula_sala AS s ON (f.id_sala_id = s.id)
+            INNER JOIN pelicula_sucursal AS su ON (s.id_sucursal_id = su.id)
+            GROUP BY id, sucursal
+            ORDER BY veces_comprada DESC
+            LIMIT 5""")
+
+# TOP PRODUCTOS
+class TopProductoViewset(viewsets.ModelViewSet):
+    serializer_class = serializers.TopProductosSerializer
+
+    def get_queryset(self):
+        return models.RegistroCompras.objects.raw("""
+        SELECT p.id AS id,
+        p.nombre AS producto ,
+        SUM(rc.cantidad) AS cantidad_comprada 
+        FROM pelicula_registrocompras AS rc
+        INNER JOIN pelicula_producto AS p ON (rc.id_producto_id = p.id)
+        WHERE p.id_tipos_productos_id = 2
+        GROUP BY producto 
+        ORDER BY  cantidad_comprada DESC """)
+
+# TOP SUCURSAL
+class TopSucursalesViewset(viewsets.ModelViewSet):
+    serializer_class = serializers.TopSucursalesSerializer
+
+    def get_queryset(self):
+        return models.RegistroAsientosReservados.objects.raw("""
+        SELECT su.id AS id, 
+        su.nombre AS sucursal,
+        COUNT(ra.id_funciones_id) AS visitantes  
+        FROM pelicula_registroasientosreservados AS ra
+        INNER JOIN pelicula_funcion AS f ON (ra.id_funciones_id = f.id)
+        INNER JOIN pelicula_sala AS s ON (f.id_sala_id = s.id)
+        INNER JOIN pelicula_sucursal AS su ON (s.id_sucursal_id = su.id)
+        GROUP BY  sucursal
+        ORDER BY visitantes DESC""")

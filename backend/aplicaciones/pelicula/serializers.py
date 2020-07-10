@@ -213,3 +213,5 @@ class FuncionRepetidaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Funcion
         fields = ('pelicula', 'sala', 'fecha', 'hora')
+
+        

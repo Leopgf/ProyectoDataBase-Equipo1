@@ -5,9 +5,14 @@ import AlimentosConCombos from "./AlimentosConCombos";
 import axios from "axios";
 
 class ProcesoCompra extends Component {
-state = {
+  state = {
+    id_factura: "",
+    id_cliente: "",
     compra_finalizada: false,
-}
+    entradas: [],
+    alimentos: [],
+    combos: [],
+  };
 
   triggerChildAlert = () => {
     const id_f = this.props.id_funcion;
@@ -21,15 +26,18 @@ state = {
         var entradas = this.entradas_asientos.state.entradas.filter(
           (entrada) => entrada.cantidad
         );
+        this.setState({ entradas });
         var asientos = this.entradas_asientos.state.asientos.filter(
           (asiento) => asiento.checked
         );
         var alimentos = this.alimentos_combos.state.alimentos.filter(
           (alimento) => alimento.cantidad
         );
+        this.setState({ alimentos });
         var combos = this.alimentos_combos.state.combos.filter(
           (combo) => combo.cantidad
         );
+        this.setState({ combos });
 
         for (let index = 0; index < entradas.length; index++) {
           cantidad_entradas =
@@ -47,9 +55,11 @@ state = {
             "Error: No puede comprar más entradas que la cantidad de butacas disponibles hay disponibles."
           );
         } else {
-            alert('Compra realizada con éxito. Para ver su factura haga click en VER FACTURA, si desea volver al home, haga click en SALIR.')
-            const compra_finalizada = !this.state.compra_finalizada;
-            this.setState({compra_finalizada});
+          alert(
+            "Compra realizada con éxito. Para ver su factura haga click en VER FACTURA, si desea volver al home, haga click en SALIR."
+          );
+          const compra_finalizada = !this.state.compra_finalizada;
+          this.setState({ compra_finalizada });
           funcion.butacas_disponibles =
             funcion.butacas_disponibles - cantidad_entradas;
           const {
@@ -61,17 +71,14 @@ state = {
             id_sala,
           } = funcion;
           axios
-            .put(
-              `http://localhost:8000/api/funciones-disponibles/${id_f}/`,
-              {
-                fecha,
-                hora,
-                butacas_disponibles,
-                estado,
-                id_pelicula,
-                id_sala,
-              }
-            )
+            .put(`http://localhost:8000/api/funciones-disponibles/${id_f}/`, {
+              fecha,
+              hora,
+              butacas_disponibles,
+              estado,
+              id_pelicula,
+              id_sala,
+            })
             .catch((err) => alert(err.response.request.response));
 
           const total_factura = 0;
@@ -88,8 +95,8 @@ state = {
               { headers: { "Content-Type": "application/json" } }
             )
             .then((res) => {
-                console.log(res.data);
               const id_factura = res.data.id;
+              this.setState({ id_factura });
               entradas.forEach((entrada) => {
                 const cantidad = entrada.cantidad;
                 const precio = entrada.producto.precio;
@@ -106,30 +113,31 @@ state = {
                     { headers: { "Content-Type": "application/json" } }
                   )
                   .catch((err) => alert(err.response.request.response));
-                  console.log('Entrada');
+                console.log("Entrada");
               });
               alimentos.forEach((alimento) => {
                 const cantidad = alimento.cantidad;
                 const precio = alimento.producto.precio;
                 const id_producto = alimento.producto.id;
-                console.log('Alimento');
+                console.log("Alimento");
                 axios
-                .post(
+                  .post(
                     `http://localhost:8000/api/registroCompras/`,
                     {
-                        cantidad,
-                        precio,
-                        id_producto,
-                        id_factura,
+                      cantidad,
+                      precio,
+                      id_producto,
+                      id_factura,
                     },
                     { headers: { "Content-Type": "application/json" } }
-                    )
-                    .catch((err) => alert(err.response.request.response));
-                });
-                combos.forEach((combo) => {
-                    console.log('Combo');
+                  )
+                  .catch((err) => alert(err.response.request.response));
+              });
+              combos.forEach((combo) => {
+                console.log("Combo");
                 const cantidad = combo.cantidad;
-                const precio = combo.producto.precio * ((100 - combo.descuento)/100);
+                const precio =
+                  combo.producto.precio * ((100 - combo.descuento) / 100);
                 const id_producto = combo.producto.id;
                 axios
                   .post(
@@ -190,6 +198,49 @@ state = {
       .catch((err) => alert(err.response.request.response));
   };
 
+  verFactura() {
+    var total_factura = 0;
+
+    for (let index = 0; index < this.state.entradas.length; index++) {
+      total_factura =
+        total_factura +
+        parseInt(this.state.entradas[index].cantidad) *
+          parseInt(this.state.entradas[index].producto.precio);
+    }
+
+    for (let index = 0; index < this.state.alimentos.length; index++) {
+      total_factura =
+        total_factura +
+        parseInt(this.state.alimentos[index].cantidad) *
+          parseInt(this.state.alimentos[index].producto.precio);
+    }
+    for (let index = 0; index < this.state.combos.length; index++) {
+      total_factura =
+        total_factura +
+        parseInt(this.state.combos[index].cantidad) *
+          (parseInt(this.state.combos[index].producto.precio) *
+            ((100 - parseInt(this.state.combos[index].descuento)) / 100));
+    }
+
+    axios
+      .get(`http://localhost:8000/api/facturas/${this.state.id_factura}`)
+      .then((res) => {
+        const { fecha_compra, id_usuario, puntos_usados } = res.data;
+        axios
+          .put(`http://localhost:8000/api/facturas/${this.state.id_factura}/`, {
+            fecha_compra,
+            id_usuario,
+            puntos_usados,
+            total_factura,
+          })
+          .then((res) => {
+            window.location.href = `http://localhost:3000/factura-compra/${this.state.id_factura}`;
+          })
+          .catch((err) => alert(err.response.request.response));
+      })
+      .catch((err) => alert(err.response.request.response));
+  }
+
   render() {
     const id_funcion = this.props.id_funcion;
     return (
@@ -221,8 +272,7 @@ state = {
         </div>
         <div className="col-12 m-2 text-center">
           <Button
-            disabled={this.state.compra_finalizada}
-            className="mt-1"
+            className={`mt-1 ${this.state.compra_finalizada && "disabled"}`}
             style={{ width: "50%" }}
             variant="success"
             onClick={this.triggerChildAlert}
@@ -232,11 +282,12 @@ state = {
         </div>
         <div className="col-12 m-2 text-center">
           <Button
-            disabled={!this.state.compra_finalizada}
-            className="mt-1"
+            className={`mt-1 ${!this.state.compra_finalizada && "disabled"}`}
             style={{ width: "50%" }}
             variant="success"
-            // onClick={this.triggerChildAlert}
+            onClick={() => {
+              this.verFactura();
+            }}
           >
             VER FACTURA
           </Button>

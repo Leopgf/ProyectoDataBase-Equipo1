@@ -1,13 +1,16 @@
 import React, { Component } from "react";
-import HeaderFinalizado from "../VistasCompra/HeaderFinalizado";
 import DatosCompra from "../VistasCompra/DatosCompra";
+import HeaderCompra from "./HeaderCompra";
+import axios from "axios";
 
 
 class FinalCompra extends Component {
+
   render() {
+    const id_factura = this.props.match.params.id_factura;
     return (
       <div>
-        <HeaderFinalizado />
+        <HeaderCompra/>
         <DatosCompra />
       </div>
     );

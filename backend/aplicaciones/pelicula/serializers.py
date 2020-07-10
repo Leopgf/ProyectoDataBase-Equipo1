@@ -182,3 +182,44 @@ class FuncionRepetidaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Funcion
         fields = ('pelicula', 'sala', 'fecha', 'hora')
+# SERIALIZER QUE TRAE EL TOP DE ASIENTOS
+class AsientosTopSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField()
+    asiento = serializers.CharField()
+    cantidad_reservados = serializers.IntegerField()
+    sala = serializers.CharField()
+    sucursal = serializers.CharField()
+
+    class Meta:
+        model = RegistroAsientosReservados
+        fields = ['id', 'asiento', 'cantidad_reservados', 'sala', 'sucursal']
+
+#SERIALIZER QUE TRAE EL TOP PELICULAS
+class TopPeliculasSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField()
+    pelicula = serializers.CharField()
+    veces_comprada = serializers.IntegerField()
+    sucursal = serializers.CharField()
+
+    class Meta:
+        model = RegistroAsientosReservados
+        fields = ['id', 'pelicula', 'veces_comprada', 'sucursal']
+
+# SERIALIZAR QUE TRAE EL TOP PRODUCTOS
+class TopProductosSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField()
+    producto = serializers.CharField()
+    cantidad_comprada = serializers.IntegerField()
+
+    class Meta:
+        model = RegistroCompras
+        fields = ['id', 'producto', 'cantidad_comprada']
+
+class TopSucursalesSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField()
+    sucursal = serializers.CharField()
+    visitantes = serializers.IntegerField()
+
+    class Meta:
+        model = RegistroAsientosReservados
+        fields = ['id', 'sucursal', 'visitantes']

@@ -28,6 +28,7 @@ class HeaderAdmin extends Component {
               <Nav.Link href={ `/sucursales-admin/${id_empleado}` }>Sucursales</Nav.Link>
               <Nav.Link href={ `/salas-admin/${id_empleado}` }>Salas</Nav.Link>
               <Nav.Link href={ `/estadisticas/${id_empleado}` }>Estadísticas</Nav.Link>
+              <Nav.Link href={ `/facturas-admin/${id_empleado}` }>Historial de Compras</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
@@ -57,7 +58,8 @@ class HeaderAdmin extends Component {
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="mr-auto">
                 <Nav.Link href={ `/admin/${id_empleado}` }>Home</Nav.Link>
-                <Nav.Link href="">Estadísticas</Nav.Link>
+                <Nav.Link href={ `/estadisticas/${id_empleado}` }>Estadísticas</Nav.Link>
+                <Nav.Link href={ `/facturas-admin/${id_empleado}` }>Historial de Compras</Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Navbar>

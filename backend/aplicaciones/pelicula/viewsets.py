@@ -21,7 +21,8 @@ class PeliculasEstrenadasViewset(viewsets.ModelViewSet):
 
 # SOLO PELICULAS DE PROXIMOS ESTRENOS ACTIVOS
 class PeliculasNoEstrenadasViewset(viewsets.ModelViewSet):
-    queryset = models.Pelicula.objects.all().filter(fecha_estreno__gt = datetime.date.today()).filter(estado = True)
+    queryset = models.Pelicula.objects.all().filter(
+        fecha_estreno__gt=datetime.date.today()).filter(estado=True)
     serializer_class = serializers.PeliculasSerializer
 
 
@@ -39,6 +40,8 @@ class CategoriaViewset(viewsets.ModelViewSet):
     serializer_class = serializers.CategoriasSerializer
 
 # TODAS LAS CATEGORIAS
+
+
 class CategoriasTodasViewset(viewsets.ModelViewSet):
     queryset = models.Categoria.objects.all()
     serializer_class = serializers.CategoriasSerializer
@@ -47,10 +50,10 @@ class CategoriasTodasViewset(viewsets.ModelViewSet):
 # DEVUELVE LA CATEGORIA ELIMINADA DADA LA CATEGORIA
 class CategoriaEliminadaViewset(generics.ListAPIView):
     serializer_class = serializers.CategoriasSerializer
-    
+
     def get_queryset(self):
         category = self.kwargs['categoria']
-        return models.Categoria.objects.all().filter(categoria = category).filter(estado = False)      
+        return models.Categoria.objects.all().filter(categoria=category).filter(estado=False)
 
 
 # TODAS LOS REGISTROSCATEGORIAS
@@ -86,19 +89,26 @@ class AsientoViewset(viewsets.ModelViewSet):
     serializer_class = serializers.AsientoSerializer
 
 # TODOS LOS ASIENTOS DE UNA SALA
+
+
 class AsientosSalaViewset(generics.ListAPIView):
     serializer_class = serializers.AsientoSerializer
+
     def get_queryset(self):
         sala = self.kwargs['id_sala']
-        asientos_sala = models.Asiento.objects.all().filter(id_sala = sala)
+        asientos_sala = models.Asiento.objects.all().filter(id_sala=sala)
         return asientos_sala
 
 # TODOS LOS ASIENTOS DE UNA SALA OCUPADOS
+
+
 class AsientosOcupadosViewset(generics.ListAPIView):
     serializer_class = serializers.RegistroAsientosReservadosSerializer
+
     def get_queryset(self):
         funcion = self.kwargs['id_funcion']
-        asientos_ocupados = models.RegistroAsientosReservados.objects.all().filter(id_funciones = funcion)
+        asientos_ocupados = models.RegistroAsientosReservados.objects.all().filter(
+            id_funciones=funcion)
         return asientos_ocupados
 
 # TODAS LAS FUNCIONES
@@ -111,26 +121,29 @@ class FuncionViewset(viewsets.ModelViewSet):
 
 # TODAS LAS FUNCIONES QUE NO HAN PASADO
 class FuncionesDisponiblesViewset(viewsets.ModelViewSet):
-    queryset = models.Funcion.objects.all().filter(estado = True).filter(fecha__gte = datetime.date.today())
+    queryset = models.Funcion.objects.all().filter(
+        estado=True).filter(fecha__gte=datetime.date.today())
     serializer_class = serializers.FuncionSerializer
 
 
 # TODAS LAS FUNCIONES DE UNA PELICULA ESPECÍFICA
 class FuncionPorPeliculaViewset(generics.ListAPIView):
     serializer_class = serializers.FuncionSerializer
+
     def get_queryset(self):
         pelicula = self.kwargs['id_pelicula']
-        return models.Funcion.objects.all().filter(id_pelicula = pelicula).filter(estado = True).filter(fecha__gte = datetime.date.today())
+        return models.Funcion.objects.all().filter(id_pelicula=pelicula).filter(estado=True).filter(fecha__gte=datetime.date.today())
 
 
 # DEVUELVE SI HAY UNA FUNCIÓN EN EL BLOQUE HORARIO DE ESA PELICULA
 class FuncionOcupadaViewset(generics.ListAPIView):
     serializer_class = serializers.FuncionRepetidaSerializer
+
     def get_queryset(self):
         sala = self.kwargs['id_sala']
         fecha_add = self.kwargs['fecha']
         hora_add = self.kwargs['hora']
-        return models.Funcion.objects.all().filter(estado = True).filter(id_sala = sala).filter(fecha = fecha_add).filter(hora = hora_add)
+        return models.Funcion.objects.all().filter(estado=True).filter(id_sala=sala).filter(fecha=fecha_add).filter(hora=hora_add)
 
 
 # TODOS LOS TIPOS DE PRODUCTOS
@@ -200,6 +213,8 @@ class AlimentoConProductoViewset(viewsets.ModelViewSet):
     serializer_class = serializers.AlimentoConProductoSerializer
 
 # TODOS LOS COMBOS
+
+
 class ComboCineConProductoViewset(viewsets.ModelViewSet):
     queryset = models.ComboCine.objects.all()
     serializer_class = serializers.ComboCineConProductoSerializer
@@ -264,6 +279,8 @@ class EmpleadosConUsuariosViewset(viewsets.ModelViewSet):
     serializer_class = serializers.EmpleadosConUsuariosSerializer
 
 # TODOS LOS CLIENTES CON SUS USUARIOS
+
+
 class ClientesConUsuariosViewset(viewsets.ModelViewSet):
     queryset = models.Cliente.objects.all()
     serializer_class = serializers.ClientesConUsuariosSerializer
@@ -336,6 +353,8 @@ class AsientosDeSalaViewset(generics.ListAPIView):
         return models.Asiento.objects.all().filter(id_sala=Sala)
 
 # TOP ASIENTOS
+
+
 class TopAsientosViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.AsientosTopSerializer
 
@@ -355,6 +374,8 @@ class TopAsientosViewSet(viewsets.ModelViewSet):
             LIMIT 5""")
 
 # TOP PELICULAS
+
+
 class TopPeliculasViewset(viewsets.ModelViewSet):
     serializer_class = serializers.TopPeliculasSerializer
 
@@ -374,6 +395,8 @@ class TopPeliculasViewset(viewsets.ModelViewSet):
             LIMIT 5""")
 
 # TOP PRODUCTOS
+
+
 class TopProductoViewset(viewsets.ModelViewSet):
     serializer_class = serializers.TopProductosSerializer
 
@@ -389,6 +412,8 @@ class TopProductoViewset(viewsets.ModelViewSet):
         ORDER BY  cantidad_comprada DESC """)
 
 # TOP SUCURSAL
+
+
 class TopSucursalesViewset(viewsets.ModelViewSet):
     serializer_class = serializers.TopSucursalesSerializer
 
@@ -403,3 +428,95 @@ class TopSucursalesViewset(viewsets.ModelViewSet):
         INNER JOIN pelicula_sucursal AS su ON (s.id_sucursal_id = su.id)
         GROUP BY  sucursal
         ORDER BY visitantes DESC""")
+
+# INFO DE UNA FACTURA
+class InfoFacturaViewset(generics.ListAPIView):
+    serializer_class = serializers.InfoFacturaSerializer
+
+    def get_queryset(self):
+        id = self.kwargs['id_factura']
+        return models.Factura.objects.raw("""
+        SELECT DISTINCT f.id AS id,
+        f.fecha_compra AS fecha_factura,
+        f.total_factura AS total,
+        fu.fecha AS fecha,
+        fu.hora AS hora,
+        p.titulo AS pelicula,
+        p.duracion AS duracion,
+        CONCAT(s.nombre, ' - ', su.nombre, ' en ', su.ubicacion) AS ubicacion,
+        CONCAT(u.cedula, ' - ', u.nombre, ' ', u.apellido) AS cliente,
+        c.puntos AS puntos
+        FROM pelicula_factura AS f
+        INNER JOIN pelicula_registroasientosreservados AS ra ON ra.id_factura_id = f.id
+        INNER JOIN pelicula_funcion AS fu ON fu.id = ra.id_funciones_id
+        INNER JOIN pelicula_pelicula AS p ON p.id = fu.id_pelicula_id
+        INNER JOIN pelicula_sala AS s ON s.id = fu.id_sala_id
+        INNER JOIN pelicula_sucursal AS su ON su.id = s.id
+        INNER JOIN pelicula_usuario AS u ON f.id_usuario_id = u.id
+        INNER JOIN pelicula_cliente AS c ON c.id_usuario_id = u.id
+        WHERE f.id = %s;""", [id])
+
+# PRODUCTOS DE UNA FACTURA
+class ProductosFacturaViewset(generics.ListAPIView):
+    serializer_class = serializers.ProductosFacturaSerializer
+
+    def get_queryset(self):
+        id_factura_id = self.kwargs['id_factura']
+        return models.RegistroCompras.objects.raw("""
+        SELECT rc.id AS id,
+        p.nombre AS producto,
+        rc.precio AS precio,
+        t.tipo AS tipo_producto,
+        rc.cantidad AS cantidad
+        FROM pelicula_registrocompras AS rc
+        INNER JOIN pelicula_producto AS p ON p.id = rc.id_producto_id
+        INNER JOIN pelicula_tipoproductos AS t ON t.id = p.id_tipos_productos_id
+        WHERE rc.id_factura_id = %s
+        ORDER BY t.tipo;""", [id_factura_id])
+
+# ASIENTOS DE UNA FACTURA
+class AsientosFacturaViewset(generics.ListAPIView):
+    serializer_class = serializers.AsientosFacturaSerializer
+
+    def get_queryset(self):
+        id_factura_id = self.kwargs['id_factura']
+        return models.RegistroAsientosReservados.objects.raw("""
+        SELECT ra.id AS id,
+        CONCAT('Fila ', a.fila, ' - Columna ', a.columna) AS asiento
+        FROM pelicula_registroasientosreservados AS ra
+        INNER JOIN pelicula_asiento AS a ON a.id = ra.id_asientos_id
+        WHERE ra.id_factura_id = %s;""", [id_factura_id])
+
+
+# PROMOCIONES DE UNA FACTURA
+class PromocionesFacturaViewset(generics.ListAPIView):
+    serializer_class = serializers.PromocionesFacturaSerializer
+
+    def get_queryset(self):
+        id_factura_id = self.kwargs['id_factura']
+        return models.RegistroPromociones.objects.raw("""
+        SELECT rp.id AS id,
+        rp.descuento_aplicado AS descuento,
+        p.nombre AS promocion
+        FROM pelicula_registropromociones AS rp
+        INNER JOIN  pelicula_promociones AS p ON rp.id_promociones_id = p.id
+        WHERE rp.id_factura_id = %s;""", [id_factura_id])
+
+
+# FACTURAS ADMIN ORDENADAS
+class FacturasAdminViewset(generics.ListAPIView):
+    serializer_class = serializers.FacturasAdminSerializer
+
+    def get_queryset(self):
+        return models.RegistroPromociones.objects.raw("""
+        SELECT f.id AS id,
+        f.fecha_compra AS fecha,
+        CONCAT(u.cedula, ' - ', u.nombre, ' ', u.apellido) AS cliente 
+        FROM pelicula_factura AS f
+        INNER JOIN pelicula_usuario AS u ON u.id = f.id_usuario_id
+        ORDER BY f.fecha_compra DESC;""")
+
+
+
+
+

@@ -41,6 +41,8 @@ import EditarSucursal from "./components/Admin/EditarSucursal";
 import EditarCombo from "./components/Admin/EditarCombo";
 import EditarProducto from "./components/Admin/EditarProducto";
 import Estadisticas from "./components/Admin/Estadisticas";
+import FacturasAdmin from "./components/Admin/FacturasAdmin";
+import FacturaAdmin from "./components/Admin/FacturaAdmin";
 
 function App() {
   return (
@@ -94,6 +96,8 @@ function App() {
           <Route path="/editar-combos-admin/:id_empleado/:id_combo" component={EditarCombo} />
           <Route path="/editar-producto/:id_empleado/:id_producto" component={EditarProducto} />
           <Route path="/estadisticas/:id_empleado" component={Estadisticas} />
+          <Route path="/facturas-admin/:id_empleado" component={FacturasAdmin} />
+          <Route path="/factura-admin/:id_empleado/:id_factura" component={FacturaAdmin} />
         </Switch>
       </Router>
     </React.Fragment>

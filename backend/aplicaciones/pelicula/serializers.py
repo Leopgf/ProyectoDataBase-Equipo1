@@ -255,3 +255,64 @@ class TopSucursalesSerializer(serializers.ModelSerializer):
     class Meta:
         model = RegistroAsientosReservados
         fields = ['id', 'sucursal', 'visitantes']
+
+
+# SERIALIZAR QUE TRAE LA INFORMACIÓN DE LA FACTURA
+class InfoFacturaSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField()
+    fecha_factura = serializers.DateField()
+    total = serializers.FloatField()
+    fecha = serializers.DateField()
+    hora = serializers.TimeField()
+    pelicula = serializers.CharField()
+    duracion = serializers.TimeField()
+    ubicacion = serializers.CharField()
+    cliente = serializers.CharField()
+    puntos = serializers.IntegerField()
+
+    class Meta:
+        model = Factura
+        fields = ['id', 'fecha_factura', 'total', 'fecha', 'hora', 'pelicula', 'duracion', 'ubicacion', 'cliente', 'puntos']
+
+# SERIALIZER QUE TRAE LOS PRODUCTOS DE UNA FACTURA
+class ProductosFacturaSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField()
+    producto = serializers.CharField()
+    precio = serializers.FloatField()
+    tipo_producto = serializers.CharField()
+    cantidad = serializers.IntegerField()
+
+    class Meta:
+        model = RegistroCompras
+        fields = ['id', 'producto', 'precio', 'tipo_producto', 'cantidad']
+
+# SERIALIZER QUE TRAE LOS ASIENTOS DE UNA FACTURA
+class AsientosFacturaSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField()
+    asiento = serializers.CharField()
+
+    class Meta:
+        model = RegistroAsientosReservados
+        fields = ['id', 'asiento']
+
+# SERIALIZER QUE TRAE LAS PROMOCIONES DE UNA FACTURA
+class PromocionesFacturaSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField()
+    descuento = serializers.IntegerField()
+    promocion = serializers.CharField()
+
+    class Meta:
+        model = RegistroPromociones
+        fields = ['id', 'descuento', 'promocion']
+
+
+# SERIALIZER QUE TRAE LAS FACTURAS DEL ADMIN
+class FacturasAdminSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField()
+    fecha = serializers.DateField()
+    cliente = serializers.CharField()
+
+    class Meta:
+        model = RegistroPromociones
+        fields = ['id', 'fecha', 'cliente']
+

@@ -56,7 +56,7 @@ class ProcesoCompra extends Component {
           );
         } else {
           alert(
-            "Compra realizada con éxito. Para ver su factura haga click en VER FACTURA, si desea volver al home, haga click en SALIR."
+            "Productos y asientos reservados con éxito. Para ver finalizar su compra haga click en VER FACTURA."
           );
           const compra_finalizada = !this.state.compra_finalizada;
           this.setState({ compra_finalizada });
@@ -214,6 +214,7 @@ class ProcesoCompra extends Component {
         parseInt(this.state.alimentos[index].cantidad) *
           parseInt(this.state.alimentos[index].producto.precio);
     }
+    
     for (let index = 0; index < this.state.combos.length; index++) {
       total_factura =
         total_factura +

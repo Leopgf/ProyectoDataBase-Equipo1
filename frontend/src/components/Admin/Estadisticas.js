@@ -29,10 +29,6 @@ class Estadisticas extends Component {
         alert("Error: Usuario inválido o inexistente.");
         window.location.href = `http://localhost:3000/`;
       });
-    axios.get(`http://localhost:8000/api/promociones/`).then((res) => {
-      const promociones = res.data;
-      this.setState({ promociones });
-    });
   }
 
   render() {

@@ -304,3 +304,15 @@ class PromocionesFacturaSerializer(serializers.ModelSerializer):
     class Meta:
         model = RegistroPromociones
         fields = ['id', 'descuento', 'promocion']
+
+
+# SERIALIZER QUE TRAE LAS FACTURAS DEL ADMIN
+class FacturasAdminSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField()
+    fecha = serializers.DateField()
+    cliente = serializers.CharField()
+
+    class Meta:
+        model = RegistroPromociones
+        fields = ['id', 'fecha', 'cliente']
+

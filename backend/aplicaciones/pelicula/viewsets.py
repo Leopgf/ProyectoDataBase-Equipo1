@@ -503,6 +503,20 @@ class PromocionesFacturaViewset(generics.ListAPIView):
         WHERE rp.id_factura_id = %s;""", [id_factura_id])
 
 
+# FACTURAS ADMIN ORDENADAS
+class FacturasAdminViewset(generics.ListAPIView):
+    serializer_class = serializers.FacturasAdminSerializer
+
+    def get_queryset(self):
+        return models.RegistroPromociones.objects.raw("""
+        SELECT f.id AS id,
+        f.fecha_compra AS fecha,
+        CONCAT(u.cedula, ' - ', u.nombre, ' ', u.apellido) AS cliente 
+        FROM pelicula_factura AS f
+        INNER JOIN pelicula_usuario AS u ON u.id = f.id_usuario_id
+        ORDER BY f.fecha_compra DESC;""")
+
+
 
 
 

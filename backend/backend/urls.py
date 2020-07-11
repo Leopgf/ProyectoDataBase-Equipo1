@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
 from aplicaciones.pelicula.viewsets import RegistroCategoriaViewset, RegistroCombosViewset, UsuarioViewset, IdUsuarioEmpleadoViewset, IdUsuarioClienteViewset, IniciarSesionEmpleadoViewset, IniciarSesionClienteViewset, AsientosDeSalaViewset
-from aplicaciones.pelicula.viewsets import PromocionesFacturaViewset, AsientosFacturaViewset, ProductosFacturaViewset, InfoFacturaViewset, RegistroCategoriaViewset, AsientosSalaViewset, AsientosOcupadosViewset, CategoriaEliminadaViewset, FuncionPorPeliculaViewset, FuncionOcupadaViewset, RegistroCombosViewset, UsuarioViewset, IdUsuarioEmpleadoViewset, IdUsuarioClienteViewset, IniciarSesionEmpleadoViewset, IniciarSesionClienteViewset
+from aplicaciones.pelicula.viewsets import FacturasAdminViewset, PromocionesFacturaViewset, AsientosFacturaViewset, ProductosFacturaViewset, InfoFacturaViewset, RegistroCategoriaViewset, AsientosSalaViewset, AsientosOcupadosViewset, CategoriaEliminadaViewset, FuncionPorPeliculaViewset, FuncionOcupadaViewset, RegistroCombosViewset, UsuarioViewset, IdUsuarioEmpleadoViewset, IdUsuarioClienteViewset, IniciarSesionEmpleadoViewset, IniciarSesionClienteViewset
 from .router import router
 
 urlpatterns = [
@@ -29,6 +29,7 @@ urlpatterns = [
     url('^api/productos-factura/(?P<id_factura>.+)/$',ProductosFacturaViewset.as_view(), name = 'ProductosFactura'),
     url('^api/asientos-factura/(?P<id_factura>.+)/$',AsientosFacturaViewset.as_view(), name = 'AsientosFactura'),
     url('^api/promociones-factura/(?P<id_factura>.+)/$',PromocionesFacturaViewset.as_view(), name = 'PromosFactura'),
+    url('^api/facturas-admin', FacturasAdminViewset.as_view(), name='Facturas-Admin'),
 
     # RUTA PARA TRAER LAS CATEGORIAS DE UNA PELÍCULA
     url('^api/registroCategorias/(?P<id_pelicula>.+)/$', RegistroCategoriaViewset.as_view(),name="categoriasUnaPeli"),

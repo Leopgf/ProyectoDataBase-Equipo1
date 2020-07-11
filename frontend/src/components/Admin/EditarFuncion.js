@@ -10,6 +10,7 @@ class EditarFuncion extends Component {
       hora: "",
       id_pelicula: "",
       id_sala: "",
+      butacas_disponibles: 0,
     },
     peliculas: [],
     salas: [],
@@ -98,28 +99,59 @@ class EditarFuncion extends Component {
       );
       const sala = this.state.salas.filter(
         (sala) => sala.nombre === this.state.funcion.id_sala
-      );
-      const butacas = sala[0].numero_filas * sala[0].numero_columnas;
+        );
 
-      const funcion = {
-        fecha: this.state.funcion.fecha,
-        hora: this.state.funcion.hora,
-        butacas_disponibles: butacas,
-        estado: true,
-        id_pelicula: pelicula[0].id,
-        id_sala: sala[0].id,
-      };
+        var funcion = {};
 
-      const {
-        fecha,
-        hora,
-        butacas_disponibles,
-        estado,
-        id_pelicula,
-        id_sala,
-      } = funcion;
-      
-      axios
+        if(sala.length === 0 && pelicula.length === 0){
+        funcion = {
+          fecha: this.state.funcion.fecha,
+          hora: this.state.funcion.hora,
+          butacas_disponibles: this.state.funcion.butacas_disponibles,
+          estado: true,
+          id_pelicula: this.state.funcion.id_pelicula,
+          id_sala: this.state.funcion.id_sala,
+        };
+      }else if(sala.length === 0){
+        funcion = {
+          fecha: this.state.funcion.fecha,
+          hora: this.state.funcion.hora,
+          butacas_disponibles: this.state.funcion.butacas_disponibles,
+          estado: true,
+          id_pelicula: pelicula[0].id,
+          id_sala: this.state.funcion.id_sala,
+        };
+      } else if (pelicula.length === 0){
+        funcion = {
+          fecha: this.state.funcion.fecha,
+          hora: this.state.funcion.hora,
+          butacas_disponibles: this.state.funcion.butacas_disponibles,
+          estado: true,
+          id_pelicula: this.state.funcion.id_pelicula,
+          id_sala: sala[0].id,
+        };
+      } else {
+        funcion = {
+          fecha: this.state.funcion.fecha,
+          hora: this.state.funcion.hora,
+          butacas_disponibles: this.state.funcion.butacas_disponibles,
+          estado: true,
+          id_pelicula: pelicula[0].id,
+          id_sala: sala[0].id,
+            };
+          }
+          
+          const {
+            fecha,
+            hora,
+            butacas_disponibles,
+            estado,
+            id_pelicula,
+            id_sala,
+          } = funcion;
+          
+          console.log(butacas_disponibles);
+          axios
         .put(
           `http://localhost:8000/api/funciones/${this.state.funcion.id}/`,
           { fecha, hora, butacas_disponibles, estado, id_pelicula, id_sala }

@@ -272,18 +272,19 @@ class EmpleadosViewset(viewsets.ModelViewSet):
     serializer_class = serializers.EmpleadoSerializer
 
 # TODOS LOS EMPLEADOS CON SUS USUARIOS
-
-
-class EmpleadosConUsuariosViewset(viewsets.ModelViewSet):
-    queryset = models.Empleado.objects.all()
+class EmpleadosConUsuariosViewset(generics.ListAPIView):
     serializer_class = serializers.EmpleadosConUsuariosSerializer
+    def get_queryset(self):
+        idUser = self.kwargs['id_usuario']
+        return models.Empleado.objects.all().filter(id_usuario=idUser)
 
 # TODOS LOS CLIENTES CON SUS USUARIOS
-
-
-class ClientesConUsuariosViewset(viewsets.ModelViewSet):
-    queryset = models.Cliente.objects.all()
+class ClientesConUsuariosViewset(generics.ListAPIView):
     serializer_class = serializers.ClientesConUsuariosSerializer
+
+    def get_queryset(self):
+        idUser = self.kwargs['id_usuario']
+        return models.Cliente.objects.all().filter(id_usuario=idUser)
 
 
 # DEVUELVE UN EMPLEADO A PARTIR DE SU CEDULA

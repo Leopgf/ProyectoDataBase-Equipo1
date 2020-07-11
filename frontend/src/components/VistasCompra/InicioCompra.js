@@ -21,9 +21,10 @@ class InicioCompra extends Component {
     
     this.setState({ id_cliente });
     axios
-      .get(`http://localhost:8000/api/clientes-usuarios/${id_cliente}`)
+      .get(`http://localhost:8000/api/clientes-usuarios/${id_cliente}/`)
       .then((client) => {
-        const cliente = client.data;
+        const cliente = client.data[0];
+        console.log(client.data);
         this.setState({ cliente });
         console.log(this.state);
         

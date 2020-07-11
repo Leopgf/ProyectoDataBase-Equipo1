@@ -81,8 +81,9 @@ class AgregarCombo extends Component {
 
   handleCombo() {
     const productos = this.state.combo.id_producto.filter(
-      (producto) => producto.checked !== false
+      (producto) => producto.checked !== false && producto.cantidad !== '0'
     );
+    console.log(productos);
 
     if (
       this.state.combo.nombre === "" ||
@@ -147,7 +148,7 @@ class AgregarCombo extends Component {
             );
             axios
               .post(
-                `http://localhost:8000/api/registro-combos-admin/`,
+                `http://localhost:8000/api/registrocombos-todos/`,
                 {
                   id_producto_combo,
                   id_producto,
@@ -162,7 +163,7 @@ class AgregarCombo extends Component {
           });
           console.log(res.data);
           alert("Combo agregado con éxito!");
-          window.location.href = "http://localhost:3000/combos-admin";
+          window.location.href = `http://localhost:3000/combos-admin/${this.state.id_empleado}`;
         })
         .catch((err) => alert(err.response.request.response));
     }

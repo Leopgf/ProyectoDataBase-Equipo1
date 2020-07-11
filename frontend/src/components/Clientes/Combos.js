@@ -25,6 +25,7 @@ class Combos extends Component {
         axios
           .get(`http://localhost:8000/api/registroCombos/${combo.combo.id}`)
           .then((res) => {
+            console.log(res);
             var combos = this.state.combos;
             combos[index].productos = res.data;
             this.setState({ combos });

@@ -11,57 +11,39 @@ class EditarCombo extends Component {
       descuento: "",
       id_tipos_productos: 3,
       estado: true,
-      id_producto: [],
     },
     id_empleado: "",
     empleado: {
       id_usuario: 0,
       tiene_permisos: false,
       id_sucursal: "",
-    }
+    },
   };
 
   componentDidMount() {
     const id_empleado = this.props.match.params.id_empleado;
     this.setState({ id_empleado });
     axios
-        .get(
-          `http://localhost:8000/api/permisos-empleado/${id_empleado}`
-        )
-        .then((emp) => {
-          const empleado = emp.data[0];
-          this.setState({ empleado });
-          console.log(this.state);
-        })
-        .catch((err) => {
-          alert("Error: Usuario inválido o inexistente.");
-          window.location.href = `http://localhost:3000/`;
-        });
-
-    axios.get(`http://localhost:8000/api/productos/`).then((response) => {
-      var productos = [];
-      response.data.forEach((prod) => {
-        if (prod.id_tipos_productos === 2) {
-          const producto = {
-            id: prod.id,
-            nombre: prod.nombre,
-            precio: prod.precio,
-            cantidad: 0,
-            checked: false,
-          };
-          productos.push(producto);
-        }
+      .get(`http://localhost:8000/api/permisos-empleado/${id_empleado}`)
+      .then((emp) => {
+        const empleado = emp.data[0];
+        this.setState({ empleado });
+        console.log(this.state);
+      })
+      .catch((err) => {
+        alert("Error: Usuario inválido o inexistente.");
+        window.location.href = `http://localhost:3000/`;
       });
-      var combo = this.state.combo;
-      combo.id_producto = productos;
-      this.setState({ combo });
-    });
 
-    axios.get(`http://localhost:8000/api/combos/${this.props.match.params.id_combo}`).then((res) => {
+    axios
+      .get(
+        `http://localhost:8000/api/combos/${this.props.match.params.id_combo}`
+      )
+      .then((res) => {
         const combo = res.data;
         this.setState({ combo });
-    });
-
+        console.log(combo);
+      });
   }
 
   handleChange(event) {
@@ -70,107 +52,30 @@ class EditarCombo extends Component {
     this.setState({ combo });
   }
 
-  handleProductos(event) {
-    const combo = this.state.combo;
-    combo.id_producto[event.target.name].checked = !combo.id_producto[
-      event.target.name
-    ].checked;
-    this.setState({ combo });
-  }
-
-  handleProductosCantidad(event) {
-    const combo = this.state.combo;
-    combo.id_producto[event.target.name].cantidad = event.target.value;
-    this.setState({ combo });
-    console.log(combo);
-  }
-
   handleEditarCombo() {
-    const productos = this.state.combo.id_producto.filter(
-      (producto) => producto.checked !== false
-    );
-
     if (
       this.state.combo.nombre === "" ||
       this.state.combo.descripcion === "" ||
-      this.state.combo.descuento === "" ||
-      productos.length === 0
+      this.state.combo.descuento === ""
     ) {
       alert("Error: Campos vacíos o inválidos");
-    } else if (productos.length <= 1) {
-      alert("Error: El combo no puede tener menos de 2 productos");
     } else {
-
       const {
         nombre,
-        descripcion,
-        descuento,
         id_tipos_productos,
         estado,
+        precio
       } = this.state.combo;
-      var precio = 0;
-      productos.forEach((producto) => {
-        precio = precio + producto.precio * producto.cantidad;
-      });
 
       axios
-        .put(
-          `http://localhost:8000/api/productos/${this.state.combo.id}/`,
-          {
-            nombre,
-            precio,
-            id_tipos_productos,
-            estado,
-          }
-        )
+        .put(`http://localhost:8000/api/combos/${this.state.combo.id}/`, {
+          nombre,
+          precio,
+          id_tipos_productos,
+          estado,
+        })
         .then((res) => {
-
-          //..........
-          const id_producto = res.data.id;
-          const id_producto_combo = res.data.id;
-          axios
-            .put(
-              `http://localhost:8000/api/comboscine/${res.data.id}/`,
-              {
-                descripcion,
-                descuento,
-                id_producto,
-              }
-            )
-            .then((respuesta) => {
-              console.log(respuesta.data);
-            })
-            .catch((err) => console.log(err.response.request.response));
-            // console.log(productos);
-            // productos.forEach((product) => {
-            // const id_producto = product.id;
-            // const cantidad = product.cantidad;
-            // console.log(
-            //   id_producto +
-            //     " - cantidad: " +
-            //     cantidad +
-            //     " - combo: " +
-            //     id_producto_combo
-            // );
-            // axios
-            //   .post(
-            //     `http://localhost:8000/api/registro-combos-admin/`,
-            //     {
-            //       id_producto_combo,
-            //       id_producto,
-            //       cantidad,
-            //     },
-            //     { headers: { "Content-Type": "application/json" } }
-            //   )
-            //   .then((resp) => {
-            //     console.log(resp.data);
-            //   })
-            //   .catch((err) => console.log(err.response.request.response));
-          //});
-          //..........
-
-          console.log(res.data);
-          alert("Combo agregado con éxito!");
+          alert("Combo editado con éxito!");
           //window.location.href = "http://localhost:3000/combos-admin";
         })
         .catch((err) => alert(err.response.request.response));
@@ -181,7 +86,10 @@ class EditarCombo extends Component {
     return (
       <div className="row justify-content-center">
         <div className="col-12">
-          <HeaderAdmin tiene_permisos={this.state.empleado.tiene_permisos} id_empleado={this.state.id_empleado}/>
+          <HeaderAdmin
+            tiene_permisos={this.state.empleado.tiene_permisos}
+            id_empleado={this.state.id_empleado}
+          />
           <h3 className="mt-3 text-center">EDITAR COMBO</h3>
         </div>
         <div
@@ -199,52 +107,6 @@ class EditarCombo extends Component {
                   value={this.state.combo.nombre}
                   onChange={this.handleChange.bind(this)}
                 />
-              </Form.Group>
-              <Form.Group>
-                <Form.Label>Descripción del Combo:</Form.Label>
-                <textarea
-                  className="form-control"
-                  name="descripcion"
-                  rows={3}
-                  placeholder="Descripción"
-                  value={this.state.combo.descripcion}
-                  onChange={this.handleChange.bind(this)}
-                ></textarea>
-              </Form.Group>
-              <Form.Group controlId="formBasicTitulo">
-                <Form.Label>Descuento del Combo:</Form.Label>
-                <Form.Control
-                  type="number"
-                  name="descuento"
-                  placeholder="Descuento"
-                  value={this.state.combo.descuento}
-                  onChange={this.handleChange.bind(this)}
-                />
-              </Form.Group>
-              <Form.Group controlId="exampleForm.ControlSelect">
-                <Form.Label>Seleccione los productos:</Form.Label>
-                <Form.Group>
-                  {this.state.combo.id_producto.map((producto, index) => (
-                    <Form.Group key={producto.id}>
-                      <Form.Check
-                        type="checkbox"
-                        label={producto.nombre}
-                        name={index}
-                        onChange={this.handleProductos.bind(this)}
-                        checked={producto.checked}
-                      />
-                      <Form.Label>Cantidad:</Form.Label>
-                      <Form.Control
-                        type="number"
-                        name={index}
-                        placeholder="Cantidad"
-                        value={this.state.combo.id_producto[index].cantidad}
-                        onChange={this.handleProductosCantidad.bind(this)}
-                      />
-                    </Form.Group>
-                  ))}
-                  {}
-                </Form.Group>
               </Form.Group>
               <Form.Group className="d-flex justify-content-center">
                 <Button

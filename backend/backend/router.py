@@ -47,9 +47,7 @@ router.register('promociones-activas',PromocionesActivasViewset)
 # RUTAS USUARIOS
 router.register('usuarios',UsuariosViewset)
 router.register('clientes',ClientesViewset)
-router.register('clientes-usuarios',ClientesConUsuariosViewset)
 router.register('empleados',EmpleadosViewset)
-router.register('empleados-usuarios',EmpleadosConUsuariosViewset)
 
 # RUTAS FACTURAS
 router.register('facturas',FacturaViewset)

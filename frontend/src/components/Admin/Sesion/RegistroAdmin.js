@@ -207,9 +207,10 @@ class Registro extends Component {
                   placeholder="Ingrese su Cédula"
                   value={this.state.usuario.cedula}
                   onChange={this.handleChange.bind(this)}
-                />
+                  />
               </Form.Group>
               <Form.Group controlId="formBasicSucursal">
+                <Form.Label>Sucursal:</Form.Label>
                 <Form.Control
                   as="select"
                   name="id_sucursal"
@@ -228,7 +229,7 @@ class Registro extends Component {
                   name="tiene_permisos"
                   value={this.state.usuario.tiene_permisos}
                   onChange={this.handlePermisos.bind(this)}
-                  label="Check me out"
+                  label="Tiene permisos"
                 />
               </Form.Group>
               <Form.Group className="d-flex justify-content-center">

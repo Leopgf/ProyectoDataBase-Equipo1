@@ -214,6 +214,7 @@ class ProcesoCompra extends Component {
         parseInt(this.state.alimentos[index].cantidad) *
           parseInt(this.state.alimentos[index].producto.precio);
     }
+    
     for (let index = 0; index < this.state.combos.length; index++) {
       total_factura =
         total_factura +

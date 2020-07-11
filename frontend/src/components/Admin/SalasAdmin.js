@@ -38,12 +38,12 @@ class SalasAdmin extends Component {
     axios.get(`http://localhost:8000/api/salas/`).then((res) => {
       const salas = res.data;
       this.setState({ salas });
-      this.state.salas.forEach((sala) => {
+      this.state.salas.forEach((sala, index) => {
         axios
           .get(`http://localhost:8000/api/sucursales/${sala.id_sucursal}`)
           .then((res) => {
             var sucursales = this.state.sucursales;
-            sucursales.push(res.data.nombre);
+            sucursales[index] = (res.data.nombre);
             this.setState({ sucursales });
           });
       });

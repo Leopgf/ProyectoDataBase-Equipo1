@@ -41,7 +41,7 @@ class AgregarCombo extends Component {
     axios.get(`http://localhost:8000/api/productos/`).then((response) => {
       var productos = [];
       response.data.forEach((prod) => {
-        if (prod.id_tipos_productos === 2) {
+        if (prod.id_tipos_productos === 1) {
           const producto = {
             id: prod.id,
             nombre: prod.nombre,

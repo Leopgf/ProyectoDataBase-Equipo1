@@ -125,6 +125,7 @@ class AgregarProducto extends Component {
           (tipo) => tipo.tipo === this.state.producto.id_tipos_productos
         );
         id_tipos_productos = id_tipos_productos[0].id;
+        console.log(id_tipos_productos);
         axios
           .post(
             `http://localhost:8000/api/productos/`,

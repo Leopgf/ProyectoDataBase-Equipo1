@@ -185,7 +185,6 @@ class Funciones extends Component {
                 <th>Película</th>
                 <th>Fecha</th>
                 <th>Hora</th>
-                <th>Sucursal</th>
                 <th>Sala</th>
                 <th>Butacas Disponibles</th>
                 <th>Modificar</th>
@@ -198,7 +197,6 @@ class Funciones extends Component {
                   <td>{this.state.peliculas[index]}</td>
                   <td>{funcion.fecha}</td>
                   <td>{funcion.hora}</td>
-                  <td>{this.state.sucursales[index]}</td>
                   <td>{this.state.salas[index]}</td>
                   <td>{funcion.butacas_disponibles}</td>
                   <td>

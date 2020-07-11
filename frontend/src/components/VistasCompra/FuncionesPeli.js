@@ -49,6 +49,7 @@ class FuncionesPeli extends Component {
                 .then((sucursal) => {
                   sucursales[index] = sucursal.data.nombre;
                   this.setState({ sucursales });
+                  console.log(sucursales);
                 });
             });
         });

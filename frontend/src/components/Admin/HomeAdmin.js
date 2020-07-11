@@ -127,7 +127,7 @@ class HomeAdmin extends Component {
                   <td>{usuario.cedula}</td>
                   <td>{usuario.nombre}</td>
                   <td>{usuario.apellido}</td>
-                  <td>{this.state.cargos[index]}</td>
+                  <td>{this.state.cargos[usuario.id - 1]}</td>
                 </tr>
               ))}
             </tbody>

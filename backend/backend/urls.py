@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
 from aplicaciones.pelicula.viewsets import RegistroCategoriaViewset, RegistroCombosViewset, UsuarioViewset, IdUsuarioEmpleadoViewset, IdUsuarioClienteViewset, IniciarSesionEmpleadoViewset, IniciarSesionClienteViewset, AsientosDeSalaViewset
-from aplicaciones.pelicula.viewsets import ClientesConUsuariosViewset, EmpleadosConUsuariosViewset, FacturasAdminViewset, PromocionesFacturaViewset, AsientosFacturaViewset, ProductosFacturaViewset, InfoFacturaViewset, RegistroCategoriaViewset, AsientosSalaViewset, AsientosOcupadosViewset, CategoriaEliminadaViewset, FuncionPorPeliculaViewset, FuncionOcupadaViewset, RegistroCombosViewset, UsuarioViewset, IdUsuarioEmpleadoViewset, IdUsuarioClienteViewset, IniciarSesionEmpleadoViewset, IniciarSesionClienteViewset
+from aplicaciones.pelicula.viewsets import EmpleadosUsuariosViewset, ClientesConUsuariosViewset, EmpleadosConUsuariosViewset, FacturasAdminViewset, PromocionesFacturaViewset, AsientosFacturaViewset, ProductosFacturaViewset, InfoFacturaViewset, RegistroCategoriaViewset, AsientosSalaViewset, AsientosOcupadosViewset, CategoriaEliminadaViewset, FuncionPorPeliculaViewset, FuncionOcupadaViewset, RegistroCombosViewset, UsuarioViewset, IdUsuarioEmpleadoViewset, IdUsuarioClienteViewset, IniciarSesionEmpleadoViewset, IniciarSesionClienteViewset
 from .router import router
 
 urlpatterns = [
@@ -64,5 +64,6 @@ urlpatterns = [
 
     url('^api/clientes-usuarios/(?P<id_usuario>.+)/$',ClientesConUsuariosViewset.as_view(), name ="usuarios-cliente" ),
     url('^api/empleados-usuarios/(?P<id_usuario>.+)/$',EmpleadosConUsuariosViewset.as_view(), name ="usuario-empleado" ),
+    url('^api/empleados-usuarios/',EmpleadosUsuariosViewset.as_view(), name ="usuario-empleado2" ),
 
 ]

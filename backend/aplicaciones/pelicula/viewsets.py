@@ -278,6 +278,12 @@ class EmpleadosConUsuariosViewset(generics.ListAPIView):
         idUser = self.kwargs['id_usuario']
         return models.Empleado.objects.all().filter(id_usuario=idUser)
 
+# TODOS LOS EMPLEADOS CON SUS USUARIOS
+class EmpleadosUsuariosViewset(generics.ListAPIView):
+    serializer_class = serializers.EmpleadosConUsuariosSerializer
+    def get_queryset(self):
+        return models.Empleado.objects.all()
+
 # TODOS LOS CLIENTES CON SUS USUARIOS
 class ClientesConUsuariosViewset(generics.ListAPIView):
     serializer_class = serializers.ClientesConUsuariosSerializer
@@ -408,7 +414,7 @@ class TopProductoViewset(viewsets.ModelViewSet):
         SUM(rc.cantidad) AS cantidad_comprada 
         FROM pelicula_registrocompras AS rc
         INNER JOIN pelicula_producto AS p ON (rc.id_producto_id = p.id)
-        WHERE p.id_tipos_productos_id = 2
+        WHERE p.id_tipos_productos_id = 1
         GROUP BY producto 
         ORDER BY  cantidad_comprada DESC """)
 
